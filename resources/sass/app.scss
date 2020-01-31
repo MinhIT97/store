@@ -1,1 +1,30 @@
-//
+@import "~bootstrap/dist/css/bootstrap.css";
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+@import "./pages/head";
+@import "./pages/home";
+@import "./ui/font";
+@import "./ui/color";
+
+body {
+    color: $default_text_color;
+    background-color:white;
+    font-size: $font_size_normal;
+    font-family: $font_family;
+    line-height: 1.21;
+
+    header {
+        .bg-dark {
+            background-color: $main_header_bg_color !important;
+        }
+    }
+
+    .main {
+        min-height: calc(100vh - 260px);
+    }
+}

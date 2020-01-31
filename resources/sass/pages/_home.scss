@@ -1,0 +1,53 @@
+.home {
+    .lion-main__image {
+        width: 100%;
+        height: 100vh;
+    }
+    .btn-sale {
+        background-color: #1c1c1c;
+        color: white;
+        text-transform: uppercase;
+        border-radius: 0;
+        font-size: 14;
+    }
+    .btn-sale:hover {
+        background-color: #d3a87d;
+        color: black;
+    }
+    .btn-sale__men {
+        top: 83%;
+        left: 35%;
+        padding: 20px 60px;
+    }
+    .btn-sale_women {
+        top: 83%;
+        left: 55%;
+        padding: 20px 50px;
+    }
+    .main-slider {
+        margin-top: 80px;
+
+        .carousel-indicators {
+            li {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+            }
+            .active {
+                color: #fde7b7;
+            }
+        }
+    }
+    .home-product {
+        padding: 100px 0;
+        .product-head {
+            h2 {
+                p {
+                    font-weight: 500;
+                    font-family: "SVN-Gotham";
+                    letter-spacing: 4.4px;
+                }
+            }
+        }
+    }
+}
