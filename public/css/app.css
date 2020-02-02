@@ -22429,6 +22429,92 @@ readers do not read off random characters that represent icons */
   letter-spacing: 4.4px;
 }
 
+.home .home-product .product-slider .product_slider .slide-item__image {
+  padding: 10px;
+}
+
+.home .style-product .style-item {
+  margin-bottom: 5px;
+  padding: 5px;
+}
+
+.home .style-product .style-item .bg-black {
+  background: rgba(0, 0, 0, 0.8) !important;
+}
+
+.home .style-product .style-item .image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.home .style-product .style-item .middle {
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+}
+
+.home .style-product .style-item:hover .image {
+  opacity: 0.3;
+}
+
+.home .style-product .style-item:hover .middle {
+  opacity: 1;
+}
+
+.home .style-product .style-main {
+  padding: 5px;
+}
+
+.footer {
+  margin: 0;
+}
+
+.footer .service {
+  background-color: #1c1c1c;
+  text-align: center;
+}
+
+.footer .service i {
+  color: white;
+  margin: 20px;
+  font-size: 40px;
+}
+
+.footer .service h4 {
+  font-size: 12px;
+  line-height: 22px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 400;
+}
+
+.footer .service h4 p {
+  color: #fff;
+}
+
+.footer .footer-info {
+  margin-top: 80px;
+}
+
+.m0 {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 body {
   color: #333333;
   background-color: white;

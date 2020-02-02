@@ -3,6 +3,7 @@
         width: 100%;
         height: 100vh;
     }
+
     .btn-sale {
         background-color: #1c1c1c;
         color: white;
@@ -10,20 +11,24 @@
         border-radius: 0;
         font-size: 14;
     }
+
     .btn-sale:hover {
         background-color: #d3a87d;
         color: black;
     }
+
     .btn-sale__men {
         top: 83%;
         left: 35%;
         padding: 20px 60px;
     }
+
     .btn-sale_women {
         top: 83%;
         left: 55%;
         padding: 20px 50px;
     }
+
     .main-slider {
         margin-top: 80px;
 
@@ -33,13 +38,16 @@
                 height: 8px;
                 border-radius: 50%;
             }
+
             .active {
                 color: #fde7b7;
             }
         }
     }
+
     .home-product {
         padding: 100px 0;
+
         .product-head {
             h2 {
                 p {
@@ -48,6 +56,59 @@
                     letter-spacing: 4.4px;
                 }
             }
+        }
+
+        .product-slider {
+            .product_slider {
+                .slide-item__image {
+                    padding: 10px;
+                }
+            }
+
+        }
+    }
+
+    .style-product {
+        .style-item {
+            margin-bottom: 5px;
+            padding: 5px;
+
+            .bg-black {
+                background: rgba(0,0,0,0.8) !important
+            }
+
+            .image {
+                opacity: 1;
+                display: block;
+                width: 100%;
+                height: auto;
+                transition: .5s ease;
+                backface-visibility: hidden;
+            }
+
+            .middle {
+                transition: .5s ease;
+                opacity: 0;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                text-align: center;
+                color: white;
+            }
+        }
+
+        .style-item:hover .image {
+            opacity: 0.3;
+        }
+
+        .style-item:hover .middle {
+            opacity: 1;
+        }
+
+        .style-main {
+            padding: 5px;
         }
     }
 }

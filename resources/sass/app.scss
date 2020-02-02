@@ -8,8 +8,10 @@
 
 @import "./pages/head";
 @import "./pages/home";
+@import "./pages/footer";
 @import "./ui/font";
 @import "./ui/color";
+@import "./ui/style";
 
 body {
     color: $default_text_color;

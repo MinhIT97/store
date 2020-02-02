@@ -3,6 +3,11 @@ import "jquery";
 import "bootstrap";
 import "slick-carousel";
 console.log("Hello World :)");
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
 
 $(document).ready(function () {
     $(".product_slider").slick({

@@ -40111,6 +40111,11 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 console.log("Hello World :)");
+$.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
 $(document).ready(function () {
   $(".product_slider").slick({
     infinite: true,
