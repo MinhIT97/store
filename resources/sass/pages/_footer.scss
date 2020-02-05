@@ -20,11 +20,90 @@
 
             p {
                 color: #fff;
-
             }
         }
     }
-    .footer-info{
+
+    .footer-info {
         margin-top: 80px;
+
+        li {
+            margin-bottom: 20px;
+            margin-top: 20px;
+            text-transform: uppercase;
+
+            a {
+                color: #1c1c1c;
+                text-decoration: none;
+                font-size: 12px;
+                letter-spacing: 0.5px;
+                opacity: 0.8;
+            }
+
+            a:hover {
+                color: #916841;
+            }
+
+            h3 {
+                font-size: 14px;
+                font-weight: 500;
+                letter-spacing: 1.4px;
+            }
+        }
+
+        &__head {
+            margin-bottom: 20px;
+            margin-top: 20px;
+            text-transform: uppercase;
+
+            h3 {
+                font-size: 14px;
+                font-weight: 500;
+                letter-spacing: 1.4px;
+            }
+        }
+
+        &__middle {
+            color: #1c1c1c;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            opacity: 0.8;
+        }
+
+        .form-group {
+            .form-control {
+                background-color: #f7f7f7;
+                border-radius: 0;
+            }
+
+            input:focus {
+                border-color: #1c1c1c;
+                box-shadow:none;
+            }
+
+            ::placeholder {
+                font-size: 12px;
+                font-weight: 500;
+            }
+        }
+
+        .btn-regis {
+            background-color: #1c1c1c;
+            color: #fff;
+            border-radius: 0;
+            width: 100%;
+        }
+
+
+    }
+
+    .coppy-right {
+        margin: 40px;
+        border-top: 1px solid #ebebeb;
+        padding: 20px;
+
+        &__info {
+            margin-bottom: 10px;
+        }
     }
 }

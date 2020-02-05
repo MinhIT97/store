@@ -22510,6 +22510,134 @@ readers do not read off random characters that represent icons */
   margin-top: 80px;
 }
 
+.footer .footer-info li {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  text-transform: uppercase;
+}
+
+.footer .footer-info li a {
+  color: #1c1c1c;
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  opacity: 0.8;
+}
+
+.footer .footer-info li a:hover {
+  color: #916841;
+}
+
+.footer .footer-info li h3 {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1.4px;
+}
+
+.footer .footer-info__head {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  text-transform: uppercase;
+}
+
+.footer .footer-info__head h3 {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1.4px;
+}
+
+.footer .footer-info__middle {
+  color: #1c1c1c;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  opacity: 0.8;
+}
+
+.footer .footer-info .form-group .form-control {
+  background-color: #f7f7f7;
+  border-radius: 0;
+}
+
+.footer .footer-info .form-group input:focus {
+  border-color: #1c1c1c;
+  box-shadow: none;
+}
+
+.footer .footer-info .form-group ::-webkit-input-placeholder {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.footer .footer-info .form-group ::-moz-placeholder {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.footer .footer-info .form-group :-ms-input-placeholder {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.footer .footer-info .form-group ::-ms-input-placeholder {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.footer .footer-info .form-group ::placeholder {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.footer .footer-info .btn-regis {
+  background-color: #1c1c1c;
+  color: #fff;
+  border-radius: 0;
+  width: 100%;
+}
+
+.footer .coppy-right {
+  margin: 40px;
+  border-top: 1px solid #ebebeb;
+  padding: 20px;
+}
+
+.footer .coppy-right__info {
+  margin-bottom: 10px;
+}
+
+.product {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.product .product-item {
+  border: 1px solid #E9E0E2;
+  margin: 0;
+  padding: 0;
+  border-radius: 6px;
+}
+
+.product .product-item__image {
+  margin-bottom: 10px;
+}
+
+.product .product-item__content--heading {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.product .product-item__content--heading .name {
+  text-transform: uppercase;
+  color: #1c1c1c;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 500;
+}
+
+.product .product-item__content--content {
+  margin-bottom: 20px;
+}
+
 .m0 {
   margin-left: 0;
   margin-right: 0;

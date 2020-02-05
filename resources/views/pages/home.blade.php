@@ -64,7 +64,7 @@
                             <div class="product_slider">
                                 <!-- Begin Hiraola's Slide Item Area -->
                                 <div class="slide-item">
-                                    <a href="">
+                                    <a href="/product">
                                         <div class="slide-item__image">
                                             <img class="img-fluid" src="/images/5152.jpg" alt="">
                                         </div>
@@ -79,7 +79,7 @@
                                     </a>
                                 </div>
                                 <div class="slide-item">
-                                    <a href="">
+                                    <a href="/product">
                                         <div class="slide-item__image">
                                             <img class="img-fluid" src="/images/5152.jpg" alt="">
                                         </div>
@@ -95,7 +95,7 @@
 
                                 </div>
                                 <div class="slide-item">
-                                    <a href="">
+                                    <a href="/product">
                                         <div class="slide-item__image">
                                             <img class="img-fluid" src="/images/5152.jpg" alt="">
                                         </div>
@@ -110,7 +110,7 @@
                                     </a>
                                 </div>
                                 <div class="slide-item">
-                                    <a href="">
+                                    <a href="/product">
                                         <div class="slide-item__image">
                                             <img class="img-fluid" src="/images/5152.jpg" alt="">
                                         </div>
@@ -125,7 +125,7 @@
                                     </a>
                                 </div>
                                 <div class="slide-item">
-                                    <a href="">
+                                    <a href="/product">
                                         <div class="slide-item__image">
                                             <img class="img-fluid" src="/images/5152.jpg" alt="">
                                         </div>
@@ -254,7 +254,7 @@
                             <div class="product_slider">
                                 <!-- Begin Hiraola's Slide Item Area -->
                                 <div class="slide-item">
-                                    <a href="">
+                                    <a href="/product">
                                         <div class="slide-item__image">
                                             <img class="img-fluid" src="/images/5152.jpg" alt="">
                                         </div>
@@ -269,7 +269,7 @@
                                     </a>
                                 </div>
                                 <div class="slide-item">
-                                    <a href="">
+                                    <a href="/product">
                                         <div class="slide-item__image">
                                             <img class="img-fluid" src="/images/5152.jpg" alt="">
                                         </div>
@@ -285,7 +285,7 @@
 
                                 </div>
                                 <div class="slide-item">
-                                    <a href="">
+                                    <a href="/product">
                                         <div class="slide-item__image">
                                             <img class="img-fluid" src="/images/5152.jpg" alt="">
                                         </div>
@@ -300,7 +300,7 @@
                                     </a>
                                 </div>
                                 <div class="slide-item">
-                                    <a href="">
+                                    <a href="/product">
                                         <div class="slide-item__image">
                                             <img class="img-fluid" src="/images/5152.jpg" alt="">
                                         </div>
@@ -315,7 +315,7 @@
                                     </a>
                                 </div>
                                 <div class="slide-item">
-                                    <a href="">
+                                    <a href="/product">
                                         <div class="slide-item__image">
                                             <img class="img-fluid" src="/images/5152.jpg" alt="">
                                         </div>
@@ -355,7 +355,7 @@
                             <div class="product_slider">
                                 <!-- Begin Hiraola's Slide Item Area -->
                                 <div class="slide-item">
-                                    <a href="">
+                                    <a href="/product">
                                         <div class="slide-item__image">
                                             <img class="img-fluid" src="/images/5152.jpg" alt="">
                                         </div>
@@ -370,7 +370,7 @@
                                     </a>
                                 </div>
                                 <div class="slide-item">
-                                    <a href="">
+                                    <a href="/product">
                                         <div class="slide-item__image">
                                             <img class="img-fluid" src="/images/5152.jpg" alt="">
                                         </div>
@@ -386,7 +386,7 @@
 
                                 </div>
                                 <div class="slide-item">
-                                    <a href="">
+                                    <a href="/product">
                                         <div class="slide-item__image">
                                             <img class="img-fluid" src="/images/5152.jpg" alt="">
                                         </div>
@@ -401,7 +401,7 @@
                                     </a>
                                 </div>
                                 <div class="slide-item">
-                                    <a href="">
+                                    <a href="/product">
                                         <div class="slide-item__image">
                                             <img class="img-fluid" src="/images/5152.jpg" alt="">
                                         </div>
@@ -416,7 +416,7 @@
                                     </a>
                                 </div>
                                 <div class="slide-item">
-                                    <a href="">
+                                    <a href="/product">
                                         <div class="slide-item__image">
                                             <img class="img-fluid" src="/images/5152.jpg" alt="">
                                         </div>

@@ -31,55 +31,84 @@
 
     </div>
     <div class="footer-info">
+
         <div class="row m0">
             <div class="col-3">
                 <ul class="list-unstyled">
-                    <li>Store 1</li>
-                    <li>Store 2</li>
-                    <li>Store 3</li>
+                    <li> <strong> Store 1:</strong> 20 Canifonia Hoa kì</li>
+                    <li><strong> Store 2:</strong> Hà Nội</li>
+                    <li><strong> Store 3:</strong> Hồ Chí Minh</li>
+                    <li><strong>cskh@mshop.com</strong></li>
+                    <li><strong>0986082324</strong></li>
                 </ul>
             </div>
             <div class="col-2">
                 <ul class="list-unstyled">
-                    <li>Mua hàng</li>
-                    <li>Thời trang nam</li>
-                    <li>Thời trang nữ</li>
-                    <li>Thời trang unisex</li>
+                    <li>
+                        <h3>Mua hàng</h3>
+                    </li>
+                    <li><a href="">Thời trang nam</a></li>
+                    <li><a href="">Thời trang nữ</a></li>
+                    <li><a href="">Thời trang unisex</a></li>
                 </ul>
             </div>
             <div class="col-2">
                 <ul class="list-unstyled">
-                    <li>Dịch vụ khách hàng</li>
-                    <li>Tài khoản</li>
-                    <li>Chính sách vận chuyển</li>
-                    <li>Chính sách đổi</li>
-                    <li>Câu hỏi thường gặp</li>
-                    <li>Chính sách bảo mật</li>
-                    <li>Chính sách thanh toán</li>
+                    <li>
+                        <h3>Dịch vụ khách hàng</h3>
+                    </li>
+                    <li><a href="">Tài khoản</a></li>
+                    <li><a href="">Chính sách vận chuyển</a></li>
+                    <li><a href="">Chính sách đổi</a></li>
+                    <li><a href="">Câu hỏi thường gặp</a></li>
+                    <li><a href="">Chính sách bảo mật</a></li>
+                    <li><a href="">Chính sách thanh toán</a></li>
 
                 </ul>
             </div>
             <div class="col-2">
                 <ul class="list-unstyled">
-                    <li>#Mshop</li>
-                    <li>Blog</li>
-                    <li>Tuyển dụng</li>
+                    <li>
+                        <h3>#Mshop</h3>
+                    </li>
+                    <li><a href="">Blog</a></li>
+                    <li><a href="">Tuyển dụng</a></li>
 
                 </ul>
             </div>
             <div class="col-3">
+                <div class="footer-info__head">
+                    <h3>
+                        <p>SIGN UP FOR OUR NEWSLETTER</p>
+                    </h3>
+                </div>
+                <div class="footer-info__middle">
+                    <p>
+                        Đăng ký để cập nhật những thông tin và ưu đãi mới nhất từ Mshop.
+                    </p>
+                </div>
                 <form action="">
                     <div class="form-group">
                         <label for=""></label>
-                        <input type="text" class="form-control" name="" id="" aria-describedby="emailHelpId" placeholder="">
+                        <input type="text" class="form-control" name="" id="" aria-describedby="emailHelpId" placeholder="Tên của bạn">
                     </div>
                     <div class="form-group">
                         <label for=""></label>
-                        <input type="email" class="form-control" name="" id="" aria-describedby="emailHelpId" placeholder="">
+                        <input type="email" class="form-control" name="" id="" aria-describedby="emailHelpId" placeholder="Email của bạn">
                     </div>
-                    <button class="btn" type="submit">Đăng ký</button>
+                    <button class="btn btn-regis text-uppercase" type="submit">Đăng ký</button>
                 </form>
             </div>
         </div>
+    </div>
+
+    <div class="coppy-right text-center">
+        <div class="coppy-right__info">
+         <strong>© 2020 - Bản quyền của Mshop</strong>   
+        </div>
+        <div>
+            Giấy chứng nhận ĐKKD số do Sở Kế hoạch và Đầu tư Thành phố Hà Nội cấp ngày 1/1/2020
+        </div>
+
     </div>
 </footer>
