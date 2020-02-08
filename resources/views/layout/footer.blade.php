@@ -1,7 +1,7 @@
 <footer class="footer">
     <div class="service">
         <div class="row m0">
-            <div class="col-3">
+            <div class="col-12 col-md-3">
                 <i class="fas fa-credit-card"></i>
                 <h4>
                     <p>Thanh toán <strong> dễ dàng</strong> và <br><strong>bảo mật</strong>
@@ -9,18 +9,18 @@
                 </h4>
             </div>
 
-            <div class="col-3"><i class="fas fa-shipping-fast"></i>
+            <div class="col-12 col-md-3"><i class="fas fa-shipping-fast"></i>
                 <h4>
                     <p>Miễn phí vận chuyển với đơn <br> <strong>hàng từ 5000000Đ</strong>
                         <p>
                 </h4>
             </div>
-            <div class="col-3"><i class="fas fa-shield-alt"></i>
+            <div class="col-12 col-md-3"><i class="fas fa-shield-alt"></i>
                 <h4>
                     <p>Đổi trả dễ dàng<p>
                 </h4>
             </div>
-            <div class="col-3"><i class="fas fa-medal"></i>
+            <div class="col-12 col-md-3"><i class="fas fa-medal"></i>
                 <h4>
                     <p>Cam kết <br>
                         <strong>sản phẩm chất lượng</strong>
@@ -33,7 +33,7 @@
     <div class="footer-info">
 
         <div class="row m0">
-            <div class="col-3">
+            <div class="col-12 col-md-3">
                 <ul class="list-unstyled">
                     <li> <strong> Store 1:</strong> 20 Canifonia Hoa kì</li>
                     <li><strong> Store 2:</strong> Hà Nội</li>
@@ -42,7 +42,7 @@
                     <li><strong>0986082324</strong></li>
                 </ul>
             </div>
-            <div class="col-2">
+            <div class="col-12 col-md-2">
                 <ul class="list-unstyled">
                     <li>
                         <h3>Mua hàng</h3>
@@ -52,7 +52,7 @@
                     <li><a href="">Thời trang unisex</a></li>
                 </ul>
             </div>
-            <div class="col-2">
+            <div class="col-12 col-md-2">
                 <ul class="list-unstyled">
                     <li>
                         <h3>Dịch vụ khách hàng</h3>
@@ -66,7 +66,7 @@
 
                 </ul>
             </div>
-            <div class="col-2">
+            <div class="col-12 col-md-2">
                 <ul class="list-unstyled">
                     <li>
                         <h3>#Mshop</h3>
@@ -76,7 +76,7 @@
 
                 </ul>
             </div>
-            <div class="col-3">
+            <div class="col-12 col-md-3">
                 <div class="footer-info__head">
                     <h3>
                         <p>SIGN UP FOR OUR NEWSLETTER</p>
@@ -90,11 +90,11 @@
                 <form action="">
                     <div class="form-group">
                         <label for=""></label>
-                        <input type="text" class="form-control" name="" id="" aria-describedby="emailHelpId" placeholder="Tên của bạn">
+                        <input type="text" class="form-control"  id="1" placeholder="Tên của bạn">
                     </div>
                     <div class="form-group">
                         <label for=""></label>
-                        <input type="email" class="form-control" name="" id="" aria-describedby="emailHelpId" placeholder="Email của bạn">
+                        <input type="email" class="form-control"  id="2" aria-describedby="emailHelpId" placeholder="Email của bạn">
                     </div>
                     <button class="btn btn-regis text-uppercase" type="submit">Đăng ký</button>
                 </form>
@@ -104,7 +104,7 @@
 
     <div class="coppy-right text-center">
         <div class="coppy-right__info">
-         <strong>© 2020 - Bản quyền của Mshop</strong>   
+            <strong>© 2020 - Bản quyền của Mshop</strong>
         </div>
         <div>
             Giấy chứng nhận ĐKKD số do Sở Kế hoạch và Đầu tư Thành phố Hà Nội cấp ngày 1/1/2020
