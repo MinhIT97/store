@@ -1,5 +1,5 @@
-.lion-head{
-    position: fixed;
+.lion-head {
+    // position: fixed;
     width: 100%;
     background-color: white;
     left: 0;
@@ -8,23 +8,23 @@
     z-index: 68;
     .lion-wrapper {
         background-color: white;
-    
+
         .lion-nav {
             display: flex;
             align-items: center;
             height: 90px;
             &__left {
                 flex: 1;
-                ul{
+                ul {
                     margin: 0;
                     padding: 0;
                     display: flex;
-                    li{
+                    li {
                         list-style: none;
                     }
-                    .lion-nav__iteam{
+                    .lion-nav__iteam {
                         position: relative;
-                        a{
+                        a {
                             font-size: 12px;
                             font-weight: 500;
                             color: #1c1c1c;
@@ -34,27 +34,27 @@
                             position: relative;
                             line-height: 50px;
                             padding: 0 35px;
-                            white-space: nowrap;  
+                            white-space: nowrap;
                         }
-                        a:hover{
+                        a:hover {
                             text-decoration: none;
                             color: #6c757d;
                         }
                     }
-                }          
+                }
             }
             &__right {
                 flex: 1;
-                ul{
+                ul {
                     margin: 0;
                     padding: 0;
                     display: flex;
-                    li{
+                    li {
                         list-style: none;
                     }
-                    .lion-nav__iteam{
+                    .lion-nav__iteam {
                         position: relative;
-                        a{
+                        a {
                             font-size: 12px;
                             font-weight: 500;
                             color: #1c1c1c;
@@ -64,30 +64,25 @@
                             position: relative;
                             line-height: 50px;
                             padding: 0 35px;
-                            white-space: nowrap;  
+                            white-space: nowrap;
                         }
-                        a:hover{
+                        a:hover {
                             text-decoration: none;
                             color: #6c757d;
                         }
                     }
-                }          
+                }
             }
-            .lion-logo{
+            .lion-logo {
                 flex: 0 0 auto;
                 padding: 0 20px;
-                &__image{
-                    img{
+                &__image {
+                    img {
                         width: 60px;
                         border-radius: 50%;
                     }
-                
                 }
             }
-         
-    
         }
-    
     }
-    
 }

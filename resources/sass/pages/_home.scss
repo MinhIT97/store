@@ -63,6 +63,25 @@
                 .slide-item__image {
                     padding: 10px;
                 }
+                .slide-item{
+                    a{
+                        color: #1c1c1c;
+                        text-decoration: none;
+                    }
+                    .name {
+                        text-transform: uppercase;
+                        margin-top: 15px;
+                        line-height: 1.2;
+                        font-weight: bold;
+                        font-style: normal;
+                    }
+                    .price{
+                        margin-top: 5px;
+                        margin-bottom: 5px;
+                        color: black;
+                    }
+                }
+
             }
 
         }

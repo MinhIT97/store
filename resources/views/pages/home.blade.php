@@ -70,11 +70,12 @@
                                         </div>
                                         <div class="slide-item__content text-center">
                                             <div class="slide-item__content--heading">
-                                                <a class="price">Đầm dạ hội</a>
+                                                <a class="name">Đầm dạ hội</a>
                                             </div>
                                             <div class="slide-item__content--content">
-                                                <span class="money">3999.9999.999 đ</span>
+                                                <span class="money">2.900.000 đ</span>
                                             </div>
+
                                         </div>
                                     </a>
                                 </div>
@@ -85,11 +86,12 @@
                                         </div>
                                         <div class="slide-item__content text-center">
                                             <div class="slide-item__content--heading">
-                                                <a class="price">Đầm dạ hội</a>
+                                                <a class="name">Đầm dạ hội</a>
                                             </div>
                                             <div class="slide-item__content--content">
-                                                <span class="money">3999.9999.999 đ</span>
+                                                <span class="money">2.900.000 đ</span>
                                             </div>
+
                                         </div>
                                     </a>
 
@@ -101,10 +103,10 @@
                                         </div>
                                         <div class="slide-item__content text-center">
                                             <div class="slide-item__content--heading">
-                                                <a class="price">Đầm dạ hội</a>
+                                                <a class="name">Đầm dạ hội</a>
                                             </div>
                                             <div class="slide-item__content--content">
-                                                <span class="money">3999.9999.999 đ</span>
+                                                <span class="money">2.900.000 đ</span>
                                             </div>
                                         </div>
                                     </a>
@@ -116,11 +118,12 @@
                                         </div>
                                         <div class="slide-item__content text-center">
                                             <div class="slide-item__content--heading">
-                                                <a class="price">Đầm dạ hội</a>
+                                                <a class="name">Đầm dạ hội</a>
                                             </div>
                                             <div class="slide-item__content--content">
-                                                <span class="money">3999.9999.999 đ</span>
+                                                <span class="money">2.900.000 đ</span>
                                             </div>
+
                                         </div>
                                     </a>
                                 </div>
@@ -131,11 +134,12 @@
                                         </div>
                                         <div class="slide-item__content text-center">
                                             <div class="slide-item__content--heading">
-                                                <a class="price">Đầm dạ hội</a>
+                                                <a class="name">Đầm dạ hội</a>
                                             </div>
                                             <div class="slide-item__content--content">
-                                                <span class="money">3999.9999.999 đ</span>
+                                                <span class="money">2.900.000 đ</span>
                                             </div>
+
                                         </div>
                                     </a>
                                 </div>
@@ -258,44 +262,14 @@
                                         <div class="slide-item__image">
                                             <img class="img-fluid" src="/images/5152.jpg" alt="">
                                         </div>
-                                        <div class="slide-item__content text-center">
-                                            <div class="slide-item__content--heading">
-                                                <a class="price">Đầm dạ hội</a>
+                                        <div class="text-center">
+                                            <div class="name">
+                                                <span>Đầm dạ hội</span>
                                             </div>
-                                            <div class="slide-item__content--content">
-                                                <span class="money">3999.9999.999 đ</span>
+                                            <div class="price">
+                                                <span>2.900.000 đ</span>
                                             </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="slide-item">
-                                    <a href="/product">
-                                        <div class="slide-item__image">
-                                            <img class="img-fluid" src="/images/5152.jpg" alt="">
-                                        </div>
-                                        <div class="slide-item__content text-center">
-                                            <div class="slide-item__content--heading">
-                                                <a class="price">Đầm dạ hội</a>
-                                            </div>
-                                            <div class="slide-item__content--content">
-                                                <span class="money">3999.9999.999 đ</span>
-                                            </div>
-                                        </div>
-                                    </a>
 
-                                </div>
-                                <div class="slide-item">
-                                    <a href="/product">
-                                        <div class="slide-item__image">
-                                            <img class="img-fluid" src="/images/5152.jpg" alt="">
-                                        </div>
-                                        <div class="slide-item__content text-center">
-                                            <div class="slide-item__content--heading">
-                                                <a class="price">Đầm dạ hội</a>
-                                            </div>
-                                            <div class="slide-item__content--content">
-                                                <span class="money">3999.9999.999 đ</span>
-                                            </div>
                                         </div>
                                     </a>
                                 </div>
@@ -304,13 +278,14 @@
                                         <div class="slide-item__image">
                                             <img class="img-fluid" src="/images/5152.jpg" alt="">
                                         </div>
-                                        <div class="slide-item__content text-center">
-                                            <div class="slide-item__content--heading">
-                                                <a class="price">Đầm dạ hội</a>
+                                        <div class="text-center">
+                                            <div class="name">
+                                                <span>Đầm dạ hội</span>
                                             </div>
-                                            <div class="slide-item__content--content">
-                                                <span class="money">3999.9999.999 đ</span>
+                                            <div class="price">
+                                                <span>2.900.000 đ</span>
                                             </div>
+
                                         </div>
                                     </a>
                                 </div>
@@ -319,13 +294,46 @@
                                         <div class="slide-item__image">
                                             <img class="img-fluid" src="/images/5152.jpg" alt="">
                                         </div>
-                                        <div class="slide-item__content text-center">
-                                            <div class="slide-item__content--heading">
-                                                <a class="price">Đầm dạ hội</a>
+                                        <div class="text-center">
+                                            <div class="name">
+                                                <span>Đầm dạ hội</span>
                                             </div>
-                                            <div class="slide-item__content--content">
-                                                <span class="money">3999.9999.999 đ</span>
+                                            <div class="price">
+                                                <span>2.900.000 đ</span>
                                             </div>
+
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="slide-item">
+                                    <a href="/product">
+                                        <div class="slide-item__image">
+                                            <img class="img-fluid" src="/images/5152.jpg" alt="">
+                                        </div>
+                                        <div class="text-center">
+                                            <div class="name">
+                                                <span>Đầm dạ hội</span>
+                                            </div>
+                                            <div class="price">
+                                                <span>2.900.000 đ</span>
+                                            </div>
+
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="slide-item">
+                                    <a href="/product">
+                                        <div class="slide-item__image">
+                                            <img class="img-fluid" src="/images/5152.jpg" alt="">
+                                        </div>
+                                        <div class="text-center">
+                                            <div class="name">
+                                                <span>Đầm dạ hội</span>
+                                            </div>
+                                            <div class="price">
+                                                <span>2.900.000 đ</span>
+                                            </div>
+
                                         </div>
                                     </a>
                                 </div>
@@ -359,44 +367,14 @@
                                         <div class="slide-item__image">
                                             <img class="img-fluid" src="/images/5152.jpg" alt="">
                                         </div>
-                                        <div class="slide-item__content text-center">
-                                            <div class="slide-item__content--heading">
-                                                <a class="price">Đầm dạ hội</a>
+                                        <div class="text-center">
+                                            <div class="name">
+                                                <span>Đầm dạ hội</span>
                                             </div>
-                                            <div class="slide-item__content--content">
-                                                <span class="money">3999.9999.999 đ</span>
+                                            <div class="price">
+                                                <span>2.900.000 đ</span>
                                             </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="slide-item">
-                                    <a href="/product">
-                                        <div class="slide-item__image">
-                                            <img class="img-fluid" src="/images/5152.jpg" alt="">
-                                        </div>
-                                        <div class="slide-item__content text-center">
-                                            <div class="slide-item__content--heading">
-                                                <a class="price">Đầm dạ hội</a>
-                                            </div>
-                                            <div class="slide-item__content--content">
-                                                <span class="money">3999.9999.999 đ</span>
-                                            </div>
-                                        </div>
-                                    </a>
 
-                                </div>
-                                <div class="slide-item">
-                                    <a href="/product">
-                                        <div class="slide-item__image">
-                                            <img class="img-fluid" src="/images/5152.jpg" alt="">
-                                        </div>
-                                        <div class="slide-item__content text-center">
-                                            <div class="slide-item__content--heading">
-                                                <a class="price">Đầm dạ hội</a>
-                                            </div>
-                                            <div class="slide-item__content--content">
-                                                <span class="money">3999.9999.999 đ</span>
-                                            </div>
                                         </div>
                                     </a>
                                 </div>
@@ -405,13 +383,14 @@
                                         <div class="slide-item__image">
                                             <img class="img-fluid" src="/images/5152.jpg" alt="">
                                         </div>
-                                        <div class="slide-item__content text-center">
-                                            <div class="slide-item__content--heading">
-                                                <a class="price">Đầm dạ hội</a>
+                                        <div class="text-center">
+                                            <div class="name">
+                                                <span>Đầm dạ hội</span>
                                             </div>
-                                            <div class="slide-item__content--content">
-                                                <span class="money">3999.9999.999 đ</span>
+                                            <div class="price">
+                                                <span>2.900.000 đ</span>
                                             </div>
+
                                         </div>
                                     </a>
                                 </div>
@@ -420,13 +399,46 @@
                                         <div class="slide-item__image">
                                             <img class="img-fluid" src="/images/5152.jpg" alt="">
                                         </div>
-                                        <div class="slide-item__content text-center">
-                                            <div class="slide-item__content--heading">
-                                                <a class="price">Đầm dạ hội</a>
+                                        <div class="text-center">
+                                            <div class="name">
+                                                <span>Đầm dạ hội</span>
                                             </div>
-                                            <div class="slide-item__content--content">
-                                                <span class="money">3999.9999.999 đ</span>
+                                            <div class="price">
+                                                <span>2.900.000 đ</span>
                                             </div>
+
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="slide-item">
+                                    <a href="/product">
+                                        <div class="slide-item__image">
+                                            <img class="img-fluid" src="/images/5152.jpg" alt="">
+                                        </div>
+                                        <div class="text-center">
+                                            <div class="name">
+                                                <span>Đầm dạ hội</span>
+                                            </div>
+                                            <div class="price">
+                                                <span>2.900.000 đ</span>
+                                            </div>
+
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="slide-item">
+                                    <a href="/product">
+                                        <div class="slide-item__image">
+                                            <img class="img-fluid" src="/images/5152.jpg" alt="">
+                                        </div>
+                                        <div class="text-center">
+                                            <div class="name">
+                                                <span>Đầm dạ hội</span>
+                                            </div>
+                                            <div class="price">
+                                                <span>2.900.000 đ</span>
+                                            </div>
+
                                         </div>
                                     </a>
                                 </div>

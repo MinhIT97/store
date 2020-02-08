@@ -22267,7 +22267,6 @@ readers do not read off random characters that represent icons */
 }
 
 .lion-head {
-  position: fixed;
   width: 100%;
   background-color: white;
   left: 0;
@@ -22431,6 +22430,25 @@ readers do not read off random characters that represent icons */
 
 .home .home-product .product-slider .product_slider .slide-item__image {
   padding: 10px;
+}
+
+.home .home-product .product-slider .product_slider .slide-item a {
+  color: #1c1c1c;
+  text-decoration: none;
+}
+
+.home .home-product .product-slider .product_slider .slide-item .name {
+  text-transform: uppercase;
+  margin-top: 15px;
+  line-height: 1.2;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.home .home-product .product-slider .product_slider .slide-item .price {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: black;
 }
 
 .home .style-product .style-item {
@@ -22621,26 +22639,199 @@ readers do not read off random characters that represent icons */
   margin-bottom: 10px;
 }
 
-.product .product-item__content--heading {
-  margin-top: 10px;
-  margin-bottom: 5px;
-}
-
-.product .product-item__content--heading .name {
-  text-transform: uppercase;
+.product .product-item a {
   color: #1c1c1c;
-  font-size: 14px;
-  line-height: 16px;
-  font-weight: 500;
+  text-decoration: none;
 }
 
-.product .product-item__content--content {
+.product .product-item .name {
+  text-transform: uppercase;
+  margin-top: 15px;
+  line-height: 1.2;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.product .product-item .price {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: black;
+  margin-bottom: 10px;
+}
+
+.product-detail .slider-for .item,
+.product-detail .slider-nav .item {
+  margin-right: 20px;
+  margin-top: 20px;
+  text-align: center;
+  padding: 5px;
+}
+
+.product-detail .product-summary {
+  margin-top: 20px;
+}
+
+.product-detail .product-summary--name h4 {
+  font-size: 18px;
+  text-transform: uppercase;
+  font-style: normal;
+}
+
+.product-detail .product-summary--code {
+  font-size: 14px;
+}
+
+.product-detail .product-summary--price {
+  font-size: 28px;
+  margin: 20px;
+  font-weight: 800;
+}
+
+.product-detail .product-summary--color {
+  margin: 5px;
+}
+
+.product-detail .product-summary--color label {
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  border: 1px solid #19b5ac;
+  border-radius: 50%;
+  padding: 1px;
+}
+
+.product-detail .product-summary--color span {
+  height: 100%;
+  display: block;
+  background: black;
+  width: 100%;
+  border-radius: 50%;
+}
+
+.product-detail .product-summary--size {
+  display: -webkit-box;
+  display: flex;
+  margin-top: 10px;
+  margin-top: 10px;
+}
+
+.product-detail .product-summary--size input[type=radio] {
+  display: none;
+}
+
+.product-detail .product-summary--size .form-check {
+  margin-right: 5px;
+  position: relative;
+}
+
+.product-detail .product-summary--size .form-check .active {
+  border: 1px solid #00b5ad;
+  border-radius: 50%;
+  background: #00b5ad;
+  color: #fff;
+}
+
+.product-detail .product-summary--size .form-check label {
+  padding: 0 10px;
+  font-weight: bold;
+  border-radius: 50%;
+  float: left;
+  min-width: 35px !important;
+  height: 35px !important;
+  margin: 0;
+  text-align: center;
+  line-height: 35px;
+  white-space: nowrap;
+  font-size: 12px;
+  border: 1px solid #ebebeb;
+  cursor: pointer;
+  position: relative;
+  background: #ebebeb;
+}
+
+.product-detail .product-summary .input-quantity {
+  margin-top: 20px;
+  background-color: white;
+  border-radius: 6px;
+  border: 1px solid #00b5ad;
+  height: 25px;
+}
+
+.product-detail .product-summary .btn-adtocart {
+  margin-top: 20px;
   margin-bottom: 20px;
+  background-color: #00b5ad;
+  color: white;
+  font-size: 18px;
+}
+
+.product-detail .product-summary .info-detail {
+  margin-top: 20px;
+}
+
+.product-detail .product-summary .info-detail h4 {
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.product-detail .related-products,
+.product-detail .accessories {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.product-detail .related-products .product-head h2 p,
+.product-detail .accessories .product-head h2 p {
+  font-weight: 500;
+  font-family: "SVN-Gotham";
+  letter-spacing: 4.4px;
+}
+
+.product-detail .related-products h4,
+.product-detail .accessories h4 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.product-detail .related-products a,
+.product-detail .accessories a {
+  color: #1c1c1c;
+  text-align: center;
+  text-decoration: none;
+}
+
+.product-detail .related-products .name,
+.product-detail .accessories .name {
+  text-transform: uppercase;
+  margin-top: 15px;
+  line-height: 1.2;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.product-detail .related-products .price,
+.product-detail .accessories .price {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: black;
+}
+
+.product-detail .related-products .star,
+.product-detail .accessories .star {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
 }
 
 .m0 {
   margin-left: 0;
   margin-right: 0;
+}
+
+.line {
+  border-top: 1px solid #eee;
+  opacity: 0.8;
 }
 
 body {
