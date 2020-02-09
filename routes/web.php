@@ -29,3 +29,8 @@ Route::get('/login', function () {
 Route::get('/create-account', function () {
     return view('pages.create-account');
 });
+Route::get('/blog', function () {
+    return view('pages.blog');
+});
+
+

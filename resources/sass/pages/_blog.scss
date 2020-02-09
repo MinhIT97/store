@@ -1,0 +1,48 @@
+.blog {
+    .blog-item {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        .date {
+            margin-bottom: 20px;
+            a {
+                text-transform: uppercase;
+                font-weight: 300;
+                padding-right: 10px;
+                margin-right: 10px;
+                border-right: 1px solid #000;
+                line-height: 1;
+                display: inline-block;
+                text-decoration: none;
+                font-style: italic;
+                color: black;
+            }
+            a:hover {
+                color: #19b5ac;
+            }
+            .date-time {
+                span {
+                    margin-right: 5px;
+                    margin-left: 5px;
+                }
+            }
+        }
+        .content {
+            font-size: 14px;
+            font-style: italic;
+            line-height: 1.8;
+        }
+        .show-more {
+            a {
+                color: black;
+                text-decoration: none;
+                font-style: italic;
+            }
+            a:hover {
+                color: #19b5ac;
+            }
+        }
+        .show-more:hover {
+            color: #19b5ac;
+        }
+    }
+}

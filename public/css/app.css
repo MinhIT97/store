@@ -22824,6 +22824,57 @@ readers do not read off random characters that represent icons */
           justify-content: center;
 }
 
+.blog .blog-item {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.blog .blog-item .date {
+  margin-bottom: 20px;
+}
+
+.blog .blog-item .date a {
+  text-transform: uppercase;
+  font-weight: 300;
+  padding-right: 10px;
+  margin-right: 10px;
+  border-right: 1px solid #000;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  font-style: italic;
+  color: black;
+}
+
+.blog .blog-item .date a:hover {
+  color: #19b5ac;
+}
+
+.blog .blog-item .date .date-time span {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.blog .blog-item .content {
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.8;
+}
+
+.blog .blog-item .show-more a {
+  color: black;
+  text-decoration: none;
+  font-style: italic;
+}
+
+.blog .blog-item .show-more a:hover {
+  color: #19b5ac;
+}
+
+.blog .blog-item .show-more:hover {
+  color: #19b5ac;
+}
+
 .login .login-head {
   margin-top: 40px;
   margin-bottom: 40px;

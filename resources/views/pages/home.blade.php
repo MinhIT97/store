@@ -1,14 +1,10 @@
 <section class="home">
-
-
     <div>
         <img class="img-fluid lion-main__image position-relative" src="/images/103.jpg" alt="">
 
         <button class="btn btn-sale btn-sale__men position-absolute">mens sale</button>
         <button class="btn btn-sale btn-sale_women position-absolute">womens sale</button>
     </div>
-
-
     <div class="main-slider">
         <div id="slider" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
@@ -53,10 +49,8 @@
 
                 <h2 class="text-uppercase">
                     <p> <strong>mens</strong> best sellers</p>
-
                 </h2>
             </div>
-
             <section class="product-slider">
                 <div class="container">
                     <div class="row">
@@ -94,7 +88,6 @@
 
                                         </div>
                                     </a>
-
                                 </div>
                                 <div class="slide-item">
                                     <a href="/product">
@@ -139,7 +132,6 @@
                                             <div class="slide-item__content--content">
                                                 <span class="money">2.900.000 đ</span>
                                             </div>
-
                                         </div>
                                     </a>
                                 </div>
@@ -151,7 +143,6 @@
 
         </div>
     </div>
-
     <div class="container">
         <div class="style-product">
             <div>
@@ -240,7 +231,6 @@
             </div>
         </div>
     </div>
-
     <div class="home-product">
         <div class="container">
             <div class="product-head text-center">
@@ -250,7 +240,6 @@
 
                 </h2>
             </div>
-
             <section class="product-slider">
                 <div class="container">
                     <div class="row">
@@ -333,7 +322,6 @@
                                             <div class="price">
                                                 <span>2.900.000 đ</span>
                                             </div>
-
                                         </div>
                                     </a>
                                 </div>
@@ -342,7 +330,6 @@
                     </div>
                 </div>
             </section>
-
         </div>
     </div>
 
@@ -355,7 +342,6 @@
 
                 </h2>
             </div>
-
             <section class="product-slider">
                 <div class="container">
                     <div class="row">
