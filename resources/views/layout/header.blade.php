@@ -8,8 +8,9 @@
                         <ul>
                             <li class="lion-nav__iteam"><a href="/product">Nam</a></li>
                             <li class="lion-nav__iteam"><a href="/product">Nữ</a></li>
-                            <li class="lion-nav__iteam"><a href="/product">Unisex</a></li>
+                            <!-- <li class="lion-nav__iteam"><a href="/product">Unisex</a></li> -->
                             <li class="lion-nav__iteam"><a href="/product">Phụ kiện</a></li>
+                            <li class="lion-nav__iteam"><a href="/blog">Blog</a></li>
                         </ul>
                     </div>
                     <div class="lion-logo">
@@ -18,10 +19,16 @@
 
                     <div class="lion-nav__right">
                         <ul>
-                            <li class="lion-nav__iteam"><a href="/blog">Blog</a></li>
-                            <li class="lion-nav__iteam"><a href="/login">Đăng nhập</a></li>
-                            <li class="lion-nav__iteam"><a href="">Giỏ hàng</a></li>
-                            <li class="lion-nav__iteam"><a href=""><i class="fas fa-search"></i></a></li>
+
+                            <li class="lion-nav__iteam"><a href="/login">
+                                    <span class="mobile--hidden">Đăng nhập</span>
+                                    <i class="far fa-user"></i></a></li>
+                            <li class="lion-nav__iteam"><a href="">
+                                    <span class="mobile--hidden"> Giỏ hàng</span>
+                                    <i class="fas fa-shopping-cart"></i>
+                                </a></li>
+                            <li class="lion-nav__iteam ">
+                                <a href="" class="mobile--hidden"><i class="fas fa-search"></i></a></li>
                         </ul>
                     </div>
 

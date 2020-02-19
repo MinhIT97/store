@@ -40113,7 +40113,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 console.log("Hello World :)");
 $.ajaxSetup({
   headers: {
-    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
   }
 });
 $(document).ready(function () {
@@ -40164,20 +40164,28 @@ $(document).ready(function () {
     slidesToShow: 2,
     slidesToScroll: 1
   });
-  $('.slider-for').slick({
+  $(".slider-for").slick({
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
     fade: true,
-    asNavFor: '.slider-nav'
+    asNavFor: ".slider-nav"
   });
-  $('.slider-nav').slick({
+  $(".slider-nav").slick({
     slidesToShow: 3,
     slidesToScroll: 1,
-    asNavFor: '.slider-for',
+    asNavFor: ".slider-for",
     dots: true,
     centerMode: true,
     focusOnSelect: true
+  });
+});
+document.addEventListener("DOMContentLoaded", function () {
+  var menu = document.querySelector(".lion-head");
+  window.addEventListener("scroll", function () {
+    if (this.window.pageYOffset > 100) {
+      menu.classList.add("lion-repo");
+    } else menu.classList.remove("lion-repo");
   });
 });
 

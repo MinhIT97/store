@@ -22273,6 +22273,8 @@ readers do not read off random characters that represent icons */
   top: 0;
   border-bottom: 1px solid #f5f5f5;
   z-index: 68;
+  -webkit-transition: 0, 4s;
+  transition: 0, 4s;
 }
 
 .lion-head .lion-wrapper {
@@ -22363,6 +22365,12 @@ readers do not read off random characters that represent icons */
   color: #6c757d;
 }
 
+@media (max-width: 991px) {
+  .lion-head .lion-wrapper .lion-nav__right ul .lion-nav__iteam .mobile--hidden {
+    display: none !important;
+  }
+}
+
 .lion-head .lion-wrapper .lion-nav .lion-logo {
   -webkit-box-flex: 0;
           flex: 0 0 auto;
@@ -22372,6 +22380,16 @@ readers do not read off random characters that represent icons */
 .lion-head .lion-wrapper .lion-nav .lion-logo__image img {
   width: 60px;
   border-radius: 50%;
+}
+
+.lion-repo {
+  position: fixed;
+}
+
+@media (max-width: 768px) {
+  .lion-head {
+    display: none !important;
+  }
 }
 
 .home .lion-main__image {
@@ -22624,8 +22642,11 @@ readers do not read off random characters that represent icons */
 }
 
 .product {
-  margin-top: 20px;
   margin-bottom: 40px;
+}
+
+.product .img-head {
+  margin-bottom: 20px;
 }
 
 .product .product-item {
