@@ -15,13 +15,19 @@ class CreateOrderDetailsTable extends Migration
     {
         Schema::create('order_details', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('order_id');
-            $table->bigInteger('product_id');
-            $table->integer('quantity');
-            $table->integer('price');
-            $table->integer('sale_price');
+            $table->unsignedBigInteger('order_id');
+            $table->unsignedBigInteger('product_id');
+            $table->integer('quantity')->default(0);
+            $table->integer('price')->default(0);
+            $table->integer('sale_price')->default(0);
             $table->integer('status');
             $table->timestamps();
+            $table->foreign('order_id')
+                ->references('id')->on('orders')
+                ->onDelete('cascade');
+            $table->foreign('product_id')
+                ->references('id')->on('products')
+                ->onDelete('cascade');
         });
     }
 
@@ -32,6 +38,12 @@ class CreateOrderDetailsTable extends Migration
      */
     public function down()
     {
+        Schema::table('products', function (Blueprint $table) {
+            $table->dropForeign(['product_id']);
+        });
+        Schema::table('orders', function (Blueprint $table) {
+            $table->dropForeign(['order_id']);
+        });
         Schema::dropIfExists('order_details');
     }
 }

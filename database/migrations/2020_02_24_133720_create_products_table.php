@@ -22,9 +22,13 @@ class CreateProductsTable extends Migration
             $table->integer('current_quantity')->default(0);
             $table->integer('price');
             $table->integer('sale_price');
-            $table->bigIncrements('category_id');
+            $table->unsignedBigInteger('category_id');
             $table->integer('status');
             $table->timestamps();
+
+            $table->foreign('category_id')
+                ->references('id')->on('categories')
+                ->onDelete('cascade');
         });
     }
 
@@ -35,6 +39,9 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
+        Schema::table('products', function (Blueprint $table) {
+            $table->dropForeign(['category_id']);
+        });
         Schema::dropIfExists('products');
     }
 }
