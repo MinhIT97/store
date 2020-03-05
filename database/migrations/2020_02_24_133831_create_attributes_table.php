@@ -16,7 +16,6 @@ class CreateAttributesTable extends Migration
         Schema::create('attributes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('size');
-            $table->string('attibuteable_type');
             $table->integer('attibuteable_id');
             $table->string('color');
             $table->integer('quantity');

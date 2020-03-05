@@ -20,6 +20,16 @@ class Order extends Model implements Transformable
      *
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = [
+        "name",
+        "slug",
+        "total_price",
+        "status",
+        "user_id",
+        "email",
+        "phone",
+        "address",
+        'note',
+    ];
 
 }

@@ -11,13 +11,17 @@
 |
  */
 
+use Spatie\Analytics\Period;
 
 Route::group(['prefix' => '/', 'namespace' => 'Web'], function () {
     Route::get('product','ProductController@index')->name('index');
+    Route::get('blog','PostController@index')->name('index');
 });
 
-// Route::get('/', function () {
-//     return view('index');
+// Route::get('/data', function () {
+
+//     // $analyticsData = Analytics::fetchVisitorsAndPageViews(Period::days(7));
+//     // dd($analyticsData);
 // });
 
 // Route::get('/product', function () {

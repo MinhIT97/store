@@ -7,11 +7,11 @@ use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
 /**
- * Class Product.
+ * Class Contact.
  *
  * @package namespace App\Entities;
  */
-class Product extends Model implements Transformable
+class Contact extends Model implements Transformable
 {
     use TransformableTrait;
 
@@ -22,14 +22,8 @@ class Product extends Model implements Transformable
      */
     protected $fillable = [
         "name",
-        "slug",
-        "quantity",
-        "current_quantity",
-        "price",
-        "sale_price",
+        "email",
         "status",
-        "category_id",
-        "code",
-        "thumbnail"
     ];
+
 }

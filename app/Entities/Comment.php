@@ -7,13 +7,13 @@ use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
 /**
- * Class Product.
+ * Class Comment.
  *
  * @package namespace App\Entities;
  */
-class Product extends Model implements Transformable
+class Comment extends Model implements Transformable
 {
-    use TransformableTrait;
+    use TransformableTrait ;
 
     /**
      * The attributes that are mass assignable.
@@ -21,15 +21,12 @@ class Product extends Model implements Transformable
      * @var array
      */
     protected $fillable = [
+        "commentable_id",
+        "commentable_type",
+        "email",
         "name",
-        "slug",
-        "quantity",
-        "current_quantity",
-        "price",
-        "sale_price",
+        "content",
         "status",
-        "category_id",
-        "code",
-        "thumbnail"
     ];
+
 }

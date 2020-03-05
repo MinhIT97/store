@@ -21,7 +21,6 @@ class Post extends Model implements Transformable
      * @var array
      */
     protected $fillable = [
-        "id",
         "title",
         "slug",
         "content",
