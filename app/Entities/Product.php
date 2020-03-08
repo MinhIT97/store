@@ -5,6 +5,8 @@ namespace App\Entities;
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
+use Cviebrock\EloquentSluggable\Sluggable;
+use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 
 /**
  * Class Product.
@@ -13,7 +15,7 @@ use Prettus\Repository\Traits\TransformableTrait;
  */
 class Product extends Model implements Transformable
 {
-    use TransformableTrait;
+    use TransformableTrait, Sluggable ,SluggableScopeHelpers;
 
     /**
      * The attributes that are mass assignable.
@@ -22,7 +24,6 @@ class Product extends Model implements Transformable
      */
     protected $fillable = [
         "name",
-        "slug",
         "quantity",
         "current_quantity",
         "price",
@@ -32,4 +33,12 @@ class Product extends Model implements Transformable
         "code",
         "thumbnail"
     ];
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'name',
+            ],
+        ];
+    }
 }

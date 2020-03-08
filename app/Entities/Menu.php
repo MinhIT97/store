@@ -24,6 +24,8 @@ class Menu extends Model implements Transformable
         "label",
         "link",
         "parent_id",
+        "menuable_id",
+        "menuable_type",
     ];
 
 }

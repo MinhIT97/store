@@ -1,0 +1,19 @@
+.navbar {
+    padding: 25px;
+    a {
+        color: #fff;
+    }
+    .nav-item {
+        .material-icons {
+            margin-top: -3px;
+            top: 7px;
+            position: relative;
+            margin-right: 3px;
+        }
+        margin: 0 15px;
+    }
+    .nav-item:hover {
+        background: rgba(200, 200, 200, 0.2);
+        border-radius: 6px;
+    }
+}

@@ -11,22 +11,41 @@
 |
  */
 
-use Spatie\Analytics\Period;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+Auth::routes(['verify' => true]);
 
-Route::group(['prefix' => '/', 'namespace' => 'Web'], function () {
-    Route::get('product','ProductController@index')->name('index');
-    Route::get('blog','PostController@index')->name('index');
+Route::get('admin/login', 'Admin\LoginController@login')->name('login');
+Route::post('admin/login', 'Admin\LoginController@post_login')->name('login');
+Route::group(['prefix' => '/adminstore', 'namespace' => 'admin', 'middleware' => 'adminlogin'], function () {
+
+    Route::get('/admin', 'AdminController@index')->name('local');
+
 });
 
-// Route::get('/data', function () {
+Route::group(['prefix' => '/', 'namespace' => 'Web', 'middleware' => 'verified'], function () {
+    Route::get('products', 'ProductController@index')->name('product');
+    Route::get('blogs', 'PostController@index')->name('blog');
 
-//     // $analyticsData = Analytics::fetchVisitorsAndPageViews(Period::days(7));
-//     // dd($analyticsData);
-// });
+    Route::get('/', 'HomeController@index')->name('home');
 
-// Route::get('/product', function () {
-//     return view('pages.products');
-// });
+    Route::get('logins', 'AuthController@webUser')->name('web-login');
+
+    Route::get('registers', 'AuthController@webViewRegister')->name('web-register');
+    Route::post('registers','AuthController@webRegister')->name('register');
+});
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Route::get('/product-detail', function () {
 //     return view('pages.product-detail');

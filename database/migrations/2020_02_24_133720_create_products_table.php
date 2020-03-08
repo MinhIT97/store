@@ -27,10 +27,6 @@ class CreateProductsTable extends Migration
             $table->string('type');
             $table->string('thumbnail');
             $table->timestamps();
-
-            $table->foreign('category_id')
-                ->references('id')->on('categories')
-                ->onDelete('cascade');
         });
     }
 
@@ -41,9 +37,6 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->dropForeign(['category_id']);
-        });
         Schema::dropIfExists('products');
     }
 }
