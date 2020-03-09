@@ -25,7 +25,7 @@
                     </div>
                     <div class="form-group ">
                         <label class="login-item" for="exampleInputPassword1">Enter your password again</label>
-                        <input type="password" class="form-control" name="passwordagain" id="passwordagain">
+                        <input type="password" class="form-control" name="confirmPassword" id="passwordagain">
                     </div>
                     <button type="submit" class="btn btn-login">Create account</button>
                     <div class="register"><a href="">Đăng nhập</a></div>

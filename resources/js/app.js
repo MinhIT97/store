@@ -1,91 +1,32 @@
-require("./bootstrap");
-import "jquery";
-import "bootstrap";
-import "slick-carousel";
-console.log("Hello World :)");
-$.ajaxSetup({
-    headers: {
-        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
-    }
-});
+/**
+ * First we will load all of this project's JavaScript dependencies which
+ * includes Vue and other libraries. It is a great starting point when
+ * building robust, powerful web applications using Vue and Laravel.
+ */
 
-$(document).ready(function () {
-    $(".product_slider").slick({
-        infinite: true,
-        autoplay: true,
-        arrows: true,
-        dots: false,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        prevArrow:
-            '<button class="slick-prev"> <i class="fa fa-angle-double-left"></i></button>',
-        nextArrow:
-            '<button class="slick-next"> <i class="fa fa-angle-double-right"></i></button>',
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: false
-                }
-            },
-            {
-                breakpoint: 769,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: false
-                }
-            },
-            {
-                breakpoint: 578,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: false
-                }
-            }
-        ]
-    });
-    $(".main-slider").slick({
-        infinite: true,
-        arrows: false,
-        autoplay: true,
-        fade: true,
-        dots: false,
-        autoplaySpeed: 7000,
-        speed: 1000,
-        easing: "ease-in-out",
-        slidesToShow: 2,
-        slidesToScroll: 1
-    });
+require('./bootstrap');
 
-    $(".slider-for").slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: false,
-        fade: true,
-        asNavFor: ".slider-nav"
-    });
-    $(".slider-nav").slick({
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        asNavFor: ".slider-for",
-        dots: true,
-        centerMode: true,
-        focusOnSelect: true
-    });
-});
+window.Vue = require('vue');
 
-document.addEventListener("DOMContentLoaded", function () {
-    var menu = document.querySelector(".lion-head");
-    window.addEventListener("scroll", function () {
-        if (this.window.pageYOffset > 100) {
-            menu.classList.add("lion-repo");
-        } else menu.classList.remove("lion-repo");
-    });
+/**
+ * The following block of code may be used to automatically register your
+ * Vue components. It will recursively scan this directory for the Vue
+ * components and automatically register them with their "basename".
+ *
+ * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
+ */
+
+// const files = require.context('./', true, /\.vue$/i)
+// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+
+Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+
+/**
+ * Next, we will create a fresh Vue application instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
+
+const app = new Vue({
+    el: '#app',
 });

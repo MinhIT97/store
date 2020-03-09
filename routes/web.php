@@ -13,30 +13,47 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
 Auth::routes(['verify' => true]);
 
-Route::get('admin/login', 'Admin\LoginController@login')->name('login');
-Route::post('admin/login', 'Admin\LoginController@post_login')->name('login');
+Route::get('admin/login', 'Admin\LoginController@login')->name('admin-login');
+Route::post('admin/login', 'Admin\LoginController@post_login')->name('admin-login');
 Route::group(['prefix' => '/adminstore', 'namespace' => 'admin', 'middleware' => 'adminlogin'], function () {
 
     Route::get('/admin', 'AdminController@index')->name('local');
-
-});
-
-Route::group(['prefix' => '/', 'namespace' => 'Web', 'middleware' => 'verified'], function () {
-    Route::get('products', 'ProductController@index')->name('product');
-    Route::get('blogs', 'PostController@index')->name('blog');
-
-    Route::get('/', 'HomeController@index')->name('home');
-
-    Route::get('logins', 'AuthController@webUser')->name('web-login');
-
-    Route::get('registers', 'AuthController@webViewRegister')->name('web-register');
-    Route::post('registers','AuthController@webRegister')->name('register');
 });
 
 
+Route::group(['prefix' => '/', 'namespace' => 'Web'], function () {
 
+    Route::get('mans', 'ProductController@index')->name('mans');
+    Route::get('womans', 'WomanController@index')->name('womans');
+    Route::get('accessories', 'WomanController@index')->name('accessories');
+    Route::get('blogs', 'PostController@index')->name('blogs');
+
+
+    Route::get('/', 'HomeController@index')->name('/index');
+
+    // Route::get('logins', 'AuthController@webUser')->name('web-login');
+
+    // Route::get('registers', 'AuthController@webViewRegister')->name('web-register');
+    // Route::post('registers', 'AuthController@webRegister')->name('registers');
+
+    // Route::get('verification.verify', 'AuthController@verify')->name('verification.verify');
+
+    Route::get('profile', 'ProfileController@index')->name('profile')->middleware('verified');
+});
+
+
+Auth::routes();
+
+Route::group(['prefix' => '/', 'namespace' => 'Web'], function () {
+
+
+    Route::get('home', 'ProfileController@index')->name('home')->middleware('verified');
+});
+
+// Route::get('/home', 'Web/ProfileController@index')->name('home');
 
 
 
@@ -59,3 +76,7 @@ Route::group(['prefix' => '/', 'namespace' => 'Web', 'middleware' => 'verified']
 // Route::get('/blog', function () {
 //     return view('pages.blog');
 // });
+
+
+
+// Route::get('/', 'HomeController@index')->name('home');

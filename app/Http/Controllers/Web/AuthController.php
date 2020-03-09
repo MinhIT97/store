@@ -2,31 +2,36 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Entities\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\UserCreateRequest;
+use App\User;
 
 class AuthController extends Controller
 {
+
     public function webUser()
     {
-        return view("pages.login");
+        return view("auth.login");
     }
 
     public function webViewRegister()
     {
-        return view('pages.create-account');
+        return view("auth.register");
     }
 
-    public function webRegister(Request $request)
+    public function webRegister(UserCreateRequest $request)
     {
 
         $request->merge(['password' => bcrypt($request->password)]);
 
         if (User::create($request->all())) {
-            return redirect()->route('home')->with('sucsess', 'Thêm tài khoản' . $request->name . 'thành công');
+            return redirect()->route('verification.verify')->with('sucsess', 'Thêm tài khoản' . $request->name . 'thành công');
         } else {
             return redirect()->back()->with('error', 'Thêm tài khoản không thành công');
         }
+    }
+    public function verify()
+    {
+        return view("auth.verify");
     }
 }
