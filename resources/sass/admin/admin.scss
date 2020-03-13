@@ -6,11 +6,50 @@
 @import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";
 
-@import "./store/mixins";
-@import "./store/variables";
-@import "./store/navbar";
-@import "./store/app.scss";
+@import "./variables";
+
+@import "./store/dashboard/mixins/misc";
+@import "./store/dashboard//mixins/animation";
+@import "./store/dashboard//mixins/background";
+@import "./store/dashboard//mixins/badges";
+@import "./store/dashboard//mixins/blockqoute";
+@import "./store/dashboard//mixins/buttons";
+@import "./store/dashboard//mixins/breadcrumbs";
+@import "./store/dashboard//mixins/cards";
+@import "./store/dashboard//mixins/pagination";
+@import "./store/dashboard//mixins/popovers";
+@import "./store/dashboard//mixins/tooltips";
+@import "./store/dashboard//mixins/text";
+
+@import "./store/reset";
+@import "./store/fonts";
+@import "./store/functions";
+@import "./store/typography";
+@import "./store/misc";
 @import "./store/footer";
+@import "./store/utilities";
+@import "./store/demo";
+@import "./store/dashboard";
+
+@import "./store/dashboard/components/badges";
+@import "./store/dashboard/components/bootstrap-progress";
+@import "./store/dashboard/components/breadcrumbs";
+@import "./store/dashboard/components/buttons";
+@import "./store/dashboard/components/cards";
+@import "./store/dashboard/components/checkbox-radio";
+@import "./store/dashboard/components/dropdown";
+@import "./store/dashboard/components/forms";
+@import "./store/dashboard/components/icons";
+@import "./store/dashboard/components/lists";
+@import "./store/dashboard/components/preview";
+@import "./store/dashboard/components/tables";
+
+@import "./store/dashboard/landing-screens/auth";
+
+@import './store/';
+@import './store/sidebar';
+@import './store/layouts';
+@import './store/vertical-wrapper';
 
 @import "./store/ui/color";
 @import "./store/ui/font";

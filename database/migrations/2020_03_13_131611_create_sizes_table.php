@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 
 /**
  * Class CreateSizesTable.
@@ -17,7 +18,7 @@ class CreateSizesTable extends Migration
 	{
 		Schema::create('sizes', function(Blueprint $table) {
             $table->increments('id');
-
+            $table->tinyInteger('size');
             $table->timestamps();
 		});
 	}

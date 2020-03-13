@@ -20,7 +20,7 @@ Route::get('admin/login', 'Admin\LoginController@login')->name('admin-login');
 Route::post('admin/login', 'Admin\LoginController@post_login')->name('admin-login');
 Route::group(['prefix' => '/adminstore', 'namespace' => 'admin', 'middleware' => 'adminlogin'], function () {
 
-    Route::get('/admin', 'AdminController@index')->name('local');
+    Route::get('/admin', 'AdminController@index')->name('admin');
 });
 
 Route::group(['prefix' => '/', 'namespace' => 'Web'], function () {
