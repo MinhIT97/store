@@ -16,11 +16,15 @@ class CreateAttributesTable extends Migration
         Schema::create('attributes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('size');
-            $table->integer('attibuteable_id');
-            $table->string('color');
+            $table->unsignedBigInteger('product_id');
+            $table->string('colorbigInteger');
             $table->integer('quantity');
             $table->integer('current_quantity');
             $table->timestamps();
+
+            $table->foreign('product_id')
+            ->references('id')->on('products')
+            ->onDelete('cascade');
         });
     }
 
@@ -31,6 +35,9 @@ class CreateAttributesTable extends Migration
      */
     public function down()
     {
+        Schema::table('attributes', function (Blueprint $table) {
+            $table->dropForeign(['attributes_product_id_foreign']);
+        });
         Schema::dropIfExists('attributes');
     }
 }

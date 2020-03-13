@@ -38,10 +38,10 @@ class CreateOrderDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::table('products', function (Blueprint $table) {
+        Schema::table('order_details', function (Blueprint $table) {
             $table->dropForeign(['product_id']);
         });
-        Schema::table('orders', function (Blueprint $table) {
+        Schema::table('order_details', function (Blueprint $table) {
             $table->dropForeign(['order_id']);
         });
         Schema::dropIfExists('order_details');

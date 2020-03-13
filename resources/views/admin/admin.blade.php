@@ -10,7 +10,7 @@
                         <h4>Login</h4>
                     </div>
                     <div class="card-body">
-                        <form action=" " method="post">
+                        <form action="{{route('admin-login')}}" method="post">
                             <small id="emailHelpId" class="form-text text-center text-muted mb-2">Or Sign in with admin@material.com and the password secret</small>
                             <div class="form-group">
                                 <span class="input-group-text">

@@ -16,7 +16,7 @@ class AuthController extends Controller
 
     public function webViewRegister()
     {
-        return view("auth.register");
+        return view("pages.create-account");
     }
 
     public function webRegister(UserCreateRequest $request)

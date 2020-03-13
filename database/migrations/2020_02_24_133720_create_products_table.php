@@ -22,7 +22,6 @@ class CreateProductsTable extends Migration
             $table->integer('current_quantity')->default(0);
             $table->integer('price');
             $table->integer('sale_price');
-            $table->unsignedBigInteger('category_id');
             $table->integer('status');
             $table->string('type');
             $table->string('thumbnail');
