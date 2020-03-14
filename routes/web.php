@@ -13,14 +13,13 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
-Auth::routes(['verify' => true]);
+Route::get('admin-dashboard', 'Admin\AdminController@index')->name('admin-dashboard');
 
 Route::get('admin/login', 'Admin\LoginController@login')->name('admin-login');
 Route::post('admin/login', 'Admin\LoginController@post_login')->name('admin-login');
-Route::group(['prefix' => '/adminstore', 'namespace' => 'admin', 'middleware' => 'adminlogin'], function () {
+Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin', 'middleware' => 'adminlogin'], function () {
 
-    Route::get('/admin', 'AdminController@index')->name('admin');
+
 });
 
 Route::group(['prefix' => '/', 'namespace' => 'Web'], function () {
@@ -42,6 +41,7 @@ Route::group(['prefix' => '/', 'namespace' => 'Web'], function () {
     Route::get('profile', 'ProfileController@index')->name('profile')->middleware('verified');
 });
 
+Auth::routes(['verify' => true]);
 Auth::routes();
 Route::group(['prefix' => '/', 'namespace' => 'Web'], function () {
     Route::get('home', 'ProfileController@index')->name('home')->middleware('verified');

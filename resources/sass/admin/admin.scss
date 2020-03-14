@@ -6,7 +6,15 @@
 @import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";
 
-@import "./variables";
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+
+@import "./store/variables";
+
+@import "../../../node_modules/compass-mixins/lib/compass";
+@import "../../../node_modules/compass-mixins/lib/animate";
+
+@import "../../../node_modules/bootstrap/scss/bootstrap";
 
 @import "./store/dashboard/mixins/misc";
 @import "./store/dashboard//mixins/animation";
