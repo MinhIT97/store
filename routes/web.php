@@ -13,13 +13,34 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
 Route::get('admin-dashboard', 'Admin\AdminController@index')->name('admin-dashboard');
 
-Route::get('admin/login', 'Admin\LoginController@login')->name('admin-login');
-Route::post('admin/login', 'Admin\LoginController@post_login')->name('admin-login');
-Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin', 'middleware' => 'adminlogin'], function () {
+// Route::get('admin/login', 'Admin\LoginController@login')->name('admin-login');
+// Route::post('admin/login', 'Admin\LoginController@post_login')->name('admin-login');
+Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin'], function () {
+
+    Route::get('users', 'UserController@index')->name('users');
+    Route::get('view-user', 'UserController@viewStore')->name('view-store');
+    Route::post('store-user', 'UserController@store')->name('store-user');
+
+    Route::get('edit-user/{id}', 'UserController@viewEditUser')->name('edit-user');
+    Route::post('update-user/{id}', 'UserController@editUser')->name('update-user');
+
+    Route::get('products', 'ProductController@index')->name('products');
+
+    Route::get('product-man', 'ProductController@man')->name('product-man');
+
+    Route::get('edit-product/{id}', 'ProductController@editProduct')->name('edit-product');
+
+    Route::get('create-product', 'ProductController@viewCreate')->name('create-product');
+    Route::post('create-product', 'ProductController@store')->name('create-product');
 
 
+    Route::get('product-woman', 'ProductController@woman')->name('product-woman');
+
+
+    Route::get('product-accessories', 'ProductController@accessories')->name('product-accessories');
 });
 
 Route::group(['prefix' => '/', 'namespace' => 'Web'], function () {
@@ -58,8 +79,8 @@ Route::group(['prefix' => '/', 'namespace' => 'Web'], function () {
 // Route::get('/create-account', function () {
 //     return view('pages.create-account');
 // });
-// Route::get('/blog', function () {
-//     return view('pages.blog');
+// Route::get('/admins', function () {
+//     return view('admin.index');
 // });
 
 // Route::get('/', 'HomeController@index')->name('home');

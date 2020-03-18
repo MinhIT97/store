@@ -2,6 +2,7 @@
 
 namespace App\Entities;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
@@ -31,7 +32,8 @@ class Product extends Model implements Transformable
         "status",
         "category_id",
         "code",
-        "thumbnail"
+        "thumbnail",
+        "type"
     ];
     public function sluggable()
     {
@@ -40,5 +42,9 @@ class Product extends Model implements Transformable
                 'source' => 'name',
             ],
         ];
+    }
+    public function getDate()
+    {
+        return Carbon::parse($this->created_at)->format('d/m/Y');
     }
 }

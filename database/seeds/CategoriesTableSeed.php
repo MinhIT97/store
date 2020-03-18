@@ -6,24 +6,15 @@ use Illuminate\Database\Seeder;
 
 class CategoriesTableSeed extends Seeder
 {
-    use ProductSeederTrait;
     /**
      * Run the database seeds.
      *
      * @return void
      */
-    public function run()
-    {
-        $this->seederProductsCategory();
-    }
 
-    protected function seederProductsCategory()
+
+    protected function run()
     {
-        factory(Category::class, 6)
-            ->states('products')
-            ->create()
-            ->each(function ($cate, $key) {
-                $this->seederProducts();
-            });
+        factory(Category::class, 6)->create();
     }
 }

@@ -25,9 +25,23 @@ class UserCreateRequest extends FormRequest
     {
         return [
             'name'            => 'required',
-            'email'           => 'required', 'email', 'unique:users',
-            'password'        => 'required', 'min:6',
-            'password_confirmation' => 'required', 'same:password',
+            'email'           => ['required', 'email', 'unique:users'],
+            'password'        => ['required', 'min:6'],
+            'confirmpassword' => ['required', 'same:password'],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required'            => "Vui lòng nhập tên",
+            'email.required'           => 'Vui lòng nhập email',
+            'email.unique'             => 'Email khoản đã tồn tại',
+            'password.required'        => 'Vui lòng nhập password',
+            'password.min'             => 'Password tối thiểu 6 kí tự',
+            'confirmpassword.required' => 'Vui lòng nhập lại password',
+            'confirmpassword.same'     => 'Password nhập lại không đúng',
+
         ];
     }
 }
