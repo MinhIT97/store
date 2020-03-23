@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Entities\Category;
 use App\Entities\Product;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductCreateRequest;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -27,18 +26,18 @@ class ProductController extends Controller
 
     public function viewCreate()
     {
-        return view('admin.pages.products.product-create');
+        $categories = Category::get();
+        return view('admin.pages.products.product-create',
+            [
+                'categories' => $categories,
+            ]);
     }
     public function store(ProductCreateRequest $request)
     {
-        // $new_name =rand().'.'.
-        // $request->thumbnail = n
-        // dd($request);
 
         $file = $request->thumbnail;
 
         $file->move(base_path('public/upload'), $file->getClientOriginalName());
-
 
         if (Product::create($request->all())) {
             return redirect()->back()->with('sucsess', 'Thêm Sản phẩm thành công');

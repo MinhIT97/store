@@ -5,17 +5,19 @@
         <div class="page-header">
             <h3 class="page-title">
 
-                @if(Route::has('product-accessories'))
-                Phụ kiện
-                @elseif(Route::has('product-man'))
-                Sản phẩm nam
+                @if(request()->is('adminstore/products/accessories'))
+                ACCESSORIES
+                @elseif(request()->is('adminstore/products/men'))
+                MEN
+                @elseif(request()->is('adminstore/products/women'))
+                WOMEN
                 @endif
 
 
             </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('create-product')}}" class="text-decoration-none">Thêm mới</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('create-product')}}" class="text-decoration-none">CREATE NEW</a></li>
                     <!-- <li class="breadcrumb-item active" aria-cur'rent="page">Basic tables</li> -->
                 </ol>
             </nav>
@@ -58,7 +60,7 @@
                                     </td>
                                     <td>{{$product->getDate()}} </td>
                                     <td>
-                                        <a class="btn btn-gradient-info p-2" href="{{ url('adminstore/edit-product/'.$product->id )}}">Sửa</a>
+                                        <a class="btn btn-gradient-info p-2" href="{{ url('adminstore/products/edit/'.$product->id )}}">Sửa</a>
                                         <a class="btn btn-gradient-danger p-2 ml-2" href="">Xóa</a>
 
                                     </td>

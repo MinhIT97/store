@@ -10,13 +10,13 @@ $factory->define(Category::class, function (Faker $faker) {
     return [
         'name'      => $name,
         'parent_id' => random_int(0, 2),
-        'type'      => '',
+        'type'      => 'products',
 
     ];
 });
 
-$factory->state(Category::class, 'products', function () {
-    return [
-        'type' => 'products',
-    ];
-});
+// $factory->state(Category::class, 'products', function () {
+//     return [
+//         'type' => 'products',
+//     ];
+// });

@@ -27,20 +27,28 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin'], function () {
     Route::get('edit-user/{id}', 'UserController@viewEditUser')->name('edit-user');
     Route::post('update-user/{id}', 'UserController@editUser')->name('update-user');
 
-    Route::get('products', 'ProductController@index')->name('products');
+    Route::group(['prefix' => '/products'], function () {
+        Route::get('/', 'ProductController@index')->name('products');
 
-    Route::get('product-man', 'ProductController@man')->name('product-man');
+        Route::get('men', 'ProductController@man')->name('product-man');
 
-    Route::get('edit-product/{id}', 'ProductController@editProduct')->name('edit-product');
+        Route::get('edit/{id}', 'ProductController@editProduct')->name('edit-product');
 
-    Route::get('create-product', 'ProductController@viewCreate')->name('create-product');
-    Route::post('create-product', 'ProductController@store')->name('create-product');
+        Route::get('create', 'ProductController@viewCreate')->name('create-product');
+        Route::post('create', 'ProductController@store')->name('create-product');
 
+        Route::get('women', 'ProductController@woman')->name('product-woman');
 
-    Route::get('product-woman', 'ProductController@woman')->name('product-woman');
+        Route::get('accessories', 'ProductController@accessories')->name('product-accessories');
+    });
 
+    Route::get('categories', 'CategoryController@index')->name('categories');
+    Route::get('create-category', 'CategoryController@viewCreate')->name('create-category');
+    Route::post('create-category', 'CategoryController@createCategory')->name('create-category');
 
-    Route::get('product-accessories', 'ProductController@accessories')->name('product-accessories');
+    Route::get('edit-category/{id}', 'CategoryController@viewEdit')->name('edit-category');
+    Route::post('edit-category/{id}', 'CategoryController@editCategory')->name('edit-category');
+
 });
 
 Route::group(['prefix' => '/', 'namespace' => 'Web'], function () {

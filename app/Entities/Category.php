@@ -5,6 +5,7 @@ namespace App\Entities;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
@@ -26,6 +27,7 @@ class Category extends Model implements Transformable
         "name",
         "type",
         "parent_id",
+        "status"
     ];
     public function sluggable()
     {
@@ -35,5 +37,14 @@ class Category extends Model implements Transformable
             ],
         ];
     }
+    public function getDate()
+    {
+        return Carbon::parse($this->created_at)->format('d/m/Y');
+    }
+    public function getDateUpdate()
+    {
+        return Carbon::parse($this->updated_at)->format('d/m/Y');
+    }
+
 
 }

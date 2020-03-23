@@ -1,6 +1,6 @@
 <li class="nav-item">
     <a class="nav-link" data-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="general-pages">
-        <span class="menu-title">user</span>
+        <span class="menu-title">User</span>
         <i class="menu-arrow"></i>
         <i class="mdi mdi mdi-account menu-icon"></i>
     </a>
@@ -12,6 +12,19 @@
             <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
             <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
         </ul>
+    </div>
+</li>
+<li class="nav-item">
+    <a class="nav-link" data-toggle="collapse" href="#category-pages" aria-expanded="false" aria-controls="general-pages">
+        <span class="menu-title">Danh mục </span>
+        <i class="menu-arrow"></i>
+        <i class="mdi mdi-medical-bag menu-icon"></i>
+    </a>
+    <div class="collapse" id="category-pages">
+        <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="{{route('categories')}}"> Category </a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route('product-man')}}"> MEN </a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route('product-woman')}}"> WOMAN</a></li>
     </div>
 </li>
 <li class="nav-item">
