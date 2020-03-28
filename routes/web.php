@@ -49,6 +49,8 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin'], function () {
     Route::get('edit-category/{id}', 'CategoryController@viewEdit')->name('edit-category');
     Route::post('edit-category/{id}', 'CategoryController@editCategory')->name('edit-category');
 
+    Route::get('blogs','BlogController@index')->name('admin-blogs');
+
 });
 
 Route::group(['prefix' => '/', 'namespace' => 'Web'], function () {

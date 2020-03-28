@@ -23,15 +23,16 @@
     @include('admin.layouts.footer')
     @show
 
-   <script src="/vendors/js/vendor.bundle.base.js"></script>
+    <script src="/vendors/js/vendor.bundle.base.js"></script>
 
     <script src="/vendors/chart.js/Chart.min.js"></script>
 
     <script src="js/admin/off-canvas.js"></script>
     <script src="js/admin/hoverable-collapse.js"></script>
-   <!-- <script src="js/admin/misc.js"></script>
+    <!-- <script src="js/admin/misc.js"></script>
     <script src="js/admin/dashboard.js"></script>
     <script src="js/admin/todolist.js"></script> -->
+    <script src="/js/admin/product.js"></script>
 
 </body>
 

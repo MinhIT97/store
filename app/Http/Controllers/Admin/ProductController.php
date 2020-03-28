@@ -6,9 +6,16 @@ use App\Entities\Category;
 use App\Entities\Product;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductCreateRequest;
+use App\Repositories\ProductRepository;
 
 class ProductController extends Controller
 {
+    protected $repository;
+    public function __construct(ProductRepository $repository)
+    {
+        $this->repository = $repository;
+        $this->entity = $repository->getEntity();
+    }
     public function index()
     {
         return view('admin.pages.products.index');
@@ -17,7 +24,7 @@ class ProductController extends Controller
     public function man()
     {
 
-        $products = Product::where('type', 'man')->orderBY('id', 'DESC')->paginate(20);
+        $products = $this->entity->where('type', 'man')->orderBY('id', 'DESC')->paginate(20);
 
         return view('admin.pages.products.product-list', [
             'products' => $products,
@@ -39,7 +46,12 @@ class ProductController extends Controller
 
         $file->move(base_path('public/upload'), $file->getClientOriginalName());
 
-        if (Product::create($request->all())) {
+        $product =$this->entity->create($request->all());
+
+        if($product) {
+
+            $product->categories()->attach($request->category);
+
             return redirect()->back()->with('sucsess', 'Thêm Sản phẩm thành công');
         }
         return redirect()->back()->with('errow', 'Thêm sản phẩm thất bại');

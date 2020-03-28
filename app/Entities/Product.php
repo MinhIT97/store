@@ -3,11 +3,11 @@
 namespace App\Entities;
 
 use Carbon\Carbon;
+use Cviebrock\EloquentSluggable\Sluggable;
+use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
-use Cviebrock\EloquentSluggable\Sluggable;
-use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 
 /**
  * Class Product.
@@ -16,7 +16,7 @@ use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
  */
 class Product extends Model implements Transformable
 {
-    use TransformableTrait, Sluggable ,SluggableScopeHelpers;
+    use TransformableTrait, Sluggable, SluggableScopeHelpers;
 
     /**
      * The attributes that are mass assignable.
@@ -33,7 +33,7 @@ class Product extends Model implements Transformable
         "category_id",
         "code",
         "thumbnail",
-        "type"
+        "type",
     ];
     public function sluggable()
     {
@@ -42,6 +42,10 @@ class Product extends Model implements Transformable
                 'source' => 'name',
             ],
         ];
+    }
+    public function categories()
+    {
+        return $this->morphToMany('App\Entities\Category', 'categoryable');
     }
     public function getDate()
     {

@@ -3,6 +3,11 @@
 <div class="content-wrapper align-items-center  d-flex auth">
     <div class="row flex-grow">
         <div class="col-lg-8 mx-auto">
+            @if (session('sucsess'))
+            <div class="alert alert-success">
+                {{ session('sucsess') }}
+            </div>
+            @endif
             <div class="auth-form-light text-left p-5">
                 <form class="pt-3" method="POST" action="{{ route('create-product') }}" enctype="multipart/form-data">
                     <div class="form-group">
@@ -17,14 +22,14 @@
                     </div>
                     <div class="form-group">
                         <label for="category">Category</label>
-                        <input type="text" name="name" class="form-control form-control-sm" id="name" value="">
-                        <p class="help is-danger mt-2">{{ $errors->first('name') }}</p>
+                        <input type="text" name="" class="form-control form-control-sm" id="name" value="">
+                        <p class="help is-danger mt-2"></p>
                     </div>
                     <div class="form-group">
                         <label for="category">Category</label>
-                        <select name="" id="" class="form-control form-control-sm">
+                        <select name="category"  id="select"  class="form-control form-control-sm">
                             @foreach($categories as $category)
-                            <option value="$category->id">{{$category->name}}</option>
+                            <option class="test" value="{{$category->id}}">{{$category->name}}</option>
                             @endforeach
                         </select>
                     </div>

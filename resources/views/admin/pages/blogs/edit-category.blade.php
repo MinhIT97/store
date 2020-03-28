@@ -3,22 +3,17 @@
 <div class="content-wrapper align-items-center  d-flex auth">
     <div class="row flex-grow">
         <div class="col-lg-8 mx-auto">
-            @if (session('sucsess'))
-            <div class="alert alert-success">
-                {{ session('sucsess') }}
-            </div>
-            @endif
             <div class="auth-form-light text-left p-5">
-                <form class="pt-3" method="POST" action="{{ route('create-category') }}" enctype="multipart/form-data">
+                <form class="pt-3" method="POST" action="{{url('adminstore/edit-category/'.$category->id)}}">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" name="name" class="form-control form-control-sm" id="name" value="">
+                        <input type="text" name="name" class="form-control form-control-sm" id="name" value="{{$category->name}}" placeholder="">
                         <p class="help is-danger mt-2">{{ $errors->first('name') }}</p>
                     </div>
                     <div class="form-group">
                         <label for="price">Parent</label>
                         <select name="parent_id" id="" class="form-control form-control-sm">
-                            <option value="0">Parent</option>
+                            <option value="{{$category->id}}">{{$category->name}}</option>
                             @foreach($categories as $category)
                             <option value="{{$category->id}}">{{$category->name}}</option>
                             @endforeach
@@ -34,7 +29,7 @@
                         <p class="help is-danger mt-2">{{ $errors->first('status') }}</p>
                     </div>
                     <div class="justify-content-end d-flex">
-                        <button type="submit" class="btn btn-behance justify-content-end">Create</button>
+                        <button type="submit" class="btn btn-behance justify-content-end">Edit</button>
                     </div>
                     @csrf
                 </form>

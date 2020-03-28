@@ -37,6 +37,16 @@ class Category extends Model implements Transformable
             ],
         ];
     }
+
+    public function posts()
+    {
+        return $this->morphedByMany('App\Entities\Post', 'categoryable');
+    }
+    public function products()
+    {
+        return $this->morphedByMany('App\Entities\Category', 'categoryable');
+    }
+
     public function getDate()
     {
         return Carbon::parse($this->created_at)->format('d/m/Y');

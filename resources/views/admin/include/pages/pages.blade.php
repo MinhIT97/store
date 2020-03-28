@@ -44,3 +44,15 @@
         </ul>
     </div>
 </li>
+<li class="nav-item">
+    <a class="nav-link" data-toggle="collapse" href="#blog-pages" aria-expanded="false" aria-controls="general-pages">
+        <span class="menu-title">Blog </span>
+        <i class="menu-arrow"></i>
+        <i class="mdi mdi-medical-bag menu-icon"></i>
+    </a>
+    <div class="collapse" id="blog-pages">
+        <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="{{route('admin-blogs')}}"> Blog </a></li>
+
+    </div>
+</li>

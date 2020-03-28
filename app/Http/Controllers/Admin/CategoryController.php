@@ -52,7 +52,7 @@ class CategoryController extends Controller
     }
     public function editCategory(categoryUpdateRequest $request, $id)
     {
-        $category  = Category::find($id);
+        $category = Category::find($id);
         $request->all();
         if ($category->update($request->all())) {
             return redirect()->route('categories')->with('sucsess', 'Thêm danh mục thành công');
