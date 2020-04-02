@@ -28,10 +28,9 @@ class ContactController extends Controller
 
         if ($contacts) {
             $contacts->delete();
-            return redirect()->back()->with('sucsess', 'Xóa liên hệ thành thành công');
-        } else {
-            return view('admin.pages.samples.error-404.blade.php');
+            return redirect()->back()->with('sucsess', 'Delete contact sucsses');
         }
+        return view('admin.pages.samples.error-404.blade.php');
 
     }
 }

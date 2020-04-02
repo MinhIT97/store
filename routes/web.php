@@ -41,7 +41,7 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin'], function () {
 
         Route::get('accessories', 'ProductController@accessories')->name('product-accessories');
 
-        Route::get('delete/{id}', 'ProductController@destroy')->name('product.delete');
+        Route::get('{id}', 'ProductController@destroy')->name('product.delete');
     });
 
     Route::get('categories', 'CategoryController@index')->name('categories');
@@ -59,6 +59,11 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin'], function () {
 
     Route::get('contacts', 'ContactController@index')->name('contact.show');
     Route::get('contacts/{id}', 'ContactController@destroy')->name('contact.destroy');
+
+    Route::get('brands', 'BrandController@index')->name('brand.show');
+    Route::get('brands/{id}', 'BrandController@destroy')->name('brand.destroy');
+
+    Route::get('brand-details/{id}', 'BrandController@detail')->name('brand.detail');
 
 });
 

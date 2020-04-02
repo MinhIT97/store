@@ -23,13 +23,23 @@
     <div class="collapse" id="category-pages">
         <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link" href="{{route('categories')}}"> Category </a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{route('product-man')}}"> MEN </a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{route('product-woman')}}"> WOMAN</a></li>
+    </div>
+</li>
+<li class="nav-item">
+    <a class="nav-link" data-toggle="collapse" href="#brand-pages" aria-expanded="false" aria-controls="general-pages">
+        <span class="menu-title">Brand </span>
+        <i class="menu-arrow"></i>
+        <i class="mdi mdi-medical-bag menu-icon"></i>
+    </a>
+    <div class="collapse" id="brand-pages">
+        <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="{{route('brand.show')}}"> Brand </a></li>
+        </ul>
     </div>
 </li>
 <li class="nav-item">
     <a class="nav-link" data-toggle="collapse" href="#geseral-pages" aria-expanded="false" aria-controls="general-pages">
-        <span class="menu-title">Sản phẩm </span>
+        <span class="menu-title">Products </span>
         <i class="menu-arrow"></i>
         <i class="mdi mdi-medical-bag menu-icon"></i>
     </a>

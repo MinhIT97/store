@@ -34,7 +34,7 @@ class Product extends Model implements Transformable
         "code",
         "thumbnail",
         "type",
-        "brand",
+        "brand_id",
     ];
     public function sluggable()
     {
@@ -51,5 +51,10 @@ class Product extends Model implements Transformable
     public function getDate()
     {
         return Carbon::parse($this->created_at)->format('d/m/Y');
+    }
+
+    public function brand()
+    {
+        return $this->hasOne(Brand::class);
     }
 }

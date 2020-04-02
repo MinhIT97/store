@@ -86,7 +86,6 @@ class ProductController extends Controller
         ]);
     }
 
-
     public function destroy($id)
     {
         $product = $this->entity->find($id);
@@ -96,6 +95,6 @@ class ProductController extends Controller
 
         $product->delete();
 
-        return redirect()->back()->with('sucsess', 'Xóa sản phẩm thành công');
+        return redirect()->back()->with('sucsess', 'Delete product sucsess');
     }
 }
