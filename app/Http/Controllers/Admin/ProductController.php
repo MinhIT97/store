@@ -14,7 +14,7 @@ class ProductController extends Controller
     public function __construct(ProductRepository $repository)
     {
         $this->repository = $repository;
-        $this->entity = $repository->getEntity();
+        $this->entity     = $repository->getEntity();
     }
     public function index()
     {
@@ -46,9 +46,9 @@ class ProductController extends Controller
 
         $file->move(base_path('public/upload'), $file->getClientOriginalName());
 
-        $product =$this->entity->create($request->all());
+        $product = $this->entity->create($request->all());
 
-        if($product) {
+        if ($product) {
 
             $product->categories()->attach($request->category);
 
@@ -84,5 +84,18 @@ class ProductController extends Controller
         return view('admin.pages.products.product-list', [
             'products' => $products,
         ]);
+    }
+
+
+    public function destroy($id)
+    {
+        $product = $this->entity->find($id);
+        if (!$product) {
+            return view('admin.pages.samples.error-404');
+        }
+
+        $product->delete();
+
+        return redirect()->back()->with('sucsess', 'Xóa sản phẩm thành công');
     }
 }

@@ -40,6 +40,8 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin'], function () {
         Route::get('women', 'ProductController@woman')->name('product-woman');
 
         Route::get('accessories', 'ProductController@accessories')->name('product-accessories');
+
+        Route::get('delete/{id}', 'ProductController@destroy')->name('product.delete');
     });
 
     Route::get('categories', 'CategoryController@index')->name('categories');
@@ -49,7 +51,14 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin'], function () {
     Route::get('edit-category/{id}', 'CategoryController@viewEdit')->name('edit-category');
     Route::post('edit-category/{id}', 'CategoryController@editCategory')->name('edit-category');
 
-    Route::get('blogs','BlogController@index')->name('admin-blogs');
+    Route::get('blogs', 'BlogController@index')->name('admin-blogs');
+    Route::get('blog-create', 'BlogController@viewStore')->name('blog-create');
+    Route::post('blog-create', 'BlogController@store')->name('blog-create');
+    Route::get('edit-blog/{id}', 'BlogController@viewUpdate')->name('blog.show_update');
+    Route::get('delete-blog/{id}', 'BlogController@destroy')->name('blog.delete');
+
+    Route::get('contacts', 'ContactController@index')->name('contact.show');
+    Route::get('contacts/{id}', 'ContactController@destroy')->name('contact.destroy');
 
 });
 

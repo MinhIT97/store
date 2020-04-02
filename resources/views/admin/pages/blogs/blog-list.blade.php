@@ -8,7 +8,7 @@
             </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="" class="text-decoration-none">CREATE NEW</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('blog-create')}}" class="text-decoration-none">CREATE NEW</a></li>
                     <!-- <li class="breadcrumb-item active" aria-cur'rent="page">Basic tables</li> -->
                 </ol>
             </nav>
@@ -17,13 +17,21 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
+                        @if (session('sucsess'))
+                        <div class="alert alert-success">
+                            {{ session('sucsess') }}
+                        </div>
+                        @endif
                         <table class="table table-striped table-responsive">
                             <thead>
                                 <tr>
                                     <th> # </th>
-                                    <th> Name </th>
+                                    <th> Title</th>
+                                    <th> Description</th>
+                                    <th> View </th>
                                     <th> Ngày tạo </th>
                                     <th> Ngày sửa </th>
+                                    <th> Hình ảnh </th>
                                     <th>Hành động </th>
                                 </tr>
                             </thead>
@@ -37,9 +45,11 @@
                                     <td> {{$blog->view}} </td>
                                     <td>{{$blog->getDate()}} </td>
                                     <td>{{$blog->getDateUpdate()}} </td>
+                                    <td><img class="ml-2" src="{{asset('/uploads/'.$blog->thumbnail)}}" alt=""></td>
+
                                     <td>
                                         <a class="btn btn-gradient-info p-2" href="{{url('adminstore/edit-blog/'.$blog->id)}}">Sửa</a>
-                                        <a class="btn btn-gradient-danger p-2 ml-2" href="">Xóa</a>
+                                        <a class="btn btn-gradient-danger p-2 ml-2" href="{{url('adminstore/delete-blog/'.$blog->id)}}">Xóa</a>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -51,7 +61,6 @@
                             </tbody>
                         </table>
                         <div class="mt-3">
-
                         </div>
                     </div>
                 </div>

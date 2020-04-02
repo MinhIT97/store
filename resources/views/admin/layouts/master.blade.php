@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/vendors/css/vendor.bundle.base.css">
     <link rel="stylesheet" href="/admin/css/style.css">
 
+
     <!-- <link rel="shortcut icon" href="/images/image-admin/favicon.png" /> -->
 </head>
 
@@ -26,13 +27,17 @@
     <script src="/vendors/js/vendor.bundle.base.js"></script>
 
     <script src="/vendors/chart.js/Chart.min.js"></script>
-
+    <script src="js/admin/file-upload.js"></script>
     <script src="js/admin/off-canvas.js"></script>
     <script src="js/admin/hoverable-collapse.js"></script>
     <!-- <script src="js/admin/misc.js"></script>
     <script src="js/admin/dashboard.js"></script>
     <script src="js/admin/todolist.js"></script> -->
     <script src="/js/admin/product.js"></script>
+    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+    <script>
+        CKEDITOR.replace('editor1');
+    </script>
 
 </body>
 

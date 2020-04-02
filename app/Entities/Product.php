@@ -34,6 +34,7 @@ class Product extends Model implements Transformable
         "code",
         "thumbnail",
         "type",
+        "brand",
     ];
     public function sluggable()
     {

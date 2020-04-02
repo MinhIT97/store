@@ -2,6 +2,7 @@
 
 namespace App\Entities;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
@@ -25,5 +26,9 @@ class Contact extends Model implements Transformable
         "email",
         "status",
     ];
+    public function getDate()
+    {
+        return Carbon::parse($this->created_at)->format('d/m/Y');
+    }
 
 }

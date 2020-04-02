@@ -25,6 +25,11 @@ class ContactRepositoryEloquent extends BaseRepository implements ContactReposit
         return Contact::class;
     }
 
+    public function getEntity()
+    {
+        return $this->model;
+    }
+
     /**
     * Specify Validator class name
     *
@@ -44,5 +49,5 @@ class ContactRepositoryEloquent extends BaseRepository implements ContactReposit
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
-    
+
 }

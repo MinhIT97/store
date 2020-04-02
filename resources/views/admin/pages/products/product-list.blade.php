@@ -4,7 +4,6 @@
     <div class="content-wrapper">
         <div class="page-header">
             <h3 class="page-title">
-
                 @if(request()->is('adminstore/products/accessories'))
                 ACCESSORIES
                 @elseif(request()->is('adminstore/products/men'))
@@ -12,8 +11,6 @@
                 @elseif(request()->is('adminstore/products/women'))
                 WOMEN
                 @endif
-
-
             </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -26,6 +23,11 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
+                        @if (session('sucsess'))
+                        <div class="alert alert-success">
+                            {{ session('sucsess') }}
+                        </div>
+                        @endif
                         <table class="table table-striped table-responsive">
                             <thead>
                                 <tr>
@@ -37,8 +39,6 @@
                                     <th> Trạng thái </th>
                                     <th> Ngày tạo </th>
                                     <th>Hành động </th>
-
-
                                 </tr>
                             </thead>
                             <tbody>
@@ -61,8 +61,7 @@
                                     <td>{{$product->getDate()}} </td>
                                     <td>
                                         <a class="btn btn-gradient-info p-2" href="{{ url('adminstore/products/edit/'.$product->id )}}">Sửa</a>
-                                        <a class="btn btn-gradient-danger p-2 ml-2" href="">Xóa</a>
-
+                                        <a class="btn btn-gradient-danger p-2 ml-2" href="{{ url('adminstore/products/delete/'.$product->id )}}">Xóa</a>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -71,8 +70,6 @@
                                     <p>Chưa có sản phẩm</p>
                                 </div>
                                 @endif
-
-
                             </tbody>
                         </table>
                         <div class="mt-3">
@@ -83,5 +80,4 @@
             </div>
         </div>
     </div>
-
-    @endsection
+ @endsection

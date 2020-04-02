@@ -3,6 +3,8 @@
 namespace App\Entities;
 
 use Carbon\Carbon;
+use Cviebrock\EloquentSluggable\Sluggable;
+use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
@@ -14,7 +16,7 @@ use Prettus\Repository\Traits\TransformableTrait;
  */
 class Post extends Model implements Transformable
 {
-    use TransformableTrait;
+    use TransformableTrait, Sluggable, SluggableScopeHelpers;
 
     /**
      * The attributes that are mass assignable.
@@ -23,16 +25,18 @@ class Post extends Model implements Transformable
      */
     protected $fillable = [
         "title",
-        "slug",
         "content",
+        "slug",
         "description",
         "view",
+        "thumbnail",
+        "status",
     ];
     public function sluggable()
     {
         return [
             'slug' => [
-                'source' => 'name',
+                'source' => 'title',
             ],
         ];
     }

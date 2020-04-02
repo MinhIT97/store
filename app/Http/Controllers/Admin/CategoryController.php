@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Entities\Category;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\categoryCreateRequest;
-use App\Http\Requests\categoryUpdateRequest;
+use App\Http\Requests\CategoryCreateRequest;
+use App\Http\Requests\CategoryUpdateRequest;
 
 class CategoryController extends Controller
 {
@@ -28,7 +28,7 @@ class CategoryController extends Controller
             'categories' => $categoies,
         ]);
     }
-    public function createCategory(categoryCreateRequest $request)
+    public function createCategory(CategoryCreateRequest $request)
     {
         if (Category::create($request->all())) {
             return redirect()->back()->with('sucsess', 'Thêm danh mục thành công');
@@ -50,7 +50,7 @@ class CategoryController extends Controller
             'categories' => $categoies,
         ]);
     }
-    public function editCategory(categoryUpdateRequest $request, $id)
+    public function editCategory(CategoryUpdateRequest $request, $id)
     {
         $category = Category::find($id);
         $request->all();

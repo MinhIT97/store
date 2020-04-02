@@ -25,7 +25,12 @@ class CreateProductsTable extends Migration
             $table->integer('status');
             $table->string('type');
             $table->string('thumbnail');
+            $table->unsignedInteger('brand_id');
             $table->timestamps();
+
+            $table->foreign('brand_id')
+                ->references('id')->on('brands')
+                ->onDelete('cascade');
         });
     }
 
@@ -36,6 +41,9 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
+        Schema::table('products', function (Blueprint $table) {
+            $table->dropForeign(['products_brand_id_foreign']);
+        });
         Schema::dropIfExists('products');
     }
 }

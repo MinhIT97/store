@@ -2,6 +2,7 @@ require('./bootstrap');
 import "jquery";
 import "bootstrap";
 import "slick-carousel";
+
 console.log("Hello World :)");
 $.ajaxSetup({
     headers: {
