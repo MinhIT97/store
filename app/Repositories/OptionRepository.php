@@ -11,5 +11,5 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  */
 interface OptionRepository extends RepositoryInterface
 {
-    //
+    public function getEntity();
 }

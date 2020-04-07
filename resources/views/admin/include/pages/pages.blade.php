@@ -9,20 +9,18 @@
             <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Tài khoản admin </a></li>
             <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Tài khoản khách hàng</a></li>
             <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
         </ul>
     </div>
 </li>
 <li class="nav-item">
     <a class="nav-link" data-toggle="collapse" href="#category-pages" aria-expanded="false" aria-controls="general-pages">
-        <span class="menu-title">Danh mục </span>
+        <span class="menu-title">Categories </span>
         <i class="menu-arrow"></i>
         <i class="mdi mdi-medical-bag menu-icon"></i>
     </a>
     <div class="collapse" id="category-pages">
         <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{route('categories')}}"> Category </a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route('categories.show')}}"> Category </a></li>
     </div>
 </li>
 <li class="nav-item">
@@ -49,8 +47,7 @@
             <li class="nav-item"> <a class="nav-link" href="{{route('product-man')}}"> MEN </a></li>
             <li class="nav-item"> <a class="nav-link" href="{{route('product-woman')}}"> WOMAN</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{route('product-accessories')}}"> ACCESSORIES</a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route('product-accessories')}}"> Size</a></li>
         </ul>
     </div>
 </li>
@@ -66,6 +63,18 @@
         </ul>
     </div>
 </li>
+<li class="nav-item" id="bannerClose">
+    <a class="nav-link" data-toggle="collapse" href="#option-pages" aria-expanded="false" aria-controls="general-pages">
+        <span class="menu-title">Option </span>
+        <i class="menu-arrow"></i>
+        <i class="mdi mdi-medical-bag menu-icon"></i>
+    </a>
+    <div class="collapse" id="option-pages">
+        <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="{{route('option.show')}}"> Config </a></li>
+        </ul>
+    </div>
+</li>
 <li class="nav-item">
     <a class="nav-link" data-toggle="collapse" href="#blog-pages" aria-expanded="false" aria-controls="general-pages">
         <span class="menu-title">Blog </span>
@@ -74,7 +83,7 @@
     </a>
     <div class="collapse" id="blog-pages">
         <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{route('admin-blogs')}}"> Blog </a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route('blog.show')}}"> Blog </a></li>
 
     </div>
 </li>

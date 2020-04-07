@@ -46,7 +46,7 @@
                                 @foreach($products as $product)
                                 <tr>
                                     <td> {{$product->id}}</td>
-                                    <td> <img src="/images/{{$product->thumbnail}}" alt=""> </td>
+                                    <td><img class="ml-2" src="{{asset('/uploads/'.$product->thumbnail)}}" alt=""></td>
                                     <td> {{$product->name}} </td>
                                     <td> {{$product->quantity}} </td>
                                     <td> {{$product->price}} </td>
@@ -80,4 +80,5 @@
             </div>
         </div>
     </div>
- @endsection
+</div>
+@endsection

@@ -3,8 +3,13 @@
 <div class="content-wrapper align-items-center  d-flex auth">
     <div class="row flex-grow">
         <div class="col-lg-8 mx-auto">
+            @if (session('sucsess'))
+            <div class="alert alert-success">
+                {{ session('sucsess') }}
+            </div>
+            @endif
             <div class="auth-form-light text-left p-5">
-                <form class="pt-3" method="POST" action="{{url('adminstore/update-user/'.$product->id )}}">
+                <form class="pt-3" method="POST" action="{{url('adminstore/products/edit/'.$product->id )}}">
                     <div class="form-group">
                         <label for="type">Type</label>
                         <input type="text" class="form-control" name="type" id="type" value="{{$product->type}}">

@@ -4,7 +4,7 @@
     <div class="row flex-grow">
         <div class="col-lg-8 mx-auto">
             <div class="auth-form-light text-left p-5">
-                <form class="pt-3" method="POST" action="{{ route('store-user') }}">
+                <form class="pt-3" method="POST" action="{{ route('users.create') }}">
                     <div class="form-group">
                         <input type="text" name="name" class="form-control form-control-lg" value="{{ old('name') }}" id="exampleInputName" placeholder="Name">
                         <p class="help is-danger mt-2">{{ $errors->first('name') }}</p>

@@ -53,7 +53,6 @@ class UserController extends Controller
             return view('admin..pages.samples.error-404');
         }
 
-
         return view('admin.pages.user.edit-user', [
             'user' => $user,
         ]);

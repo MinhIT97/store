@@ -37,10 +37,13 @@ class BrandController extends Controller
 
     public function detail($id)
     {
-        $category_product = $this->repository->getProduct($id);
+        $brand = $this->repository->find($id);
+
+        $brand_product = $this->repository->getProduct($id);
 
         return view('admin.pages.brand.brand-detail', [
-            'category_product' => $category_product,
+            'brand_product' => $brand_product,
+            'brand'         => $brand,
         ]);
     }
 }

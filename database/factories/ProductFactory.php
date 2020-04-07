@@ -19,6 +19,8 @@ $factory->define(Product::class, function (Faker $faker) {
         'thumbnail'  => '5887.jpg',
         'status'     => rand(0, 1),
         'type'       => Arr::random($arr),
-        'brand_id'      => factory(Brand::class),
+        'brand_id'   => function () {
+            return factory(Brand::class)->create()->id;
+        },
     ];
 });

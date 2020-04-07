@@ -39,7 +39,7 @@
                                     <td> {{$brand->id}}</td>
                                     <td> {{$brand->name}} </td>
                                     <td>{{$brand->getDate()}} </td>
-                                    <td>{{$brand->withCount}} </td>
+                                    <td class="text-center">{{$brand->products_count}} </td>
                                     <td>
                                         <a class="btn btn-gradient-info p-2" href="{{ url('adminstore/brands/edit/'.$brand->id )}}"><i class="mdi mdi-tooltip-edit"></i>Edit</a>
                                         <a class="btn btn-gradient-danger p-2 ml-2" href="{{ url('adminstore/brands/'.$brand->id )}}"><i class="mdi mdi-delete-sweep"></i>Delete</a>
@@ -62,4 +62,5 @@
             </div>
         </div>
     </div>
-    @endsection
+</div>
+@endsection

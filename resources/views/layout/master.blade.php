@@ -36,5 +36,18 @@
 
 </body>
 
+<script>
+    $(document).ready(function(){
+        $.ajax(
+            {
+                url:'http://store.com/test',
+                method:'GET',
+                success:function(reponse){
+                    console.log(reponse);
+                }
 
+            }
+        );
+    });
+</script>
 </html>

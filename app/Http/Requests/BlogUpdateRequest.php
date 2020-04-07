@@ -13,7 +13,7 @@ class BlogUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class BlogUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title'       => ['required'],
+            'description' => ['required'],
+            'content'     => ['required'],
+            'thumbnail'   => ['required'],
+            'status'      => ['required'],
         ];
     }
 }

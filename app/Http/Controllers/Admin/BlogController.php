@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BlogCreateRequest;
+use App\Http\Requests\BlogUpdateRequest;
 use App\Repositories\PostRepository;
 
 class BlogController extends Controller
@@ -33,10 +34,10 @@ class BlogController extends Controller
             $request->thumbnail->move(base_path('/public/uploads'), $request->thumbnail->getClientOriginalName());
             $data              = $request->all();
             $data['thumbnail'] = $request->thumbnail->getClientOriginalName();
+            $data['type']      = 'blog';
         } else {
             $data = $request->all();
         }
-
         $blog = $this->entity->create($data);
 
         if ($blog) {
@@ -54,8 +55,27 @@ class BlogController extends Controller
         ]);
     }
 
-    public function update()
+    public function update(BlogUpdateRequest $request, $id)
     {
+        $blog = $this->entity->find($id);
+        if ($request->hasFile('thumbnail')) {
+            $request->thumbnail->move(base_path('/public/uploads'), $request->thumbnail->getClientOriginalName());
+            $data              = $request->all();
+            $data['thumbnail'] = $request->thumbnail->getClientOriginalName();
+            $data['type']      = 'blog';
+        } else {
+            $data = $request->all();
+        }
+
+        if ($blog) {
+            $update = $blog->update($data);
+
+            if ($update) {
+                return redirect()->back()->with('sucsess', 'Update blog thành công');
+            }
+
+        }
+        return redirect()->back()->with('errow', 'Update Fail');
     }
 
     public function destroy($id)
@@ -69,4 +89,5 @@ class BlogController extends Controller
 
         return redirect()->back()->with('sucsess', 'Xóa blog thành công');
     }
+
 }

@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Entities\Brand;
+use App\Entities\Product;
 use App\Repositories\brandRepository;
 use App\Validators\BrandValidator;
 use Prettus\Repository\Criteria\RequestCriteria;
@@ -32,9 +33,7 @@ class BrandRepositoryEloquent extends BaseRepository implements BrandRepository
 
     public function getProduct($id)
     {
-        $product = $this->getEntity()->where('id', $id)->with(['products' => function ($query) {
-            $query->latest()->paginate(10);
-        }])->first();
+        $product = Product::where('brand_id', $id)->paginate(20);
         return $product;
 
     }

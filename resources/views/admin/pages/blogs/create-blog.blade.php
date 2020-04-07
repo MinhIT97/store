@@ -9,7 +9,7 @@
             </div>
             @endif
             <div class="auth-form-light text-left p-5">
-                <form class="pt-3" method="POST" action="{{ route('blog-create') }}" enctype="multipart/form-data">
+                <form class="pt-3" method="POST" action="{{ route('blog.create') }}" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="title">Tiêu đề</label>
                         <input type="text" name="title" class="form-control form-control-sm" id="name" value="">

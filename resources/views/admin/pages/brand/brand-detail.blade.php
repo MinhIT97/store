@@ -4,7 +4,7 @@
     <div class="content-wrapper">
         <div class="page-header">
             <h3 class="page-title">
-                Brands
+                <a href="{{route('brand.show')}}" class="text-decoration-none">Brand</a><span>:{{$brand->name}}</span>
             </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -33,8 +33,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if($category_product->count())
-                                @foreach($category_product->products as $product)
+                                @if($brand_product->count())
+                                @foreach($brand_product as $product)
                                 <tr>
                                     <td> {{$product->id}}</td>
                                     <td> {{$product->name}} </td>
@@ -55,6 +55,7 @@
                         </table>
                         <div class="mt-3">
                         </div>
+                        {{ $brand_product->links() }}
                     </div>
                 </div>
             </div>

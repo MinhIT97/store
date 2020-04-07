@@ -3,13 +3,16 @@
 <div class="content-wrapper align-items-center  d-flex auth">
     <div class="row flex-grow">
         <div class="col-lg-8 mx-auto">
+            <div class="mb-5">
+                <a href="{{route('categories.show')}}" class="text-decoration-none">Categories</a>
+            </div>
             @if (session('sucsess'))
             <div class="alert alert-success">
                 {{ session('sucsess') }}
             </div>
             @endif
             <div class="auth-form-light text-left p-5">
-                <form class="pt-3" method="POST" action="{{ route('create-category') }}" enctype="multipart/form-data">
+                <form class="pt-3" method="POST" action="{{ route('categories.create') }}" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" name="name" class="form-control form-control-sm" id="name" value="">

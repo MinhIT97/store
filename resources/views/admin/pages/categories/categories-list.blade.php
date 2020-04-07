@@ -8,7 +8,7 @@
             </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('create-category')}}" class="text-decoration-none">CREATE NEW</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('categories.show_create')}}" class="text-decoration-none">CREATE NEW</a></li>
                     <!-- <li class="breadcrumb-item active" aria-cur'rent="page">Basic tables</li> -->
                 </ol>
             </nav>
@@ -37,7 +37,7 @@
                                     <td>{{$category->getDateUpdate()}} </td>
                                     <td>
                                         <a class="btn btn-gradient-info p-2" href="{{url('adminstore/edit-category/'.$category->id)}}">Sửa</a>
-                                        <a class="btn btn-gradient-danger p-2 ml-2" href="">Xóa</a>
+                                        <a class="btn btn-gradient-danger p-2 ml-2" href="{{url('adminstore/category/'.$category->id)}}">Xóa</a>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -56,5 +56,5 @@
             </div>
         </div>
     </div>
-
-    @endsection
+</div>
+@endsection

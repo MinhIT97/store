@@ -3,8 +3,18 @@
 <div class="content-wrapper align-items-center  d-flex auth">
     <div class="row flex-grow">
         <div class="col-lg-8 mx-auto">
+            @if (session('sucsess'))
+            <div class="alert alert-success">
+                {{ session('sucsess') }}
+            </div>
+            @endif
+            @if (session('errow'))
+            <div class="alert alert-errow">
+                {{ session('errow') }}
+            </div>
+            @endif
             <div class="auth-form-light text-left p-5">
-                <form class="pt-3" method="POST" action="{{url('adminstore/edit-category/'.$blog->id)}}">
+                <form class="pt-3" method="POST" action="{{url('adminstore/edit-blog/'.$blog->id)}}" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="title">Title</label>
                         <input type="text" name="title" class="form-control form-control-sm" id="name" value="{{$blog->title}}" placeholder="">
@@ -17,16 +27,17 @@
                     </div>
                     <div class="form-group ">
                         <label>Nội dung</label>
-                        <textarea name="content"  class="form-control " id="editor1">{!!$blog->content!!}</textarea>
+                        <textarea name="content" class="form-control " id="editor1">{!!$blog->content!!}</textarea>
                     </div>
                     <div class="form-group">
-                        <label for="thumbnail">Hình ảnh</label>
-                        <input id="my-input" class="form-control-file" type="file" name="thumbnail">
+                        <label for="">Thumbnail</label>
+                        <input type="file" class="form-control-file" name="thumbnail" id="" placeholder="" aria-describedby="fileHelpId">
+
                     </div>
-
-                    <img class="img-fluid"  src="upload/84561531_183496249408686_9078468584841150464_n.png" alt="">
-
-                    <div class="form-group">
+                    <div>
+                        <img class="ml-2 img-fluid" src="{{asset('/uploads/'.$blog->thumbnail)}}" alt="">
+                    </div>
+                    <div class="form-group mt-4">
                         <Label> Trạng thái</Label>
                         <select name="status" id="" class="form-control form-control-sm">
                             <option value="1">Active</option>

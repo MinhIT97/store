@@ -21,15 +21,18 @@
                         <p class="help is-danger mt-2">{{ $errors->first('name') }}</p>
                     </div>
                     <div class="form-group">
-                        <label for="category">Category</label>
-                        <input type="text" name="" class="form-control form-control-sm" id="name" value="">
-                        <p class="help is-danger mt-2"></p>
+                        <label for="brands">Brand</label>
+                        <select name="brand_id" id="select1" class="form-control form-control-sm  js-example-basic-single">
+                            @foreach($brands as $brand)
+                            <option value="{{$brand->id}}">{{$brand->name}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="category">Category</label>
-                        <select name="category"  id="select"  class="form-control form-control-sm">
+                        <select name="category" id="select" class="form-control form-control-sm js-example-basic-multiple"  multiple="multiple">
                             @foreach($categories as $category)
-                            <option class="test" value="{{$category->id}}">{{$category->name}}</option>
+                            <option value="{{$category->id}}">{{$category->name}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -65,7 +68,11 @@
 
                     <div class="form-group">
                         <Label> Status</Label>
-                        <input type="status" name="status" class="form-control form-control-sm" id="status" value="">
+                        <select name="status" id="" class="form-control form-control-sm">
+                            <option value="0">pending</option>
+                            <option value="1">active</option>
+                        </select>
+
                         <p class="help is-danger mt-2">{{ $errors->first('status') }}</p>
                     </div>
                     <div class="justify-content-end d-flex">

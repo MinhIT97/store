@@ -31,6 +31,7 @@ class Post extends Model implements Transformable
         "view",
         "thumbnail",
         "status",
+        'type'
     ];
     public function sluggable()
     {

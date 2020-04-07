@@ -3,10 +3,10 @@
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="page-header">
-            <h3 class="page-title"> Tài khoản khách hàng </h3>
+            <h3 class="page-title"> User </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('view-store')}}" class="text-decoration-none">Thêm mới</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('users.show_create')}}" class="text-decoration-none">Create new</a></li>
                     <!-- <li class="breadcrumb-item active" aria-cur'rent="page">Basic tables</li> -->
                 </ol>
             </nav>
@@ -25,8 +25,6 @@
                                     <th> Status </th>
                                     <th> Ngày tạo </th>
                                     <th>Hành động </th>
-
-
                                 </tr>
                             </thead>
                             <tbody>
@@ -57,8 +55,6 @@
                                     <p>Chưa có tài khoản đăng kí</p>
                                 </div>
                                 @endif
-
-
                             </tbody>
                         </table>
                     </div>
