@@ -36,6 +36,15 @@
                             @endforeach
                         </select>
                     </div>
+
+                    <div class="form-group">
+                        <label for="size">size</label>
+                        <select name="size" id="size" class="form-control form-control-sm js-example-basic-multiple"  multiple="multiple">
+                            @foreach($sizes as $size)
+                            <option value="{{$size->id}}">{{$size->size}}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="form-group">
                         <label for="code">Code</label>
                         <input type="text" name="code" class="form-control form-control-sm" id="code" value="">

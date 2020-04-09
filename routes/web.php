@@ -31,7 +31,7 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin'], function () {
         Route::get('men', 'ProductController@man')->name('product-man');
         Route::get('edit/{id}', 'ProductController@showEdit')->name('product.show_edit');
         Route::post('edit/{id}', 'ProductController@editProduct')->name('product.edit');
-        Route::get('create', 'ProductController@viewCreate')->name('create-product');
+        Route::get('create', 'ProductController@showStore')->name('create-product');
         Route::post('create', 'ProductController@store')->name('create-product');
         Route::get('women', 'ProductController@woman')->name('product-woman');
         Route::get('accessories', 'ProductController@accessories')->name('product-accessories');
@@ -56,11 +56,21 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin'], function () {
     Route::get('contacts/{id}', 'ContactController@destroy')->name('contact.destroy');
 
     Route::get('brands', 'BrandController@index')->name('brand.show');
+    Route::get('brand-create', 'BrandController@showStore')->name('brand.show_create');
+    Route::post('brand-create', 'BrandController@store')->name('brand.create');
+    Route::get('edit-brand/{id}', 'BrandController@showUpdate')->name('brand.show_update');
+    Route::post('edit-brand/{id}', 'BrandController@update')->name('brand.update');
     Route::get('brands/{id}', 'BrandController@destroy')->name('brand.destroy');
     Route::get('brand-details/{id}', 'BrandController@detail')->name('brand.detail');
 
     Route::get('options', 'OptionController@index')->name('option.show');
 
+    Route::get('size', 'SizeController@index')->name('size.show');
+    Route::get('size-create', 'SizeController@showCreate')->name('size.show_create');
+    Route::post('size-create', 'SizeController@store')->name('size.create');
+    Route::get('edit-size/{id}', 'SizeController@showUpdate')->name('size.show_edit');
+    Route::post('edit-size/{id}', 'SizeController@update')->name('size.edit');
+    Route::get('size/{id}', 'SizeController@destroy')->name('size.delete');
 });
 
 Route::group(['prefix' => '/', 'namespace' => 'Web'], function () {
@@ -82,9 +92,8 @@ Route::group(['prefix' => '/', 'namespace' => 'Web'], function () {
     Route::get('profile', 'ProfileController@index')->name('profile')->middleware('verified');
 });
 
-Route::get('/test',function()
-{
-    return response()->json(['message'=>'call from ajaxx']);
+Route::get('/test', function () {
+    return response()->json(['message' => 'call from ajaxx']);
 });
 
 Auth::routes(['verify' => true]);

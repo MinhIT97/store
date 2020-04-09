@@ -2,6 +2,7 @@
 
 namespace App\Entities;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
@@ -20,6 +21,18 @@ class Size extends Model implements Transformable
      *
      * @var array
      */
-    protected $fillable = [];
+    protected $table = 'sizes';
+    protected $fillable = [
+        'id',
+        'size'
+    ];
+    public function getDate()
+    {
+        return Carbon::parse($this->created_at)->format('d/m/Y');
+    }
 
+    public function products()
+    {
+        return $this->morphedByMany(Product::class, 'sizeabale');
+    }
 }

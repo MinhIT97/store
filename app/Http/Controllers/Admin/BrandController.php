@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BrandCreateRequest;
+use App\Http\Requests\BrandUpdateRequest;
 use App\Repositories\BrandRepository;
-
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
 class BrandController extends Controller
 {
     protected $repository;
@@ -23,6 +26,37 @@ class BrandController extends Controller
                 'brands' => $brands,
             ]
         );
+    }
+
+    public function showStore()
+    {
+        return view('admin.pages.brand.brand-create');
+    }
+    public function store(BrandCreateRequest $request)
+    {
+        $data = $request->all();
+
+        if ($this->entity->create($data)) {
+            return redirect()->back()->with('sucsess', 'Create brand sucsess');
+        }
+        return redirect()->back()->with('arrow', 'Create brand errow');
+    }
+
+    public function showUpdate($id)
+    {
+        $brand = $this->entity->findOrFail($id);
+
+        return view('admin.pages.brand.brand-edit', [
+            'brand' => $brand,
+        ]);
+    }
+    public function update(BrandUpdateRequest $request, $id)
+    {
+        $brand = $this->entity->findOrFail($id);
+        $data  = $request->all();
+        if ($brand->update($data)) {
+            return redirect()->route('brand.show')->with('sucsess', 'update brand sucsess');
+        }
     }
 
     public function destroy($id)

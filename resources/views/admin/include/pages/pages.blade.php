@@ -47,7 +47,7 @@
             <li class="nav-item"> <a class="nav-link" href="{{route('product-man')}}"> MEN </a></li>
             <li class="nav-item"> <a class="nav-link" href="{{route('product-woman')}}"> WOMAN</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{route('product-accessories')}}"> ACCESSORIES</a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{route('product-accessories')}}"> Size</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route('size.show')}}"> Size</a></li>
         </ul>
     </div>
 </li>

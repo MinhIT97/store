@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Entities\Brand;
 use App\Entities\Category;
 use App\Entities\Product;
+use App\Entities\Size;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductCreateRequest;
 use App\Http\Requests\ProductUpdateRequest;
@@ -33,15 +34,19 @@ class ProductController extends Controller
         ]);
     }
 
-    public function viewCreate()
+    public function showStore()
     {
         $categories = Category::get();
         $brands     = Brand::get();
-        return view('admin.pages.products.product-create',
+        $sizes      = Size::get();
+        return view(
+            'admin.pages.products.product-create',
             [
                 'categories' => $categories,
                 'brands'     => $brands,
-            ]);
+                'sizes'      => $sizes,
+            ]
+        );
     }
     public function store(ProductCreateRequest $request)
     {
@@ -57,6 +62,7 @@ class ProductController extends Controller
         if ($product) {
 
             $product->categories()->attach($request->category);
+            $product->sizes()->attach($request->size);
 
             return redirect()->back()->with('sucsess', 'Thêm Sản phẩm thành công');
         }

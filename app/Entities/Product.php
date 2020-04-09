@@ -48,6 +48,10 @@ class Product extends Model implements Transformable
     {
         return $this->morphToMany('App\Entities\Category', 'categoryable');
     }
+    public function sizes()
+    {
+        return $this->morphToMany(Size::class, 'sizeable');
+    }
     public function getDate()
     {
         return Carbon::parse($this->created_at)->format('d/m/Y');

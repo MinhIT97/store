@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Entities\Category;
 use App\Entities\Post;
 use App\Entities\Product;
+use App\Entities\Size;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -32,6 +33,7 @@ class AppServiceProvider extends ServiceProvider
             'posts'      => Post::class,
             'products'   => Product::class,
             'categories' => Category::class,
+            'sizes'      => Size::class,
         ]);
         Schema::defaultStringLength(191);
     }

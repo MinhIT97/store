@@ -28,5 +28,4 @@ class Attribute extends Model implements Transformable
         "quantity",
         "current_quantity",
     ];
-
 }

@@ -4,12 +4,11 @@
     <div class="content-wrapper">
         <div class="page-header">
             <h3 class="page-title">
-                Brands
+                size
             </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('brand.show_create')}}" class="text-decoration-none">CREATE NEW</a></li>
-                    <!-- <li class="breadcrumb-item active" aria-cur'rent="page">Basic tables</li> -->
+                    <li class="breadcrumb-item"><a href="{{route('size.show_create')}}" class="text-decoration-none">CREATE NEW</a></li>
                 </ol>
             </nav>
         </div>
@@ -26,36 +25,32 @@
                             <thead>
                                 <tr>
                                     <th> # </th>
-                                    <th> Name </th>
-                                    <th> Created at </th>
-                                    <th> Total products </th>
-                                    <th> Action </th>
+                                    <th> Size</th>
+                                    <th> Ngày tạo </th>
+                                    <th>Hành động </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @if($brands->count())
-                                @foreach($brands as $brand)
+                                @if($sizes->count())
+                                @foreach($sizes as $size)
                                 <tr>
-                                    <td> {{$brand->id}}</td>
-                                    <td> {{$brand->name}} </td>
-                                    <td>{{$brand->getDate()}} </td>
-                                    <td class="text-center">{{$brand->products_count}} </td>
+                                    <td> {{$size->id}}</td>
+                                    <td> {{$size->size}} </td>
+                                    <td>{{$size->getDate()}} </td>
                                     <td>
-                                        <a class="btn btn-gradient-info p-2" href="{{ url('adminstore/edit-brand/'.$brand->id )}}"><i class="mdi mdi-tooltip-edit"></i>Edit</a>
-                                        <a class="btn btn-gradient-danger p-2 ml-2" href="{{ url('adminstore/brands/'.$brand->id )}}"><i class="mdi mdi-delete-sweep"></i>Delete</a>
-                                        <a class="btn btn-gradient-success p-2 ml-2" href="{{ url('adminstore/brand-details/'.$brand->id )}}"><i class="mdi mdi-view-list"></i>Detail</a>
+                                        <a class="btn btn-gradient-info p-2" href="{{url('adminstore/edit-size/'.$size->id)}}">Sửa</a>
+                                        <a class="btn btn-gradient-danger p-2 ml-2" href="{{url('adminstore/size/'.$size->id)}}">Xóa</a>
                                     </td>
                                 </tr>
                                 @endforeach
                                 @else
                                 <div>
-                                    <p>Chưa có sản phẩm</p>
+                                    <p>No blog</p>
                                 </div>
                                 @endif
                             </tbody>
                         </table>
                         <div class="mt-3">
-                            {{ $brands->links() }}
                         </div>
                     </div>
                 </div>

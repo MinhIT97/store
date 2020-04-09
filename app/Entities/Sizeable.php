@@ -20,6 +20,9 @@ class Sizeable extends Model implements Transformable
      *
      * @var array
      */
-    protected $fillable = [];
-
+    protected $fillable = [
+        'size_id',
+        'sizeable_id',
+        'sizeable_type',
+    ];
 }
