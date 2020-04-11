@@ -75,10 +75,14 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin'], function () {
 
 Route::group(['prefix' => '/', 'namespace' => 'Web'], function () {
 
-    Route::get('mans', 'ProductController@index')->name('mans');
-    Route::get('womans', 'WomanController@index')->name('womans');
-    Route::get('accessories', 'WomanController@index')->name('accessories');
+    Route::get('products/{type}', 'ProductController@index')->name('web.product_show');
+
+    Route::get('products/{type}/{slug}', 'ProductDetailController@show')->name('web.product_show_detail');
+
     Route::get('blogs', 'PostController@index')->name('blogs');
+    Route::post('contacts', 'ContactController@store')->name('contact.create');
+
+    Route::get('pages/{slug}', 'PostListController@show')->name('pages.show');
 
     Route::get('/', 'HomeController@index')->name('/index');
 
@@ -103,18 +107,3 @@ Route::group(['prefix' => '/', 'namespace' => 'Web'], function () {
 });
 
 // Route::get('/home', 'Web/ProfileController@index')->name('home');
-
-// Route::get('/product-detail', function () {
-//     return view('pages.product-detail');
-// });
-// Route::get('/login', function () {
-//     return view('pages.login');
-// });
-// Route::get('/create-account', function () {
-//     return view('pages.create-account');
-// });
-// Route::get('/admins', function () {
-//     return view('admin.index');
-// });
-
-// Route::get('/', 'HomeController@index')->name('home');

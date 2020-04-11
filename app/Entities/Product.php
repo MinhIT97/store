@@ -8,6 +8,8 @@ use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
+use Illuminate\Support\Str;
+
 
 /**
  * Class Product.
@@ -23,6 +25,8 @@ class Product extends Model implements Transformable
      *
      * @var array
      */
+    const PENĐING  = 0;
+    const PUBLISHED = 1;
     protected $fillable = [
         "name",
         "quantity",
@@ -46,7 +50,7 @@ class Product extends Model implements Transformable
     }
     public function categories()
     {
-        return $this->morphToMany('App\Entities\Category', 'categoryable');
+        return $this->morphToMany(Category::class, 'categoryable');
     }
     public function sizes()
     {
@@ -60,5 +64,13 @@ class Product extends Model implements Transformable
     public function brand()
     {
         return $this->hasOne(Brand::class);
+    }
+    public function scopePublished($query)
+    {
+        $query->where('status', Product::PUBLISHED);
+    }
+    public function getLimitName($limit)
+    {
+        return Str::limit($this->name, $limit);
     }
 }

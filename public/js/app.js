@@ -46857,7 +46857,7 @@ window.select2 = __webpack_require__(/*! select2/dist/js/select2.min */ "./node_
 console.log("Hello World :)");
 $.ajaxSetup({
   headers: {
-    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
   }
 });
 $(document).ready(function () {
@@ -46908,24 +46908,24 @@ $(document).ready(function () {
     slidesToShow: 2,
     slidesToScroll: 1
   });
-  $('.slider-for').slick({
+  $(".product-thumbnail").slick({
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
     fade: true,
-    asNavFor: '.slider-nav'
+    focusOnSelect: true,
+    asNavFor: ".product-thumbnail-child"
   });
-  $('.slider-nav').slick({
+  $(".product-thumbnail-child").slick({
     slidesToShow: 3,
     slidesToScroll: 1,
-    asNavFor: '.slider-for',
-    dots: true,
-    centerMode: true,
+    asNavFor: ".product-thumbnail",
+    dots: false,
     focusOnSelect: true
   });
 });
 $(document).ready(function () {
-  $('.js-example-basic-multiple').select2();
+  $(".js-example-basic-multiple").select2();
 });
 
 /***/ }),

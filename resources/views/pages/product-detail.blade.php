@@ -4,49 +4,52 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-7 col-lg-7">
-                <div class="row">
-                    <div class="slider-for">
-                        <div class="item">
-                            <img class="img-fluid" src="/images/5025.jpg" alt="">
-                        </div>
-                        <!-- <div class="item">
-                        <img class="img-fluid" src="/images/5025.jpg" alt="">
-                    </div> -->
-                        <!-- <div class="item">
-                        <img class="img-fluid" src="/images/5025.jpg" alt="">
-                    </div> -->
-                        <!-- <div class="item">
-                        <img class="img-fluid" src="/images/5025.jpg" alt="">
-                    </div> -->
+                <div class="product-thumbnail">
+                    @if($product)
+                    <div class="item">
+                        <img class="img-fluid" src="{{asset('uploads/'.$product->thumbnail)}}" alt="">
                     </div>
-                    <div class="slider-nav">
-                        <div class="item">
-                            <img class="img-fluid" src="/images/3407807.jpg" alt="">
+                    @endif
+                    <div class="item">
+                        <img class="img-fluid" src="/images/5025.jpg" alt="">
+                    </div>
+                    <div class="item">
+                        <img class="img-fluid" src="/images/5025.jpg" alt="">
+                    </div>
+                    <div class="item">
+                        <img class="img-fluid" src="/images/5025.jpg" alt="">
+                    </div>
 
-                        </div>
-                        <div class="item">
-                            <img class="img-fluid" src="/images/3407807.jpg" alt="">
-                        </div>
-                        <div class="item">
-                            <img class="img-fluid" src="/images/3407807.jpg" alt="">
-                        </div>
-                        <!-- <div class="item">
-                        <img class="img-fluid"  src="/images/3407807.jpg" alt="">
-                    </div> -->
+                </div>
+                <div class="product-thumbnail-child">
+                    @if($product)
+                    <div class="item">
+                        <img class="img-fluid" src="{{asset('uploads/'.$product->thumbnail)}}" alt="">
+                    </div>
+                    @endif
+                    <div class="item">
+                        <img class="img-fluid" src="/images/5025.jpg" alt="">
+                    </div>
+                    <div class="item">
+                        <img class="img-fluid" src="/images/5025.jpg" alt="">
+                    </div>
+                    <div class="item">
+                        <img class="img-fluid" src="/images/5025.jpg" alt="">
                     </div>
                 </div>
 
             </div>
             <div class="col-12 col-md-5 col-lg-5">
+                @if($product)
                 <div class="product-summary">
                     <div class="product-summary--name">
-                        <h4>Sơ mi nam</h4>
+                        <h4>{{$product->getLimitName(25)}}</h4>
                     </div>
                     <div class="product-summary--code">
-                        <span>Mã Sản Phẩm:</span> <span>hp1800</span>
+                        <span>Mã Sản Phẩm:</span> <span>{{$product->code}}</span>
                     </div>
                     <div class="product-summary--price">
-                        399.000₫
+                        {{number_format($product->price)}} ₫
                     </div>
                     <div>
                         <p>Mầu sắc</p>
@@ -121,6 +124,7 @@
                     <div class="line"></div>
 
                 </div>
+                @endif
             </div>
         </div>
     </div>

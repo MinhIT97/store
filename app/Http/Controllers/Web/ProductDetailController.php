@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\ProductRepository;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class ProductDetailController extends Controller
 {
     protected $repository;
     public function __construct(ProductRepository $repository)
@@ -14,14 +14,13 @@ class ProductController extends Controller
         $this->repository = $repository;
         $this->entity     = $repository->getEntity();
     }
-
-    public function index(Request $request)
+    public function show(Request $request)
     {
-        $products = $this->entity->where('type', $request->type)->published()->paginate(12);
-
-        return view('pages.products', [
-            'products' => $products,
+        $type    = $request->type;
+        $slug    = $request->slug;
+        $product = $this->entity->where('type', $type)->where('slug', $slug)->first();
+        return view('pages.product-detail', [
+            'product' => $product,
         ]);
     }
-
 }

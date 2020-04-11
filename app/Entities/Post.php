@@ -23,6 +23,15 @@ class Post extends Model implements Transformable
      *
      * @var array
      */
+    const PUBLISHED = 1;
+    const PENDING   = 0;
+
+    public function postTypes()
+    {
+        return [
+            'pages',
+        ];
+    }
     protected $fillable = [
         "title",
         "content",
@@ -31,7 +40,7 @@ class Post extends Model implements Transformable
         "view",
         "thumbnail",
         "status",
-        'type'
+        'type',
     ];
     public function sluggable()
     {
@@ -44,14 +53,25 @@ class Post extends Model implements Transformable
 
     public function categories()
     {
-        return $this->morphToMany('App\Entities\Category', 'categoryable');
+        return $this->morphToMany(Category::class, 'categoryable');
     }
     public function getDate()
     {
         return Carbon::parse($this->created_at)->format('d/m/Y');
     }
+
+    public function getMonth()
+    {
+        return Carbon::parse($this->created_at)->format('l jS \\of F Y h:i:s A');
+    }
+
     public function getDateUpdate()
     {
         return Carbon::parse($this->updated_at)->format('d/m/Y');
+    }
+
+    public function scopePublished($query)
+    {
+        return $query->where('status', Post::PUBLISHED);
     }
 }

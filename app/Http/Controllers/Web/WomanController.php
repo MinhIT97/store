@@ -7,8 +7,9 @@ use Illuminate\Http\Request;
 
 class WomanController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+
 
         return view('pages.products');
     }

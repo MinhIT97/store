@@ -87,16 +87,17 @@
                         Đăng ký để cập nhật những thông tin và ưu đãi mới nhất từ Mshop.
                     </p>
                 </div>
-                <form action="">
+                <form action="{{route('contact.create')}}" method="POST">
                     <div class="form-group">
                         <label for=""></label>
-                        <input type="text" class="form-control"  id="1" placeholder="Tên của bạn">
+                        <input type="text" class="form-control" name="name" id="1" placeholder="Tên của bạn">
                     </div>
                     <div class="form-group">
                         <label for=""></label>
-                        <input type="email" class="form-control"  id="2" aria-describedby="emailHelpId" placeholder="Email của bạn">
+                        <input type="email" class="form-control" name="email" id="2" aria-describedby="emailHelpId" placeholder="Email của bạn">
                     </div>
                     <button class="btn btn-regis text-uppercase" type="submit">Đăng ký</button>
+                    @csrf
                 </form>
             </div>
         </div>

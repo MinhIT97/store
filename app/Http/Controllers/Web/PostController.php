@@ -2,12 +2,19 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Entities\Post;
 use App\Http\Controllers\Controller;
 
 class PostController extends Controller
 {
     public function index()
     {
-        return view('pages.blog');
+        $blogs = Post::published()->paginate(10);
+        return view(
+            'pages.blog',
+            [
+                'blogs' => $blogs,
+            ]
+        );
     }
 }
