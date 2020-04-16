@@ -24,6 +24,17 @@
     </div>
 </li>
 <li class="nav-item">
+    <a class="nav-link" data-toggle="collapse" href="#poster-pages" aria-expanded="false" aria-controls="general-pages">
+        <span class="menu-title">Poster </span>
+        <i class="menu-arrow"></i>
+        <i class="mdi mdi-medical-bag menu-icon"></i>
+    </a>
+    <div class="collapse" id="poster-pages">
+        <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="{{route('posters.show')}}"> Poster </a></li>
+    </div>
+</li>
+<li class="nav-item">
     <a class="nav-link" data-toggle="collapse" href="#brand-pages" aria-expanded="false" aria-controls="general-pages">
         <span class="menu-title">Brand </span>
         <i class="menu-arrow"></i>

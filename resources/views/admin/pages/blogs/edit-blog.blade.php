@@ -18,7 +18,7 @@
                     <div class="form-group">
                         <label for="title">Title</label>
                         <input type="text" name="title" class="form-control form-control-sm" id="name" value="{{$blog->title}}" placeholder="">
-                        <p class="help is-danger mt-2">{{ $errors->first('name') }}</p>
+                        <p class="help is-danger mt-2">{{ $errors->first('title') }}</p>
                     </div>
                     <div class="form-group">
                         <label for="description">Mô tả</label>
@@ -30,9 +30,9 @@
                         <textarea name="content" class="form-control " id="editor1">{!!$blog->content!!}</textarea>
                     </div>
                     <div class="form-group">
-                        <label for="">Thumbnail</label>
+                        <label for="thumbnail">Thumbnail</label>
                         <input type="file" class="form-control-file" name="thumbnail" id="" placeholder="" aria-describedby="fileHelpId">
-
+                        <p class="help is-danger mt-2">{{ $errors->first('thumbnail') }}</p>
                     </div>
                     <div>
                         <img class="ml-2 img-fluid" src="{{asset('/uploads/'.$blog->thumbnail)}}" alt="">
@@ -46,7 +46,7 @@
                         <p class="help is-danger mt-2">{{ $errors->first('status') }}</p>
                     </div>
                     <div class="justify-content-end d-flex">
-                        <button type="submit" class="btn btn-behance justify-content-end">Edit</button>
+                        <button type="submit" class="btn btn-behance justify-content-end">Update</button>
                     </div>
                     @csrf
                 </form>

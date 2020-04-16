@@ -19,7 +19,6 @@
                     <div class="item">
                         <img class="img-fluid" src="/images/5025.jpg" alt="">
                     </div>
-
                 </div>
                 <div class="product-thumbnail-child">
                     @if($product)
@@ -37,7 +36,6 @@
                         <img class="img-fluid" src="/images/5025.jpg" alt="">
                     </div>
                 </div>
-
             </div>
             <div class="col-12 col-md-5 col-lg-5">
                 @if($product)
@@ -70,31 +68,26 @@
                         Kích thước
                     </div>
                     <div class="product-summary--size">
-
                         <div class="form-check">
                             <input type="radio" class="form-check-input" name="" id="" value="checkedValue" checked>
-
                             <label class="form-check-label active">
                                 S
                             </label>
                         </div>
                         <div class="form-check">
                             <input type="radio" class="form-check-input" name="" id="" value="checkedValue" checked>
-
                             <label class="form-check-label">
                                 M
                             </label>
                         </div>
                         <div class="form-check">
                             <input type="radio" class="form-check-input" name="" id="" value="checkedValue" checked>
-
                             <label class="form-check-label">
                                 L
                             </label>
                         </div>
                         <div class="form-check">
                             <input type="radio" class="form-check-input" name="" id="" value="checkedValue" checked>
-
                             <label class="form-check-label">
                                 XL
                             </label>
@@ -103,7 +96,6 @@
                     <div>
                         Số lượng
                     </div>
-
                     <input class="input-quantity text-center" type="number" min="0" value="1">
                     <div>
                         <button type="btn" class="btn btn-adtocart ">
@@ -111,7 +103,6 @@
                         </button>
                     </div>
                     <div class="line"></div>
-
                     <div class="info-detail">
                         <h4>Chi tiết sản phẩm</h4>
                         <p>
@@ -122,21 +113,16 @@
                         </p>
                     </div>
                     <div class="line"></div>
-
                 </div>
                 @endif
             </div>
         </div>
     </div>
-
-
     <div class="accessories">
         <div class="container">
             <div class="product-head text-center">
-
                 <h2 class="text-uppercase">
                     <p> <strong>accessories</strong> best sellers</p>
-
                 </h2>
             </div>
             <div class="row">
@@ -153,7 +139,6 @@
                         <div class="price">
                             <span>
                                 2.100.000₫
-
                             </span>
                         </div>
                         <span class="star">
@@ -178,7 +163,6 @@
                         <div class="price">
                             <span>
                                 2.100.000₫
-
                             </span>
                         </div>
                         <span class="star">
@@ -203,7 +187,6 @@
                         <div class="price">
                             <span>
                                 2.100.000₫
-
                             </span>
                         </div>
                         <span class="star">
@@ -228,7 +211,6 @@
                         <div class="price">
                             <span>
                                 2.100.000₫
-
                             </span>
                         </div>
                         <span class="star">
@@ -242,17 +224,12 @@
                 </div>
             </div>
         </div>
-
     </div>
-
-
     <div class="related-products">
         <div class="container">
             <div class="product-head text-center">
-
                 <h2 class="text-uppercase">
                     <p> <strong>mens</strong> best sellers</p>
-
                 </h2>
             </div>
             <div class="row">
@@ -269,7 +246,6 @@
                         <div class="price">
                             <span>
                                 2.100.000₫
-
                             </span>
                         </div>
                         <span class="star">
@@ -294,7 +270,6 @@
                         <div class="price">
                             <span>
                                 2.100.000₫
-
                             </span>
                         </div>
                         <span class="star">
@@ -319,7 +294,6 @@
                         <div class="price">
                             <span>
                                 2.100.000₫
-
                             </span>
                         </div>
                         <span class="star">
@@ -344,7 +318,6 @@
                         <div class="price">
                             <span>
                                 2.100.000₫
-
                             </span>
                         </div>
                         <span class="star">
@@ -358,10 +331,6 @@
                 </div>
             </div>
         </div>
-
     </div>
-
-
-
 </section>
 @endsection

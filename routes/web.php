@@ -35,7 +35,7 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin'], function () {
         Route::post('create', 'ProductController@store')->name('create-product');
         Route::get('women', 'ProductController@woman')->name('product-woman');
         Route::get('accessories', 'ProductController@accessories')->name('product-accessories');
-        Route::get('{id}', 'ProductController@destroy')->name('product.destroy');
+        Route::get('delete/{id}', 'ProductController@destroy')->name('product.destroy');
     });
 
     Route::get('categories', 'CategoryController@index')->name('categories.show');
@@ -45,11 +45,19 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin'], function () {
     Route::post('edit-category/{id}', 'CategoryController@update')->name('categories.edit');
     Route::get('category/{id}', 'CategoryController@destroy')->name('categories.destroy');
 
+    Route::get('posters', 'PostersController@index')->name('posters.show');
+    Route::get('poster-create', 'PostersController@showCreate')->name('posters.show_create');
+    Route::post('poster-create', 'PostersController@store')->name('posters.create');
+    Route::get('poster-edit/{id}', 'PostersController@show')->name('posters.show_edit');
+    Route::post('poster-edit/{id}', 'PostersController@edit')->name('posters.edit');
+
     Route::get('blogs', 'BlogController@index')->name('blog.show');
     Route::get('blog-create', 'BlogController@viewStore')->name('blog.show_create');
     Route::post('blog-create', 'BlogController@store')->name('blog.create');
     Route::get('edit-blog/{id}', 'BlogController@viewUpdate')->name('blog.show_update');
+
     Route::post('edit-blog/{id}', 'BlogController@update')->name('blog.update');
+
     Route::get('delete-blog/{id}', 'BlogController@destroy')->name('blog.delete');
 
     Route::get('contacts', 'ContactController@index')->name('contact.show');
@@ -79,7 +87,8 @@ Route::group(['prefix' => '/', 'namespace' => 'Web'], function () {
 
     Route::get('products/{type}/{slug}', 'ProductDetailController@show')->name('web.product_show_detail');
 
-    Route::get('blogs', 'PostController@index')->name('blogs');
+    Route::get('blogs', 'BlogController@index')->name('blogs');
+    Route::get('blogs/{slug}', 'BlogController@show')->name('blogs.show');
     Route::post('contacts', 'ContactController@store')->name('contact.create');
 
     Route::get('pages/{slug}', 'PostListController@show')->name('pages.show');

@@ -27,16 +27,8 @@ class BlogCreateRequest extends FormRequest
             'title'       => ['required'],
             'description' => ['required'],
             'content'     => ['required'],
-            'thumbnail'   => ['required'],
+            'thumbnail'   => ['required', 'image'],
             'status'      => ['required'],
         ];
-    }
-    public function messages()
-    {
-        return [
-            'title.required'  => 'bạn chưa nhập têu đề',
-        ];
-
-
     }
 }

@@ -14,7 +14,6 @@ class CategoryController extends Controller
     {
         $this->repository = $repository;
         $this->entity     = $repository->getEntity();
-
     }
 
     public function index()
@@ -30,13 +29,16 @@ class CategoryController extends Controller
     }
 
     public function showCreate()
-    {$categoies = $this->entity->get();
+    {
+        $categoies = $this->entity->get();
 
-        return view('admin.pages.categories.create-category',
+        return view(
+            'admin.pages.categories.create-category',
             [
                 'categories' => $categoies,
 
-            ]);
+            ]
+        );
     }
     public function store(CategoryCreateRequest $request)
     {
@@ -65,7 +67,9 @@ class CategoryController extends Controller
     {
         $category = $this->entity->find($id);
         $data     = $request->all();
-        if ($category->update($data)) {
+        if ($category) {
+            $category->slug = null;
+            $category->update($data);
             return redirect()->route('categories.show')->with('sucsess', 'Category update sucsess');
         } else {
             return redirect()->back()->with('error', 'Category update error');
@@ -75,8 +79,8 @@ class CategoryController extends Controller
     {
         $category = $this->entity->find($id);
         $delete   = $category->delete();
-        if ($delete) {return redirect()->route('categories.show')->with('sucsess', 'Delete Category sucsess');
-
+        if ($delete) {
+            return redirect()->route('categories.show')->with('sucsess', 'Delete Category sucsess');
         }
         return redirect()->back()->with('error', 'Delete Category error');
     }

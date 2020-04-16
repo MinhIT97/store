@@ -28,6 +28,7 @@ class UserCreateRequest extends FormRequest
             'email'           => ['required', 'email', 'unique:users'],
             'password'        => ['required', 'min:6'],
             'confirmpassword' => ['required', 'same:password'],
+            'avatar'          => ['image'],
         ];
     }
 

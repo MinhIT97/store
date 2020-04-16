@@ -22424,8 +22424,12 @@ readers do not read off random characters that represent icons */
   margin-bottom: 20px;
 }
 
+.product .img-head img {
+  width: 100%;
+}
+
 .product .product-item {
-  border: 1px solid #E9E0E2;
+  border: 1px solid #e9e0e2;
   margin: 0;
   padding: 0;
   border-radius: 6px;
@@ -22615,6 +22619,10 @@ readers do not read off random characters that represent icons */
 .product-detail .accessories .star {
   display: flex;
   justify-content: center;
+}
+
+.blog .poster img {
+  width: 100%;
 }
 
 .blog .blog-item {

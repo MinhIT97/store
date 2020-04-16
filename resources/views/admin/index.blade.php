@@ -20,6 +20,7 @@
                                 <tr>
                                     <th> # </th>
                                     <th> Name </th>
+                                    <th> avatar </th>
                                     <th> Email </th>
                                     <th> Phone </th>
                                     <th> Status </th>
@@ -32,6 +33,7 @@
                                 @foreach($users as $user)
                                 <tr>
                                     <td> {{$user->id}}</td>
+                                    <td><img class="ml-2" src="{{asset('/uploads/'.$user->avatar)}}" alt=""></td>
                                     <td> {{$user->name}} </td>
                                     <td> {{$user->email}} </td>
                                     <td> {{$user->phone}} </td>

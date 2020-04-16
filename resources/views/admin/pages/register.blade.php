@@ -4,7 +4,24 @@
     <div class="row flex-grow">
         <div class="col-lg-8 mx-auto">
             <div class="auth-form-light text-left p-5">
-                <form class="pt-3" method="POST" action="{{ route('users.create') }}">
+                <form class="pt-3" method="POST" action="{{ route('users.create') }}" enctype="multipart/form-data">
+                    <div class="upload-avatar">
+                        <div class="container">
+                            <h1>
+                                Avartar upload
+                            </h1>
+                            <div class="avatar-upload">
+                                <div class="avatar-edit">
+                                    <input type='file' name="avatar" id="imageUpload" accept=".png, .jpg, .jpeg" />
+                                    <label for="imageUpload"></label>
+                                </div>
+                                <div class="avatar-preview">
+                                    <div id="imagePreview" >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <input type="text" name="name" class="form-control form-control-lg" value="{{ old('name') }}" id="exampleInputName" placeholder="Name">
                         <p class="help is-danger mt-2">{{ $errors->first('name') }}</p>

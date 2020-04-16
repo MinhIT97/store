@@ -68,8 +68,8 @@ class BlogController extends Controller
         }
 
         if ($blog) {
-            $update = $blog->update($data);
-
+            $blog->slug = null;
+            $update     = $blog->update($data);
             if ($update) {
                 return redirect()->back()->with('sucsess', 'Update blog thành công');
             }

@@ -1,14 +1,13 @@
 <section class="home">
-    <div>
-        <img class="img-fluid lion-main__image position-relative" src="/images/103.jpg" alt="">
-
+    <div class="baner">
+        @if($poster)
+        <img class="img-fluid lion-main__image position-relative" src="{{asset('uploads/'.$poster->thumbnail)}}" alt="">
+        @endif
         <button class="btn btn-sale btn-sale__men position-absolute">mens sale</button>
         <button class="btn btn-sale btn-sale_women position-absolute">womens sale</button>
     </div>
     <div class="main-slider">
         <div id="slider" class="carousel slide" data-ride="carousel">
-            <!-- Indicators -->
-
             <ul class="carousel-indicators">
                 <li data-target="#slider" data-slide-to="" class="">
                     <div></div>
@@ -56,7 +55,6 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="product_slider">
-                                <!-- Begin Hiraola's Slide Item Area -->
                                 <div class="slide-item">
                                     <a href="/product">
                                         <div class="slide-item__image">
@@ -69,7 +67,6 @@
                                             <div class="slide-item__content--content">
                                                 <span class="money">2.900.000 đ</span>
                                             </div>
-
                                         </div>
                                     </a>
                                 </div>
@@ -245,7 +242,6 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="product_slider">
-                                <!-- Begin Hiraola's Slide Item Area -->
                                 <div class="slide-item">
                                     <a href="/product">
                                         <div class="slide-item__image">

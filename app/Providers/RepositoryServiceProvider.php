@@ -45,6 +45,8 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(\App\Repositories\SizeRepository::class, \App\Repositories\SizeRepositoryEloquent::class);
         $this->app->bind(\App\Repositories\SizeableRepository::class, \App\Repositories\SizeableRepositoryEloquent::class);
         $this->app->bind(\App\Repositories\BrandRepository::class, \App\Repositories\BrandRepositoryEloquent::class);
+        $this->app->bind(\App\Repositories\PosterRepository::class, \App\Repositories\PosterRepositoryEloquent::class);
+        $this->app->bind(\App\Repositories\AvatarRepository::class, \App\Repositories\AvatarRepositoryEloquent::class);
         //:end-bindings:
     }
 }

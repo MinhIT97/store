@@ -26,24 +26,21 @@ class UserController extends Controller
 
     public function store(UserCreateRequest $request)
     {
-
-        $request->password = Hash::make($request->password);
-
-        $user = User::create(
-            [
-                'name'         => $request->name,
-                'username'     => $request->username,
-                'phone'        => $request->phone,
-                'email'        => $request->email,
-                'password'     => $request->password,
-                'verify_token' => Str::random(32),
-            ]
-        );
+        if ($request->hasFile('avatar')) {
+            $request->avatar->move(base_path('/public/uploads'), $request->avatar->getClientOriginalName());
+            $data              = $request->all();
+            $data['avatar'] = $request->avatar->getClientOriginalName();
+        } else {
+            $data = $request->all();
+        }
+        $data['password']  = Hash::make($request->password);
+        $data['verify_token'] = Str::random(32);
+        $user = User::create($data);
 
         if (!$user) {
             return redirect()->back()->with('error', 'Thêm tài khoản không thành công');
         }
-        return redirect()->route('users')->with('sucsess', 'Thêm tài khoản' . $request->name . 'thành công');
+        return redirect()->route('users.show')->with('sucsess', 'Thêm tài khoản' . $request->name . 'thành công');
     }
     public function viewEditUser(Request $request)
     {

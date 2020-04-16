@@ -10,7 +10,7 @@
                             <li class="lion-nav__iteam"><a href="{{asset('products/women')}}">Nữ</a></li>
                             <!-- <li class="lion-nav__iteam"><a href="/product">Unisex</a></li> -->
                             <li class="lion-nav__iteam"><a href="{{asset('products/accessories')}}">Phụ kiện</a></li>
-                            <li class="lion-nav__iteam"><a href="{{asset('products/blogs')}}">Blog</a></li>
+                            <li class="lion-nav__iteam"><a href="{{route('blogs')}}">Blog</a></li>
                         </ul>
                     </div>
                     <div class="lion-logo">

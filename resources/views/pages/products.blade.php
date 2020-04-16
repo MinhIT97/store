@@ -2,7 +2,9 @@
 @section('content')
 <section class="product">
     <div class="img-head">
-        <img class="img-fluid" src="/images/3407807.jpg" alt="">
+        @if($poster)
+        <img class="img-fluid" src="{{asset('uploads/'.$poster->thumbnail)}}" alt="">
+        @endif
     </div>
     <div class="product">
         <div class="container">

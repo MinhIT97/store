@@ -6,8 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\BrandCreateRequest;
 use App\Http\Requests\BrandUpdateRequest;
 use App\Repositories\BrandRepository;
-use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Validator;
+
 class BrandController extends Controller
 {
     protected $repository;
@@ -52,9 +51,12 @@ class BrandController extends Controller
     }
     public function update(BrandUpdateRequest $request, $id)
     {
-        $brand = $this->entity->findOrFail($id);
-        $data  = $request->all();
-        if ($brand->update($data)) {
+        $brand       = $this->entity->findOrFail($id);
+        $data        = $request->all();
+        $brand->slug = null;
+        if ($brand) {
+            $brand->slug = null;
+            $brand->update($data);
             return redirect()->route('brand.show')->with('sucsess', 'update brand sucsess');
         }
     }

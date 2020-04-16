@@ -61,6 +61,11 @@ class Product extends Model implements Transformable
         return Carbon::parse($this->created_at)->format('d/m/Y');
     }
 
+    public function imgaes()
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
+
     public function brand()
     {
         return $this->hasOne(Brand::class);

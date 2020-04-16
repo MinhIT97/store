@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="/vendors/css/vendor.bundle.base.css">
     <link rel="stylesheet" href="/admin/css/style.css">
+    <link rel="stylesheet" href="style.css">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @livewireStyles
 
