@@ -79,7 +79,6 @@
                     </div>
 
                     <div class="upload-product">
-
                         <label for="">Thumbnail</label>
                         <div class="product-upload">
                             <div class="product-edit">
@@ -94,14 +93,14 @@
                         <p class="help is-danger mt-2">{{ $errors->first('thumbnail') }}</p>
                     </div>
 
-                    <!-- <div class="form-group">
-                        <label for="media">Media</label>
-                        <input type="file" class="form-control-file" name="media[]" id="" multiple placeholder="" aria-describedby="fileHelpId">
-                    </div> -->
-
+                    <div class="form-group ">
+                        <label>Nội dung</label>
+                        <textarea name="content" class="form-control " id="editor1"></textarea>
+                        <p class="help is-danger mt-2">{{ $errors->first('content') }}</p>
+                    </div>
                     <p style="margin-bottom:25px">Medias: <span class="imupl-files-current"></span>/<span class="imupl-files-max"></span> <button style="float:right" class="btn btn-primary imupl-button-choose"><i class="fa fa-upload"></i> Upload</button></p>
                     <div class="imupl-files-list"></div>
-                    <input type="file"  name="media[]" multiple class="imupl-fileinput" />
+                    <input type="file" name="media[]" multiple class="imupl-fileinput" />
                     <div class="imupl-edit-overlay">
                         <div class="thumbnail">
                             <div class="imupl-crop-wrapper">
@@ -126,8 +125,12 @@
                         </select>
                         <p class="help is-danger mt-2">{{ $errors->first('status') }}</p>
                     </div>
+
+                    <input type="checkbox" name="hot" value="1">
+                    <label for="">Hot</label>
+
                     <div class="justify-content-end d-flex">
-                        <button type="submit" id="btn-submit" class="btn btn-behance justify-content-end">Create</button>
+                        <button type="submit" id="btn-submit" class="btn btn-gradient-info btn-behance justify-content-end">Create</button>
                     </div>
                     @csrf
                 </form>

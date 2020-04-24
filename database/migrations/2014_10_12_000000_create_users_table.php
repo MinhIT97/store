@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('status')->default(0);
             $table->string('phone')->nullable();
             $table->string('verify_token');
-            $table->string('avatar');
+            $table->string('avatar')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Entities\Attribute;
 use App\Entities\Category;
 use App\Entities\Post;
 use App\Entities\Product;
@@ -34,6 +35,7 @@ class AppServiceProvider extends ServiceProvider
             'products'   => Product::class,
             'categories' => Category::class,
             'sizes'      => Size::class,
+            'attribute'  => Attribute::class,
         ]);
         Schema::defaultStringLength(191);
     }

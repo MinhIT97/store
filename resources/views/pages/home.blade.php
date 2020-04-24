@@ -9,32 +9,30 @@
     <div class="main-slider">
         <div id="slider" class="carousel slide" data-ride="carousel">
             <ul class="carousel-indicators">
+                @if($new_sesion->count())
+                @foreach($new_sesion as $session)
                 <li data-target="#slider" data-slide-to="" class="">
                     <div></div>
                 </li>
-                <li data-target="#slider" data-slide-to="" class="">
-                    <div></div>
-                </li>
-                <li data-target="#slider" data-slide-to="" class="">
-                    <div></div>
-                </li>
-                <li data-target="#slider" data-slide-to="" class="">
-                    <div></div>
-                </li>
+                @endforeach
+                @endif
+
             </ul>
             <div class="carousel-inner">
+                @if($new_sesion->count())
+                @foreach($new_sesion as $session)
+                @if ($loop->first)
                 <div class="carousel-item active">
-                    <img class="img-fluid" src="/images/1221.jpg">
+                    <img class="img-fluid" src="{{asset('uploads/'.$session->thumbnail)}}">
                 </div>
-                <div class="carousel-item ">
-                    <img class="img-fluid" src="/images/1251.jpg">
+                @endif
+                @if ($loop->last)
+                <div class="carousel-item">
+                    <img class="img-fluid" src="{{asset('uploads/'.$session->thumbnail)}}">
                 </div>
-                <div class="carousel-item ">
-                    <img class="img-fluid" src="/images/1221.jpg">
-                </div>
-                <div class="carousel-item ">
-                    <img class="img-fluid" src="/images/1251.jpg">
-                </div>
+                @endif
+                @endforeach
+                @endif
             </div>
             <a class="carousel-control-prev prev" href="#slider" data-slide="prev">
             </a>
@@ -47,7 +45,7 @@
             <div class="product-head text-center">
 
                 <h2 class="text-uppercase">
-                    <p> <strong>mens</strong> best sellers</p>
+                    <p> <strong>Men</strong> best sellers</p>
                 </h2>
             </div>
             <section class="product-slider">
@@ -55,83 +53,25 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="product_slider">
+                                @if($product_men->count())
+                                @foreach($product_men as $product)
                                 <div class="slide-item">
-                                    <a href="/product">
+                                    <a href="{{asset('products/'.$product->type.'/'.$product->slug)}}">
                                         <div class="slide-item__image">
-                                            <img class="img-fluid" src="/images/5152.jpg" alt="">
+                                            <img class="img-fluid" src="{{asset('uploads/'.$product->thumbnail)}}" alt="">
                                         </div>
                                         <div class="slide-item__content text-center">
                                             <div class="slide-item__content--heading">
-                                                <a class="name">Đầm dạ hội</a>
+                                                <a class="name">{{$product->getLimitName(15)}}</a>
                                             </div>
                                             <div class="slide-item__content--content">
-                                                <span class="money">2.900.000 đ</span>
+                                                <span class="money"> {{number_format($product->price)}}₫</span>
                                             </div>
                                         </div>
                                     </a>
                                 </div>
-                                <div class="slide-item">
-                                    <a href="/product">
-                                        <div class="slide-item__image">
-                                            <img class="img-fluid" src="/images/5152.jpg" alt="">
-                                        </div>
-                                        <div class="slide-item__content text-center">
-                                            <div class="slide-item__content--heading">
-                                                <a class="name">Đầm dạ hội</a>
-                                            </div>
-                                            <div class="slide-item__content--content">
-                                                <span class="money">2.900.000 đ</span>
-                                            </div>
-
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="slide-item">
-                                    <a href="/product">
-                                        <div class="slide-item__image">
-                                            <img class="img-fluid" src="/images/5152.jpg" alt="">
-                                        </div>
-                                        <div class="slide-item__content text-center">
-                                            <div class="slide-item__content--heading">
-                                                <a class="name">Đầm dạ hội</a>
-                                            </div>
-                                            <div class="slide-item__content--content">
-                                                <span class="money">2.900.000 đ</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="slide-item">
-                                    <a href="/product">
-                                        <div class="slide-item__image">
-                                            <img class="img-fluid" src="/images/5152.jpg" alt="">
-                                        </div>
-                                        <div class="slide-item__content text-center">
-                                            <div class="slide-item__content--heading">
-                                                <a class="name">Đầm dạ hội</a>
-                                            </div>
-                                            <div class="slide-item__content--content">
-                                                <span class="money">2.900.000 đ</span>
-                                            </div>
-
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="slide-item">
-                                    <a href="/product">
-                                        <div class="slide-item__image">
-                                            <img class="img-fluid" src="/images/5152.jpg" alt="">
-                                        </div>
-                                        <div class="slide-item__content text-center">
-                                            <div class="slide-item__content--heading">
-                                                <a class="name">Đầm dạ hội</a>
-                                            </div>
-                                            <div class="slide-item__content--content">
-                                                <span class="money">2.900.000 đ</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
+                                @endforeach
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -242,85 +182,25 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="product_slider">
+                                @if($product_women->count())
+                                @foreach($product_women as $product)
                                 <div class="slide-item">
-                                    <a href="/product">
+                                    <a href="{{asset('products/'.$product->type.'/'.$product->slug)}}">
                                         <div class="slide-item__image">
-                                            <img class="img-fluid" src="/images/5152.jpg" alt="">
+                                            <img class="img-fluid" src="{{asset('uploads/'.$product->thumbnail)}}" alt="">
                                         </div>
-                                        <div class="text-center">
-                                            <div class="name">
-                                                <span>Đầm dạ hội</span>
+                                        <div class="slide-item__content text-center">
+                                            <div class="slide-item__content--heading">
+                                                <a class="name">{{$product->getLimitName(15)}}</a>
                                             </div>
-                                            <div class="price">
-                                                <span>2.900.000 đ</span>
-                                            </div>
-
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="slide-item">
-                                    <a href="/product">
-                                        <div class="slide-item__image">
-                                            <img class="img-fluid" src="/images/5152.jpg" alt="">
-                                        </div>
-                                        <div class="text-center">
-                                            <div class="name">
-                                                <span>Đầm dạ hội</span>
-                                            </div>
-                                            <div class="price">
-                                                <span>2.900.000 đ</span>
-                                            </div>
-
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="slide-item">
-                                    <a href="/product">
-                                        <div class="slide-item__image">
-                                            <img class="img-fluid" src="/images/5152.jpg" alt="">
-                                        </div>
-                                        <div class="text-center">
-                                            <div class="name">
-                                                <span>Đầm dạ hội</span>
-                                            </div>
-                                            <div class="price">
-                                                <span>2.900.000 đ</span>
-                                            </div>
-
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="slide-item">
-                                    <a href="/product">
-                                        <div class="slide-item__image">
-                                            <img class="img-fluid" src="/images/5152.jpg" alt="">
-                                        </div>
-                                        <div class="text-center">
-                                            <div class="name">
-                                                <span>Đầm dạ hội</span>
-                                            </div>
-                                            <div class="price">
-                                                <span>2.900.000 đ</span>
-                                            </div>
-
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="slide-item">
-                                    <a href="/product">
-                                        <div class="slide-item__image">
-                                            <img class="img-fluid" src="/images/5152.jpg" alt="">
-                                        </div>
-                                        <div class="text-center">
-                                            <div class="name">
-                                                <span>Đầm dạ hội</span>
-                                            </div>
-                                            <div class="price">
-                                                <span>2.900.000 đ</span>
+                                            <div class="slide-item__content--content">
+                                                <span class="money"> {{number_format($product->price)}}₫</span>
                                             </div>
                                         </div>
                                     </a>
                                 </div>
+                                @endforeach
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -334,7 +214,7 @@
             <div class="product-head text-center">
 
                 <h2 class="text-uppercase">
-                    <p> <strong>UNISEX</strong> best sellers</p>
+                    <p> <strong>accessories</strong> best sellers</p>
 
                 </h2>
             </div>
@@ -343,87 +223,25 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="product_slider">
-                                <!-- Begin Hiraola's Slide Item Area -->
+                                @if($product_accessories->count())
+                                @foreach($product_accessories as $product)
                                 <div class="slide-item">
-                                    <a href="/product">
+                                    <a href="{{asset('products/'.$product->type.'/'.$product->slug)}}">
                                         <div class="slide-item__image">
-                                            <img class="img-fluid" src="/images/5152.jpg" alt="">
+                                            <img class="img-fluid" src="{{asset('uploads/'.$product->thumbnail)}}" alt="">
                                         </div>
-                                        <div class="text-center">
-                                            <div class="name">
-                                                <span>Đầm dạ hội</span>
+                                        <div class="slide-item__content text-center">
+                                            <div class="slide-item__content--heading">
+                                                <a class="name">{{$product->getLimitName(15)}}</a>
                                             </div>
-                                            <div class="price">
-                                                <span>2.900.000 đ</span>
+                                            <div class="slide-item__content--content">
+                                                <span class="money"> {{number_format($product->price)}}₫</span>
                                             </div>
-
                                         </div>
                                     </a>
                                 </div>
-                                <div class="slide-item">
-                                    <a href="/product">
-                                        <div class="slide-item__image">
-                                            <img class="img-fluid" src="/images/5152.jpg" alt="">
-                                        </div>
-                                        <div class="text-center">
-                                            <div class="name">
-                                                <span>Đầm dạ hội</span>
-                                            </div>
-                                            <div class="price">
-                                                <span>2.900.000 đ</span>
-                                            </div>
-
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="slide-item">
-                                    <a href="/product">
-                                        <div class="slide-item__image">
-                                            <img class="img-fluid" src="/images/5152.jpg" alt="">
-                                        </div>
-                                        <div class="text-center">
-                                            <div class="name">
-                                                <span>Đầm dạ hội</span>
-                                            </div>
-                                            <div class="price">
-                                                <span>2.900.000 đ</span>
-                                            </div>
-
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="slide-item">
-                                    <a href="/product">
-                                        <div class="slide-item__image">
-                                            <img class="img-fluid" src="/images/5152.jpg" alt="">
-                                        </div>
-                                        <div class="text-center">
-                                            <div class="name">
-                                                <span>Đầm dạ hội</span>
-                                            </div>
-                                            <div class="price">
-                                                <span>2.900.000 đ</span>
-                                            </div>
-
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="slide-item">
-                                    <a href="/product">
-                                        <div class="slide-item__image">
-                                            <img class="img-fluid" src="/images/5152.jpg" alt="">
-                                        </div>
-                                        <div class="text-center">
-                                            <div class="name">
-                                                <span>Đầm dạ hội</span>
-                                            </div>
-                                            <div class="price">
-                                                <span>2.900.000 đ</span>
-                                            </div>
-
-                                        </div>
-                                    </a>
-                                </div>
+                                @endforeach
+                                @endif
                             </div>
                         </div>
                     </div>

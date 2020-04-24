@@ -18,11 +18,14 @@ class ProductController extends Controller
 
     public function index(Request $request)
     {
-        $products = $this->entity->where('type', $request->type)->published()->latest()->paginate(12);
+        $query = $this->entity->where('type', $request->type)->published()->latest();
+        $product_count = $query->get();
+        $products= $query->paginate(12);
         $poster   = Poster::where('type', $request->type)->latest()->published()->first();
         return view('pages.products', [
             'products' => $products,
             'poster'   => $poster,
+            'product_count' =>$product_count,
         ]);
     }
 

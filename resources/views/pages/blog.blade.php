@@ -6,9 +6,9 @@
         <img class="img-fluid" src="{{asset('uploads/'.$poster->thumbnail)}}" alt="">
         @endif
     </div>
+    <div class="container">
     @if($blogs->count())
     @foreach($blogs as $blog)
-    <div class="container">
         <div class="blog-item">
             <div class="row">
                 <div class="col-12 col-md-6">
@@ -20,7 +20,7 @@
                         {!!$blog->title!!}
                     </h4>
                     <span class="content">
-                        {!!$blog->content!!}
+                        {!!$blog->description!!}
                     </span>
                     <div class="show-more">
                         <a href="{{url('blogs/'.$blog->slug)}}">Xem Thêm</a>

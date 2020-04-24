@@ -27,16 +27,29 @@
                     </div>
                     <div class="form-group">
                         <label for="type">type</label>
-                        <input type="text" name="type" class="form-control form-control-sm" id="name" value="{{$poster->type}}">
-                        <p class="help is-danger mt-2">{{ $errors->first('type') }}</p>
+                        <select name="type" id="select1" class="form-control form-control-sm  js-example-basic-single">
+                            <option selected value="{{$poster->type}}">{{$poster->type}}</option>
+                            <option value="home">Home</option>
+                            <option value="men">Men</option>
+                            <option value="women">Women</option>
+                            <option value="accessories">accessories</option>
+                            <option value="blog">blog</option>
+                            <option value="newsesion">New Session</option>
+                        </select>
                     </div>
-                    <div class="form-group">
-                        <label for="">Thumbnail</label>
-                        <input type="file" class="form-control-file" name="thumbnail" id="" placeholder="" aria-describedby="fileHelpId">
-
-                    </div>
-                    <div>
-                        <img class="ml-2 img-fluid" src="{{asset('/uploads/'.$poster->thumbnail)}}" alt="">
+                    <div class="upload-product">
+                        <label for="">Images</label>
+                        <div class="product-upload">
+                            <div class="product-edit">
+                                <input type='file' name="thumbnail" aria-describedby="fileHelpId" id="imageUpload" accept=".png, .jpg, .jpeg" />
+                                <label for="imageUpload"></label>
+                            </div>
+                            <div class="product-preview">
+                                <div class="imagePreview" id="imagePreview" style="background-image:url({{asset('/uploads/'.$poster->thumbnail)}})">
+                                </div>
+                            </div>
+                        </div>
+                        <p class="help is-danger mt-2">{{ $errors->first('thumbnail') }}</p>
                     </div>
                     <div class="form-group mt-4">
                         <Label> Trạng thái</Label>
@@ -47,7 +60,7 @@
                         <p class="help is-danger mt-2">{{ $errors->first('status') }}</p>
                     </div>
                     <div class="justify-content-end d-flex">
-                        <button type="submit" class="btn btn-behance justify-content-end">Edit</button>
+                        <button type="submit" class="btn  btn-gradient-info btn-behance justify-content-end">Edit</button>
                     </div>
                     @csrf
                 </form>

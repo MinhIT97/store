@@ -47,7 +47,7 @@
                                 <tr>
                                     <td> {{$product->id}}</td>
                                     <td><img class="ml-2" src="{{asset('/uploads/'.$product->thumbnail)}}" alt=""></td>
-                                    <td> {{$product->name}} </td>
+                                    <td> {{$product->getLimitName(25)}} </td>
                                     <td> {{$product->quantity}} </td>
                                     <td> {{$product->price}} </td>
                                     <td> @if($product->status === 0)
@@ -60,8 +60,10 @@
                                     </td>
                                     <td>{{$product->getDate()}} </td>
                                     <td>
-                                        <a class="btn btn-gradient-info p-2" href="{{ url('adminstore/products/edit/'.$product->id )}}">Sửa</a>
-                                        <a class="btn btn-gradient-danger p-2 ml-2" href="{{ url('adminstore/products/delete/'.$product->id )}}">Xóa</a>
+                                        <a class="btn btn-gradient-info p-2" href="{{ url('adminstore/products/edit/'.$product->id )}}"><i class="fas fa-edit"></i></a>
+                                        <a class="btn btn-gradient-danger p-2 ml-2" href="{{ url('adminstore/products/delete/'.$product->id )}}"><i class="fas fa-trash"></i></a>
+                                        <a class="btn btn-gradient-danger p-2 ml-2" href="{{ url('adminstore/products/'.$product->id.'/attribute' )}}"><i class="fas fa-plus-circle"></i></a>
+                                        <a class="btn btn-gradient-danger p-2 ml-2" href="{{ url('adminstore/products/'.$product->id.'/detail-attribute' )}}"><i class="fas fa-minus"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach

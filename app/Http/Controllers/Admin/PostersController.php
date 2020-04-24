@@ -7,7 +7,6 @@ use App\Http\Requests\PosterCreateRequest;
 use App\Http\Requests\PosterUpdateRequest;
 use App\Repositories\PosterRepository;
 use App\Validators\PosterValidator;
-use Illuminate\Http\Request;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
 
@@ -43,16 +42,15 @@ class PostersController extends Controller
         $poster = $this->entity->create($data);
 
         if ($poster) {
-            return redirect()->back()->with('sucsess', 'Create contact sucsses');
+            return redirect()->back()->with('sucsess', 'Create poster sucsses');
         }
-        return redirect()->back()->with('errow', 'Create contact sucsses');
+        return redirect()->back()->with('errow', 'Create poster sucsses');
     }
 
     public function showCreate()
     {
         return view('admin.pages.poster.create-poster');
     }
-
     public function show($id)
     {
         $poster = $this->repository->find($id);
@@ -78,9 +76,8 @@ class PostersController extends Controller
             $update       = $poster->update($data);
 
             if ($update) {
-                return redirect()->back()->with('sucsess', 'Update blog thành công');
+                return redirect()->back()->with('sucsess', 'Update poster thành công');
             }
-
         }
         return redirect()->back()->with('errow', 'Update Fail');
     }
@@ -121,15 +118,9 @@ class PostersController extends Controller
     public function destroy($id)
     {
         $deleted = $this->repository->delete($id);
-
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'message' => 'Poster deleted.',
-                'deleted' => $deleted,
-            ]);
+        if ($deleted) {
+            return redirect()->back()->with('sucsess', 'Poster deleted sucsess');
         }
-
-        return redirect()->back()->with('message', 'Poster deleted.');
+        abort(404);
     }
 }

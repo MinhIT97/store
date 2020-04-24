@@ -29,13 +29,19 @@
                         <label>Nội dung</label>
                         <textarea name="content" class="form-control " id="editor1">{!!$blog->content!!}</textarea>
                     </div>
-                    <div class="form-group">
-                        <label for="thumbnail">Thumbnail</label>
-                        <input type="file" class="form-control-file" name="thumbnail" id="" placeholder="" aria-describedby="fileHelpId">
+                    <div class="upload-product">
+                        <label for="">Thumbnail</label>
+                        <div class="product-upload">
+                            <div class="product-edit">
+                                <input type='file' name="thumbnail" aria-describedby="fileHelpId" id="imageUpload" accept=".png, .jpg, .jpeg" />
+                                <label for="imageUpload"></label>
+                            </div>
+                            <div class="product-preview">
+                                <div id="imagePreview" style="background-image:url({{asset('/uploads/'.$blog->thumbnail)}})">
+                                </div>
+                            </div>
+                        </div>
                         <p class="help is-danger mt-2">{{ $errors->first('thumbnail') }}</p>
-                    </div>
-                    <div>
-                        <img class="ml-2 img-fluid" src="{{asset('/uploads/'.$blog->thumbnail)}}" alt="">
                     </div>
                     <div class="form-group mt-4">
                         <Label> Trạng thái</Label>

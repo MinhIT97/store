@@ -44,7 +44,7 @@
                                     <td><img class="ml-2" src="{{asset('/uploads/'.$poster->thumbnail)}}" alt=""></td>
                                     <td>
                                         <a class="btn btn-gradient-info p-2" href="{{url('adminstore/poster-edit/'.$poster->id)}}">Sửa</a>
-                                        <a class="btn btn-gradient-danger p-2 ml-2" href="">Xóa</a>
+                                        <a class="btn btn-gradient-danger p-2 ml-2" href="{{url('adminstore/delete-poster/'.$poster->id)}}">Xóa</a>
                                     </td>
                                 </tr>
                                 @endforeach

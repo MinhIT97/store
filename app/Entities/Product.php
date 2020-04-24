@@ -2,14 +2,13 @@
 
 namespace App\Entities;
 
+use App\Traits\QueryTrait;
 use Carbon\Carbon;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
-use Illuminate\Support\Str;
-
 
 /**
  * Class Product.
@@ -18,15 +17,16 @@ use Illuminate\Support\Str;
  */
 class Product extends Model implements Transformable
 {
-    use TransformableTrait, Sluggable, SluggableScopeHelpers;
+    use TransformableTrait, Sluggable, SluggableScopeHelpers, QueryTrait;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    const PENĐING  = 0;
-    const PUBLISHED = 1;
+    const PENĐING      = 0;
+    const PUBLISHED     = 1;
+    const HOTS =1;
     protected $fillable = [
         "name",
         "quantity",
@@ -39,6 +39,8 @@ class Product extends Model implements Transformable
         "thumbnail",
         "type",
         "brand_id",
+        "content",
+        "hot",
     ];
     public function sluggable()
     {
@@ -60,8 +62,12 @@ class Product extends Model implements Transformable
     {
         return Carbon::parse($this->created_at)->format('d/m/Y');
     }
+    public function attributes()
+    {
+        return $this->hasMany(Attribute::class, 'product_id');
+    }
 
-    public function imgaes()
+    public function imagaes()
     {
         return $this->morphMany(Image::class, 'imageable');
     }
@@ -72,10 +78,10 @@ class Product extends Model implements Transformable
     }
     public function scopePublished($query)
     {
-        $query->where('status', Product::PUBLISHED);
+        $query->where('status', self::PUBLISHED);
     }
-    public function getLimitName($limit)
+    public function scopeHots($query)
     {
-        return Str::limit($this->name, $limit);
+        $query->where('hot', self::HOTS);
     }
 }

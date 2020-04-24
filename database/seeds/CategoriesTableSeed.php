@@ -15,6 +15,6 @@ class CategoriesTableSeed extends Seeder
 
     protected function run()
     {
-        factory(Category::class, 6)->create();
+        factory(Category::class, 4)->create();
     }
 }

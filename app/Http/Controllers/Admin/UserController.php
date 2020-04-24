@@ -28,14 +28,14 @@ class UserController extends Controller
     {
         if ($request->hasFile('avatar')) {
             $request->avatar->move(base_path('/public/uploads'), $request->avatar->getClientOriginalName());
-            $data              = $request->all();
+            $data           = $request->all();
             $data['avatar'] = $request->avatar->getClientOriginalName();
         } else {
             $data = $request->all();
         }
-        $data['password']  = Hash::make($request->password);
+        $data['password']     = Hash::make($request->password);
         $data['verify_token'] = Str::random(32);
-        $user = User::create($data);
+        $user                 = User::create($data);
 
         if (!$user) {
             return redirect()->back()->with('error', 'Thêm tài khoản không thành công');
@@ -65,15 +65,17 @@ class UserController extends Controller
         }
 
         if ($user->update($request->all())) {
-            return redirect()->route('users')->with('sucsess', 'Sửa tài khảon' . $request->name . 'thành công');
+            return redirect()->route('users.show')->with('sucsess', 'update ' . $request->name . ' sucsess');
         } else {
-            return redirect('admin/product')->with('success', 'Sửa danh mục' . $request->name . 'thất bại');
+            return redirect()->back()->with('success', 'update' . $request->name . 'thất bại');
         }
     }
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $user = User::where('id', $request->id);
-        if (count($user->get()) > 0) {
+        $user = User::find($id);
+        if ($user->delete()) {
+            return redirect()->back()->with('sucsess', 'Delete sucsess');
         }
+        return redirect()->back()->with('errow', 'Delete errow');
     }
 }

@@ -20,11 +20,11 @@
                     <div class="lion-nav__right">
                         <ul>
                             <li class="lion-nav__iteam"><a href="">
-                                    <span class="mobile--hidden"> Giỏ hàng</span>
+                                    <span class="mobile--hidden"> Cart</span>
                                     <i class="fas fa-shopping-cart"></i>
                                 </a></li>
                             <li class="lion-nav__iteam ">
-                                <a href="" class="mobile--hidden"><i class="fas fa-search"></i></a></li>
+                                <a class="mobile--hidden"><i class="fas fa-search"></i></a></li>
                             @guest
                             <li class="lion-nav__iteam"><a href="/login">
                                     <span class="mobile--hidden">Đăng nhập</span>
@@ -42,7 +42,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                     document.getElementById('logout-form').submit();">
+                                    document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 

@@ -24,7 +24,7 @@ class ContactCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'email'=>['required','unique:contacts']
         ];
     }
 }

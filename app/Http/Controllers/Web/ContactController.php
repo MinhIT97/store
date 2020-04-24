@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Web;
 use App\Entities\Contact;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactCreateRequest;
-use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {

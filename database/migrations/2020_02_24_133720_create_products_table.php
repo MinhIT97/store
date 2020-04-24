@@ -23,8 +23,10 @@ class CreateProductsTable extends Migration
             $table->integer('price');
             $table->integer('sale_price');
             $table->integer('status');
+            $table->tinyInteger('hot');
             $table->string('type');
             $table->string('thumbnail');
+            $table->string('content');
             $table->unsignedInteger('brand_id');
             $table->timestamps();
 

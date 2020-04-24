@@ -17,7 +17,7 @@ class BlogController extends Controller
     }
     public function index()
     {
-        $blogs = $this->entity->get();
+        $blogs = $this->entity->where('type', 'blogs')->paginate(15);
         return view('admin.pages.blogs.blog-list', [
             'blogs' => $blogs,
         ]);
@@ -34,7 +34,7 @@ class BlogController extends Controller
             $request->thumbnail->move(base_path('/public/uploads'), $request->thumbnail->getClientOriginalName());
             $data              = $request->all();
             $data['thumbnail'] = $request->thumbnail->getClientOriginalName();
-            $data['type']      = 'blog';
+            $data['type']      = 'blogs';
         } else {
             $data = $request->all();
         }
@@ -62,7 +62,7 @@ class BlogController extends Controller
             $request->thumbnail->move(base_path('/public/uploads'), $request->thumbnail->getClientOriginalName());
             $data              = $request->all();
             $data['thumbnail'] = $request->thumbnail->getClientOriginalName();
-            $data['type']      = 'blog';
+            $data['type']      = 'blogs';
         } else {
             $data = $request->all();
         }
@@ -71,7 +71,7 @@ class BlogController extends Controller
             $blog->slug = null;
             $update     = $blog->update($data);
             if ($update) {
-                return redirect()->back()->with('sucsess', 'Update blog thành công');
+                return redirect()->route('blog.show')->with('sucsess', 'Update blog thành công');
             }
 
         }

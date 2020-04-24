@@ -1,9 +1,22 @@
-.m0{
-  margin-left: 0;
-  margin-right: 0;
+.m0 {
+    margin-left: 0;
+    margin-right: 0;
 }
 
-.line{
+.line {
     border-top: 1px solid #eee;
     opacity: 0.8;
+}
+
+
+.breadcrumb{
+    background-color: white;
+    padding: 35px 35px;
+    a{
+        text-decoration: none;
+        color: #666666;
+    }
+    .active{
+        color: black;
+    }
 }

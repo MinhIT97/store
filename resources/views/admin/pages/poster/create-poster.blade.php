@@ -21,13 +21,29 @@
                         <p class="help is-danger mt-2">{{ $errors->first('link') }}</p>
                     </div>
                     <div class="form-group">
-                        <label for="type">Type</label>
-                        <input type="text" name="type" class="form-control form-control-sm" id="name" value="">
-                        <p class="help is-danger mt-2">{{ $errors->first('type') }}</p>
+                        <label for="type">type</label>
+                        <select name="type" id="select1"  class="form-control form-control-sm  js-example-basic-single">
+                            <option value="home">Home</option>
+                            <option value="men">Men</option>
+                            <option value="women">Women</option>
+                            <option value="accessories">accessories</option>
+                            <option value="blog">blog</option>
+                            <option value="newsesion">New Session</option>
+                        </select>
                     </div>
-                    <div class="form-group">
-                        <label for="thumbnail">Hình ảnh</label>
-                        <input id="my-input" class="form-control-file" type="file" name="thumbnail">
+                    <div class="upload-product">
+                        <label for="">Hình ảnh</label>
+                        <div class="product-upload">
+                            <div class="product-edit">
+                                <input type='file' name="thumbnail" id="imageUpload" accept=".png, .jpg, .jpeg" />
+                                <label for="imageUpload"></label>
+                            </div>
+                            <div class="product-preview">
+                                <div id="imagePreview">
+                                </div>
+                            </div>
+                        </div>
+                        <p class="help is-danger mt-2">{{ $errors->first('thumbnail') }}</p>
                     </div>
                     <div class="form-group">
                         <Label> Trạng thái</Label>
@@ -38,7 +54,7 @@
                         <p class="help is-danger mt-2">{{ $errors->first('status') }}</p>
                     </div>
                     <div class="justify-content-end d-flex">
-                        <button type="submit" class="btn btn-behance justify-content-end">Create</button>
+                        <button type="submit" class="btn btn-gradient-info btn-behance justify-content-end">Create</button>
                     </div>
                     @csrf
                 </form>

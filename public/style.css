@@ -12104,6 +12104,10 @@ readers do not read off random characters that represent icons */
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
 }
 
+.content-wrapper .upload-avatar .avatar-upload .avatar-preview .imagePreview {
+  background-size: 100% 100%;
+}
+
 .content-wrapper .upload-avatar .avatar-upload .avatar-preview > div {
   width: 100%;
   height: 100%;
@@ -12180,6 +12184,10 @@ readers do not read off random characters that represent icons */
   position: relative;
   border: 6px solid #f8f8f8;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+}
+
+.content-wrapper .upload-product .product-upload .product-preview .imagePreview {
+  background-size: 100% 100%;
 }
 
 .content-wrapper .upload-product .product-upload .product-preview > div {
@@ -12398,5 +12406,19 @@ readers do not read off random characters that represent icons */
 
 .content-wrapper body {
   padding: 50px;
+}
+
+.medias .btn-delete_medias {
+  position: absolute;
+  top: 0;
+  z-index: 97;
+}
+
+.medias .img-medias {
+  position: relative;
+}
+
+.breadcrumb a {
+  color: black;
 }
 

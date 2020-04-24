@@ -24,9 +24,19 @@
                         <label>Nội dung</label>
                         <textarea name="content" class="form-control " id="editor1"></textarea>
                     </div>
-                    <div class="form-group">
-                        <label for="thumbnail">Hình ảnh</label>
-                        <input id="my-input" class="form-control-file" type="file" name="thumbnail">
+                    <div class="upload-product">
+                        <label for="">Thumbnail</label>
+                        <div class="product-upload">
+                            <div class="product-edit">
+                                <input type='file' name="thumbnail" aria-describedby="fileHelpId" id="imageUpload" accept=".png, .jpg, .jpeg" />
+                                <label for="imageUpload"></label>
+                            </div>
+                            <div class="product-preview">
+                                <div id="imagePreview">
+                                </div>
+                            </div>
+                        </div>
+                        <p class="help is-danger mt-2">{{ $errors->first('thumbnail') }}</p>
                     </div>
                     <div class="form-group">
                         <Label> Trạng thái</Label>

@@ -24,7 +24,7 @@ class BlogUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'       => ['required'],
+            'title'       => ['required','unique:posts,title,' . $this->id],
             'description' => ['required'],
             'content'     => ['required'],
             'thumbnail'   => ['image'],

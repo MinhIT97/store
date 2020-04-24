@@ -6,6 +6,28 @@
         <img class="img-fluid" src="{{asset('uploads/'.$poster->thumbnail)}}" alt="">
         @endif
     </div>
+    <div class="container">
+        <div class="d-flex justify-content-between">
+            <div class="sort_product">
+                @if($product_count->count())
+                <h5 class="count-product">{{$product_count->count()}} <span>Product</span></h5>
+                @endif
+            </div>
+
+            <div class="mb-2  d-flex  ">
+                <span class="text-sortby">Sort by</span>
+                <select class="custom-select custom-select-sm">
+                    <option selected>Featured</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="line"></div>
     <div class="product">
         <div class="container">
             <div class="row">
@@ -30,6 +52,9 @@
                 </div>
                 @endforeach
                 @endif
+            </div>
+            <div class="d-flex justify-content-end">
+                {{$products->links()}}
             </div>
         </div>
     </div>

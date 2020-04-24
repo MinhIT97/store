@@ -32,7 +32,8 @@ class ProductCreateRequest extends FormRequest
             'type'       => 'required',
             'thumbnail'  => 'required|image|mimes:jpeg,bmp,png',
             'categories' => 'required',
-            'sizes'       => 'required',
+            'content'    => 'required',
+            'sizes'      => 'required',
             'status'     => 'required',
         ];
     }

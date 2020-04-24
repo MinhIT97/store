@@ -2,6 +2,7 @@
 
 namespace App\Entities;
 
+use App\Traits\QueryTrait;
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
@@ -13,7 +14,7 @@ use Prettus\Repository\Traits\TransformableTrait;
  */
 class Attribute extends Model implements Transformable
 {
-    use TransformableTrait;
+    use TransformableTrait, QueryTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -21,11 +22,17 @@ class Attribute extends Model implements Transformable
      * @var array
      */
     protected $fillable = [
-        "size",
-        "attibuteable_type",
-        "attibuteable_id",
-        "color",
+        "product_id",
+        "color_id",
         "quantity",
         "current_quantity",
     ];
+    public function sizes()
+    {
+        return $this->morphToMany(Size::class, 'sizeable');
+    }
+    public function color()
+    {
+        return $this->hasOne(Color::class, 'id', 'color_id');
+    }
 }

@@ -16,7 +16,7 @@
                                     <label for="imageUpload"></label>
                                 </div>
                                 <div class="avatar-preview">
-                                    <div id="imagePreview" >
+                                    <div class="imagePreview" id="imagePreview" >
                                     </div>
                                 </div>
                             </div>
@@ -26,10 +26,10 @@
                         <input type="text" name="name" class="form-control form-control-lg" value="{{ old('name') }}" id="exampleInputName" placeholder="Name">
                         <p class="help is-danger mt-2">{{ $errors->first('name') }}</p>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <input type="text" name="username" class="form-control form-control-lg" value="{{ old('username') }}" id="exampleInputUsername1" placeholder="Username">
                         <p class="help is-danger mt-2">{{ $errors->first('username') }}</p>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <input type="email" name="email" class="form-control form-control-lg" value="{{ old('email') }}" id="exampleInputEmail1" placeholder="Email">
                         <p class="help is-danger mt-2">{{ $errors->first('email') }}</p>
@@ -47,7 +47,7 @@
                         <p class="help is-danger mt-2">{{ $errors->first('confirmpassword') }}</p>
                     </div>
                     <div class="justify-content-end d-flex">
-                        <button type="submit" class="btn btn-behance justify-content-end">Create new</button>
+                        <button type="submit" class="btn btn-gradient-info btn-behance justify-content-end">Create new</button>
                     </div>
                     @csrf
                 </form>

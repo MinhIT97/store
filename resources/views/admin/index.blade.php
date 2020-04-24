@@ -15,12 +15,17 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
+                        @if (session('sucsess'))
+                        <div class="alert alert-success">
+                            {{ session('sucsess') }}
+                        </div>
+                        @endif
                         <table class="table table-striped">
                             <thead>
                                 <tr>
                                     <th> # </th>
                                     <th> Name </th>
-                                    <th> avatar </th>
+                                    <th> Avatar </th>
                                     <th> Email </th>
                                     <th> Phone </th>
                                     <th> Status </th>
@@ -33,8 +38,8 @@
                                 @foreach($users as $user)
                                 <tr>
                                     <td> {{$user->id}}</td>
-                                    <td><img class="ml-2" src="{{asset('/uploads/'.$user->avatar)}}" alt=""></td>
                                     <td> {{$user->name}} </td>
+                                    <td><img class="ml-2" src="{{asset('/uploads/'.$user->avatar)}}" alt=""></td>
                                     <td> {{$user->email}} </td>
                                     <td> {{$user->phone}} </td>
                                     <td> @if($user->status === 0)
@@ -48,7 +53,7 @@
                                     <td>{{$user->created_at}} </td>
                                     <td>
                                         <a class="btn btn-gradient-info p-2" href="{{ url('adminstore/edit-user/'.$user->id )}}">Sửa</a>
-                                        <a class="btn btn-gradient-danger p-2 ml-2" href="">Xóa</a>
+                                        <a class="btn btn-gradient-danger p-2 ml-2" href="{{ url('adminstore/delete-user/'.$user->id )}}">Xóa</a>
                                     </td>
                                 </tr>
                                 @endforeach

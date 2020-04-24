@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Entities\Attribute;
 use App\Entities\Brand;
 use App\Entities\Category;
+use App\Entities\Color;
+use App\Entities\Image;
 use App\Entities\Product;
 use App\Entities\Size;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AttributeCreateRequest;
 use App\Http\Requests\ProductCreateRequest;
 use App\Http\Requests\ProductUpdateRequest;
 use App\Repositories\ProductRepository;
@@ -77,11 +81,11 @@ class ProductController extends Controller
 
             if ($request->hasFile('media')) {
                 foreach ($request->media as $key) {
-                    $filename =  $key->getClientOriginalName();
+                    $filename = $key->getClientOriginalName();
 
                     $key->move(base_path('/public/uploads'), $filename);
-                    $product->imgaes()->updateOrCreate([
-                        'url' =>  $filename,
+                    $product->imagaes()->updateOrCreate([
+                        'url' => $filename,
                     ]);
                 }
             }
@@ -97,7 +101,8 @@ class ProductController extends Controller
         $categories = Category::get();
         $brands     = Brand::get();
         $sizes      = Size::get();
-        $product    = Product::with('categories', 'sizes')->find($id);
+        $product    = Product::with('categories', 'sizes', 'imagaes')->find($id);
+
         return view(
             'admin.pages.products.edit-product',
             [
@@ -121,6 +126,13 @@ class ProductController extends Controller
         } else {
             $data = $request->all();
         }
+        //    if ($request->hasFile('media')) {
+        //     foreach ($request->media as $key ) {
+        //         $filename =  $key->getClientOriginalName();
+        //        print_r($filename);
+        //     }
+        // }
+        //   dd($request->hasFile('media'));
         if ($product) {
             $product->slug = null;
             $update        = $product->update($data);
@@ -132,6 +144,17 @@ class ProductController extends Controller
             if ($update) {
                 $product->categories()->sync($categories);
                 $product->sizes()->sync($sizes);
+
+                if ($request->hasFile('media')) {
+                    foreach ($request->media as $key) {
+                        $filename = $key->getClientOriginalName();
+
+                        $key->move(base_path('/public/uploads'), $filename);
+                        $product->imagaes()->updateOrCreate([
+                            'url' => $filename,
+                        ]);
+                    }
+                }
             }
             return redirect()->back()->with('sucsess', 'Update sucsess');
         }
@@ -158,15 +181,67 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
-        $product = $this->entity->find($id);
+        $product = $this->entity->findOrfail($id);
         if (!$product) {
             return view('admin.pages.samples.error-404');
         }
 
         $product->delete();
-        $product->imgaes()->delete();
+        $product->imagaes()->delete();
         $product->sizes()->detach();
         $product->categories()->detach();
         return redirect()->back()->with('sucsess', 'Delete product sucsess');
+    }
+
+    public function destroyMedias($id, $id_medias)
+    {
+        $medias = Image::findOrfail($id_medias);
+        $medias->delete();
+        return redirect()->back()->with('sucsess', 'Delete medias sucsess');
+    }
+
+    public function showAttribute($id)
+    {
+        $attributes = Attribute::where('product_id', $id)->with('color')->get();
+
+        // dd($attributes);
+
+        return view('admin.pages.products.attribute.attribute-list', [
+            'attributes' => $attributes,
+        ]);
+    }
+
+    public function showStoreAttribute($id)
+    {
+        $product = $this->entity->with('attributes', 'sizes')->find($id);
+        $colors  = Color::get();
+        return view('admin.pages.products.attribute.create-attribute', [
+            'product' => $product,
+            'colors'  => $colors,
+        ]);
+    }
+
+    public function storeAttribute(AttributeCreateRequest $request)
+    {
+        $data = $request->all();
+
+        $color    = Attribute::create($data);
+        $size_ids = $request->sizes;
+        $sizes    = explode(',', $size_ids);
+
+        if ($color) {
+            $color->sizes()->attach($sizes);
+            return redirect()->back()->with('sucsess', 'Add attribute sucsess');
+        }
+    }
+
+    public function destroyAttribute($id)
+    {
+        $attribute = Attribute::findOrfail($id)->delete();
+        if ($attribute) {
+            return redirect()->back()->with('sucsess', 'Delete attribute sucsess');
+        }
+
+        return redirect()->back()->with('errow', 'Delete attribute errow');
     }
 }

@@ -25,6 +25,7 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin'], function () {
     Route::post('store-user', 'UserController@store')->name('users.create');
     Route::get('edit-user/{id}', 'UserController@viewEditUser')->name('users.edit');
     Route::post('update-user/{id}', 'UserController@editUser')->name('users.update');
+    Route::get('delete-user/{id}', 'UserController@destroy')->name('users.destroy');
 
     Route::group(['prefix' => '/products'], function () {
         Route::get('/', 'ProductController@index')->name('products');
@@ -36,7 +37,19 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin'], function () {
         Route::get('women', 'ProductController@woman')->name('product-woman');
         Route::get('accessories', 'ProductController@accessories')->name('product-accessories');
         Route::get('delete/{id}', 'ProductController@destroy')->name('product.destroy');
+        Route::get('delete/{id}/medias/{id_medias}', 'ProductController@destroyMedias')->name('product.destroy_medias');
+        Route::get('{id}/attribute', 'ProductController@showStoreAttribute')->name('attribute.show_create');
+        Route::post('{id}/attribute', 'ProductController@storeAttribute')->name('attribute.create');
+        Route::get('{id}/detail-attribute', 'ProductController@showAttribute')->name('attribute.show');
+        Route::get('delete/attribute/{id}', 'ProductController@destroyAttribute')->name('attribute.delete');
     });
+
+    Route::get('colors', 'ColorController@index')->name('colors.show');
+    Route::get('color-create', 'ColorController@showStore')->name('colors.show_create');
+    Route::post('color-create', 'ColorController@store')->name('colors.create');
+    Route::get('edit-color/{id}', 'ColorController@showEdit')->name('colors.show_edit');
+    Route::post('edit-color/{id}', 'ColorController@edit')->name('colors.edit');
+    Route::get('delete-color/{id}', 'ColorController@destroy')->name('colors.destroy');
 
     Route::get('categories', 'CategoryController@index')->name('categories.show');
     Route::get('create-category', 'CategoryController@showCreate')->name('categories.show_create');
@@ -50,15 +63,21 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin'], function () {
     Route::post('poster-create', 'PostersController@store')->name('posters.create');
     Route::get('poster-edit/{id}', 'PostersController@show')->name('posters.show_edit');
     Route::post('poster-edit/{id}', 'PostersController@edit')->name('posters.edit');
+    Route::get('delete-poster/{id}', 'PostersController@destroy')->name('posters.destroy');
 
     Route::get('blogs', 'BlogController@index')->name('blog.show');
     Route::get('blog-create', 'BlogController@viewStore')->name('blog.show_create');
     Route::post('blog-create', 'BlogController@store')->name('blog.create');
     Route::get('edit-blog/{id}', 'BlogController@viewUpdate')->name('blog.show_update');
-
     Route::post('edit-blog/{id}', 'BlogController@update')->name('blog.update');
-
     Route::get('delete-blog/{id}', 'BlogController@destroy')->name('blog.delete');
+
+    Route::get('pages-show', 'PagesConroller@index')->name('pages.show');
+    Route::get('pages-create', 'PagesConroller@viewStore')->name('pages.show_create');
+    Route::post('pages-create', 'PagesConroller@store')->name('pages.create');
+    Route::get('edit-pages/{id}', 'PagesConroller@viewUpdate')->name('pages.show_update');
+    Route::post('edit-pages/{id}', 'PagesConroller@update')->name('pages.update');
+    Route::get('delete-pages/{id}', 'PagesConroller@destroy')->name('pages.delete');
 
     Route::get('contacts', 'ContactController@index')->name('contact.show');
     Route::get('contacts/{id}', 'ContactController@destroy')->name('contact.destroy');
@@ -91,7 +110,7 @@ Route::group(['prefix' => '/', 'namespace' => 'Web'], function () {
     Route::get('blogs/{slug}', 'BlogController@show')->name('blogs.show');
     Route::post('contacts', 'ContactController@store')->name('contact.create');
 
-    Route::get('pages/{slug}', 'PostListController@show')->name('pages.show');
+    Route::get('pages/{slug}', 'PostListController@show')->name('pages.show_detail');
 
     Route::get('/', 'HomeController@index')->name('/index');
 

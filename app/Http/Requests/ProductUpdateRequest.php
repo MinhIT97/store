@@ -29,12 +29,13 @@ class ProductUpdateRequest extends FormRequest
             // 'current_quantity' => 'required',
             'price'      => 'required',
             'status'     => 'required',
-            'categories'   => 'required',
+            'categories' => 'required',
             'code'       => 'required',
             'type'       => 'required',
             'brand_id'   => 'required',
             'thumbnail'  => ['image'],
-            'sizes'       => 'required',
+            'sizes'      => 'required',
+            'content'    => 'required',
         ];
     }
 }
