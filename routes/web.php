@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('admin-dashboard', 'Admin\AdminController@index')->name('admin-dashboard');
 
-// Route::get('admin/login', 'Admin\LoginController@login')->name('admin-login');
-// Route::post('admin/login', 'Admin\LoginController@post_login')->name('admin-login');
-Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin'], function () {
+Route::get('admin/login', 'Admin\LoginController@login')->name('admin-login');
+Route::post('admin/login', 'Admin\LoginController@post_login')->name('admin-login');
+Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin' ,'middleware' => 'adminlogin'], function () {
 
     Route::get('users', 'UserController@index')->name('users.show');
     Route::get('view-user', 'UserController@viewStore')->name('users.show_create');
@@ -26,6 +26,7 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin'], function () {
     Route::get('edit-user/{id}', 'UserController@viewEditUser')->name('users.edit');
     Route::post('update-user/{id}', 'UserController@editUser')->name('users.update');
     Route::get('delete-user/{id}', 'UserController@destroy')->name('users.destroy');
+    Route::get('users/profile/{id}', 'UserController@viewProfile')->name('users.profile');
 
     Route::group(['prefix' => '/products'], function () {
         Route::get('/', 'ProductController@index')->name('products');
@@ -102,6 +103,8 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin'], function () {
 
 Route::group(['prefix' => '/', 'namespace' => 'Web'], function () {
 
+    Route::get('/', 'HomeController@index')->name('index');
+
     Route::get('products/{type}', 'ProductController@index')->name('web.product_show');
 
     Route::get('products/{type}/{slug}', 'ProductDetailController@show')->name('web.product_show_detail');
@@ -112,7 +115,7 @@ Route::group(['prefix' => '/', 'namespace' => 'Web'], function () {
 
     Route::get('pages/{slug}', 'PostListController@show')->name('pages.show_detail');
 
-    Route::get('/', 'HomeController@index')->name('/index');
+    Route::get('search', 'SearchController')->name('search.show');
 
     // Route::get('logins', 'AuthController@webUser')->name('web-login');
 

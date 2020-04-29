@@ -57,7 +57,7 @@
                                 @endif
                             </tbody>
                         </table>
-                        <div class="mt-3">
+                        <div class="mt-3 lion-pagination">
                             {{ $colors->links() }}
                         </div>
                     </div>

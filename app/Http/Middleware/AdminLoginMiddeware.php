@@ -18,11 +18,14 @@ class AdminLoginMiddeware
     {
         if (Auth::check()) {
             $user = Auth::user();
-            if ($user->Level == 1) {
-                return view('admin.index');
-            } else  return redirect()->route('login');
+            if ($user->level == 1) {
+                return $next($request);
+            } else {
+                return redirect()->route('index');
+            }
+
         } else {
-            return redirect()->route('login');
+            return redirect()->route('admin-login');
         }
     }
 }

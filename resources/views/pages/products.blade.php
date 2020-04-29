@@ -13,14 +13,17 @@
                 <h5 class="count-product">{{$product_count->count()}} <span>Product</span></h5>
                 @endif
             </div>
-
             <div class="mb-2  d-flex  ">
                 <span class="text-sortby">Sort by</span>
-                <select class="custom-select custom-select-sm">
-                    <option selected>Featured</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                <select class="custom-select custom-select-sm" name="sort_by" id="lion-sortby">
+                    <option value="manual">Featured</option>
+                    <option value="hot-descending" {{ $activeSelected === 'hot-descending' ? 'selected' : '' }}>Best selling</option>
+                    <option value="name-ascending" {{ $activeSelected === 'name-ascending' ? 'selected' : '' }}>Alphabet A-Z</option>
+                    <option value="name-descending" {{ $activeSelected === 'name-descending' ? 'selected' : '' }}>Alphabet Z-A</option>
+                    <option value="price-ascending" {{ $activeSelected === 'price-ascending' ? 'selected' : '' }}>Price : Low to high</option>
+                    <option value="price-descending" {{ $activeSelected === 'price-descending' ? 'selected' : '' }}>Price : High to low</option>
+                    <option value="created-ascending" {{ $activeSelected === 'created-ascending' ? 'selected' : '' }}>Date : New to old</option>
+                    <option value="created-descending" {{ $activeSelected === 'created-descending' ? 'selected' : '' }}>Date : Old to new</option>
                 </select>
             </div>
 
@@ -53,7 +56,7 @@
                 @endforeach
                 @endif
             </div>
-            <div class="d-flex justify-content-end">
+            <div class="d-flex justify-content-end lion-pagination">
                 {{$products->links()}}
             </div>
         </div>

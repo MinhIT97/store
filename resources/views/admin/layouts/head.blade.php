@@ -22,19 +22,24 @@
                 <li class="nav-item nav-profile dropdown">
                     <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                         <div class="nav-profile-img">
-                            <img src="/images/image-admin/faces/face1.jpg" alt="image">
+                            <img src="{{asset('/uploads/'.Auth::user()->avatar)}}" alt="profile">
                             <span class="availability-status online"></span>
                         </div>
                         <div class="nav-profile-text">
-                            <p class="mb-1 text-black">Minh Nguyễn</p>
+                            <p class="mb-1 text-black">{{ Auth::user()->name }}</p>
                         </div>
                     </a>
                     <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
                         <a class="dropdown-item" href="#">
                             <i class="mdi mdi-cached mr-2 text-success"></i> Activity Log </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">
-                            <i class="mdi mdi-logout mr-2 text-primary"></i> Signout </a>
+                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                            <i class="mdi mdi-logout mr-2 text-primary"></i> Signout
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </a>
                     </div>
                 </li>
                 <li class="nav-item d-none d-lg-block full-screen-link">
@@ -131,8 +136,12 @@
                     </div>
                 </li>
                 <li class="nav-item nav-logout d-none d-lg-block">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
                         <i class="mdi mdi-power"></i>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     </a>
                 </li>
                 <li class="nav-item nav-settings d-none d-lg-block">
@@ -151,13 +160,13 @@
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <ul class="nav">
                 <li class="nav-item nav-profile">
-                    <a href="#" class="nav-link">
+                    <a href="{{url('adminstore/users/profile/'.Auth::user()->id)}}" class="nav-link">
                         <div class="nav-profile-image">
-                            <img src="/images/image-admin/faces/face1.jpg" alt="profile">
+                            <img src="{{asset('/uploads/'.Auth::user()->avatar)}}" alt="profile">
                             <span class="login-status online"></span>
                         </div>
                         <div class="nav-profile-text d-flex flex-column">
-                            <span class="font-weight-bold mb-2">Minh Nguyễn</span>
+                            <span class="font-weight-bold mb-2"> {{ Auth::user()->name }}</span>
                             <span class="text-secondary text-small">Project Manager</span>
                         </div>
                         <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>

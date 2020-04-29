@@ -1,8 +1,18 @@
 <head>
     <header class="lion-head">
         <div class="lion-wrapper">
+            <div class="search-bar hide">
+                <div class="search-close" title="close">
+                <i class="fas fa-times"></i>
+                </div>
+                <form class="search-wrapper" method="GET" action="{{route('search.show')}}">
+                    <input type="text" class="search-input" placeholder="Search..." name="search" autocomplete="off">
+                    <button type="submit" class="search-submit" title="search">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+            </div>
             <div class="container">
-
                 <div class="lion-nav">
                     <div class="lion-nav__left">
                         <ul>
@@ -24,7 +34,7 @@
                                     <i class="fas fa-shopping-cart"></i>
                                 </a></li>
                             <li class="lion-nav__iteam ">
-                                <a class="mobile--hidden"><i class="fas fa-search"></i></a></li>
+                                <a class="mobile--hidden search"><i class="fas fa-search"></i></a></li>
                             @guest
                             <li class="lion-nav__iteam"><a href="/login">
                                     <span class="mobile--hidden">Đăng nhập</span>

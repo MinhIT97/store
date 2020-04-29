@@ -22066,6 +22066,154 @@ readers do not read off random characters that represent icons */
   background-color: white;
 }
 
+.lion-head .lion-wrapper .search-bar {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  max-height: 300px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+  z-index: 10;
+}
+
+.lion-head .lion-wrapper .search-bar.hide {
+  max-height: 0;
+}
+
+.lion-head .lion-wrapper .search-bar:focus-within {
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.7);
+}
+
+.lion-head .lion-wrapper .search-bar .search-wrapper {
+  flex-grow: 1;
+  position: relative;
+  margin: 6px 25px 12px;
+  width: 100%;
+  display: flex;
+  border-bottom: 2px solid #9ca0b1;
+}
+
+.lion-head .lion-wrapper .search-bar .search-wrapper::after {
+  content: "";
+  width: 0;
+  border-bottom: 2px solid #eee;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.4s ease-in-out;
+}
+
+.lion-head .lion-wrapper .search-bar .search-wrapper .search-input {
+  flex: 1;
+  height: 39px;
+  background-color: transparent;
+  padding: 2px 15px 0 10px;
+  font-size: 15px;
+  box-sizing: border-box;
+  border: none;
+  text-align: center;
+}
+
+.lion-head .lion-wrapper .search-bar .search-wrapper .search-input:focus {
+  outline: none;
+}
+
+.lion-head .lion-wrapper .search-bar .search-wrapper .search-input::-webkit-input-placeholder {
+  color: #9ca0b1;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.lion-head .lion-wrapper .search-bar .search-wrapper .search-input::-moz-placeholder {
+  color: #9ca0b1;
+  -moz-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.lion-head .lion-wrapper .search-bar .search-wrapper .search-input:-ms-input-placeholder {
+  color: #9ca0b1;
+  -ms-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.lion-head .lion-wrapper .search-bar .search-wrapper .search-input::-ms-input-placeholder {
+  color: #9ca0b1;
+  -ms-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.lion-head .lion-wrapper .search-bar .search-wrapper .search-input::placeholder {
+  color: #9ca0b1;
+  transition: all 0.4s ease-in-out;
+}
+
+.lion-head .lion-wrapper .search-bar .search-wrapper .search-submit {
+  background-color: transparent;
+  font-size: 15px;
+  cursor: pointer;
+  border: none;
+  color: #9ca0b1;
+  flex-basis: 33px;
+  height: 33px;
+  position: relative;
+  margin-top: 3px;
+  padding-top: 2px;
+  transition: all 0.4s ease-in-out;
+}
+
+.lion-head .lion-wrapper .search-bar .search-wrapper .search-submit:focus {
+  outline: none;
+}
+
+.lion-head .lion-wrapper .search-bar .search-wrapper:focus-within::after {
+  width: 100%;
+}
+
+.lion-head .lion-wrapper .search-bar .search-wrapper:focus-within .search-input::-webkit-input-placeholder {
+  color: #eee;
+}
+
+.lion-head .lion-wrapper .search-bar .search-wrapper:focus-within .search-input::-moz-placeholder {
+  color: #eee;
+}
+
+.lion-head .lion-wrapper .search-bar .search-wrapper:focus-within .search-input:-ms-input-placeholder {
+  color: #eee;
+}
+
+.lion-head .lion-wrapper .search-bar .search-wrapper:focus-within .search-input::-ms-input-placeholder {
+  color: #eee;
+}
+
+.lion-head .lion-wrapper .search-bar .search-wrapper:focus-within .search-input::placeholder {
+  color: #eee;
+}
+
+.lion-head .lion-wrapper .search-bar .search-wrapper:focus-within .search-submit {
+  color: #eee;
+}
+
+.lion-head .lion-wrapper .search-bar .search-close {
+  flex-basis: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 15px;
+  padding-top: 4px;
+  cursor: pointer;
+}
+
+.lion-head .lion-wrapper .search-bar .search-close i {
+  font-size: 20px;
+  transition: all 0.3s;
+}
+
+.lion-head .lion-wrapper .search-bar .search-close:hover i {
+  color: #eee;
+}
+
 .lion-head .lion-wrapper .lion-nav {
   display: flex;
   align-items: center;
@@ -22836,6 +22984,54 @@ readers do not read off random characters that represent icons */
   font-size: 16px;
   line-height: 1.9;
   font-family: "SVN-Gotham";
+}
+
+.lion-search .nav-item {
+  background-color: white;
+}
+
+.lion-search .nav-item .active {
+  color: #00b5ad !important;
+}
+
+.lion-search .nav-item .nav-link {
+  background-color: white;
+  color: #1c1c1c;
+  text-transform: uppercase;
+}
+
+.lion-search .slick-next,
+.lion-search .slick-prev {
+  border-radius: 50%;
+  background-color: #00b5ad;
+  width: 40px;
+  height: 40px;
+}
+
+.lion-search .slick-prev {
+  z-index: 198;
+}
+
+.lion-search .search-blog h5 {
+  font-size: 14px;
+  color: #00b5ad;
+  font-style: italic;
+}
+
+.lion-pagination .pagination .active .page-link {
+  z-index: 3;
+  color: #fff !important;
+  background-color: #000000;
+  border: none;
+}
+
+.lion-pagination .pagination .page-item {
+  outline: none;
+}
+
+.lion-pagination .pagination .page-item .page-link {
+  color: black;
+  outline: none;
 }
 
 body {

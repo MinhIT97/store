@@ -55,7 +55,9 @@
                         </table>
                         <div class="mt-3">
                         </div>
-                        {{ $brand_product->links() }}
+                        <div class="lion-pagination">
+                            {{ $brand_product->links() }}
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,19 @@
+.lion-pagination {
+    .pagination {
+        .active {
+            .page-link {
+                z-index: 3;
+                color: #fff !important;
+                background-color: #000000;
+                border: none;
+            }
+        }
+        .page-item {
+            outline: none;
+            .page-link{
+                color: black;
+                outline: none;
+            }
+        }
+    }
+}

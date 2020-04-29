@@ -59,12 +59,19 @@ class UserController extends Controller
     {
         $user = User::where('id', $request->id);
 
-        $request->offsetUnset('_token');
+        if ($request->hasFile('avatar')) {
+            $request->avatar->move(base_path('/public/uploads'), $request->avatar->getClientOriginalName());
+            $data           = $request->except('_token');
+            $data['avatar'] = $request->avatar->getClientOriginalName();
+        } else {
+            $data = $request->except('_token');
+        }
+        // $request->offsetUnset('_token');
         if (count($user->get()) === 0) {
             return view('error-404');
         }
 
-        if ($user->update($request->all())) {
+        if ($user->update($data)) {
             return redirect()->route('users.show')->with('sucsess', 'update ' . $request->name . ' sucsess');
         } else {
             return redirect()->back()->with('success', 'update' . $request->name . 'thất bại');
@@ -77,5 +84,13 @@ class UserController extends Controller
             return redirect()->back()->with('sucsess', 'Delete sucsess');
         }
         return redirect()->back()->with('errow', 'Delete errow');
+    }
+
+    public function viewProfile($id)
+    {
+        $user = User::find($id);
+        return view('admin.pages.user.profile', [
+            'user' => $user,
+        ]);
     }
 }

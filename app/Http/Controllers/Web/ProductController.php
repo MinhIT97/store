@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    protected $activeSelected = 'manual';
+
     protected $repository;
     public function __construct(ProductRepository $repository)
     {
@@ -18,15 +20,38 @@ class ProductController extends Controller
 
     public function index(Request $request)
     {
-        $query = $this->entity->where('type', $request->type)->published()->latest();
+        $query         = $this->entity->where('type', $request->type)->published();
         $product_count = $query->get();
-        $products= $query->paginate(12);
+
+        $query    = $this->applyOrderByFromRequest($query, $request);
+        $products = $query->paginate(12);
         $poster   = Poster::where('type', $request->type)->latest()->published()->first();
+
+        $activeSelected = $request->get('sort_by');
+
         return view('pages.products', [
-            'products' => $products,
-            'poster'   => $poster,
-            'product_count' =>$product_count,
+            'products'       => $products,
+            'poster'         => $poster,
+            'product_count'  => $product_count,
+            'activeSelected' => $activeSelected,
         ]);
     }
-
+    protected function applyOrderByFromRequest($query, Request $request)
+    {
+        if ($request->has('sort_by')) {
+            $sort_by     = str_replace('ending', '', $request->get('sort_by'));
+            $sort_by     = str_replace('created', 'created_at', $sort_by);
+            $orderBy     = explode('-', $sort_by);
+            $check_key   = ['name', 'price', 'created'];
+            $check_value = ['asc', 'desc'];
+            if (count($orderBy) > 0) {
+                if (in_array($orderBy[0], $check_key) && in_array($orderBy[1], $check_value)) {
+                    $query = $query->orderBy($orderBy[0], $orderBy[1]);
+                }
+            }
+        } else {
+            $query = $query->orderBy('id', 'desc');
+        }
+        return $query;
+    }
 }

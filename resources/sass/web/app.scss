@@ -18,6 +18,8 @@
 @import "./ui/color";
 @import "./ui/style";
 @import "./pages/blog-detail";
+@import "./pages/search";
+@import "./pages/pagination";
 
 body {
     color: $default_text_color;

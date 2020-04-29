@@ -46854,6 +46854,11 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 window.select2 = __webpack_require__(/*! select2/dist/js/select2.min */ "./node_modules/select2/dist/js/select2.min.js");
+
+__webpack_require__(/*! ./sortby */ "./resources/js/sortby.js");
+
+__webpack_require__(/*! ./search */ "./resources/js/search.js");
+
 console.log("Hello World :)");
 $.ajaxSetup({
   headers: {
@@ -46870,6 +46875,42 @@ $(document).ready(function () {
     slidesToScroll: 1,
     prevArrow: '<button class="slick-prev"> <i class="fa fa-angle-double-left"></i></button>',
     nextArrow: '<button class="slick-next"> <i class="fa fa-angle-double-right"></i></button>',
+    responsive: [{
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: false
+      }
+    }, {
+      breakpoint: 769,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: false
+      }
+    }, {
+      breakpoint: 578,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: false
+      }
+    }]
+  });
+  $(".search-slide").slick({
+    infinite: true,
+    autoplay: true,
+    arrows: true,
+    dots: false,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplaySpeed: 7000,
+    prevArrow: '<button class="slick-prev"> <i class="fa fa-angle-double-left"></i></button>',
+    nextArrow: '<button class="slick-next"> <i class="fas fa-caret-right"></i></i></button>',
     responsive: [{
       breakpoint: 1024,
       settings: {
@@ -46972,6 +47013,54 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/search.js":
+/*!********************************!*\
+  !*** ./resources/js/search.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  searchbar = $(".search-bar");
+  $(".search").on("click", function (e) {
+    e.preventDefault();
+    searchbar.toggleClass("hide");
+  });
+  $(".search-close").on("click", function () {
+    searchbar.toggleClass("hide");
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/sortby.js":
+/*!********************************!*\
+  !*** ./resources/js/sortby.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+console.log("helo sort");
+$(document).ready(function () {
+  $(function () {
+    var select = document.getElementById("lion-sortby");
+    console.log(select);
+    var url = window.location.origin + window.location.pathname;
+
+    if (select) {
+      select.addEventListener("change", function (e) {
+        e.preventDefault();
+
+        var value = _.split(select.value, "-");
+
+        window.location.href = "".concat(url, "?sort_by=").concat(select.value);
+      });
+    }
+  });
+});
 
 /***/ }),
 

@@ -25,8 +25,8 @@
     @include('admin.layouts.footer')
     @show
 
-    <script src="/vendors/js/vendor.bundle.base.js"></script>
-
+    <!-- <script src="/vendors/js/vendor.bundle.base.js"></script> -->
+    <script src="/js/store.js"></script>
     <script src="/vendors/chart.js/Chart.min.js"></script>
 
     <script src="js/admin/off-canvas.js"></script>
@@ -42,7 +42,7 @@
     <script src="/js/admin/product.js"></script>
     <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
     <!-- <script src="/js/app.js"></script> -->
-    <script src="/js/store.js"></script>
+    <!-- <script src="/js/store.js"></script> -->
 
     <script>
         CKEDITOR.replace('editor1');

@@ -381,11 +381,6 @@ $(document).ready(function () {
         e.stopPropagation();
         $('.imupl-dragdrop-hover').removeClass('active');
     });
-
-
-
-
-
 });
 
 

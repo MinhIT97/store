@@ -35,7 +35,10 @@
             Bạn vui lòng quay lại sau.
         </div>
         @endif
+        <div class="lion-pagination">
         {{ $blogs->links() }}
+        </div>
+
     </div>
 </section>
 @endsection
