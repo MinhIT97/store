@@ -19,7 +19,8 @@ $factory->define(Product::class, function (Faker $faker) {
         'thumbnail'  => '84561531_183496249408686_9078468584841150464_n.png',
         'status'     => rand(0, 1),
         'type'       => Arr::random($arr),
-        'content'   => $faker->name,
+        'content'    => $faker->name,
+        'hot'        => 1,
         'brand_id'   => function () {
             return factory(Brand::class)->create()->id;
         },

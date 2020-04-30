@@ -3,7 +3,7 @@
         <div class="lion-wrapper">
             <div class="search-bar hide">
                 <div class="search-close" title="close">
-                <i class="fas fa-times"></i>
+                    <i class="fas fa-times"></i>
                 </div>
                 <form class="search-wrapper" method="GET" action="{{route('search.show')}}">
                     <input type="text" class="search-input" placeholder="Search..." name="search" autocomplete="off">
@@ -18,7 +18,6 @@
                         <ul>
                             <li class="lion-nav__iteam"><a href="{{asset('products/men')}}">Nam</a></li>
                             <li class="lion-nav__iteam"><a href="{{asset('products/women')}}">Nữ</a></li>
-                            <!-- <li class="lion-nav__iteam"><a href="/product">Unisex</a></li> -->
                             <li class="lion-nav__iteam"><a href="{{asset('products/accessories')}}">Phụ kiện</a></li>
                             <li class="lion-nav__iteam"><a href="{{route('blogs')}}">Blog</a></li>
                         </ul>
@@ -26,13 +25,16 @@
                     <div class="lion-logo">
                         <a href="/" class="lion-logo__image"><img src="/images/shoplogo.png" alt=""></a>
                     </div>
-
                     <div class="lion-nav__right">
                         <ul>
-                            <li class="lion-nav__iteam"><a href="">
+                            <li class="lion-nav__iteam position-relative">
+                                <a class="cart-button"  id="lion-btn-cart">
                                     <span class="mobile--hidden"> Cart</span>
                                     <i class="fas fa-shopping-cart"></i>
-                                </a></li>
+
+                                </a>
+                                <span class="position-absolute lion-cart-item-quantity">1</span>
+                            </li>
                             <li class="lion-nav__iteam ">
                                 <a class="mobile--hidden search"><i class="fas fa-search"></i></a></li>
                             @guest
@@ -49,28 +51,95 @@
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
-
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
                                 </div>
                             </li>
                             @endguest
-
                         </ul>
-
                     </div>
-
                 </div>
-
             </div>
         </div>
-    </header>
 
+        <div class="lion-cart " tabindex="-1">
+            <form action="">
+                <div class="d-flex justify-content-between">
+                    <div class="mt-3 d-flex ">
+                        <p>
+                            SHOPPING BAG
+                        </p>
+                        <span class="lion-quantity-cart text-center ml-2"> <span>(</span> <span>1</span> <span>)</span></span>
+                    </div>
+                    <div class="lion-close-cart">
+                        <i class="fas fa-times"></i>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="product">
+                    <div class="product-cart-item">
+                        <div class="row">
+                            <div class="col-5 ">
+                                <img src="{{asset('/images/103.jpg')}}" class="img-fluid" alt="">
+                            </div>
+                            <div class="col-6 m-0 p-0">
+                                <div class="mb-1"> SIT QUAERAT ASPERIORES PL</div>
+                                <span>Color: Đỏ</span>
+                                <span>-</span>
+                                <span>Zize : xl</span>
+                                <div class="mt-2 mb-2">
+                                    <input class="quantity" type="number" min="0">
+                                </div>
+                                <div class="">2000,00000</div>
+                            </div>
+                            <div class="col-1 p-0">
+                                <i class="fas fa-trash"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line mt-2 mb-2"></div>
+                    <div class="product-cart-item">
+                        <div class="row">
+                            <div class="col-5 ">
+                                <img src="{{asset('/images/103.jpg')}}" class="img-fluid" alt="">
+                            </div>
+                            <div class="col-6 m-0 p-0">
+                                <div class="mb-1"> SIT QUAERAT ASPERIORES PL</div>
+                                <span>Color: Đỏ</span>
+                                <span>-</span>
+                                <span>Zize : xl</span>
+                                <div class="mt-2 mb-2">
+                                    <input class="quantity" type="number" min="0">
+                                </div>
+                                <div class="">2000,00000</div>
+                            </div>
+                            <div class="col-1 p-0">
+                                <i class="fas fa-trash"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line mt-2 mb-2"></div>
+                    <div class="d-flex justify-content-between">
+                        <div class="">
+                            <p>
+                                TẠM TÍNH
+                            </p>
+                        </div>
+                        <div class="lion-total-cart">
+                            <p><strong>200000,000</strong></p>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn text-center lion-pay">Pay</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </header>
 </head>

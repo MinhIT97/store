@@ -22287,6 +22287,18 @@ readers do not read off random characters that represent icons */
   white-space: nowrap;
 }
 
+.lion-head .lion-wrapper .lion-nav__right ul .lion-nav__iteam .lion-cart-item-quantity {
+  top: 10px;
+  right: 30px;
+  width: 12px;
+  height: 12px;
+  background: #1c1c1c;
+  color: white;
+  text-align: center;
+  border-radius: 50%;
+  font-size: 10px;
+}
+
 .lion-head .lion-wrapper .lion-nav__right ul .lion-nav__iteam a:hover {
   text-decoration: none;
   color: #6c757d;
@@ -23031,6 +23043,62 @@ readers do not read off random characters that represent icons */
 
 .lion-pagination .pagination .page-item .page-link {
   color: black;
+  outline: none;
+}
+
+.lion-cart {
+  background-color: white;
+  display: none;
+  width: 320px;
+  position: absolute;
+  right: 0;
+  z-index: 991;
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  padding: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  will-change: transform;
+  transition: all 0.4s ease;
+}
+
+.lion-cart .lion-quantity-cart {
+  color: #00b5ad;
+}
+
+.lion-cart .hidden-cart {
+  width: 0;
+  transition: all 0.2s ease;
+  display: none;
+}
+
+.lion-cart .hidden-overlay {
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.2s ease;
+}
+
+.lion-cart .product .product-cart-item .quantity {
+  background-color: white;
+  border-radius: 6px;
+  border: 1px solid #00b5ad;
+  height: 25px;
+  outline: none;
+  width: 100px;
+  text-align: center;
+}
+
+.lion-cart .lion-pay {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #00b5ad;
+  color: white;
+  font-size: 18px;
+  width: 100%;
+}
+
+.lion-cart:focus {
   outline: none;
 }
 

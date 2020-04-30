@@ -46859,6 +46859,8 @@ __webpack_require__(/*! ./sortby */ "./resources/js/sortby.js");
 
 __webpack_require__(/*! ./search */ "./resources/js/search.js");
 
+__webpack_require__(/*! ./cart */ "./resources/js/cart.js");
+
 console.log("Hello World :)");
 $.ajaxSetup({
   headers: {
@@ -47013,6 +47015,29 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/cart.js":
+/*!******************************!*\
+  !*** ./resources/js/cart.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  var lion_btn_cart = $("#lion-btn-cart");
+  var lion_cart = $(".lion-cart");
+  lion_btn_cart.click(function () {
+    lion_cart.slideToggle(200);
+  });
+  var lion_close_cart = $(".lion-close-cart");
+  lion_close_cart.click(function () {
+    lion_cart.slideToggle();
+  });
+  console.log(lion_close_cart);
+  console.log(lion_btn_cart);
+});
 
 /***/ }),
 

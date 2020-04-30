@@ -114,6 +114,8 @@ Route::group(['prefix' => '/', 'namespace' => 'Web'], function () {
     Route::post('contacts', 'ContactController@store')->name('contact.create');
 
     Route::get('pages/{slug}', 'PostListController@show')->name('pages.show_detail');
+    Route::post('cart-item', 'CartController@addCart')->name('cart.create');
+
 
     Route::get('search', 'SearchController')->name('search.show');
 

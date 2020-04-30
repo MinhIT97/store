@@ -3,6 +3,7 @@
 use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UsersTableSeeder extends Seeder
 {
@@ -13,9 +14,26 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(User::class)->create([
-            'email'    => 'admin@gmail.com',
-            'password' => Hash::make('secret'),
+        User::create([
+            'email'        => 'admin@gmail.com',
+            'name'         => 'Nguyen Van Minh',
+            'password'     => Hash::make('lion123456'),
+            'verify_token' => Str::random(32),
+            'level'        => 1,
+        ]);
+        User::create([
+            'email'        => 'minh06081997@gmail.com',
+            'name'         => 'Nguyen Van Minh',
+            'password'     => Hash::make('lion123456'),
+            'verify_token' => Str::random(32),
+            'level'        => 1,
+        ]);
+        User::create([
+            'email'        => 'minh@gmail.com',
+            'name'         => 'Nguyen Van Minh',
+            'password'     => Hash::make('lion123456'),
+            'verify_token' => Str::random(32),
+            'level'        => 0,
         ]);
     }
 }

@@ -4,16 +4,16 @@ namespace App\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\cartRepository;
-use App\Entities\Cart;
-use App\Validators\CartValidator;
+use App\Repositories\CartItemRepository;
+use App\Entities\CartItem;
+use App\Validators\CartItemValidator;
 
 /**
- * Class CartRepositoryEloquent.
+ * Class CartItemRepositoryEloquent.
  *
  * @package namespace App\Repositories;
  */
-class CartRepositoryEloquent extends BaseRepository implements CartRepository
+class CartItemRepositoryEloquent extends BaseRepository implements CartItemRepository
 {
     /**
      * Specify Model class name
@@ -22,14 +22,10 @@ class CartRepositoryEloquent extends BaseRepository implements CartRepository
      */
     public function model()
     {
-        return Cart::class;
-    }
-    public function getEntity()
-    {
-        return $this->model;
+        return CartItem::class;
     }
 
-
+    
 
     /**
      * Boot up the repository, pushing criteria
@@ -38,5 +34,5 @@ class CartRepositoryEloquent extends BaseRepository implements CartRepository
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
-
+    
 }

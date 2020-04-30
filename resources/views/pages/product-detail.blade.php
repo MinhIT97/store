@@ -34,7 +34,8 @@
                 </div>
             </div>
             <div class="col-12 col-md-5 col-lg-5">
-                <form action="">
+                <form action="{{route('cart.create')}}" method="POST">
+                    @csrf
                     @if($product)
                     <div class="product-summary">
                         <div class="product-summary--name">
@@ -43,7 +44,7 @@
                         <div class="product-summary--code">
                             <span>Mã Sản Phẩm:</span> <span>{{$product->code}}</span>
                         </div>
-                        <div class="product-summary--price">
+                        <div  class="product-summary--price">
                             {{number_format($product->price)}} ₫
                         </div>
                         <div>

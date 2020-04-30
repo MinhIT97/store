@@ -7,11 +7,11 @@ use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
 /**
- * Class Cart.
+ * Class CartItem.
  *
  * @package namespace App\Entities;
  */
-class Cart extends Model implements Transformable
+class CartItem extends Model implements Transformable
 {
     use TransformableTrait;
 
@@ -20,5 +20,6 @@ class Cart extends Model implements Transformable
      *
      * @var array
      */
-    protected $fillable = ['id', 'total'];
+    protected $fillable = ['cart_id', 'product_id', 'quantity', 'price', 'amount'];
+
 }

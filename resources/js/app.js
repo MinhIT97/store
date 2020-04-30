@@ -7,6 +7,7 @@ import "select2/dist/css/select2.min.css";
 window.select2 = require("select2/dist/js/select2.min");
 require("./sortby");
 require("./search");
+require("./cart");
 
 console.log("Hello World :)");
 $.ajaxSetup({

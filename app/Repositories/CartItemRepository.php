@@ -5,11 +5,11 @@ namespace App\Repositories;
 use Prettus\Repository\Contracts\RepositoryInterface;
 
 /**
- * Interface CartRepository.
+ * Interface CartItemRepository.
  *
  * @package namespace App\Repositories;
  */
-interface CartRepository extends RepositoryInterface
+interface CartItemRepository extends RepositoryInterface
 {
-    public function getEntity();
+    //
 }
