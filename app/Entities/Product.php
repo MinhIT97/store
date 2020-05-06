@@ -26,7 +26,7 @@ class Product extends Model implements Transformable
      */
     const PENĐING      = 0;
     const PUBLISHED     = 1;
-    const HOTS =1;
+    const HOTS          = 1;
     protected $fillable = [
         "name",
         "quantity",

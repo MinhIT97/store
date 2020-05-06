@@ -28,12 +28,16 @@
                     <div class="lion-nav__right">
                         <ul>
                             <li class="lion-nav__iteam position-relative">
-                                <a class="cart-button"  id="lion-btn-cart">
+                                <a class="cart-button" id="lion-btn-cart">
                                     <span class="mobile--hidden"> Cart</span>
                                     <i class="fas fa-shopping-cart"></i>
 
                                 </a>
-                                <span class="position-absolute lion-cart-item-quantity">1</span>
+                                <span class="position-absolute lion-cart-item-quantity">
+                                    @if($cart)
+                                    {{$cart->cart_items_count}}
+                                    @endif
+                                </span>
                             </li>
                             <li class="lion-nav__iteam ">
                                 <a class="mobile--hidden search"><i class="fas fa-search"></i></a></li>
@@ -67,7 +71,6 @@
                 </div>
             </div>
         </div>
-
         <div class="lion-cart " tabindex="-1">
             <form action="">
                 <div class="d-flex justify-content-between">
@@ -75,7 +78,11 @@
                         <p>
                             SHOPPING BAG
                         </p>
-                        <span class="lion-quantity-cart text-center ml-2"> <span>(</span> <span>1</span> <span>)</span></span>
+                        <span class="lion-quantity-cart text-center ml-2"> <span>(</span> <span>
+                                @if($cart)
+                                {{$cart->cart_items_count}}
+                                @endif
+                            </span> <span>)</span></span>
                     </div>
                     <div class="lion-close-cart">
                         <i class="fas fa-times"></i>
@@ -83,47 +90,32 @@
                 </div>
                 <div class="line"></div>
                 <div class="product">
+                    @if($cart)
+                    @foreach($cart->cartItems as $cartItem)
                     <div class="product-cart-item">
                         <div class="row">
                             <div class="col-5 ">
-                                <img src="{{asset('/images/103.jpg')}}" class="img-fluid" alt="">
+                                <img src="{{asset('uploads/'. $cartItem->product->thumbnail)}}" class="img-fluid" alt="">
                             </div>
                             <div class="col-6 m-0 p-0">
-                                <div class="mb-1"> SIT QUAERAT ASPERIORES PL</div>
-                                <span>Color: Đỏ</span>
+                                <div class="mb-1"> {!! $cartItem->product->getLimitName(20) !!}</div>
+                                <span>Color: <span class="text-capitalize">{!! $cartItem->color->color !!}</span></span>
                                 <span>-</span>
-                                <span>Zize : xl</span>
+                                <span>Zize : {!! $cartItem->size->size !!}</span>
                                 <div class="mt-2 mb-2">
-                                    <input class="quantity" type="number" min="0">
+                                    <input class="quantity" data-id="{!! $cartItem->id !!}"  value="{{$cartItem->quantity}}" type="number" min="0">
                                 </div>
-                                <div class="">2000,00000</div>
+                                <div class="" id="amount-{{$cartItem->id}}">{{number_format($cartItem->amount)}}₫</div>
                             </div>
                             <div class="col-1 p-0">
-                                <i class="fas fa-trash"></i>
+                                <a href="{{url('delete-cart-item/'.$cartItem->id)}}"> <i class="fas fa-trash"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="line mt-2 mb-2"></div>
-                    <div class="product-cart-item">
-                        <div class="row">
-                            <div class="col-5 ">
-                                <img src="{{asset('/images/103.jpg')}}" class="img-fluid" alt="">
-                            </div>
-                            <div class="col-6 m-0 p-0">
-                                <div class="mb-1"> SIT QUAERAT ASPERIORES PL</div>
-                                <span>Color: Đỏ</span>
-                                <span>-</span>
-                                <span>Zize : xl</span>
-                                <div class="mt-2 mb-2">
-                                    <input class="quantity" type="number" min="0">
-                                </div>
-                                <div class="">2000,00000</div>
-                            </div>
-                            <div class="col-1 p-0">
-                                <i class="fas fa-trash"></i>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
+                    @endif
+                    @if($cart->total != 0)
                     <div class="line mt-2 mb-2"></div>
                     <div class="d-flex justify-content-between">
                         <div class="">
@@ -132,12 +124,17 @@
                             </p>
                         </div>
                         <div class="lion-total-cart">
-                            <p><strong>200000,000</strong></p>
+                            @if($cart)
+                            <p><strong id="total">{{number_format($cart->total)}}</strong></p>
+                            @endif
                         </div>
                     </div>
                     <div>
                         <button class="btn text-center lion-pay">Pay</button>
                     </div>
+                    @else
+                    <p>Cart is empty</p>
+                    @endif
                 </div>
             </form>
         </div>

@@ -46861,6 +46861,8 @@ __webpack_require__(/*! ./search */ "./resources/js/search.js");
 
 __webpack_require__(/*! ./cart */ "./resources/js/cart.js");
 
+__webpack_require__(/*! ./cart-item */ "./resources/js/cart-item.js");
+
 console.log("Hello World :)");
 $.ajaxSetup({
   headers: {
@@ -47015,6 +47017,48 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/cart-item.js":
+/*!***********************************!*\
+  !*** ./resources/js/cart-item.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  var quantityChange = document.getElementsByClassName("quantity");
+  console.log(quantityChange);
+  Array.from(quantityChange).forEach(function (input) {
+    input.addEventListener("change", function () {
+      var id = input.dataset.id;
+      var quantity = input.value;
+      var url = window.location.origin + "/api/cart/" + id;
+      console.log(url); // var url = "api/cart/" + id;
+
+      $.ajax({
+        type: "PUT",
+        url: url,
+        data: {
+          quantity: quantity
+        },
+        dataType: "json",
+        success: function success(data) {
+          var amount = new Intl.NumberFormat("vi-VN").format(data.amount);
+          var total = new Intl.NumberFormat("vi-VN").format(data.total_cart_items);
+          $("#alert").html(data.error);
+          $("#amount-" + id).html(amount);
+          $("#total").html(total);
+        },
+        error: function error(jqXHR, textStatus, errorThrown) {
+          console.log(JSON.stringify(jqXHR));
+          console.log("AJAX error: " + textStatus + " : " + errorThrown);
+        }
+      });
+    });
+  });
+});
 
 /***/ }),
 

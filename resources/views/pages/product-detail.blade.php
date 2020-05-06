@@ -40,17 +40,25 @@
                     <div class="product-summary">
                         <div class="product-summary--name">
                             <h4>{{$product->getLimitName(25)}}</h4>
+
                         </div>
                         <div class="product-summary--code">
                             <span>Mã Sản Phẩm:</span> <span>{{$product->code}}</span>
                         </div>
-                        <div  class="product-summary--price">
-                            {{number_format($product->price)}} ₫
+                        <div class="d-flex">
+                            <div class="product-summary--price">
+                                {{number_format($product->price)}} ₫
+                                <input type="text" value="{{$product->price}}" hidden name="price">
+                            </div>
+                            <div class="product-summary--saleprice">
+                                {{number_format($product->price)}} ₫
+                                <input type="text" value="{{$product->price}}" hidden name="price">
+                            </div>
                         </div>
                         <div>
                             <p>Mầu sắc</p>
                         </div>
-
+                        <input type="text" name="product_id" value="{{$product->id}}" hidden>
 
                         <div class="product-summary--color d-flex mb-5">
                             @if($product->attributes->count())
@@ -58,7 +66,7 @@
                             @foreach($colors as $color)
                             @if(in_array($color->id,$color_id))
                             <label class="product-colors">
-                                <input type="radio" checked="checked" name="radio">
+                                <input type="radio" value="{{$color->id}}" checked="checked" name="color_id">
                                 <span class="checkmark {{$color->color}}"></span>
                             </label>
                             @endif
@@ -74,7 +82,7 @@
                             @foreach($product->sizes as $size)
                             <div class="form-check">
                                 <label for="{{$size->size}}" class="radbox">
-                                    <input type="radio" id="{{$size->size}}" value="{{$size->id}}" name="size" checked="">
+                                    <input type="radio" id="{{$size->size}}" value="{{$size->id}}" name="size_id" checked="">
                                     <span class="rad-text">{{$size->size}}</span>
                                 </label>
                             </div>
@@ -84,7 +92,7 @@
                         <div>
                             Số lượng
                         </div>
-                        <input class="input-quantity text-center" type="number" min="0" value="1">
+                        <input class="input-quantity text-center" name="quantity" type="number" min="0" value="1">
                         <div>
                             <button type="btn" class="btn btn-adtocart ">
                                 Thêm vào giỏ hàng

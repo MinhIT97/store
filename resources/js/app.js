@@ -8,6 +8,7 @@ window.select2 = require("select2/dist/js/select2.min");
 require("./sortby");
 require("./search");
 require("./cart");
+require("./cart-item");
 
 console.log("Hello World :)");
 $.ajaxSetup({
@@ -15,7 +16,7 @@ $.ajaxSetup({
         "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
     }
 });
-$(document).ready(function() {
+$(document).ready(function () {
     $(".product_slider").slick({
         infinite: true,
         autoplay: true,
@@ -128,6 +129,6 @@ $(document).ready(function() {
         focusOnSelect: true
     });
 });
-$(document).ready(function() {
+$(document).ready(function () {
     $(".js-example-basic-multiple").select2();
 });

@@ -22665,6 +22665,14 @@ readers do not read off random characters that represent icons */
   font-weight: 800;
 }
 
+.product-detail .product-summary--saleprice {
+  font-size: 22px;
+  margin: 20px;
+  font-weight: 500;
+  text-decoration: line-through;
+  font-style: italic;
+}
+
 .product-detail .product-summary--color .orange {
   background-color: #fb7f04 !important;
 }
@@ -23087,6 +23095,10 @@ readers do not read off random characters that represent icons */
   outline: none;
   width: 100px;
   text-align: center;
+}
+
+.lion-cart .product .product-cart-item a {
+  color: #1c1c1c;
 }
 
 .lion-cart .lion-pay {

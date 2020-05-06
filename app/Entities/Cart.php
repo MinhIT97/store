@@ -15,10 +15,14 @@ class Cart extends Model implements Transformable
 {
     use TransformableTrait;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = ['id', 'total'];
+
+    public function cartItems()
+    {
+        return $this->hasMany(CartItem::class, 'cart_id','id')->with('product','size','color');
+    }
+    public function calculateTotal(): int
+    {
+        return $this->cartItems->sum('amount');
+    }
 }

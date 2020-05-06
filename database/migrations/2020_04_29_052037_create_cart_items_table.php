@@ -21,6 +21,8 @@ class CreateCartItemsTable extends Migration
             $table->uuid('cart_id');
             $table->unsignedBigInteger('product_id');
             $table->integer('quantity')->default(0);
+            $table->tinyInteger('color_id');
+            $table->tinyInteger('size_id');
             $table->integer('price')->default(0);
             $table->integer('amount')->default(0);
             $table->timestamps();

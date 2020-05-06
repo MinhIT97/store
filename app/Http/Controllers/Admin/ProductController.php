@@ -126,13 +126,9 @@ class ProductController extends Controller
         } else {
             $data = $request->all();
         }
-        //    if ($request->hasFile('media')) {
-        //     foreach ($request->media as $key ) {
-        //         $filename =  $key->getClientOriginalName();
-        //        print_r($filename);
-        //     }
-        // }
-        //   dd($request->hasFile('media'));
+        if (!$request->hot) {
+            $data['hot'] = 0;
+        }
         if ($product) {
             $product->slug = null;
             $update        = $product->update($data);

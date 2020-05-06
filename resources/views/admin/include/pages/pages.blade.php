@@ -16,7 +16,7 @@
     <a class="nav-link" data-toggle="collapse" href="#category-pages" aria-expanded="false" aria-controls="general-pages">
         <span class="menu-title">Categories </span>
         <i class="menu-arrow"></i>
-        <i class="mdi mdi-medical-bag menu-icon"></i>
+        <i class="mdi mdi-image-album menu-icon"></i>
     </a>
     <div class="collapse" id="category-pages">
         <ul class="nav flex-column sub-menu">
@@ -27,7 +27,7 @@
     <a class="nav-link" data-toggle="collapse" href="#poster-pages" aria-expanded="false" aria-controls="general-pages">
         <span class="menu-title">Poster </span>
         <i class="menu-arrow"></i>
-        <i class="mdi mdi-medical-bag menu-icon"></i>
+        <i class="mdi mdi-cards menu-icon"></i>
     </a>
     <div class="collapse" id="poster-pages">
         <ul class="nav flex-column sub-menu">
@@ -38,7 +38,7 @@
     <a class="nav-link" data-toggle="collapse" href="#brand-pages" aria-expanded="false" aria-controls="general-pages">
         <span class="menu-title">Brand </span>
         <i class="menu-arrow"></i>
-        <i class="mdi mdi-medical-bag menu-icon"></i>
+        <i class="mdi mdi-library menu-icon"></i>
     </a>
     <div class="collapse" id="brand-pages">
         <ul class="nav flex-column sub-menu">
@@ -50,7 +50,7 @@
     <a class="nav-link" data-toggle="collapse" href="#geseral-pages" aria-expanded="false" aria-controls="general-pages">
         <span class="menu-title">Products </span>
         <i class="menu-arrow"></i>
-        <i class="mdi mdi-medical-bag menu-icon"></i>
+        <i class="mdi mdi-google-cardboard menu-icon"></i>
     </a>
     <div class="collapse" id="geseral-pages">
         <ul class="nav flex-column sub-menu">
@@ -67,7 +67,7 @@
     <a class="nav-link" data-toggle="collapse" href="#contacts-pages" aria-expanded="false" aria-controls="general-pages">
         <span class="menu-title">Contacts </span>
         <i class="menu-arrow"></i>
-        <i class="mdi mdi-medical-bag menu-icon"></i>
+        <i class="mdi mdi-contact-mail menu-icon"></i>
     </a>
     <div class="collapse" id="contacts-pages">
         <ul class="nav flex-column sub-menu">
@@ -91,7 +91,7 @@
     <a class="nav-link" data-toggle="collapse" href="#blog-pages" aria-expanded="false" aria-controls="general-pages">
         <span class="menu-title">Blog </span>
         <i class="menu-arrow"></i>
-        <i class="mdi mdi-medical-bag menu-icon"></i>
+        <i class="mdi mdi-blogger menu-icon"></i>
     </a>
     <div class="collapse" id="blog-pages">
         <ul class="nav flex-column sub-menu">
@@ -103,7 +103,7 @@
     <a class="nav-link" data-toggle="collapse" href="#pas" aria-expanded="false" aria-controls="general-pages">
         <span class="menu-title">Pages </span>
         <i class="menu-arrow"></i>
-        <i class="mdi mdi-medical-bag menu-icon"></i>
+        <i class="mdi mdi-book-open-page-variant menu-icon"></i>
     </a>
     <div class="collapse" id="pas">
         <ul class="nav flex-column sub-menu">

@@ -45,6 +45,13 @@ $yellow: #fdfb97;
             margin: 20px;
             font-weight: 800;
         }
+        &--saleprice {
+            font-size: 22px;
+            margin: 20px;
+            font-weight: 500;
+            text-decoration: line-through;
+            font-style: italic;
+        }
         &--color {
             .orange {
                 background-color: $orange-yellow !important;

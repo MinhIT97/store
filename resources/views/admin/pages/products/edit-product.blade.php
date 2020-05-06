@@ -149,7 +149,7 @@
                         </select>
                         <p class="help is-danger mt-2">{{ $errors->first('status') }}</p>
                     </div>
-                    <input type="checkbox" name="hot" value="1">
+                    <input type="checkbox" @if($product->hot === 1) checked @endif name="hot" value="1">
                     <label for="">Hot</label>
                     <div class="justify-content-end d-flex">
                         <button type="submit" id="btn-submit" class="btn btn-gradient-info btn-behance justify-content-end">Update</button>

@@ -48,8 +48,8 @@
                                     <td><img class="ml-2" src="{{asset('/uploads/'.$blog->thumbnail)}}" alt=""></td>
 
                                     <td>
-                                        <a class="btn btn-gradient-info p-2" href="{{url('adminstore/edit-blog/'.$blog->id)}}">Sửa</a>
-                                        <a class="btn btn-gradient-danger p-2 ml-2" href="{{url('adminstore/delete-blog/'.$blog->id)}}">Xóa</a>
+                                        <a class="btn btn-gradient-info p-2" href="{{url('adminstore/edit-blog/'.$blog->id)}}"><i class="fas fa-edit"></i>Edit</a>
+                                        <a class="btn btn-gradient-danger p-2 ml-2" href="{{url('adminstore/delete-blog/'.$blog->id)}}"><i class="fas fa-trash"></i>Delete</a>
                                     </td>
                                 </tr>
                                 @endforeach

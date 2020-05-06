@@ -12,27 +12,35 @@ class ColorTableSeeder extends Seeder
      */
     public function run()
     {
-        Color::create([
+        Color::insert([
+
             [
                 'color' => 'green',
+                'slug'  => 'green',
             ],
             [
                 'color' => 'red',
+                'slug'  => 'red',
             ],
             [
                 'color' => 'black',
+                'slug'  => 'black',
             ],
             [
                 'color' => 'white',
+                'slug'  => 'white',
             ],
             [
                 'color' => 'violet',
+                'slug'  => 'violet',
             ],
             [
                 'color' => 'yellow',
+                'slug'  => 'yellow',
             ],
             [
                 'color' => 'brown',
+                'slug'  => 'brown',
             ],
 
         ]);

@@ -11,5 +11,5 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  */
 interface CartItemRepository extends RepositoryInterface
 {
-    //
+    public function getEntity();
 }

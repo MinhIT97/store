@@ -18,7 +18,7 @@ Route::get('admin-dashboard', 'Admin\AdminController@index')->name('admin-dashbo
 
 Route::get('admin/login', 'Admin\LoginController@login')->name('admin-login');
 Route::post('admin/login', 'Admin\LoginController@post_login')->name('admin-login');
-Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin' ,'middleware' => 'adminlogin'], function () {
+Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin', 'middleware' => 'adminlogin'], function () {
 
     Route::get('users', 'UserController@index')->name('users.show');
     Route::get('view-user', 'UserController@viewStore')->name('users.show_create');
@@ -101,7 +101,7 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin' ,'middleware' =>
     Route::get('size/{id}', 'SizeController@destroy')->name('size.delete');
 });
 
-Route::group(['prefix' => '/', 'namespace' => 'Web'], function () {
+Route::group(['prefix' => '/', 'namespace' => 'Web', 'middleware' => ['checkCart']], function () {
 
     Route::get('/', 'HomeController@index')->name('index');
 
@@ -114,8 +114,10 @@ Route::group(['prefix' => '/', 'namespace' => 'Web'], function () {
     Route::post('contacts', 'ContactController@store')->name('contact.create');
 
     Route::get('pages/{slug}', 'PostListController@show')->name('pages.show_detail');
-    Route::post('cart-item', 'CartController@addCart')->name('cart.create');
 
+    Route::post('cart-item', 'CartController')->name('cart.create');
+
+    Route::get('delete-cart-item/{id}', 'CartController@destroy')->name('cart.delete');
 
     Route::get('search', 'SearchController')->name('search.show');
 
