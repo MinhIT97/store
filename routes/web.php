@@ -121,6 +121,8 @@ Route::group(['prefix' => '/', 'namespace' => 'Web', 'middleware' => ['checkCart
 
     Route::get('search', 'SearchController')->name('search.show');
 
+    Route::get('/cart', 'OrderController@show')->name('cart.show');
+
     // Route::get('logins', 'AuthController@webUser')->name('web-login');
 
     // Route::get('register', 'AuthController@webViewRegister')->name('register');

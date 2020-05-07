@@ -72,7 +72,8 @@
             </div>
         </div>
         <div class="lion-cart " tabindex="-1">
-            <form action="">
+            <form action="/cart" method="get">
+            @csrf
                 <div class="d-flex justify-content-between">
                     <div class="mt-3 d-flex ">
                         <p>
