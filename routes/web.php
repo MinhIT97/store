@@ -99,6 +99,11 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin', 'middleware' =>
     Route::get('edit-size/{id}', 'SizeController@showUpdate')->name('size.show_edit');
     Route::post('edit-size/{id}', 'SizeController@update')->name('size.edit');
     Route::get('size/{id}', 'SizeController@destroy')->name('size.delete');
+
+    Route::get('icon', 'FontController@iconShow')->name('icon.show');
+    Route::get('form', 'FontController@formShow')->name('form.show');
+    Route::get('chart', 'FontController@chartShow')->name('chart.show');
+    Route::get('table', 'FontController@tableShow')->name('table.show');
 });
 
 Route::group(['prefix' => '/', 'namespace' => 'Web', 'middleware' => ['checkCart']], function () {
@@ -130,11 +135,6 @@ Route::group(['prefix' => '/', 'namespace' => 'Web', 'middleware' => ['checkCart
     // Route::post('register', 'AuthController@webRegister')->name('register');
 
     // Route::get('verification.verify', 'AuthController@verify')->name('verification.verify');
-
-    Route::get('search', 'SearchController')->name('search.show');
-
-
-
 
     Route::get('profile', 'ProfileController@index')->name('profile')->middleware('verified');
 });
