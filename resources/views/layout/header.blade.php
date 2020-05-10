@@ -116,6 +116,8 @@
                     <div class="line mt-2 mb-2"></div>
                     @endforeach
                     @endif
+
+                    @if($cart)
                     @if($cart->total != 0)
                     <div class="line mt-2 mb-2"></div>
                     <div class="d-flex justify-content-between">
@@ -135,6 +137,7 @@
                     </div>
                     @else
                     <p>Cart is empty</p>
+                    @endif
                     @endif
                 </div>
             </form>

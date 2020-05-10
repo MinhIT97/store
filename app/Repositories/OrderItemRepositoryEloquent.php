@@ -24,6 +24,10 @@ class OrderItemRepositoryEloquent extends BaseRepository implements OrderItemRep
     {
         return OrderItem::class;
     }
+    public function getEntity()
+    {
+        return $this->model;
+    }
 
     /**
     * Specify Validator class name
@@ -44,5 +48,5 @@ class OrderItemRepositoryEloquent extends BaseRepository implements OrderItemRep
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
-    
+
 }

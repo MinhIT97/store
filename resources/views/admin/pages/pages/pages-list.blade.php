@@ -43,8 +43,8 @@
                                     <td>{{$poster->getDate()}} </td>
                                     <td><img class="ml-2" src="{{asset('/uploads/'.$poster->thumbnail)}}" alt=""></td>
                                     <td>
-                                        <a class="btn btn-gradient-info p-2" href="{{url('adminstore/edit-pages/'.$poster->id)}}">Sửa</a>
-                                        <a class="btn btn-gradient-danger p-2 ml-2" href="{{url('adminstore/delete-pages/'.$poster->id)}}">Xóa</a>
+                                        <a class="btn btn-gradient-info p-2" href="{{url('adminstore/edit-pages/'.$poster->id)}}"><i class="fas fa-edit"></i></a>
+                                        <a class="btn btn-gradient-danger p-2 ml-2" href="{{url('adminstore/delete-pages/'.$poster->id)}}"><i class="fas fa-trash"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach

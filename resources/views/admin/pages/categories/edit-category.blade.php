@@ -1,6 +1,13 @@
 @extends('admin.layouts.master')
 @section('content')
-<div class="content-wrapper align-items-center  d-flex auth">
+<div class="content-wrapper align-items-center  auth">
+    <div>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{route('users.show')}}" class="text-decoration-none"><i class="fas fa-home"></i>Dashboard </a></li>
+            <li class="breadcrumb-item  text-capitalize"><a href="{{route('categories.show')}}" class="text-decoration-none">categories </a></li>
+            <li class="breadcrumb-item active text-capitalize"> {{$category->name}}</li>
+        </ol>
+    </div>
     <div class="row flex-grow">
         <div class="col-lg-8 mx-auto">
             <div class="auth-form-light text-left p-5">

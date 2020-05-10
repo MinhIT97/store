@@ -2,11 +2,11 @@
 
 namespace App\Repositories;
 
-use Prettus\Repository\Eloquent\BaseRepository;
-use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\orderRepository;
 use App\Entities\Order;
+use App\Repositories\orderRepository;
 use App\Validators\OrderValidator;
+use Prettus\Repository\Criteria\RequestCriteria;
+use Prettus\Repository\Eloquent\BaseRepository;
 
 /**
  * Class OrderRepositoryEloquent.
@@ -24,18 +24,20 @@ class OrderRepositoryEloquent extends BaseRepository implements OrderRepository
     {
         return Order::class;
     }
-
+    public function getEntity()
+    {
+        return $this->model;
+    }
     /**
-    * Specify Validator class name
-    *
-    * @return mixed
-    */
+     * Specify Validator class name
+     *
+     * @return mixed
+     */
     public function validator()
     {
 
         return OrderValidator::class;
     }
-
 
     /**
      * Boot up the repository, pushing criteria
@@ -44,5 +46,5 @@ class OrderRepositoryEloquent extends BaseRepository implements OrderRepository
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
-    
+
 }

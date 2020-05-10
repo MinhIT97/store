@@ -1,9 +1,9 @@
 @extends('layout.master')
 @section('content')
 <section class="blog">
-    <div>
-        <img class="img-fluid" src="/images/25041.jpg" alt="">
-    </div>
+
+
+
     @if($blogs)
 
     <div class="container">

@@ -1,6 +1,13 @@
 @extends('admin.layouts.master')
 @section('content')
-<div class="content-wrapper align-items-center  d-flex auth">
+<div class="content-wrapper align-items-center   auth">
+    <div>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{route('users.show')}}" class="text-decoration-none"> <i class="fas fa-home"></i> Dashboard </a></li>
+            <li class="breadcrumb-item  text-capitalize"><a href="{{route('posters.show')}}" class="text-decoration-none">poster </a></li>
+
+        </ol>
+    </div>
     <div class="row flex-grow">
         <div class="col-lg-8 mx-auto">
             @if (session('sucsess'))
@@ -22,7 +29,7 @@
                     </div>
                     <div class="form-group">
                         <label for="type">type</label>
-                        <select name="type" id="select1"  class="form-control form-control-sm  js-example-basic-single">
+                        <select name="type" id="select1" class="form-control form-control-sm  js-example-basic-single">
                             <option value="home">Home</option>
                             <option value="men">Men</option>
                             <option value="women">Women</option>

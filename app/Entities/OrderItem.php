@@ -27,6 +27,26 @@ class OrderItem extends Model implements Transformable
         'sale_price',
         'order_id',
         "status",
+        "color_id",
+        "size_id",
+        "amount",
     ];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id', 'id');
+    }
+    public function calculateAmount(): int
+    {
+        return $this->quantity * $this->price;
+    }
+    public function size()
+    {
+        return $this->belongsTo(Size::class, 'size_id');
+    }
+    public function color()
+    {
+        return $this->belongsTo(Color::class, 'color_id');
+    }
 
 }

@@ -36,8 +36,8 @@
                                     <td>{{$category->getDate()}} </td>
                                     <td>{{$category->getDateUpdate()}} </td>
                                     <td>
-                                        <a class="btn btn-gradient-info p-2" href="{{url('adminstore/edit-category/'.$category->id)}}">Sửa</a>
-                                        <a class="btn btn-gradient-danger p-2 ml-2" href="{{url('adminstore/category/'.$category->id)}}">Xóa</a>
+                                        <a class="btn btn-gradient-info p-2" href="{{url('adminstore/edit-category/'.$category->id)}}"><i class="fas fa-edit"></i></a>
+                                        <a class="btn btn-gradient-danger p-2 ml-2" href="{{url('adminstore/category/'.$category->id)}}"><i class="fas fa-trash"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach

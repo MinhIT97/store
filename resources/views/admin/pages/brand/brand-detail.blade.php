@@ -3,9 +3,13 @@
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="page-header">
-            <h3 class="page-title">
-                <a href="{{route('brand.show')}}" class="text-decoration-none">Brand</a><span>:{{$brand->name}}</span>
-            </h3>
+            <div>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{route('users.show')}}" class="text-decoration-none"><i class="fas fa-home"></i> Dashboard </a></li>
+                    <li class="breadcrumb-item  text-capitalize"><a href="{{route('brand.show')}}" class="text-decoration-none">Brand</a></li>
+                    <li class="breadcrumb-item active text-capitalize"> {{$brand->name}}</li>
+                </ol>
+            </div>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{route('create-product')}}" class="text-decoration-none">CREATE NEW</a></li>

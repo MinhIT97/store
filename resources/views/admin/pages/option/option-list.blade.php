@@ -42,8 +42,8 @@
                                     <td> {{$option->value}} </td>
                                     <td>{{$option->getDate()}} </td>
                                     <td>
-                                        <a class="btn btn-gradient-info p-2" href="{{ url('adminstore/edit/'.$option->id )}}">Sửa</a>
-                                        <a class="btn btn-gradient-danger p-2 ml-2" href="{{ url('adminstore//delete/'.$option->id )}}">Xóa</a>
+                                        <a class="btn btn-gradient-info p-2" href="{{ url('adminstore/edit/'.$option->id )}}"><i class="fas fa-edit"></i></a>
+                                        <a class="btn btn-gradient-danger p-2 ml-2" href="{{ url('adminstore//delete/'.$option->id )}}"><i class="fas fa-trash"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach

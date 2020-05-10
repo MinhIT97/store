@@ -32,4 +32,13 @@ class Order extends Model implements Transformable
         'note',
     ];
 
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class, 'order_id', 'id')->with('product', 'size', 'color');
+    }
+    public function calculateTotal(): int
+    {
+        return $this->orderItems->sum('amount');
+    }
+
 }

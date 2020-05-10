@@ -43,17 +43,17 @@
                                     <td> {{$user->email}} </td>
                                     <td> {{$user->phone}} </td>
                                     <td> @if($user->status === 0)
-                                        Mới tạo
+                                        Banned
                                         @elseif($user->status === 1)
-                                        Đã xác thực
+                                        Active
                                         @else
                                         Tài khoản không an toàn
                                         @endif
                                     </td>
                                     <td>{{$user->created_at}} </td>
                                     <td>
-                                        <a class="btn btn-gradient-info p-2" href="{{ url('adminstore/edit-user/'.$user->id )}}">Sửa</a>
-                                        <a class="btn btn-gradient-danger p-2 ml-2" href="{{ url('adminstore/delete-user/'.$user->id )}}">Xóa</a>
+                                        <a class="btn btn-gradient-info p-2" href="{{ url('adminstore/edit-user/'.$user->id )}}"><i class="fas fa-edit"></i></a>
+                                        <a class="btn btn-gradient-danger p-2 ml-2" href="{{ url('adminstore/delete-user/'.$user->id )}}"><i class="fas fa-trash"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach

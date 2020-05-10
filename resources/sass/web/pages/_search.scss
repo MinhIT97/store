@@ -11,20 +11,21 @@
             text-transform: uppercase;
         }
     }
-    .slick-next, .slick-prev {
+    .slick-next,
+    .slick-prev {
         border-radius: 50%;
         background-color: #00b5ad;
         width: 40px;
         height: 40px;
     }
-    .slick-prev{
+    .slick-prev {
         z-index: 198;
     }
-    .search-blog{
-       h5{
-        font-size: 14px;
-        color:#00b5ad ;
-        font-style: italic;
-       }
+    .search-blog {
+        h5 {
+            font-size: 14px;
+            color: #00b5ad;
+            font-style: italic;
+        }
     }
 }

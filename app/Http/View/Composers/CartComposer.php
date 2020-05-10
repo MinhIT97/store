@@ -19,7 +19,8 @@ class CartComposer
     public function compose(View $view)
     {
         $cart_id = Cookie::get('lionCart');
-        $cart    = $this->cart->withCount('cartItems')->where('id',$cart_id)->first();
+        $cart    = $this->cart->withCount('cartItems')->where('id', $cart_id)->first();
+
         $view->with('cart', $cart);
     }
 }

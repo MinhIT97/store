@@ -30,12 +30,12 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin', 'middleware' =>
 
     Route::group(['prefix' => '/products'], function () {
         Route::get('/', 'ProductController@index')->name('products');
-        Route::get('men', 'ProductController@man')->name('product-man');
+        Route::get('men', 'ProductController@man')->name('product-men');
         Route::get('edit/{id}', 'ProductController@showEdit')->name('product.show_edit');
         Route::post('edit/{id}', 'ProductController@editProduct')->name('product.edit');
         Route::get('create', 'ProductController@showStore')->name('create-product');
         Route::post('create', 'ProductController@store')->name('create-product');
-        Route::get('women', 'ProductController@woman')->name('product-woman');
+        Route::get('women', 'ProductController@woman')->name('product-women');
         Route::get('accessories', 'ProductController@accessories')->name('product-accessories');
         Route::get('delete/{id}', 'ProductController@destroy')->name('product.destroy');
         Route::get('delete/{id}/medias/{id_medias}', 'ProductController@destroyMedias')->name('product.destroy_medias');
@@ -122,6 +122,7 @@ Route::group(['prefix' => '/', 'namespace' => 'Web', 'middleware' => ['checkCart
     Route::get('search', 'SearchController')->name('search.show');
 
     Route::get('/cart', 'OrderController@show')->name('cart.show');
+    Route::post('/order', 'OrderController@order')->name('cart.order');
 
     // Route::get('logins', 'AuthController@webUser')->name('web-login');
 
@@ -129,6 +130,11 @@ Route::group(['prefix' => '/', 'namespace' => 'Web', 'middleware' => ['checkCart
     // Route::post('register', 'AuthController@webRegister')->name('register');
 
     // Route::get('verification.verify', 'AuthController@verify')->name('verification.verify');
+
+    Route::get('search', 'SearchController')->name('search.show');
+
+
+
 
     Route::get('profile', 'ProfileController@index')->name('profile')->middleware('verified');
 });

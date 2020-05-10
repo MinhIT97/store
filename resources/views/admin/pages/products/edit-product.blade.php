@@ -1,7 +1,16 @@
 @extends('admin.layouts.master')
 @section('content')
-<div class="content-wrapper align-items-center  d-flex auth">
+<div class="content-wrapper align-items-center auth">
+    <div>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{route('users.show')}}" class="text-decoration-none"><i class="fas fa-home"></i> Dashboard </a></li>
+            <li class="breadcrumb-item"><a href="{{route('products')}}"  class="text-decoration-none">Products</a></li>
+            <li class="breadcrumb-item  text-capitalize"><a href="{{route('product-'.$product->type)}}"  class="text-decoration-none">Products {{$product->type}}</a></li>
+            <li class="breadcrumb-item active text-capitalize"> {{$product->type}}</li>
+        </ol>
+    </div>
     <div class="row flex-grow">
+
         <div class="col-lg-8 mx-auto">
             @if (session('sucsess'))
             <div class="alert alert-success">
@@ -13,7 +22,7 @@
                     <div class="form-group">
                         <label for="type">Type</label>
                         <select name="type" id="" class="js-example-basic-multiple form-control form-control-sm">
-                            <option value="men" @if($product->type ==="men")selected="selected"@endif  >Men</option>
+                            <option value="men" @if($product->type ==="men")selected="selected"@endif >Men</option>
                             <option value="women" @if($product->type ==="women")selected="selected"@endif>Women</option>
                             <option value="accessories " @if($product->type === "accessories")selected="selected"@endif>Accessories</option>
                         </select>
@@ -78,7 +87,7 @@
                     </div>
                     <div class="form-group ">
                         <label>Nội dung</label>
-                        <textarea name="content"  class="form-control " id="editor1">{!!$product->content!!}</textarea>
+                        <textarea name="content" class="form-control " id="editor1">{!!$product->content!!}</textarea>
                         <p class="help is-danger mt-2">{{ $errors->first('content') }}</p>
                     </div>
                     <div class="upload-product">
@@ -144,8 +153,8 @@
                     <div class="form-group mt-5">
                         <Label> Status</Label>
                         <select name="status" id="" class="form-control form-control-sm js-example-basic-multiple">
-                            <option value="0"  @if($product->status ===0)selected="selected"@endif >pending</option>
-                            <option value="1"  @if($product->status ===1)selected="selected"@endif >active</option>
+                            <option value="0" @if($product->status ===0)selected="selected"@endif >pending</option>
+                            <option value="1" @if($product->status ===1)selected="selected"@endif >active</option>
                         </select>
                         <p class="help is-danger mt-2">{{ $errors->first('status') }}</p>
                     </div>

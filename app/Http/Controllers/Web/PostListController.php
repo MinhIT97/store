@@ -21,10 +21,10 @@ class PostListController extends Controller
         return 'pages.pages';
     }
 
-    protected function viewDataPages()
+    protected function viewDataPages($post, $request)
     {
 
-        $blogs = $this->entity->where('id', 1)->firstOrFail();
+        $blogs = $this->entity->where('slug', $request->slug)->firstOrFail();
 
         return [
             'blogs' => $blogs,
@@ -38,6 +38,7 @@ class PostListController extends Controller
         }
         $type = $this->getTypePost($request);
 
+
         $post = $this->entity->where([['slug', '=', $request->slug], ['type', '=', $type]])->firstOrFail();
 
         $custom_view_func_name = 'viewData' . ucwords($type);
@@ -46,6 +47,7 @@ class PostListController extends Controller
             $custom_view_data = $this->$custom_view_func_name($post, $request);
         }
         $data = $custom_view_data;
+
 
         $key = 'view' . ucwords($type);
 
@@ -70,5 +72,4 @@ class PostListController extends Controller
         }
         return $type;
     }
-
 }

@@ -38,8 +38,8 @@
                                     <td> {{$size->size}} </td>
                                     <td>{{$size->getDate()}} </td>
                                     <td>
-                                        <a class="btn btn-gradient-info p-2" href="{{url('adminstore/edit-size/'.$size->id)}}">Sửa</a>
-                                        <a class="btn btn-gradient-danger p-2 ml-2" href="{{url('adminstore/size/'.$size->id)}}">Xóa</a>
+                                        <a class="btn btn-gradient-info p-2" href="{{url('adminstore/edit-size/'.$size->id)}}"><i class="fas fa-edit"></i></a>
+                                        <a class="btn btn-gradient-danger p-2 ml-2" href="{{url('adminstore/size/'.$size->id)}}"><i class="fas fa-trash"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach

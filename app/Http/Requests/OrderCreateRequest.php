@@ -13,7 +13,7 @@ class OrderCreateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,13 @@ class OrderCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'email'    => 'required',
+            'name'     => 'required',
+            'address'  => 'required',
+            'phone'    => ['required', 'numeric', 'regex:/(0)[0-9]{9}/'],
+            'city'     => ['required'],
+            'district' => 'required',
+            // 'commune'  => 'required',
         ];
     }
 }

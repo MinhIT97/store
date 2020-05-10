@@ -55,8 +55,8 @@
     <div class="collapse" id="geseral-pages">
         <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link" href="{{route('products')}}"> Products </a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{route('product-man')}}"> MEN </a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{route('product-woman')}}"> WOMAN</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route('product-men')}}"> MEN </a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route('product-women')}}"> WOMAN</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{route('product-accessories')}}"> ACCESSORIES</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{route('size.show')}}"> Sizes</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{route('colors.show')}}"> Colors</a></li>

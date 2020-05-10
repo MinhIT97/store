@@ -23114,10 +23114,6 @@ readers do not read off random characters that represent icons */
   outline: none;
 }
 
-.lion-checkout {
-  padding: 4em;
-}
-
 .lion-checkout .breadcrumb {
   padding: 0;
 }
@@ -23126,11 +23122,15 @@ readers do not read off random characters that represent icons */
   color: #338dbc;
 }
 
-.lion-checkout .cart .shipping-address {
+.lion-checkout .check-out-cart {
+  padding: 4rem;
+}
+
+.lion-checkout .check-out-cart .cart .shipping-address {
   margin: 20px 0;
 }
 
-.lion-checkout .cart form input {
+.lion-checkout .check-out-cart .cart form input {
   box-shadow: 0 0 0 1px #d9d9d9;
   transition: all 0.2s ease-out;
   background-color: white;
@@ -23143,9 +23143,80 @@ readers do not read off random characters that represent icons */
   word-break: normal;
 }
 
-.lion-checkout .cart form .btn-checkcart {
+.lion-checkout .check-out-cart .cart form .btn-checkcart {
   background: #00b5ad;
   color: white;
+}
+
+.lion-checkout .product-checkout {
+  height: 100vh;
+  padding-top: 4rem;
+  border-left: 1px solid #969696;
+  padding-left: 4%;
+}
+
+.lion-checkout .product-checkout .image-checkout {
+  border: 1px solid #969696;
+  border-radius: 4px;
+  padding: 0;
+  position: relative;
+}
+
+.lion-checkout .product-checkout .cart-quantity {
+  position: absolute;
+  z-index: 200;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(153, 153, 153, 0.9);
+  border-radius: 50%;
+  text-align: center;
+  color: white;
+  right: 6px;
+  top: -10px;
+}
+
+.lion-checkout .product-checkout .color,
+.lion-checkout .product-checkout .size {
+  color: #4b4b4b;
+}
+
+.lion-checkout .product-checkout .total-price,
+.lion-checkout .product-checkout .total-name {
+  color: #717171;
+}
+
+.lion-checkout .product-checkout .btn-discount {
+  background: #fff;
+  color: #000;
+  border: 1px solid #000;
+  border-radius: 0;
+  font-weight: bold;
+  border-radius: 2px;
+}
+
+.lion-checkout .product-checkout .payment-due-price {
+  font-size: 1.71429em;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  color: #4b4b4b;
+  line-height: 1em;
+}
+
+.lion-checkout .product-checkout .payment-due-currency {
+  font-size: 14px;
+  vertical-align: 0.2em;
+  margin-right: 0.5em;
+  color: #969696;
+}
+
+@media (max-width: 1000px) {
+  .lion-checkout .check-out-cart {
+    padding: 2rem;
+  }
+
+  .lion-checkout .product-checkout {
+    display: none !important;
+  }
 }
 
 body {

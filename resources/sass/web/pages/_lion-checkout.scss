@@ -1,33 +1,99 @@
 .lion-checkout {
-    padding: 4em;
-
     .breadcrumb {
         padding: 0;
         .checkout-cart {
             color: #338dbc;
         }
     }
-    .cart {
-        .shipping-address {
-            margin: 20px 0;
+    .check-out-cart {
+        padding: 4rem;
+        .cart {
+            .shipping-address {
+                margin: 20px 0;
+            }
+            form {
+                input {
+                    box-shadow: 0 0 0 1px #d9d9d9;
+                    transition: all 0.2s ease-out;
+                    background-color: white;
+                    color: #333333;
+                    border-radius: 4px;
+                    display: block;
+                    box-sizing: border-box;
+                    width: 100%;
+                    padding: 0.94em 2.8em 0.94em 0.8em;
+                    word-break: normal;
+                }
+                .btn-checkcart {
+                    background: #00b5ad;
+                    color: white;
+                }
+            }
         }
-        form {
-            input {
-                box-shadow: 0 0 0 1px #d9d9d9;
-                transition: all 0.2s ease-out;
-                background-color: white;
-                color: #333333;
-                border-radius: 4px;
-                display: block;
-                box-sizing: border-box;
-                width: 100%;
-                padding: 0.94em 2.8em 0.94em 0.8em;
-                word-break: normal;
+    }
+
+    .product-checkout {
+        height: 100vh;
+        padding-top: 4rem;
+        border-left: 1px solid #969696;
+        padding-left: 4%;
+        .image-checkout {
+            border: 1px solid #969696;
+            border-radius: 4px;
+            padding: 0;
+            position: relative;
+        }
+        .cart-quantity {
+            position: absolute;
+            z-index: 200;
+            width: 20px;
+            height: 20px;
+            background-color: rgba(153, 153, 153, 0.9);
+            border-radius: 50%;
+            text-align: center;
+            color: white;
+            right: 6px;
+            top: -10px;
+        }
+        .color,
+        .size {
+            color: #4b4b4b;
+        }
+        .total-price,
+        .total-name {
+            color: #717171;
+        }
+        .btn-discount {
+            background: #fff;
+            color: #000;
+            border: 1px solid #000;
+            border-radius: 0;
+            font-weight: bold;
+            border-radius: 2px;
+        }
+        .payment-due-price {
+            font-size: 1.71429em;
+            font-weight: 500;
+            letter-spacing: -0.04em;
+            color: #4b4b4b;
+            line-height: 1em;
+        }
+        .payment-due-currency {
+            font-size: 14px;
+            vertical-align: 0.2em;
+            margin-right: 0.5em;
+            color: #969696;
+        }
+    }
+
+    @media (max-width: 1000px) {
+
+            .check-out-cart {
+                padding: 2rem;
             }
-            .btn-checkcart{
-                background: #00b5ad;
-                color: white;
-            }
+
+        .product-checkout {
+            display: none !important;
         }
     }
 }
