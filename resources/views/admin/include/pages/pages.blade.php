@@ -20,7 +20,7 @@
     </a>
     <div class="collapse" id="category-pages">
         <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{route('categories.show')}}"> Category </a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route('categories.show')}}"> Categories </a></li>
     </div>
 </li>
 <li class="nav-item">
@@ -55,11 +55,23 @@
     <div class="collapse" id="geseral-pages">
         <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link" href="{{route('products')}}"> Products </a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{route('product-men')}}"> MEN </a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{route('product-women')}}"> WOMAN</a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{route('product-accessories')}}"> ACCESSORIES</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{ url('adminstore/products/men')}}"> MEN </a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{ url('adminstore/products/women')}}"> WOMAN</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{ url('adminstore/products/accessories')}}"> ACCESSORIES</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{route('size.show')}}"> Sizes</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{route('colors.show')}}"> Colors</a></li>
+        </ul>
+    </div>
+</li>
+<li class="nav-item">
+    <a class="nav-link" data-toggle="collapse" href="#orders-pages" aria-expanded="false" aria-controls="general-pages">
+        <span class="menu-title">Orders </span>
+        <i class="menu-arrow"></i>
+        <i class="mdi mdi-contact-mail menu-icon"></i>
+    </a>
+    <div class="collapse" id="orders-pages">
+        <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="{{route('orders.show')}}"> Orders </a></li>
         </ul>
     </div>
 </li>

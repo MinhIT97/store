@@ -12,7 +12,7 @@
     .text-sortby {
         margin-right: 30px;
         white-space: nowrap;
-        margin-top: 10px ;
+        margin-top: 10px;
     }
 
     .img-head {
@@ -26,6 +26,17 @@
         margin: 0;
         padding: 0;
         border-radius: 6px;
+        position: relative;
+        .quantity-product {
+            position: absolute;
+            transform: rotate(45deg);
+            right: 0;
+            top: 20px;
+            color: #f73d1b;
+            border: 1px solid;
+            font-size: 10px;
+            padding: 3px;
+        }
 
         &__image {
             margin-bottom: 10px;

@@ -22,6 +22,8 @@ class SearchController extends Controller
         $blogs = $this->applySearchFromRequest($blogs,['title'],$request);
         $blogs = $blogs->where('type','blogs')->published()->limit(12)->get();
 
+        // $products->setPath('/search?s='.$request->get('s'));
+
 
 
         return view('pages.search', [

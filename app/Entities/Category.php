@@ -40,11 +40,11 @@ class Category extends Model implements Transformable
 
     public function posts()
     {
-        return $this->morphedByMany('App\Entities\Post', 'categoryable');
+        return $this->morphedByMany(Post::class, 'categoryable');
     }
     public function products()
     {
-        return $this->morphedByMany('App\Entities\Category', 'categoryable');
+        return $this->morphedByMany(Product::class, 'categoryable');
     }
 
     public function getDate()

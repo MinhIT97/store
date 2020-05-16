@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserUpdateRequest;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -12,12 +14,25 @@ class ProfileController extends Controller
     // {
     //     $this->middleware(['auth','verified']);
     // }
-    public function index(Request $requet)
+    public function index(Request $request)
     {
+        $id   = Auth::user()->id;
+        $user = User::find($id);
 
-        $user = User::where('id', $requet->id)->get();
+        return view('pages.profile', [
+            'user' => $user,
+        ]);
+    }
+    public function update(UserUpdateRequest $request)
+    {
+        $id   = Auth::user()->id;
 
+        $data = $request->all();
 
-        return view('pages.profile');
+        $user = User::findOrFail($id);
+
+        $user->update($data);
+
+        return redirect()->back()->with('success', 'Update user sucsess');
     }
 }

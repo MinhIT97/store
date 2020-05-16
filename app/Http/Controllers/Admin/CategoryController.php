@@ -6,19 +6,21 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryCreateRequest;
 use App\Http\Requests\CategoryUpdateRequest;
 use App\Repositories\CategoryRepository;
+use App\Repositories\ProductRepository;
 
 class CategoryController extends Controller
 {
     protected $repository;
-    public function __construct(CategoryRepository $repository)
+    public function __construct(CategoryRepository $repository, ProductRepository $productRepository)
     {
-        $this->repository = $repository;
-        $this->entity     = $repository->getEntity();
+        $this->repository     = $repository;
+        $this->entity         = $repository->getEntity();
+        $this->entity_product = $productRepository->getEntity();
     }
 
     public function index()
     {
-        $categoies = $this->entity->get();
+        $categoies = $this->entity->withCount('posts', 'products')->get();
 
         return view(
             'admin.pages.categories.categories-list',
@@ -48,6 +50,22 @@ class CategoryController extends Controller
         } else {
             return redirect()->back()->with('error', 'Create category error');
         }
+    }
+
+    public function showProducts($id)
+    {
+        $produts = $this->entity->find($id)->products()->paginate(20);
+        return view('admin.pages.categories.category-show-products', [
+            'products' => $produts,
+        ]);
+    }
+
+    public function showPosts($id)
+    {
+        $posts = $this->entity->find($id)->posts()->paginate(20);
+        return view('admin.pages.categories.category-show-blogs', [
+            'posts' => $posts,
+        ]);
     }
 
     public function showEdit($id)

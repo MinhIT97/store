@@ -27,6 +27,7 @@ class Attribute extends Model implements Transformable
         "quantity",
         "current_quantity",
     ];
+
     public function sizes()
     {
         return $this->morphToMany(Size::class, 'sizeable');

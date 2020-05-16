@@ -65,6 +65,9 @@
                                     </form>
                                 </div>
                             </li>
+                            <li class="lion-nav__iteam ">
+                                <a class="mobile--hidden " href="{{route('profile.show')}}"> <i class="far fa-user"></i></a>
+                            </li>
                             @endguest
                         </ul>
                     </div>

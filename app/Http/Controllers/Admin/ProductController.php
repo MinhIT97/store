@@ -13,24 +13,26 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AttributeCreateRequest;
 use App\Http\Requests\ProductCreateRequest;
 use App\Http\Requests\ProductUpdateRequest;
+use App\Repositories\AttributeRepository;
 use App\Repositories\ProductRepository;
 
 class ProductController extends Controller
 {
     protected $repository;
-    public function __construct(ProductRepository $repository)
+    public function __construct(ProductRepository $repository, AttributeRepository $attributeRepository)
     {
-        $this->repository = $repository;
-        $this->entity     = $repository->getEntity();
+        $this->repository       = $repository;
+        $this->entity           = $repository->getEntity();
+        $this->entity_attribute = $attributeRepository->getEntity();
     }
     public function index()
     {
         return view('admin.pages.products.index');
     }
 
-    public function man()
+    public function show($type)
     {
-        $products = $this->entity->where('type', 'men')->orderBY('id', 'DESC')->paginate(20);
+        $products = $this->entity->where('type', $type)->withCount('attributes', 'orderItems')->orderBY('id', 'DESC')->paginate(20);
         return view('admin.pages.products.product-list', [
             'products' => $products,
         ]);
@@ -157,23 +159,6 @@ class ProductController extends Controller
 
         return view('admin.pages.samples.error-404');
     }
-    public function woman()
-    {
-        $products = Product::where('type', 'women')->orderBY('id', 'DESC')->paginate(10);
-
-        return view('admin.pages.products.product-list', [
-            'products' => $products,
-        ]);
-    }
-
-    public function accessories()
-    {
-        $products = Product::where('type', 'accessories')->orderBY('id', 'DESC')->paginate(10);
-
-        return view('admin.pages.products.product-list', [
-            'products' => $products,
-        ]);
-    }
 
     public function destroy($id)
     {
@@ -183,6 +168,7 @@ class ProductController extends Controller
         }
 
         $product->delete();
+
         $product->imagaes()->delete();
         $product->sizes()->detach();
         $product->categories()->detach();
@@ -200,10 +186,11 @@ class ProductController extends Controller
     {
         $attributes = Attribute::where('product_id', $id)->with('color')->get();
 
-        // dd($attributes);
+        $product = $this->entity->find($id);
 
         return view('admin.pages.products.attribute.attribute-list', [
             'attributes' => $attributes,
+            'product'    => $product,
         ]);
     }
 
@@ -219,16 +206,46 @@ class ProductController extends Controller
 
     public function storeAttribute(AttributeCreateRequest $request)
     {
+
+        $product_current_quantity = $this->checkQuantityProductAttibute($request);
+
+        if (!$product_current_quantity) {
+            return redirect()->back()->with('errow', 'Current quantity exceed current quantity Product');
+        }
+
         $data = $request->all();
 
-        $color    = Attribute::create($data);
-        $size_ids = $request->sizes;
-        $sizes    = explode(',', $size_ids);
+        $attribute = Attribute::create($data);
+        $size_ids  = $request->sizes;
+        $sizes     = explode(',', $size_ids);
 
-        if ($color) {
-            $color->sizes()->attach($sizes);
+        if ($attribute) {
+            $attribute->sizes()->attach($sizes);
             return redirect()->back()->with('sucsess', 'Add attribute sucsess');
         }
+    }
+
+    public function sumQuantityAttribute($request)
+    {
+        $product_id           = $request->product_id;
+        $sumQuantityAttribute = $this->entity_attribute->where('product_id', $product_id)->get();
+        $sumQuantityAttribute = $sumQuantityAttribute->sum('current_quantity');
+        return $sumQuantityAttribute;
+    }
+
+    public function checkQuantityProductAttibute($request)
+    {
+        $sumQuantityAttribute = $this->sumQuantityAttribute($request);
+        $product_id           = $request->product_id;
+
+        $product                  = $this->entity->find($product_id);
+        $product_current_quantity = $product->current_quantity;
+        $sumQuantity              = $request->current_quantity + $sumQuantityAttribute;
+
+        if ($sumQuantity <= $product_current_quantity) {
+            return $product_current_quantity;
+        }
+        return false;
     }
 
     public function destroyAttribute($id)

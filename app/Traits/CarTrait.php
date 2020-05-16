@@ -58,7 +58,6 @@ trait CarTrait
 
     public function addCartItem($request, $cart_id)
     {
-        // dd($request->all());
 
         $data       = $request->all();
         $quantity   = $request->quantity;

@@ -38,6 +38,14 @@
                 @foreach($products as $product)
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
                     <div class="product-item">
+                        @if($product->quantity >0)
+                        @else
+                        <div class="quantity-product">
+                            <span>
+                                {{$product->quantity}}
+                            </span>
+                        </div>
+                        @endif
                         <a href="{{asset('products/'.$product->type.'/'.$product->slug)}}">
                             <div class="slide-item__image">
                                 <img class="img-fluid" src="{{asset('/uploads/'.$product->thumbnail)}}" alt="">

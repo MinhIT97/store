@@ -20,7 +20,7 @@ class CreateOrdersTable extends Migration
             $table->integer('status')->default(0);
             $table->integer('total_price')->default(0);
             $table->string('email');
-            $table->integer('phone');
+            $table->string('phone');
             $table->string('address');
             $table->text('note')->nullable();
             $table->timestamps();

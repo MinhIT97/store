@@ -94,8 +94,8 @@
                         </div>
                         <input class="input-quantity text-center" name="quantity" type="number" min="0" value="1">
                         <div>
-                            <button type="btn" class="btn btn-adtocart ">
-                                Thêm vào giỏ hàng
+                            <button type="btn" @if($product->quantity === "Out of stock")disabled @endif class="btn btn-adtocart">
+                                @if($product->quantity === "Out of stock")Out of stock @else Thêm vào giỏ hàng @endif
                             </button>
                         </div>
                         <div class="line"></div>

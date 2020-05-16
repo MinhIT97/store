@@ -4,11 +4,11 @@
     <div class="content-wrapper">
         <div class="page-header">
             <h3 class="page-title">
-                Category
+                Blogs
             </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('categories.show_create')}}" class="text-decoration-none">CREATE NEW</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('blog.show_create')}}" class="text-decoration-none">CREATE NEW</a></li>
                     <!-- <li class="breadcrumb-item active" aria-cur'rent="page">Basic tables</li> -->
                 </ol>
             </nav>
@@ -17,46 +17,50 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
+                        @if (session('sucsess'))
+                        <div class="alert alert-success">
+                            {{ session('sucsess') }}
+                        </div>
+                        @endif
                         <table class="table table-striped table-responsive">
                             <thead>
                                 <tr>
                                     <th> # </th>
-                                    <th> Name </th>
+                                    <th> Title</th>
+                                    <th> Description</th>
+                                    <th> View </th>
                                     <th> Ngày tạo </th>
                                     <th> Ngày sửa </th>
-                                    <th> Total products </th>
-                                    <th> Total posts </th>
+                                    <th> Hình ảnh </th>
                                     <th>Hành động </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @if($categories->count())
-                                @foreach($categories as $category)
+                                @if($blogs->count())
+                                @foreach($blogs as $blog)
                                 <tr>
-                                    <td> {{$category->id}}</td>
-                                    <td> {{$category->name}} </td>
-                                    <td>{{$category->getDate()}} </td>
-                                    <td>{{$category->getDateUpdate()}} </td>
-                                    <td>{{$category->products_count}}
-                                        <a class="ml-4" href="{{url('adminstore/categories/'.$category->id.'/products/')}}"><i class="far fa-eye"></i></a>
-                                    </td>
-                                    <td>{{$category->posts_count}}
-                                        <a class="ml-4" href="{{url('adminstore/categories/'.$category->id.'/posts/')}}"><i class="far fa-eye"></i></a> </td>
+                                    <td> {{$blog->id}}</td>
+                                    <td> {{$blog->title}} </td>
+                                    <td> {{$blog->description}} </td>
+                                    <td> {{$blog->view}} </td>
+                                    <td>{{$blog->getDate()}} </td>
+                                    <td>{{$blog->getDateUpdate()}} </td>
+                                    <td><img class="ml-2" src="{{asset('/uploads/'.$blog->thumbnail)}}" alt=""></td>
+
                                     <td>
-                                        <a class="btn btn-gradient-info p-2" href="{{url('adminstore/edit-category/'.$category->id)}}"><i class="fas fa-edit"></i></a>
-                                        <a class="btn btn-gradient-danger p-2 ml-2" href="{{url('adminstore/category/'.$category->id)}}"><i class="fas fa-trash"></i></a>
+                                        <a class="btn btn-gradient-info p-2" href="{{url('adminstore/edit-blog/'.$blog->id)}}"><i class="fas fa-edit"></i></a>
+                                        <a class="btn btn-gradient-danger p-2 ml-2" href="{{url('adminstore/delete-blog/'.$blog->id)}}"><i class="fas fa-trash"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach
                                 @else
                                 <div>
-                                    <p>No category</p>
+                                    <p>No blog</p>
                                 </div>
                                 @endif
                             </tbody>
                         </table>
                         <div class="mt-3">
-
                         </div>
                     </div>
                 </div>

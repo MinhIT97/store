@@ -22607,6 +22607,18 @@ readers do not read off random characters that represent icons */
   margin: 0;
   padding: 0;
   border-radius: 6px;
+  position: relative;
+}
+
+.product .product-item .quantity-product {
+  position: absolute;
+  transform: rotate(45deg);
+  right: 0;
+  top: 20px;
+  color: #f73d1b;
+  border: 1px solid;
+  font-size: 10px;
+  padding: 3px;
 }
 
 .product .product-item__image {
@@ -23217,6 +23229,20 @@ readers do not read off random characters that represent icons */
   .lion-checkout .product-checkout {
     display: none !important;
   }
+}
+
+.profile .btn-infomation {
+  background-color: black;
+  color: white;
+  padding: 5px 35px;
+}
+
+.profile .btn-change-password {
+  color: black;
+  text-decoration: none;
+  border: 1px solid;
+  padding: 10px 6px;
+  border-radius: 4px;
 }
 
 body {

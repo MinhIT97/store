@@ -12418,6 +12418,22 @@ readers do not read off random characters that represent icons */
   position: relative;
 }
 
+.content-wrapper .card-body .atribute-product {
+  position: relative;
+}
+
+.content-wrapper .card-body .attribue-product-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 15px;
+  height: 15px;
+  background-color: #FB7E96;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 12px;
+}
+
 .breadcrumb a {
   color: black;
 }

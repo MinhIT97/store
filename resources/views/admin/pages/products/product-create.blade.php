@@ -36,7 +36,6 @@
                     <div class="form-group ">
                         <input type="hidden" class="form-control " name="categories" id="ids" value="">
                     </div>
-
                     <div class="form-group">
                         <label for="category">Category</label>
                         <select id="categories" class=" categories form-control form-control-sm js-example-basic-multiple" multiple="multiple">
@@ -61,6 +60,11 @@
                         <label for="code">Code</label>
                         <input type="text" name="code" class="form-control form-control-sm" id="code" value="">
                         <p class="help is-danger mt-2">{{ $errors->first('code') }}</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity">Current quantity</label>
+                        <input type="text" name="current_quantity" class="form-control form-control-sm" id="current_quantity" value="">
+                        <p class="help is-danger mt-2">{{ $errors->first('current_quantity') }}</p>
                     </div>
                     <div class="form-group">
                         <label for="quantity">Quantity</label>

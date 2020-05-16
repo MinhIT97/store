@@ -30,13 +30,12 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin', 'middleware' =>
 
     Route::group(['prefix' => '/products'], function () {
         Route::get('/', 'ProductController@index')->name('products');
-        Route::get('men', 'ProductController@man')->name('product-men');
-        Route::get('edit/{id}', 'ProductController@showEdit')->name('product.show_edit');
-        Route::post('edit/{id}', 'ProductController@editProduct')->name('product.edit');
-        Route::get('create', 'ProductController@showStore')->name('create-product');
-        Route::post('create', 'ProductController@store')->name('create-product');
-        Route::get('women', 'ProductController@woman')->name('product-women');
-        Route::get('accessories', 'ProductController@accessories')->name('product-accessories');
+        Route::get('{type}', 'ProductController@show')->name('products.show');
+        Route::get('edit/{id}', 'ProductController@showEdit')->name('products.show_edit');
+        Route::post('edit/{id}', 'ProductController@editProduct')->name('products.edit');
+        Route::get('create/product', 'ProductController@showStore')->name('products.show_create');
+        Route::post('create/product', 'ProductController@store')->name('products.create');
+
         Route::get('delete/{id}', 'ProductController@destroy')->name('product.destroy');
         Route::get('delete/{id}/medias/{id_medias}', 'ProductController@destroyMedias')->name('product.destroy_medias');
         Route::get('{id}/attribute', 'ProductController@showStoreAttribute')->name('attribute.show_create');
@@ -44,6 +43,11 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin', 'middleware' =>
         Route::get('{id}/detail-attribute', 'ProductController@showAttribute')->name('attribute.show');
         Route::get('delete/attribute/{id}', 'ProductController@destroyAttribute')->name('attribute.delete');
     });
+
+    Route::get('orders', 'OrderController@index')->name('orders.show');
+    Route::get('edit-orders/{id}', 'OrderController@show')->name('orders.show_edit');
+    Route::post('edit-orders/{id}', 'OrderController@update')->name('orders.edit');
+    Route::get('delete-orders/{id}', 'OrderController@destroy')->name('orders.destroy');
 
     Route::get('colors', 'ColorController@index')->name('colors.show');
     Route::get('color-create', 'ColorController@showStore')->name('colors.show_create');
@@ -58,6 +62,8 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin', 'middleware' =>
     Route::get('edit-category/{id}', 'CategoryController@showEdit')->name('categories.show_edit');
     Route::post('edit-category/{id}', 'CategoryController@update')->name('categories.edit');
     Route::get('category/{id}', 'CategoryController@destroy')->name('categories.destroy');
+    Route::get('categories/{id}/posts', 'CategoryController@showPosts')->name('categories.show_posts');
+    Route::get('categories/{id}/products', 'CategoryController@showProducts')->name('categories.show_products');
 
     Route::get('posters', 'PostersController@index')->name('posters.show');
     Route::get('poster-create', 'PostersController@showCreate')->name('posters.show_create');
@@ -145,8 +151,9 @@ Route::get('/test', function () {
 
 Auth::routes(['verify' => true]);
 Auth::routes();
-Route::group(['prefix' => '/', 'namespace' => 'Web'], function () {
-    Route::get('home', 'ProfileController@index')->name('home')->middleware('verified');
+Route::group(['prefix' => '/', 'namespace' => 'Web', 'middleware' => ['verified']], function () {
+    Route::get('home', 'ProfileController@index')->name('profile.show');
+    Route::post('profile/edit', 'ProfileController@update')->name('profile.edit');
 });
 
-// Route::get('/home', 'Web/ProfileController@index')->name('home');
+// Route::get('/home', 'We  b/ProfileController@index')->name('home');

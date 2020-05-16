@@ -35,8 +35,10 @@ class OrderController extends Controller
         if (Auth::check()) {
             $data['user_id'] = Auth::user()->id;
 
+        }else{
+            $data['user_id'] = 1;
         }
-        $data['user_id'] = 1;
+
 
         $order    = $this->entity_order->create($data);
         $order_id = $order->id;

@@ -50,6 +50,19 @@ class Product extends Model implements Transformable
             ],
         ];
     }
+    public function getStatus()
+    {
+        $status = $this->status;
+
+        switch ($status) {
+            case 1:
+                return 'Active';
+                break;
+            default:
+                return 'Pending';
+                break;
+        }
+    }
     public function categories()
     {
         return $this->morphToMany(Category::class, 'categoryable');
@@ -66,10 +79,22 @@ class Product extends Model implements Transformable
     {
         return $this->hasMany(Attribute::class, 'product_id');
     }
-
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class, 'product_id');
+    }
     public function imagaes()
     {
         return $this->morphMany(Image::class, 'imageable');
+    }
+
+    public function getQuantityAttribute($value)
+    {
+        $sold = $this->orderItems()->count();
+        if ($sold >= $value) {
+            return 'Out of stock';
+        }
+        return $value;
     }
 
     public function brand()

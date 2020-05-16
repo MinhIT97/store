@@ -2,11 +2,11 @@
 
 namespace App\Repositories;
 
-use Prettus\Repository\Eloquent\BaseRepository;
-use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\attributeRepository;
 use App\Entities\Attribute;
+use App\Repositories\attributeRepository;
 use App\Validators\AttributeValidator;
+use Prettus\Repository\Criteria\RequestCriteria;
+use Prettus\Repository\Eloquent\BaseRepository;
 
 /**
  * Class AttributeRepositoryEloquent.
@@ -25,17 +25,21 @@ class AttributeRepositoryEloquent extends BaseRepository implements AttributeRep
         return Attribute::class;
     }
 
+    public function getEntity()
+    {
+        return $this->model;
+    }
+
     /**
-    * Specify Validator class name
-    *
-    * @return mixed
-    */
+     * Specify Validator class name
+     *
+     * @return mixed
+     */
     public function validator()
     {
 
         return AttributeValidator::class;
     }
-
 
     /**
      * Boot up the repository, pushing criteria
@@ -44,5 +48,5 @@ class AttributeRepositoryEloquent extends BaseRepository implements AttributeRep
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
-    
+
 }

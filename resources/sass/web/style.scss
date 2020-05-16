@@ -368,6 +368,27 @@
     }
 }
 
+.content-wrapper
+{
+    .card-body{
+        .atribute-product{
+            position: relative;
+        }
+        .attribue-product-count{
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 15px;
+            height: 15px;
+            background-color:#FB7E96;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 12px;
+        }
+    }
+
+}
+
 .breadcrumb {
     a {
         color: black;

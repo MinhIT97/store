@@ -1,18 +1,25 @@
 @extends('admin.layouts.master')
 @section('content')
-<div class="content-wrapper align-items-center  d-flex auth">
+<div class="content-wrapper align-items-cente auth">
+    <div>
+    <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{route('users.show')}}" class="text-decoration-none"><i class="fas fa-home"></i> Dashboard </a></li>
+                <li class="breadcrumb-item"><a href="{{route('products')}}" class="text-decoration-none">Products</a></li>
+                <li class="breadcrumb-item  text-capitalize"><a href="{{ url('adminstore/products/'.$product->type)}}" class="text-decoration-none">Products {{$product->type}}</a></li>
+                <li class="breadcrumb-item active text-capitalize"> Atribute</li>
+            </ol>
+    </div>
 
     <div class="row flex-grow">
         <div class="col-lg-8 mx-auto">
-            <div>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('products')}}" class="text-decoration-none">Products</a></li>
-                    <li class="breadcrumb-item">Atribute Create</li>
-                </ol>
-            </div>
             @if (session('sucsess'))
             <div class="alert alert-success">
                 {{ session('sucsess') }}
+            </div>
+            @endif
+            @if (session('errow'))
+            <div class="alert alert-danger">
+                {{ session('errow') }}
             </div>
             @endif
             <div class="auth-form-light text-left p-5">
@@ -47,7 +54,7 @@
                         <p class="help is-danger mt-2">{{ $errors->first('current_quantity') }}</p>
                     </div>
                     <div class="form-group">
-                        <label for="size">size</label>
+                        <label for="size">Size</label>
                         <input type="hidden" class="form-control " name="sizes" id="id_sizes" value="">
                         <select id="sizes" class="form-control form-control-sm js-example-basic-multiple" multiple="multiple">
                             @if($product->sizes->count())

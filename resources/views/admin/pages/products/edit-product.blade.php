@@ -5,7 +5,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('users.show')}}" class="text-decoration-none"><i class="fas fa-home"></i> Dashboard </a></li>
             <li class="breadcrumb-item"><a href="{{route('products')}}"  class="text-decoration-none">Products</a></li>
-            <li class="breadcrumb-item  text-capitalize"><a href="{{route('product-'.$product->type)}}"  class="text-decoration-none">Products {{$product->type}}</a></li>
+            <li class="breadcrumb-item  text-capitalize"><a href="{{ url('adminstore/products/'.$product->type)}}"  class="text-decoration-none">Products {{$product->type}}</a></li>
             <li class="breadcrumb-item active text-capitalize"> {{$product->type}}</li>
         </ol>
     </div>
@@ -37,6 +37,11 @@
                         <label for="code">Mã code</label>
                         <input type="text" name="code" class="form-control form-control-lg" id="code" value="{{$product->code}}">
                         <p class="help is-danger mt-2">{{ $errors->first('code') }}</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity">Current quantity</label>
+                        <input type="text" name="current_quantity" class="form-control form-control-sm" id="current_quantity" value="{{$product->current_quantity}}">
+                        <p class="help is-danger mt-2">{{ $errors->first('current_quantity') }}</p>
                     </div>
                     <div class="form-group">
                         <label for="quantity">Số lượng</label>
