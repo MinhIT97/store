@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CartCreateRequest;
-
 use App\Traits\CarTrait;
 
 class CartController extends Controller
@@ -13,11 +12,17 @@ class CartController extends Controller
     protected $repository;
     protected $repository_cart_item;
     protected $repository_product;
-
+    protected $repository_order_item;
+    protected $repository_attribute;
 
     public function __invoke(CartCreateRequest $request)
     {
-        $cart_id = $this->idCookieCart();
+        $cart_id           = $this->idCookieCart();
+        $checkCartQuantity = $this->checkCartQuantity($request, $cart_id);
+
+        if ($checkCartQuantity) {
+            return redirect()->back()->with('error', "errow");
+        }
         $this->addCart($request, $cart_id);
         $this->addCartItem($request, $cart_id);
         $this->plusTotalCart($request, $cart_id);
@@ -39,5 +44,25 @@ class CartController extends Controller
         }
 
         return redirect()->back()->with('sucsess', 'Delete item sucsess');
+    }
+    public function checkCartQuantity($request, $cart_id)
+    {
+        $product_id = $request->product_id;
+        $color_id   = $request->color_id;
+        $size_id    = $request->size_id;
+
+        $attribute_quantity = $this->entity_attribute->where([
+            'product_id' => $product_id,
+            'size_id'    => $size_id,
+            'color_id'   => $color_id,
+        ])->get()->count('quantity');
+
+        $order_item_quantity = $this->entity_order_item->where([
+            'product_id' => $product_id,
+            'size_id'    => $size_id,
+            'color_id'   => $color_id,
+        ])->get()->count('quantity');
+
+        dd($attribute_quantity);
     }
 }

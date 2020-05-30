@@ -55,8 +55,7 @@
                     </div>
                     <div class="form-group">
                         <label for="size">Size</label>
-                        <input type="hidden" class="form-control " name="sizes" id="id_sizes" value="">
-                        <select id="sizes" class="form-control form-control-sm js-example-basic-multiple" multiple="multiple">
+                        <select id="sizes" name="size_id" class="form-control form-control-sm js-example-basic-single">
                             @if($product->sizes->count())
                             @foreach($product->sizes as $size)
                             <option value="{{$size->id}}">{{$size->size}}</option>

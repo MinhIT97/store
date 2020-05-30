@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use App\Repositories\AttributeRepository;
 use App\Repositories\CartItemRepository;
 use App\Repositories\CartRepository;
 use App\Repositories\OrderItemRepository;
@@ -11,8 +12,9 @@ use Illuminate\Support\Facades\Cookie;
 
 trait CarTrait
 {
-    public function __construct(CartRepository $repository, CartItemRepository $repository_cart_item, ProductRepository $repository_product, OrderRepository $repository_order, OrderItemRepository $repository_order_item)
-    {
+    public function __construct(CartRepository $repository, CartItemRepository $repository_cart_item, ProductRepository $repository_product,
+        OrderRepository $repository_order, OrderItemRepository $repository_order_item, AttributeRepository $repository_attribute
+    ) {
         $this->repository           = $repository;
         $this->entity_cart          = $repository->getEntity();
         $this->repository_cart_item = $repository_cart_item;
@@ -21,6 +23,7 @@ trait CarTrait
         $this->entity_product       = $repository_product->getEntity();
         $this->entity_order         = $repository_order->getEntity();
         $this->entity_order_item    = $repository_order_item->getEntity();
+        $this->entity_attribute     = $repository_attribute->getEntity();
     }
     public function idCookieCart()
     {

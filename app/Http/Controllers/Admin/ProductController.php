@@ -216,11 +216,8 @@ class ProductController extends Controller
         $data = $request->all();
 
         $attribute = Attribute::create($data);
-        $size_ids  = $request->sizes;
-        $sizes     = explode(',', $size_ids);
 
         if ($attribute) {
-            $attribute->sizes()->attach($sizes);
             return redirect()->back()->with('sucsess', 'Add attribute sucsess');
         }
     }

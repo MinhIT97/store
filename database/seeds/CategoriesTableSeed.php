@@ -1,7 +1,6 @@
 <?php
 
 use App\Entities\Category;
-use App\Supports\Traits\ProductSeederTrait;
 use Illuminate\Database\Seeder;
 
 class CategoriesTableSeed extends Seeder
@@ -12,9 +11,22 @@ class CategoriesTableSeed extends Seeder
      * @return void
      */
 
-
-    protected function run()
+    public function run()
     {
-        factory(Category::class, 4)->create();
+        Category::create([
+            'name'      => 'Men',
+            'parent_id' => 1,
+            'status'    => 1,
+        ]);
+        Category::create([
+            'name'      => 'Women',
+            'parent_id' => 1,
+            'status'    => 1,
+        ]);
+        Category::create([
+            'name'      => 'Accessories',
+            'parent_id' => 1,
+            'status'    => 1,
+        ]);
     }
 }

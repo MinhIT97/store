@@ -27,6 +27,7 @@ class UsersTableSeeder extends Seeder
             'password'     => Hash::make('lion123456'),
             'verify_token' => Str::random(32),
             'level'        => 1,
+            'status'       => 1,
         ]);
         User::create([
             'email'        => 'minh@gmail.com',

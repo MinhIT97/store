@@ -26,6 +26,7 @@ class Attribute extends Model implements Transformable
         "color_id",
         "quantity",
         "current_quantity",
+        "size_id"
     ];
 
     public function sizes()

@@ -2,8 +2,8 @@
 
 namespace App\Transformers;
 
-use League\Fractal\TransformerAbstract;
 use App\Entities\Product;
+use League\Fractal\TransformerAbstract;
 
 /**
  * Class ProductTransformer.
@@ -27,7 +27,7 @@ class ProductTransformer extends TransformerAbstract
             /* place your other model properties here */
 
             'created_at' => $model->created_at,
-            'updated_at' => $model->updated_at
+            'updated_at' => $model->updated_at,
         ];
     }
 }
