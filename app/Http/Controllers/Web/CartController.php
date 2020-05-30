@@ -20,8 +20,9 @@ class CartController extends Controller
         $cart_id           = $this->idCookieCart();
         $checkCartQuantity = $this->checkCartQuantity($request, $cart_id);
 
-        if ($checkCartQuantity) {
-            return redirect()->back()->with('error', "errow");
+        // dd($checkCartQuantity);
+        if ($checkCartQuantity || $checkCartQuantity === 0) {
+            return redirect()->back()->with('error', "The remaining quantity is only " . $checkCartQuantity);
         }
         $this->addCart($request, $cart_id);
         $this->addCartItem($request, $cart_id);
@@ -47,22 +48,38 @@ class CartController extends Controller
     }
     public function checkCartQuantity($request, $cart_id)
     {
+        // dd($request->all());
+
         $product_id = $request->product_id;
         $color_id   = $request->color_id;
         $size_id    = $request->size_id;
+        $quantity   = $request->quantity;
 
         $attribute_quantity = $this->entity_attribute->where([
             'product_id' => $product_id,
             'size_id'    => $size_id,
             'color_id'   => $color_id,
-        ])->get()->count('quantity');
+        ])->get()->sum('quantity');
+
+        $cart_item_quantity = $this->entity_cart_item->where([
+            'cart_id'    => $cart_id,
+            'product_id' => $product_id,
+            'size_id'    => $size_id,
+            'color_id'   => $color_id,
+        ])->get()->sum('quantity');
 
         $order_item_quantity = $this->entity_order_item->where([
             'product_id' => $product_id,
             'size_id'    => $size_id,
             'color_id'   => $color_id,
-        ])->get()->count('quantity');
+        ])->get()->sum('quantity');
 
-        dd($attribute_quantity);
+        $check_quantity = $attribute_quantity - ($quantity + $cart_item_quantity + $order_item_quantity);
+        if ($check_quantity < 0) {
+            return $attribute_quantity - $order_item_quantity;
+        }
+
+        return false;
+
     }
 }

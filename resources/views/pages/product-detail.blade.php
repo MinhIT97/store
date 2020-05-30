@@ -1,6 +1,17 @@
 @extends('layout.master')
 @section('content')
 <section class="product-detail">
+    @if (session('sucsess'))
+    <div class="alert alert-success text-center">
+        {{ session('sucsess') }}
+    </div>
+    @else
+    @if (session('error'))
+    <div class="alert alert-danger text-center">
+        {{ session('error') }}
+    </div>
+    @endif
+    @endif
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-7 col-lg-7">
