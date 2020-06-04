@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserCreateRequest;
+use App\Traits\Search;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -11,9 +12,15 @@ use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
-    public function index()
+    use Search;
+    public function index(Request $request)
     {
-        $users = User::latest()->paginate(10);
+
+        $query = User::query();
+        $query = $this->applyConstraintsFromRequest($query, $request);
+        $query = $this->applySearchFromRequest($query, ['name', 'email'], $request);
+        $query = $this->applyOrderByFromRequest($query, $request);
+        $users = $query->paginate(10);
         return view('admin.index', [
             'users' => $users,
         ]);

@@ -6,9 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\BrandCreateRequest;
 use App\Http\Requests\BrandUpdateRequest;
 use App\Repositories\BrandRepository;
+use App\Traits\Search;
+use Illuminate\Http\Request;
 
 class BrandController extends Controller
 {
+    use Search;
     protected $repository;
     public function __construct(BrandRepository $repository)
     {
@@ -16,9 +19,14 @@ class BrandController extends Controller
         $this->entity     = $repository->getEntity();
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $brands = $this->entity->withCount('products')->paginate(10);
+        $query = $this->entity->query();
+        $query = $this->applyConstraintsFromRequest($query, $request);
+        $query = $this->applySearchFromRequest($query, ['name'], $request);
+        $query = $this->applyOrderByFromRequest($query, $request);
+
+        $brands = $query->withCount('products')->paginate(10);
         return view(
             'admin.pages.brand.brand-list',
             [

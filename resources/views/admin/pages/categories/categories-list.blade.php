@@ -25,7 +25,7 @@
                                     <th> Ngày tạo </th>
                                     <th> Ngày sửa </th>
                                     <th> Total products </th>
-                                    <th> Total posts </th>
+                                    <th> Total blogs </th>
                                     <th>Hành động </th>
                                 </tr>
                             </thead>

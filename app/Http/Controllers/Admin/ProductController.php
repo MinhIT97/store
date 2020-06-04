@@ -15,9 +15,12 @@ use App\Http\Requests\ProductCreateRequest;
 use App\Http\Requests\ProductUpdateRequest;
 use App\Repositories\AttributeRepository;
 use App\Repositories\ProductRepository;
+use App\Traits\Search;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    use Search;
     protected $repository;
     public function __construct(ProductRepository $repository, AttributeRepository $attributeRepository)
     {
@@ -30,9 +33,13 @@ class ProductController extends Controller
         return view('admin.pages.products.index');
     }
 
-    public function show($type)
+    public function show(Request $request, $type)
     {
-        $products = $this->entity->where('type', $type)->withCount('attributes', 'orderItems')->orderBY('id', 'DESC')->paginate(20);
+        $query    = $this->entity->query();
+        $query    = $this->applyConstraintsFromRequest($query, $request);
+        $query    = $this->applySearchFromRequest($query, ['name','price'], $request);
+        $query    = $this->applyOrderByFromRequest($query, $request);
+        $products = $query->where('type', $type)->withCount('attributes', 'orderItems')->orderBY('id', 'DESC')->paginate(20);
         return view('admin.pages.products.product-list', [
             'products' => $products,
         ]);

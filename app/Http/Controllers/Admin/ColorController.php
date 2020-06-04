@@ -6,13 +6,19 @@ use App\Entities\Color;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ColorCreateRequest;
 use App\Http\Requests\ColorUpdateRequest;
+use App\Traits\Search;
+use Illuminate\Http\Request;
 
 class ColorController extends Controller
 {
-    public function index()
+    use Search;
+    public function index(Request $request)
     {
-        $colors = Color::query();
-        $colors = $colors->paginate(10);
+        $query  = Color::query();
+        $query  = $this->applyConstraintsFromRequest($query, $request);
+        $query  = $this->applySearchFromRequest($query, ['color'], $request);
+        $query  = $this->applyOrderByFromRequest($query, $request);
+        $colors = $query->paginate(10);
         return view('admin.pages.colors.color-list', [
             'colors' => $colors,
         ]);

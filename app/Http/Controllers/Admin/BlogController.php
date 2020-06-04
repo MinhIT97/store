@@ -6,18 +6,26 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\BlogCreateRequest;
 use App\Http\Requests\BlogUpdateRequest;
 use App\Repositories\PostRepository;
+use App\Traits\Search;
+use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
+    use Search;
     protected $repository;
     public function __construct(PostRepository $repository)
     {
         $this->repository = $repository;
         $this->entity     = $repository->getEntity();
     }
-    public function index()
+    public function index(Request $request)
     {
-        $blogs = $this->entity->where('type', 'blogs')->paginate(15);
+        $query = $this->entity->query();
+        $query = $this->applyConstraintsFromRequest($query, $request);
+        $query = $this->applySearchFromRequest($query, ['title'], $request);
+        $query = $this->applyOrderByFromRequest($query, $request);
+
+        $blogs = $query->where('type', 'blogs')->paginate(15);
         return view('admin.pages.blogs.blog-list', [
             'blogs' => $blogs,
         ]);
@@ -73,7 +81,6 @@ class BlogController extends Controller
             if ($update) {
                 return redirect()->route('blog.show')->with('sucsess', 'Update blog thành công');
             }
-
         }
         return redirect()->back()->with('errow', 'Update Fail');
     }
@@ -89,5 +96,4 @@ class BlogController extends Controller
 
         return redirect()->back()->with('sucsess', 'Xóa blog thành công');
     }
-
 }

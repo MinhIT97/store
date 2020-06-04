@@ -7,9 +7,12 @@ use App\Http\Requests\CategoryCreateRequest;
 use App\Http\Requests\CategoryUpdateRequest;
 use App\Repositories\CategoryRepository;
 use App\Repositories\ProductRepository;
+use App\Traits\Search;
+use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    use Search;
     protected $repository;
     public function __construct(CategoryRepository $repository, ProductRepository $productRepository)
     {
@@ -18,9 +21,13 @@ class CategoryController extends Controller
         $this->entity_product = $productRepository->getEntity();
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $categoies = $this->entity->withCount('posts', 'products')->get();
+        $query     = $this->entity->query();
+        $query     = $this->applyConstraintsFromRequest($query, $request);
+        $query     = $this->applySearchFromRequest($query, ['name'], $request);
+        $query     = $this->applyOrderByFromRequest($query, $request);
+        $categoies = $query->withCount('posts', 'products')->get();
 
         return view(
             'admin.pages.categories.categories-list',
@@ -62,9 +69,9 @@ class CategoryController extends Controller
 
     public function showPosts($id)
     {
-        $posts = $this->entity->find($id)->posts()->paginate(20);
+        $blogs = $this->entity->find($id)->posts()->paginate(20);
         return view('admin.pages.categories.category-show-blogs', [
-            'posts' => $posts,
+            'blogs' => $blogs,
         ]);
     }
 
