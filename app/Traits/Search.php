@@ -29,7 +29,6 @@ trait Search
             $orderBy = (array) json_decode($request->get('order_by'));
             if (count($orderBy) > 0) {
                 foreach ($orderBy as $key => $value) {
-                    dd($orderBy);
                     $query = $query->orderBy($key, $value);
                 }
             }

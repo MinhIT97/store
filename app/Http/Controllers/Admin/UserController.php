@@ -21,6 +21,9 @@ class UserController extends Controller
         $query = $this->applySearchFromRequest($query, ['name', 'email'], $request);
         $query = $this->applyOrderByFromRequest($query, $request);
         $users = $query->paginate(10);
+
+        $users->setPath(url()->current() . '?search=' . $request->get('search'));
+
         return view('admin.index', [
             'users' => $users,
         ]);

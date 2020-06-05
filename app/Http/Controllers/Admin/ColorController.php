@@ -19,6 +19,9 @@ class ColorController extends Controller
         $query  = $this->applySearchFromRequest($query, ['color'], $request);
         $query  = $this->applyOrderByFromRequest($query, $request);
         $colors = $query->paginate(10);
+
+        $colors->setPath(url()->current() . '?search=' . $request->get('search'));
+
         return view('admin.pages.colors.color-list', [
             'colors' => $colors,
         ]);

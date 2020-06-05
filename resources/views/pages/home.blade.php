@@ -1,10 +1,11 @@
 <section class="home">
     <div class="baner">
         @if($poster)
+        <a href="{{$poster->link}}">
         <img class="img-fluid lion-main__image position-relative" src="{{asset('uploads/'.$poster->thumbnail)}}" alt="">
+        </a>
+
         @endif
-        <button class="btn btn-sale btn-sale__men position-absolute">mens sale</button>
-        <button class="btn btn-sale btn-sale_women position-absolute">womens sale</button>
     </div>
     <div class="main-slider">
         <div id="slider" class="carousel slide" data-ride="carousel">

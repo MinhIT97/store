@@ -4,18 +4,26 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\ContactRepository;
+use App\Traits\Search;
+use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
+    use Search;
     protected $repository;
     public function __construct(ContactRepository $repository)
     {
         $this->repository = $repository;
         $this->entity     = $repository->getEntity();
     }
-    public function index()
+    public function index(Request $request)
     {
-        $contacts = $this->entity->paginate(20);
+        $query    = $this->entity->query();
+        $query    = $this->applyConstraintsFromRequest($query, $request);
+        $query    = $this->applySearchFromRequest($query, ['color'], $request);
+        $query    = $this->applyOrderByFromRequest($query, $request);
+        $contacts = $query->paginate(20);
+        $contacts->setPath(url()->current() . '?search=' . $request->get('search'));
 
         return view('admin.pages.contacts.contact-list', [
             'contacts' => $contacts,

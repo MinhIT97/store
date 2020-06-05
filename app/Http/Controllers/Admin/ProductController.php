@@ -37,9 +37,11 @@ class ProductController extends Controller
     {
         $query    = $this->entity->query();
         $query    = $this->applyConstraintsFromRequest($query, $request);
-        $query    = $this->applySearchFromRequest($query, ['name','price'], $request);
+        $query    = $this->applySearchFromRequest($query, ['name', 'price'], $request);
         $query    = $this->applyOrderByFromRequest($query, $request);
         $products = $query->where('type', $type)->withCount('attributes', 'orderItems')->orderBY('id', 'DESC')->paginate(20);
+        $products->setPath(url()->current() . '?search=' . $request->get('search'));
+
         return view('admin.pages.products.product-list', [
             'products' => $products,
         ]);

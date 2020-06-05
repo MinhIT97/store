@@ -6,12 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PosterCreateRequest;
 use App\Http\Requests\PosterUpdateRequest;
 use App\Repositories\PosterRepository;
+use App\Traits\Search;
 use App\Validators\PosterValidator;
+use Illuminate\Http\Request;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
 
 class PostersController extends Controller
 {
+    use Search;
 
     public function __construct(PosterRepository $repository, PosterValidator $validator)
     {
@@ -20,9 +23,15 @@ class PostersController extends Controller
         $this->validator  = $validator;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $posters = $this->entity->published()->latest()->paginate(15);
+        $query = $this->entity->query();
+        $query = $this->applyConstraintsFromRequest($query, $request);
+        $query = $this->applySearchFromRequest($query, ['title'], $request);
+        $query = $this->applyOrderByFromRequest($query, $request);
+
+        $posters = $query->published()->latest()->paginate(15);
+        $posters->setPath(url()->current() . '?search=' . $request->get('search'));
 
         return view('admin.pages.poster.poster-list', [
             'posters' => $posters,

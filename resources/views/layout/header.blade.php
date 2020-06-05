@@ -107,7 +107,7 @@
                                 <span>-</span>
                                 <span>Zize : {!! $cartItem->size->size !!}</span>
                                 <div class="mt-2 mb-2">
-                                    <input class="quantity" data-id="{!! $cartItem->id !!}"  value="{{$cartItem->quantity}}" type="number" min="0">
+                                    <input class="quantity" data-id="{!! $cartItem->id !!}"  value="{{$cartItem->quantity}}" type="number" min="1">
                                 </div>
                                 <div class="" id="amount-{{$cartItem->id}}">{{number_format($cartItem->amount)}}₫</div>
                             </div>

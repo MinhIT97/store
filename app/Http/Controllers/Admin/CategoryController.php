@@ -27,7 +27,8 @@ class CategoryController extends Controller
         $query     = $this->applyConstraintsFromRequest($query, $request);
         $query     = $this->applySearchFromRequest($query, ['name'], $request);
         $query     = $this->applyOrderByFromRequest($query, $request);
-        $categoies = $query->withCount('posts', 'products')->get();
+        $categoies = $query->withCount('posts', 'products')->paginate(20);
+        $categoies->setPath(url()->current() . '?search=' . $request->get('search'));
 
         return view(
             'admin.pages.categories.categories-list',

@@ -27,6 +27,9 @@ class BrandController extends Controller
         $query = $this->applyOrderByFromRequest($query, $request);
 
         $brands = $query->withCount('products')->paginate(10);
+
+        $brands->setPath(url()->current() . '?search=' . $request->get('search'));
+
         return view(
             'admin.pages.brand.brand-list',
             [

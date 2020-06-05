@@ -26,6 +26,8 @@ class BlogController extends Controller
         $query = $this->applyOrderByFromRequest($query, $request);
 
         $blogs = $query->where('type', 'blogs')->paginate(15);
+        $blogs->setPath(url()->current() . '?search=' . $request->get('search'));
+
         return view('admin.pages.blogs.blog-list', [
             'blogs' => $blogs,
         ]);

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PagesCreateRequest;
 use App\Http\Requests\PagesUpdateRequest;
 use App\Repositories\PostRepository;
+use Illuminate\Http\Request;
 
 class PagesConroller extends Controller
 {
@@ -15,9 +16,15 @@ class PagesConroller extends Controller
         $this->repository = $repository;
         $this->entity     = $repository->getEntity();
     }
-    public function index()
+    public function index(Request $request)
     {
-        $pages = $this->entity->where('type', 'pages')->paginate(15);
+        $query = $this->entity->query();
+        $query = $this->applyConstraintsFromRequest($query, $request);
+        $query = $this->applySearchFromRequest($query, ['title'], $request);
+        $query = $this->applyOrderByFromRequest($query, $request);
+
+        $pages = $query->where('type', 'pages')->paginate(15);
+        $pages->setPath(url()->current() . '?search=' . $request->get('search'));
         return view('admin.pages.pages.pages-list', [
             'pages' => $pages,
         ]);
