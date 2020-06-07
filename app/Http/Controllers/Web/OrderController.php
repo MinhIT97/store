@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderCreateRequest;
+use App\Mail\OrderMail;
 use App\Traits\CarTrait;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -34,18 +36,16 @@ class OrderController extends Controller
         $data = $request->all();
         if (Auth::check()) {
             $data['user_id'] = Auth::user()->id;
-
-        }else{
+        } else {
             $data['user_id'] = 1;
         }
 
+        $order = $this->entity_order->create($data);
 
-        $order    = $this->entity_order->create($data);
-        $order_id = $order->id;
 
+        $order_id   = $order->id;
         $cart_id    = $this->idCookieCart();
         $cart_items = $this->entity_cart_item->where('cart_id', $cart_id)->get();
-
         foreach ($cart_items as $cart_item) {
             $data = [
                 'product_id' => $cart_item->product_id,
@@ -59,14 +59,16 @@ class OrderController extends Controller
             $this->entity_order_item->create($data);
         }
         $this->plusTotalOrder($order_id);
-
         $this->entity_cart_item->where('cart_id', $cart_id)->delete();
         $cart        = $this->entity_cart->where('id', $cart_id)->first();
+        $total = $cart->total;
         $cart->total = 0;
         $cart->update();
 
-        return redirect()->route('index');
+        Mail::to($order->email)->send(new OrderMail($cart_items,  $total));
 
+
+        return redirect()->route('index');
     }
 
     public function plusTotalOrder($order_id)
@@ -77,5 +79,4 @@ class OrderController extends Controller
         $order->total_price = $total_price;
         $order->update();
     }
-
 }

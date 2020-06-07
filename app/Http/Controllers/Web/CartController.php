@@ -20,7 +20,6 @@ class CartController extends Controller
         $cart_id           = $this->idCookieCart();
         $checkCartQuantity = $this->checkCartQuantity($request, $cart_id);
 
-        // dd($checkCartQuantity);
         if ($checkCartQuantity || $checkCartQuantity === 0) {
             return redirect()->back()->with('error', "The remaining quantity is only " . $checkCartQuantity);
         }

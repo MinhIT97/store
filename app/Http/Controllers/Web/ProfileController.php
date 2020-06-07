@@ -25,7 +25,7 @@ class ProfileController extends Controller
     }
     public function update(UserUpdateRequest $request)
     {
-        $id   = Auth::user()->id;
+        $id = Auth::user()->id;
 
         $data = $request->all();
 
@@ -34,5 +34,10 @@ class ProfileController extends Controller
         $user->update($data);
 
         return redirect()->back()->with('success', 'Update user sucsess');
+    }
+
+    public function test()
+    {
+        return view('mail.order-mail');
     }
 }

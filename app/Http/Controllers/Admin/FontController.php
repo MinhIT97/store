@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 class FontController extends Controller
 {
@@ -23,4 +22,9 @@ class FontController extends Controller
     {
         return view('admin.pages.tables.basic-table');
     }
+    public function button()
+    {
+        return view('admin.pages.ui-features.buttons');
+    }
+
 }

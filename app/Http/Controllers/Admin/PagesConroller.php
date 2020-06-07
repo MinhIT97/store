@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PagesCreateRequest;
 use App\Http\Requests\PagesUpdateRequest;
 use App\Repositories\PostRepository;
+use App\Traits\Search;
 use Illuminate\Http\Request;
 
 class PagesConroller extends Controller
 {
+    use Search;
     protected $repository;
     public function __construct(PostRepository $repository)
     {

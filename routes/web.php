@@ -110,6 +110,7 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin', 'middleware' =>
     Route::get('form', 'FontController@formShow')->name('form.show');
     Route::get('chart', 'FontController@chartShow')->name('chart.show');
     Route::get('table', 'FontController@tableShow')->name('table.show');
+    Route::get('button', 'FontController@button')->name('button.show');
 });
 
 Route::group(['prefix' => '/', 'namespace' => 'Web', 'middleware' => ['checkCart']], function () {
@@ -155,5 +156,7 @@ Route::group(['prefix' => '/', 'namespace' => 'Web', 'middleware' => ['verified'
     Route::get('home', 'ProfileController@index')->name('profile.show');
     Route::post('profile/edit', 'ProfileController@update')->name('profile.edit');
 });
+
+// Route::get('/test', 'Web\ProfileController@test')->name('test');
 
 // Route::get('/home', 'We  b/ProfileController@index')->name('home');
