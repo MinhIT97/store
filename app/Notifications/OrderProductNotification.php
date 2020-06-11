@@ -7,18 +7,19 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class OrderProductNotification extends Notification
+class OrderProductNotification extends Notification implements ShouldQueue
 {
     use Queueable;
+    protected $notify;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($notify)
     {
-        //
+        $this->notify = $notify;
     }
 
     /**
@@ -54,8 +55,6 @@ class OrderProductNotification extends Notification
      */
     public function toArray($notifiable)
     {
-        return [
-            //
-        ];
+        return $this->notify;
     }
 }

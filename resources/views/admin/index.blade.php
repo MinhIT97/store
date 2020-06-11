@@ -39,7 +39,11 @@
                                 <tr>
                                     <td> {{$user->id}}</td>
                                     <td> {{$user->name}} </td>
-                                    <td><img class="ml-2" src="{{asset('/uploads/'.$user->avatar)}}" alt=""></td>
+                                    <td>
+                                        @if($user->avatar)
+                                        <img class="ml-2" src="{{asset('/uploads/'.$user->avatar)}}" alt="">
+                                        @endif
+                                    </td>
                                     <td> {{$user->email}} </td>
                                     <td> {{$user->phone}} </td>
                                     <td> @if($user->status === 0)
