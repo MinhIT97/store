@@ -13,17 +13,6 @@
     </div>
 </li>
 <li class="nav-item">
-    <a class="nav-link" data-toggle="collapse" href="#category-pages" aria-expanded="false" aria-controls="general-pages">
-        <span class="menu-title">Categories </span>
-        <i class="menu-arrow"></i>
-        <i class="mdi mdi-image-album menu-icon"></i>
-    </a>
-    <div class="collapse" id="category-pages">
-        <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{route('categories.show')}}"> Categories </a></li>
-    </div>
-</li>
-<li class="nav-item">
     <a class="nav-link" data-toggle="collapse" href="#poster-pages" aria-expanded="false" aria-controls="general-pages">
         <span class="menu-title">Poster </span>
         <i class="menu-arrow"></i>
@@ -55,6 +44,7 @@
     <div class="collapse" id="geseral-pages">
         <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link" href="{{route('products')}}"> Products </a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route('categories.products.show')}}"> Categories </a></li>
             <li class="nav-item"> <a class="nav-link" href="{{ url('adminstore/products/men')}}"> MEN </a></li>
             <li class="nav-item"> <a class="nav-link" href="{{ url('adminstore/products/women')}}"> WOMAN</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{ url('adminstore/products/accessories')}}"> ACCESSORIES</a></li>
@@ -107,7 +97,9 @@
     </a>
     <div class="collapse" id="blog-pages">
         <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="{{route('categories.posts.show')}}"> Categories </a></li>
             <li class="nav-item"> <a class="nav-link" href="{{route('blog.show')}}"> Blog </a></li>
+
 
     </div>
 </li>
@@ -123,4 +115,3 @@
 
     </div>
 </li>
-

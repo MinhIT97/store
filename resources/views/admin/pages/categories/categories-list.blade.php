@@ -8,7 +8,11 @@
             </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('categories.show_create')}}" class="text-decoration-none">CREATE NEW</a></li>
+                    @if(request()->is('adminstore/categories/products'))
+                    <li class="breadcrumb-item"><a href="{{route('categories.products.show_create')}}" class="text-decoration-none">CREATE NEW</a></li>
+                    @else
+                    <li class="breadcrumb-item"><a href="{{route('categories.posts.show_create')}}" class="text-decoration-none">CREATE NEW</a></li>
+                    @endif
                     <!-- <li class="breadcrumb-item active" aria-cur'rent="page">Basic tables</li> -->
                 </ol>
             </nav>

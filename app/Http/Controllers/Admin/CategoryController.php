@@ -23,7 +23,11 @@ class CategoryController extends Controller
 
     public function index(Request $request)
     {
+        $path_items = collect(explode('/', $request->path()));
+        $type       = $path_items->last();
+
         $query     = $this->entity->query();
+        $query     = $query->where('type', $type);
         $query     = $this->applyConstraintsFromRequest($query, $request);
         $query     = $this->applySearchFromRequest($query, ['name'], $request);
         $query     = $this->applyOrderByFromRequest($query, $request);
@@ -52,7 +56,12 @@ class CategoryController extends Controller
     }
     public function store(CategoryCreateRequest $request)
     {
-        $data = $request->all();
+
+        $path_items = collect(explode('/', $request->path()));
+        $type       = $path_items->last();
+
+        $data         = $request->all();
+        $data['type'] = $type;
         if ($this->entity->create($data)) {
             return redirect()->back()->with('sucsess', 'Create category sucsess');
         } else {

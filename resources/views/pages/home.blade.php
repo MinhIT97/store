@@ -86,10 +86,7 @@
             <div>
                 <div class="style-product__head text-center">
                     <div>
-                        <i class="fab fa-instagram"></i>
-                        <i class="fa fa-instagram"></i>
-
-
+                        <i class="fab fa-instagram fa-2x"></i>
                     </div>
                     <h2 class="text-uppercase">
                         <p> Shop our instagram</p>

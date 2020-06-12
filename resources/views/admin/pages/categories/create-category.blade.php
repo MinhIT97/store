@@ -4,7 +4,11 @@
     <div class="row flex-grow">
         <div class="col-lg-8 mx-auto">
             <div class="mb-5">
-                <a href="{{route('categories.show')}}" class="text-decoration-none">Categories</a>
+                @if(request()->is('adminstore/categories/posts/create'))
+                <a href="{{route('categories.posts.show')}}" class="text-decoration-none">Categories</a>
+                @else
+                <a href="{{route('categories.products.show')}}" class="text-decoration-none">Categories</a>
+                @endif
             </div>
             @if (session('sucsess'))
             <div class="alert alert-success">
@@ -12,7 +16,11 @@
             </div>
             @endif
             <div class="auth-form-light text-left p-5">
-                <form class="pt-3" method="POST" action="{{ route('categories.create') }}" enctype="multipart/form-data">
+
+                <form class="pt-3" method="POST"  @if(request()->is('adminstore/categories/posts/create')) action="{{ route('categories.posts.create') }} @else action="{{ route('categories.products.create') }} @endif" enctype="multipart/form-data">
+
+
+
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" name="name" class="form-control form-control-sm" id="name" value="">

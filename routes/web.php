@@ -56,9 +56,15 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin', 'middleware' =>
     Route::post('edit-color/{id}', 'ColorController@edit')->name('colors.edit');
     Route::get('delete-color/{id}', 'ColorController@destroy')->name('colors.destroy');
 
-    Route::get('categories', 'CategoryController@index')->name('categories.show');
-    Route::get('create-category', 'CategoryController@showCreate')->name('categories.show_create');
-    Route::post('create-category', 'CategoryController@store')->name('categories.create');
+    Route::get('categories/products', 'CategoryController@index')->name('categories.products.show');
+    Route::get('categories/posts', 'CategoryController@index')->name('categories.posts.show');
+
+    Route::get('categories/products/create', 'CategoryController@showCreate')->name('categories.products.show_create');
+    Route::get('categories/posts/create', 'CategoryController@showCreate')->name('categories.posts.show_create');
+
+    Route::post('categories/posts', 'CategoryController@store')->name('categories.posts.create');
+    Route::post('categories/products', 'CategoryController@store')->name('categories.products.create');
+
     Route::get('edit-category/{id}', 'CategoryController@showEdit')->name('categories.show_edit');
     Route::post('edit-category/{id}', 'CategoryController@update')->name('categories.edit');
     Route::get('category/{id}', 'CategoryController@destroy')->name('categories.destroy');
