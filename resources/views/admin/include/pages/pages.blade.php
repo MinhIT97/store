@@ -1,4 +1,10 @@
 <li class="nav-item">
+    <a class="nav-link" href="{{route('dashboard.show')}}">
+        <span class="menu-title">Dashboard</span>
+        <i class="mdi mdi-home menu-icon"></i>
+    </a>
+</li>
+<li class="nav-item">
     <a class="nav-link" data-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="general-pages">
         <span class="menu-title">User</span>
         <i class="menu-arrow"></i>

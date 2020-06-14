@@ -20,6 +20,8 @@ Route::get('admin/login', 'Admin\LoginController@login')->name('admin-login');
 Route::post('admin/login', 'Admin\LoginController@post_login')->name('admin-login');
 Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin', 'middleware' => 'adminlogin'], function () {
 
+    Route::get('/dashboard', 'DashboardController@index')->name('dashboard.show');
+
     Route::get('users', 'UserController@index')->name('users.show');
     Route::get('view-user', 'UserController@viewStore')->name('users.show_create');
     Route::post('store-user', 'UserController@store')->name('users.create');
@@ -29,7 +31,7 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin', 'middleware' =>
     Route::get('users/profile/{id}', 'UserController@viewProfile')->name('users.profile');
 
     Route::group(['prefix' => '/products'], function () {
-        Route::get('/', 'ProductController@index')->name('products');
+        Route::get('/', 'CharController@orderByYear')->name('products');
         Route::get('{type}', 'ProductController@show')->name('products.show');
         Route::get('edit/{id}', 'ProductController@showEdit')->name('products.show_edit');
         Route::post('edit/{id}', 'ProductController@editProduct')->name('products.edit');
