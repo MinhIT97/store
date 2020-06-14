@@ -1,0 +1,31 @@
+.lion-search {
+    .nav-item {
+        background-color: white;
+        .active {
+            color: #00b5ad !important;
+        }
+
+        .nav-link {
+            background-color: white;
+            color: #1c1c1c;
+            text-transform: uppercase;
+        }
+    }
+    .slick-next,
+    .slick-prev {
+        border-radius: 50%;
+        background-color: #00b5ad;
+        width: 40px;
+        height: 40px;
+    }
+    .slick-prev {
+        z-index: 198;
+    }
+    .search-blog {
+        h5 {
+            font-size: 14px;
+            color: #00b5ad;
+            font-style: italic;
+        }
+    }
+}
