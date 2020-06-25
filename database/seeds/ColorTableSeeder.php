@@ -33,8 +33,7 @@ class ColorTableSeeder extends Seeder
             ],
             [
                 'color' => 'brown',
-            ],
-
+            ]
         ]);
     }
 }
