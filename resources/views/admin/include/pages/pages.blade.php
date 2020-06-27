@@ -42,6 +42,18 @@
     </div>
 </li>
 <li class="nav-item">
+    <a class="nav-link" data-toggle="collapse" href="#Menus-pages" aria-expanded="false" aria-controls="general-pages">
+        <span class="menu-title">Menus </span>
+        <i class="menu-arrow"></i>
+        <i class="mdi mdi-library menu-icon"></i>
+    </a>
+    <div class="collapse" id="Menus-pages">
+        <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="{{route('menus')}}"> Menus </a></li>
+        </ul>
+    </div>
+</li>
+<li class="nav-item">
     <a class="nav-link" data-toggle="collapse" href="#geseral-pages" aria-expanded="false" aria-controls="general-pages">
         <span class="menu-title">Products </span>
         <i class="menu-arrow"></i>

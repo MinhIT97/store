@@ -19,7 +19,7 @@ class CreateSizeablesTable extends Migration
         Schema::create('sizeables', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('size_id');
-            $table->integer('sizeable_id');
+            $table->bigInteger('sizeable_id');
             $table->string('sizeable_type');
             $table->timestamps();
         });

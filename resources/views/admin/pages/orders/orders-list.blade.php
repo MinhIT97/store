@@ -6,11 +6,28 @@
             <h3 class="page-title">
                 Orders
             </h3>
+            <div>
+                <form action="">
+                    <input type="date" name="from" id="dateFrom">
+                    <input type="date" name="to" id="dateTo">
+                    <input type="text" name="search" placeholder="Search">
+                    <button type="submit" class="btn btn-gradient-primary mr-2">
+                        Submit
+                    </button>
+                    <a href="{{route('products.exports')}}">
+                        <button type="button" class="btn btn-gradient-success btn-icon-text">
+                            <i class="mdi mdi-file-excel"></i>
+                            Excel
+                        </button>
+                    </a>
+                </form>
+            </div>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{route('pages.show_create')}}" class="text-decoration-none">CREATE NEW</a></li>
                 </ol>
             </nav>
+
         </div>
         <div class="row">
             <div class="col-lg-12 grid-margin stretch-card">

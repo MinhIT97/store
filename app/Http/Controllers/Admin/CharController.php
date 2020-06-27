@@ -29,26 +29,32 @@ class CharController extends Controller
             ->join('order_items', 'orders.id', '=', 'order_items.order_id')
             ->join('products', 'order_items.product_id', '=', 'products.id')
             ->whereDate('orders.created_at', '=', $get_range)
-        // ->groupBy('orders.created_at')
-            ->first();
-        $sumProductYesterday = DB::table('orders')
-            ->select(DB::raw('SUM(order_items.quantity) as countProduct'))
-            ->join('order_items', 'orders.id', '=', 'order_items.order_id')
-            ->join('products', 'order_items.product_id', '=', 'products.id')
-            ->whereDate('orders.created_at', '=', $yesterday)
-        // ->groupBy('orders.created_at')
+            // ->groupBy('orders.created_at')
             ->first();
 
-        $totalProduct   = (int) ($sumProductDay->countProduct);
-        $percentProduct = round((100 / $totalProduct), 3);
+        if ($sumProductDay->countProduct == null) {
+            return redirect()->route('dashboard.show')->with('alert', trans('chart.no_order'));
+        } else {
+            $sumProductYesterday = DB::table('orders')
+                ->select(DB::raw('SUM(order_items.quantity) as countProduct'))
+                ->join('order_items', 'orders.id', '=', 'order_items.order_id')
+                ->join('products', 'order_items.product_id', '=', 'products.id')
+                ->whereDate('orders.created_at', '=', $yesterday)
+                // ->groupBy('orders.created_at')
+                ->first();
 
-        $productBuy = DB::table('orders')
-            ->select('products.type as type', DB::raw("SUM(order_items.quantity) * $percentProduct as y"))
-            ->join('order_items', 'orders.id', '=', 'order_items.order_id')
-            ->join('products', 'order_items.product_id', '=', 'products.id')
-            ->whereDate('orders.created_at', '=', $get_range)
-            ->groupBy('product_id')
-            ->get();
+            $totalProduct   = (int) ($sumProductDay->countProduct);
+            $percentProduct = round((100 / $totalProduct), 3);
+            $productBuy = DB::table('orders')
+                ->select('products.type as type', DB::raw("SUM(order_items.quantity) * $percentProduct as y"))
+                ->join('order_items', 'orders.id', '=', 'order_items.order_id')
+                ->join('products', 'order_items.product_id', '=', 'products.id')
+                ->whereDate('orders.created_at', '=', $get_range)
+                ->groupBy('product_id')
+                ->get();
+        }
+
+
 
         return view('admin.pages.products.index', [
             'orderYear'  => $orderYear,

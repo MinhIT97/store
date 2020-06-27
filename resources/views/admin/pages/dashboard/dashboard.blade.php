@@ -34,7 +34,7 @@
                         <h4 class="font-weight-normal mb-3">Weekly Orders <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
                         </h4>
                         <h2 class="mb-5">{{number_format($weeklyOrders)}}</h2>
-                        <h6 class="card-text">Decreased by 10%</h6>
+                        <h6 class="card-text">Increased by {{$perentOrders}} %</h6>
                     </div>
                 </div>
             </div>

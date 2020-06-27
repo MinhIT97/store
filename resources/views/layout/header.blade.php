@@ -16,10 +16,16 @@
                 <div class="lion-nav">
                     <div class="lion-nav__left">
                         <ul>
-                            <li class="lion-nav__iteam"><a href="{{asset('products/men')}}">Nam</a></li>
+                        @if($getMenus->count())
+                        @foreach($getMenus as $menu)
+
+                        <li class="lion-nav__iteam"><a href="{{asset($menu->link)}}">{{$menu->label}}</a></li>
+                        @endforeach
+                        @endif
+                            <!-- <li class="lion-nav__iteam"><a href="{{asset('products/men')}}">Nam</a></li>
                             <li class="lion-nav__iteam"><a href="{{asset('products/women')}}">Nữ</a></li>
                             <li class="lion-nav__iteam"><a href="{{asset('products/accessories')}}">Phụ kiện</a></li>
-                            <li class="lion-nav__iteam"><a href="{{route('blogs')}}">Blog</a></li>
+                            <li class="lion-nav__iteam"><a href="{{route('blogs')}}">Blog</a></li> -->
                         </ul>
                     </div>
                     <div class="lion-logo">
@@ -76,7 +82,7 @@
         </div>
         <div class="lion-cart " tabindex="-1">
             <form action="/cart" method="get">
-            @csrf
+                @csrf
                 <div class="d-flex justify-content-between">
                     <div class="mt-3 d-flex ">
                         <p>
@@ -107,7 +113,7 @@
                                 <span>-</span>
                                 <span>Zize : {!! $cartItem->size->size !!}</span>
                                 <div class="mt-2 mb-2">
-                                    <input class="quantity" data-id="{!! $cartItem->id !!}"  value="{{$cartItem->quantity}}" type="number" min="1">
+                                    <input class="quantity" data-id="{!! $cartItem->id !!}" value="{{$cartItem->quantity}}" type="number" min="1">
                                 </div>
                                 <div class="" id="amount-{{$cartItem->id}}">{{number_format($cartItem->amount)}}₫</div>
                             </div>

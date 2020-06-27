@@ -1,8 +1,7 @@
 <?php
 
-namespace VCComponent\Laravel\Product\Exports;
+namespace App\Exports;
 
-use App\Entities\Product;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromCollection;
@@ -16,7 +15,6 @@ class ProductExports implements FromCollection, WithMapping, WithHeadings
     public function __construct(Collection $products)
     {
         $this->products = $products;
-
     }
 
     public function collection()
@@ -31,10 +29,10 @@ class ProductExports implements FromCollection, WithMapping, WithHeadings
             $products->name,
             $products->quantity,
             $products->status,
-            $products->description,
+            $products->content,
             $products->price,
-            $products->published_date,
-            $products->sku,
+            $products->type,
+            $products->orderItems()->sum('quantity'),
             $products->created_at,
 
         ];
@@ -47,13 +45,11 @@ class ProductExports implements FromCollection, WithMapping, WithHeadings
             'name',
             'quantity',
             'status',
-            'description',
+            'content',
             'price',
-            'published_date',
-            'sku',
+            'type',
+            'orders',
             'created_at',
         ];
-
     }
-
 }

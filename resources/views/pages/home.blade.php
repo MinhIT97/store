@@ -26,12 +26,14 @@
                 <div class="carousel-item active">
                     <img class="img-fluid" src="{{asset('uploads/'.$session->thumbnail)}}">
                 </div>
-                @endif
-                @if ($loop->last)
+                @else
                 <div class="carousel-item">
                     <img class="img-fluid" src="{{asset('uploads/'.$session->thumbnail)}}">
                 </div>
                 @endif
+
+
+
                 @endforeach
                 @endif
             </div>

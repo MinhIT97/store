@@ -12,6 +12,22 @@
                 WOMEN
                 @endif
             </h3>
+            <div>
+                <form action="">
+                    <input type="date" name="from" id="dateFrom">
+                    <input type="date" name="to" id="dateTo">
+                    <input type="text" name="search" placeholder="Search">
+                    <button type="submit" class="btn btn-gradient-primary mr-2">
+                        Submit
+                    </button>
+                    <a href="{{route('products.exports')}}">
+                        <button type="button" class="btn btn-gradient-success btn-icon-text">
+                            <i class="mdi mdi-file-excel"></i>
+                            Excel
+                        </button>
+                    </a>
+                </form>
+            </div>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{route('products.create')}}" class="text-decoration-none">CREATE NEW</a></li>
@@ -55,16 +71,16 @@
                                     <td> {{$product->order_items_count}} </td>
                                     <td> {{$product->price}} </td>
                                     <td>
-                                    {{$product->getStatus()}}
+                                        {{$product->getStatus()}}
                                     </td>
                                     <td>{{$product->getDate()}} </td>
                                     <td>
                                         <a class="btn btn-gradient-info p-2" href="{{ url('adminstore/products/edit/'.$product->id )}}"><i class="fas fa-edit"></i></a>
                                         <a class="btn btn-gradient-danger p-2 ml-2" href="{{ url('adminstore/products/delete/'.$product->id )}}"><i class="fas fa-trash"></i></a>
                                         <a class="btn btn-gradient-danger atribute-product p-2 ml-2" href="{{ url('adminstore/products/'.$product->id.'/attribute' )}}">
-                                        <i class="fas fa-plus-circle"></i> <span class="attribue-product-count">{{$product->attributes_count}}</span></a>
+                                            <i class="fas fa-plus-circle"></i> <span class="attribue-product-count">{{$product->attributes_count}}</span></a>
                                         <a class="btn btn-gradient-danger atribute-product p-2 ml-2" href="{{ url('adminstore/products/'.$product->id.'/detail-attribute' )}}">
-                                        <i class="fas fa-minus "></i><span class="attribue-product-count">{{$product->attributes_count}}</span></a>
+                                            <i class="fas fa-minus "></i><span class="attribue-product-count">{{$product->attributes_count}}</span></a>
                                     </td>
                                 </tr>
                                 @endforeach

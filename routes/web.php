@@ -32,6 +32,8 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin', 'middleware' =>
 
     Route::group(['prefix' => '/products'], function () {
         Route::get('/', 'CharController@orderByYear')->name('products');
+        Route::get('exports', 'ProductController@exportExcel')->name('products.exports');
+
         Route::get('{type}', 'ProductController@show')->name('products.show');
         Route::get('edit/{id}', 'ProductController@showEdit')->name('products.show_edit');
         Route::post('edit/{id}', 'ProductController@editProduct')->name('products.edit');
@@ -50,6 +52,13 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin', 'middleware' =>
     Route::get('edit-orders/{id}', 'OrderController@show')->name('orders.show_edit');
     Route::post('edit-orders/{id}', 'OrderController@update')->name('orders.edit');
     Route::get('delete-orders/{id}', 'OrderController@destroy')->name('orders.destroy');
+
+    Route::get('menus', 'MenuController@index')->name('menus');
+    Route::get('menus-create', 'MenuController@showStore')->name('menus.show_create');
+    Route::post('menus-create', 'MenuController@store')->name('menus.create');
+    Route::get('menus-edit/{id}', 'MenuController@showUpdate')->name('menus.show_edit');
+    Route::post('menus-edit/{id}', 'MenuController@update')->name('menus.edit');
+    Route::get('menus-delete/{id}', 'MenuController@destroy')->name('menus.delete');
 
     Route::get('colors', 'ColorController@index')->name('colors.show');
     Route::get('color-create', 'ColorController@showStore')->name('colors.show_create');

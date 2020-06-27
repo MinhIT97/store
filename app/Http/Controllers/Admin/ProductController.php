@@ -9,6 +9,7 @@ use App\Entities\Color;
 use App\Entities\Image;
 use App\Entities\Product;
 use App\Entities\Size;
+use App\Exports\ProductExports;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AttributeCreateRequest;
 use App\Http\Requests\ProductCreateRequest;
@@ -17,17 +18,36 @@ use App\Repositories\AttributeRepository;
 use App\Repositories\ProductRepository;
 use App\Traits\Search;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class ProductController extends Controller
 {
     use Search;
     protected $repository;
-    public function __construct(ProductRepository $repository, AttributeRepository $attributeRepository)
+    public function __construct(ProductRepository $repository,  ProductExports $exports, AttributeRepository $attributeRepository)
     {
         $this->repository       = $repository;
         $this->entity           = $repository->getEntity();
         $this->entity_attribute = $attributeRepository->getEntity();
+        $this->exports              = $exports;
     }
+
+    public function exportExcel(Request $request)
+    {
+
+        $products = $this->entity;
+
+        // $products = $this->getFromDate($request, $products);
+        // $products = $this->getToDate($request, $products);
+        // $products = $this->getStatus($request, $products);
+        $products = $products->get();
+
+        Excel::store(new $this->exports($products), 'products.xlsx', 'excel');
+
+        return Response()->download(public_path('exports/products.xlsx'));
+    }
+
     public function index()
     {
         return view('admin.pages.products.index');
@@ -35,7 +55,10 @@ class ProductController extends Controller
 
     public function show(Request $request, $type)
     {
+
         $query    = $this->entity->query();
+        $query    = $this->getFromDate($request, $query);
+        $query    = $this->getToDate($request, $query);
         $query    = $this->applyConstraintsFromRequest($query, $request);
         $query    = $this->applySearchFromRequest($query, ['name', 'price'], $request);
         $query    = $this->applyOrderByFromRequest($query, $request);

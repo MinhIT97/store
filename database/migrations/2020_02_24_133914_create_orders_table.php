@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->string('name');
-            $table->integer('status')->default(0);
+            $table->tinyInteger('status')->default(0);
             $table->integer('total_price')->default(0);
             $table->string('email');
             $table->string('phone');

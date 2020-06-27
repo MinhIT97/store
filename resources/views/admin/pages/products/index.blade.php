@@ -1,5 +1,6 @@
 @extends('admin.layouts.master')
 @section('content')
+
 <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="page-header">

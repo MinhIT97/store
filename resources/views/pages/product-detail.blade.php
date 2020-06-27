@@ -18,7 +18,7 @@
                 <div class="product-thumbnail">
                     @if($product)
                     <div class="item">
-                        <img class="img-fluid" src="{{asset('uploads/'.$product->thumbnail)}}" alt="">
+                        <img class="img-fluid" src="{{asset('uploads/'.$product->thumbnail)}}" alt="{{$product->thumbnail}}">
                     </div>
                     @endif
                     @if($product->imagaes->count())
@@ -32,13 +32,13 @@
                 <div class="product-thumbnail-child">
                     @if($product)
                     <div class="item">
-                        <img class="img-fluid" src="{{asset('uploads/'.$product->thumbnail)}}" alt="">
+                        <img class="img-fluid" src="{{asset('uploads/'.$product->thumbnail)}}" alt="{{$product->thumbnail}}">
                     </div>
                     @endif
                     @if($product->imagaes->count())
                     @foreach($product->imagaes as $image)
                     <div class="item">
-                        <img class="img-fluid" src="{{asset('/uploads/'.$image->url)}}" alt="">
+                        <img class="img-fluid" src="{{asset('/uploads/'.$image->url)}}" alt="{{$product->thumbnail}}">
                     </div>
                     @endforeach
                     @endif();
@@ -137,7 +137,7 @@
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
                     <a href="{{asset('/products/'.$product->type.'/'.$product->slug)}}">
                         <div>
-                            <img class="img-fluid" src="{{asset('uploads/'.$product->thumbnail)}}" alt="">
+                            <img class="img-fluid" src="{{asset('uploads/'.$product->thumbnail)}}" alt="{{$product->slug}}">
                         </div>
                         <div class="name">
                             <span>
@@ -176,7 +176,7 @@
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
                     <a href="{{asset('/products/'.$product->type.'/'.$product->slug)}}">
                         <div>
-                            <img class="img-fluid" src="{{asset('uploads/'.$product->thumbnail)}}" alt="">
+                            <img class="img-fluid" src="{{asset('uploads/'.$product->thumbnail)}}" alt="{{$product->slug}}">
                         </div>
                         <div class="name">
                             <span>
@@ -215,7 +215,7 @@
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
                     <a href="{{asset('/products/'.$product->type.'/'.$product->slug)}}">
                         <div>
-                            <img class="img-fluid" src="{{asset('uploads/'.$product->thumbnail)}}" alt="">
+                            <img class="img-fluid" src="{{asset('uploads/'.$product->thumbnail)}}" alt="{{$product->slug}}">
                         </div>
                         <div class="name">
                             <span>

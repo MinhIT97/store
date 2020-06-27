@@ -12,6 +12,7 @@ class HomeController extends Controller
     {
         $poster              = Poster::where('type', 'home')->latest()->published()->first();
         $new_sesion          = Poster::where('type', 'newsesion')->latest()->published()->limit(4)->get();
+
         $product_accessories = Product::where('type', 'accessories')->published()->hots()->limit(5)->get();
         $product_men         = Product::where('type', 'men')->published()->hots()->limit(5)->get();
         $product_women       = Product::where('type', 'women')->published()->hots()->limit(5)->get();

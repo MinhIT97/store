@@ -22,8 +22,8 @@
                     <option value="name-descending" {{ $activeSelected === 'name-descending' ? 'selected' : '' }}>Alphabet Z-A</option>
                     <option value="price-ascending" {{ $activeSelected === 'price-ascending' ? 'selected' : '' }}>Price : Low to high</option>
                     <option value="price-descending" {{ $activeSelected === 'price-descending' ? 'selected' : '' }}>Price : High to low</option>
-                    <option value="created-ascending" {{ $activeSelected === 'created-ascending' ? 'selected' : '' }}>Date : New to old</option>
-                    <option value="created-descending" {{ $activeSelected === 'created-descending' ? 'selected' : '' }}>Date : Old to new</option>
+                    <option value="created-descending" {{ $activeSelected === 'created-descending' ? 'selected' : '' }}>Date : New to old</option>
+                    <option value="created-ascending" {{ $activeSelected === 'created-ascending' ? 'selected' : '' }}>Date : Old to new</option>
                 </select>
             </div>
 
@@ -48,7 +48,7 @@
                         @endif
                         <a href="{{asset('products/'.$product->type.'/'.$product->slug)}}">
                             <div class="slide-item__image">
-                                <img class="img-fluid" src="{{asset('/uploads/'.$product->thumbnail)}}" alt="">
+                                <img class="img-fluid" src="{{asset('/uploads/'.$product->thumbnail)}}" alt="{{$product->slug}}">
                             </div>
                             <div class="text-center">
                                 <div class="name">

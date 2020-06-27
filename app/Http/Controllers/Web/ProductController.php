@@ -20,6 +20,7 @@ class ProductController extends Controller
 
     public function index(Request $request)
     {
+
         $query         = $this->entity->where('type', $request->type)->published();
         $product_count = $query->get();
 
@@ -42,10 +43,12 @@ class ProductController extends Controller
             $sort_by     = str_replace('ending', '', $request->get('sort_by'));
             $sort_by     = str_replace('created', 'created_at', $sort_by);
             $orderBy     = explode('-', $sort_by);
-            $check_key   = ['name', 'price', 'created'];
+            $check_key   = ['name', 'price', 'created_at'];
             $check_value = ['asc', 'desc'];
+
             if (count($orderBy) > 0) {
                 if (in_array($orderBy[0], $check_key) && in_array($orderBy[1], $check_value)) {
+
                     $query = $query->orderBy($orderBy[0], $orderBy[1]);
                 }
             }
