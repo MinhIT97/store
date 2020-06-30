@@ -51,7 +51,6 @@
                     <div class="product-summary">
                         <div class="product-summary--name">
                             <h4>{{$product->getLimitName(25)}}</h4>
-
                         </div>
                         <div class="product-summary--code">
                             <span>Mã Sản Phẩm:</span> <span>{{$product->code}}</span>
@@ -70,10 +69,17 @@
                             <p>Mầu sắc</p>
                         </div>
                         <input type="text" name="product_id" value="{{$product->id}}" hidden>
+                        <!-- <div class="product-summary--color d-flex mb-5">
+                            @foreach($product->attributes as $attribute)
+                            <label class="product-colors">
+                                <input type="radio" value="{{$attribute->color->id}}" checked="checked" name="color_id">
+                                <span class="checkmark {{$attribute->color->color}}"></span>
+                            </label>
+                            @endforeach
+                        </div> -->
 
                         <div class="product-summary--color d-flex mb-5">
                             @if($product->attributes->count())
-
                             @foreach($colors as $color)
                             @if(in_array($color->id,$color_id))
                             <label class="product-colors">
@@ -84,7 +90,6 @@
                             @endforeach
                             @endif
                         </div>
-
                         <div>
                             Kích thước
                         </div>

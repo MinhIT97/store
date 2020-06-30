@@ -20,17 +20,16 @@ use App\Traits\Search;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
-
 class ProductController extends Controller
 {
     use Search;
     protected $repository;
-    public function __construct(ProductRepository $repository,  ProductExports $exports, AttributeRepository $attributeRepository)
+    public function __construct(ProductRepository $repository, ProductExports $exports, AttributeRepository $attributeRepository)
     {
         $this->repository       = $repository;
         $this->entity           = $repository->getEntity();
         $this->entity_attribute = $attributeRepository->getEntity();
-        $this->exports              = $exports;
+        $this->exports          = $exports;
     }
 
     public function exportExcel(Request $request)
@@ -238,6 +237,23 @@ class ProductController extends Controller
 
     public function storeAttribute(AttributeCreateRequest $request)
     {
+
+        $product_id = $request->product_id;
+        $color_id   = $request->color_id;
+        $size_id    = $request->size_id;
+
+        $attributes = $this->entity_attribute->where([
+            [
+                'product_id', $product_id,
+            ], [
+                'color_id', $color_id,
+            ], [
+                'size_id', $size_id,
+            ],
+        ])->first();
+        if ($attributes) {
+            return redirect()->back()->with('errow', 'Attribute already exist');
+        }
 
         $product_current_quantity = $this->checkQuantityProductAttibute($request);
 

@@ -16394,6 +16394,11 @@ readers do not read off random characters that represent icons */
   margin-top: 80px;
 }
 
+.home .main-slider .carousel-inner .carousel-item img {
+  height: 500px;
+  width: 100%;
+}
+
 .home .main-slider .carousel-indicators li {
   width: 8px;
   height: 8px;
@@ -16414,8 +16419,24 @@ readers do not read off random characters that represent icons */
   letter-spacing: 4.4px;
 }
 
+.home .home-product .product-slider .product_slider .slide-item__image:focus {
+  outline: none;
+}
+
+.home .home-product .product-slider .product_slider .slide-item__image:hover img {
+  height: 230px;
+}
+
 .home .home-product .product-slider .product_slider .slide-item__image {
   padding: 10px;
+}
+
+.home .home-product .product-slider .product_slider .slide-item__image img {
+  height: 240px;
+}
+
+.home .home-product .product-slider .product_slider .slide-item a:focus {
+  outline: none;
 }
 
 .home .home-product .product-slider .product_slider .slide-item a {
@@ -16655,6 +16676,14 @@ readers do not read off random characters that represent icons */
   margin-bottom: 10px;
 }
 
+.product .product-item__image img {
+  height: 240px;
+}
+
+.product .product-item__image:hover {
+  padding: 5px;
+}
+
 .product .product-item a {
   color: #1c1c1c;
   text-decoration: none;
@@ -16673,6 +16702,11 @@ readers do not read off random characters that represent icons */
   margin-bottom: 5px;
   color: black;
   margin-bottom: 10px;
+}
+
+.product .product-item .price span {
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .product-detail .product-thumbnail .item,

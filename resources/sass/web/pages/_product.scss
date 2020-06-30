@@ -1,6 +1,7 @@
 .product {
     margin-bottom: 40px;
     margin-top: 30px;
+
     .sort_product {
         .count-product {
             font-size: 12px;
@@ -9,6 +10,7 @@
             font-weight: 600;
         }
     }
+
     .text-sortby {
         margin-right: 30px;
         white-space: nowrap;
@@ -17,16 +19,19 @@
 
     .img-head {
         margin-bottom: 20px;
+
         img {
             width: 100%;
         }
     }
+
     .product-item {
         border: 1px solid #e9e0e2;
         margin: 0;
         padding: 0;
         border-radius: 6px;
         position: relative;
+
         .quantity-product {
             position: absolute;
             transform: rotate(45deg);
@@ -40,12 +45,21 @@
 
         &__image {
             margin-bottom: 10px;
+
+            img {
+                height: 240px;
+            }
+        }
+
+        &__image:hover {
+            padding: 5px;
         }
 
         a {
             color: #1c1c1c;
             text-decoration: none;
         }
+
         .name {
             text-transform: uppercase;
             margin-top: 15px;
@@ -53,11 +67,17 @@
             font-weight: bold;
             font-style: normal;
         }
+
         .price {
             margin-top: 5px;
             margin-bottom: 5px;
             color: black;
             margin-bottom: 10px;
+
+            span {
+                font-size: 18px;
+                font-weight: bold;
+            }
         }
     }
 }

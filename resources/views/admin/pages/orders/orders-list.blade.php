@@ -69,6 +69,7 @@
                                         <a class="btn btn-gradient-danger p-2 ml-2" href="{{url('adminstore/delete-orders/'.$order->id)}}"><i class="fas fa-trash"></i></a>
                                         <a class="btn btn-gradient-danger p-2 ml-2" href="{{ url('adminstore/orders/'.$order->id.'/items' )}}"><i class="fas fa-plus-circle"></i></a>
                                         <a class="btn btn-gradient-danger p-2 ml-2" href="{{ url('adminstore/orders/'.$order->id.'/detail-items' )}}"><i class="fas fa-minus"></i></a>
+                                        <a class="btn  btn-gradient-primary p-2 ml-2" href="{{ url('adminstore/orders/'.$order->id.'/detail-items' )}}"><i class="mdi mdi-information"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach

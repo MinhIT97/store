@@ -27,6 +27,7 @@
                                 <tr>
                                     <th> # </th>
                                     <th> Title</th>
+                                    <th> Type</th>
                                     <th> link</th>
                                     <th> Ngày tạo </th>
                                     <th> Hình ảnh </th>
@@ -39,6 +40,7 @@
                                 <tr>
                                     <td> {{$poster->id}}</td>
                                     <td> {{$poster->title}} </td>
+                                    <td> {{$poster->type}} </td>
                                     <td> {{$poster->link}} </td>
                                     <td>{{$poster->getDate()}} </td>
                                     <td><img class="ml-2" src="{{asset('/uploads/'.$poster->thumbnail)}}" alt=""></td>

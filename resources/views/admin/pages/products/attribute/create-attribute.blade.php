@@ -39,7 +39,7 @@
                         <label for="color_id">Color</label>
                         <select name="color_id" id="select1" class="form-control form-control-sm  js-example-basic-single">
                             @foreach($colors as $color)
-                            <option value="{{$color->id}}" @if(in_array($color->id,$color_id))disabled="disabled"@endif>{{$color->color}}</option>
+                            <option value="{{$color->id}}">{{$color->color}}</option>
                             @endforeach
                         </select>
                     </div>

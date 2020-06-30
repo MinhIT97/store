@@ -30,6 +30,7 @@
                                 <tr>
                                     <th> # </th>
                                     <th> Màu </th>
+                                    <th> Size </th>
                                     <th> Quantity </th>
                                     <th> Current quantity </th>
                                     <th>Hành động </th>
@@ -41,6 +42,7 @@
                                 <tr>
                                     <td> {{$attribute->id}}</td>
                                     <td> {{$attribute->color->color}} </td>
+                                    <td> {{$attribute->size->size}} </td>
                                     <td> {{$attribute->quantity}} </td>
                                     <td> {{$attribute->current_quantity}} </td>
                                     <td>

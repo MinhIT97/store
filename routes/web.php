@@ -45,13 +45,16 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin', 'middleware' =>
         Route::get('{id}/attribute', 'ProductController@showStoreAttribute')->name('attribute.show_create');
         Route::post('{id}/attribute', 'ProductController@storeAttribute')->name('attribute.create');
         Route::get('{id}/detail-attribute', 'ProductController@showAttribute')->name('attribute.show');
-        Route::get('delete/attribute/{id}', 'ProductController@destroyAttribute')->name('attribute.delete');
+        Route::get('/attribute/{id}', 'ProductController@destroyAttribute')->name('attribute.delete');
     });
 
     Route::get('orders', 'OrderController@index')->name('orders.show');
     Route::get('edit-orders/{id}', 'OrderController@show')->name('orders.show_edit');
     Route::post('edit-orders/{id}', 'OrderController@update')->name('orders.edit');
     Route::get('delete-orders/{id}', 'OrderController@destroy')->name('orders.destroy');
+    Route::get('orders/{id}/detail-items', 'OrderController@orderItems')->name('orders.items');
+    Route::get('orders/{id}/items', 'OrderController@showCreateItems')->name('orders.show_create_items');
+    Route::post('orders/{id}/items', 'OrderController@crateItems')->name('orders.create_items');
 
     Route::get('menus', 'MenuController@index')->name('menus');
     Route::get('menus-create', 'MenuController@showStore')->name('menus.show_create');
