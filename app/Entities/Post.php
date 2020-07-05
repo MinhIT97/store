@@ -40,7 +40,8 @@ class Post extends Model implements Transformable
         "view",
         "thumbnail",
         "status",
-        'type',
+        "type",
+        "user_id",
     ];
     public function sluggable()
     {
@@ -50,7 +51,10 @@ class Post extends Model implements Transformable
             ],
         ];
     }
-
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
     public function categories()
     {
         return $this->morphToMany(Category::class, 'categoryable');

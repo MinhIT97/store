@@ -47029,14 +47029,11 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 $(document).ready(function () {
   var quantityChange = document.getElementsByClassName("quantity");
-  console.log(quantityChange);
   Array.from(quantityChange).forEach(function (input) {
     input.addEventListener("change", function () {
       var id = input.dataset.id;
       var quantity = input.value;
       var url = window.location.origin + "/api/cart/" + id;
-      console.log(url); // var url = "api/cart/" + id;
-
       $.ajax({
         type: "PUT",
         url: url,
@@ -47079,8 +47076,6 @@ $(document).ready(function () {
   lion_close_cart.click(function () {
     lion_cart.slideToggle();
   });
-  console.log(lion_close_cart);
-  console.log(lion_btn_cart);
 });
 
 /***/ }),

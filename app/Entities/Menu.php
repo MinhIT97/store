@@ -16,8 +16,8 @@ class Menu extends Model implements Transformable
 {
     use TransformableTrait, QueryTrait;
 
-    const PENĐING  = 0;
-    const PUBLISHED = 1;
+    const PENĐING = 0;
+    const ACTIVE   = 1;
 
     /**
      * The attributes that are mass assignable.
@@ -29,11 +29,12 @@ class Menu extends Model implements Transformable
         "link",
         "parent_id",
         "order_by",
+        "status",
     ];
 
     public function scopePublished($query)
     {
-        $query->where('status', self::PUBLISHED);
+        $query->where('status', self::ACTIVE);
     }
 
     public function menu()
@@ -67,6 +68,22 @@ class Menu extends Model implements Transformable
             }
             $html .= '</ul>';
             return $html;
+        }
+    }
+
+    public function getStatusAttribute($value)
+    {
+
+        switch ($value) {
+            case 1:
+                return 'Active';
+                break;
+            case 0:
+                return 'Pending';
+                break;
+            default:
+                return 'Status not found';
+                break;
         }
     }
 }

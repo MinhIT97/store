@@ -52,6 +52,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(\App\Repositories\CartItemRepository::class, \App\Repositories\CartItemRepositoryEloquent::class);
         $this->app->bind(\App\Repositories\MailRepository::class, \App\Repositories\MailRepositoryEloquent::class);
         $this->app->bind(ColorRepository::class, ColorRepositoryEloquent::class);
+        $this->app->bind(\App\Repositories\PermissionRepository::class, \App\Repositories\PermissionRepositoryEloquent::class);
         //:end-bindings:
     }
 }

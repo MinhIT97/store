@@ -16424,7 +16424,7 @@ readers do not read off random characters that represent icons */
 }
 
 .home .home-product .product-slider .product_slider .slide-item__image:hover img {
-  height: 230px;
+  padding: 5px;
 }
 
 .home .home-product .product-slider .product_slider .slide-item__image {
@@ -16653,6 +16653,10 @@ readers do not read off random characters that represent icons */
   width: 100%;
 }
 
+.product .product-item:hover .product-item__image img {
+  padding: 5px;
+}
+
 .product .product-item {
   border: 1px solid #e9e0e2;
   margin: 0;
@@ -16678,10 +16682,6 @@ readers do not read off random characters that represent icons */
 
 .product .product-item__image img {
   height: 240px;
-}
-
-.product .product-item__image:hover {
-  padding: 5px;
 }
 
 .product .product-item a {

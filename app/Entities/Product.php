@@ -109,4 +109,8 @@ class Product extends Model implements Transformable
     {
         $query->where('hot', self::HOTS);
     }
+    public function attachCategories($category_ids, array $attributes = [])
+    {
+        $this->categories()->attach($category_ids, $attributes);
+    }
 }

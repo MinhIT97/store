@@ -16,12 +16,12 @@
                 <div class="lion-nav">
                     <div class="lion-nav__left">
                         <ul>
-                        @if($getMenus->count())
-                        @foreach($getMenus as $menu)
+                            @if($getMenus->count())
+                            @foreach($getMenus as $menu)
 
-                        <li class="lion-nav__iteam"><a href="{{asset($menu->link)}}">{{$menu->label}}</a></li>
-                        @endforeach
-                        @endif
+                            <li class="lion-nav__iteam"><a href="{{asset($menu->link)}}">{{$menu->label}}</a></li>
+                            @endforeach
+                            @endif
                             <!-- <li class="lion-nav__iteam"><a href="{{asset('products/men')}}">Nam</a></li>
                             <li class="lion-nav__iteam"><a href="{{asset('products/women')}}">Nữ</a></li>
                             <li class="lion-nav__iteam"><a href="{{asset('products/accessories')}}">Phụ kiện</a></li>
@@ -42,6 +42,8 @@
                                 <span class="position-absolute lion-cart-item-quantity">
                                     @if($cart)
                                     {{$cart->cart_items_count}}
+                                    @else
+                                    0
                                     @endif
                                 </span>
                             </li>

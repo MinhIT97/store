@@ -24,7 +24,7 @@
             </div>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('pages.show_create')}}" class="text-decoration-none">CREATE NEW</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('orders.show_create')}}" class="text-decoration-none">CREATE NEW</a></li>
                 </ol>
             </nav>
 
@@ -47,6 +47,7 @@
                                     <th> Email</th>
                                     <th> Phone</th>
                                     <th> Adsress </th>
+                                    <th> Total Price </th>
                                     <th> Note </th>
                                     <th> Ngày tạo </th>
                                     <th>Hành động </th>
@@ -62,6 +63,7 @@
                                     <td>{{$order->email}} </td>
                                     <td>{{$order->phone}} </td>
                                     <td>{{$order->address}} </td>
+                                    <td>{{$order->total_price}} </td>
                                     <td>{{$order->note}} </td>
                                     <td>{{$order->getDate()}} </td>
                                     <td>

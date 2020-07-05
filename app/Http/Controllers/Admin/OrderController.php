@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\OrderCreateByAdminRequest;
 use App\Http\Requests\OrderItemCreateRequest;
 use App\Http\Requests\OrderUpdateRequest;
 use App\Repositories\ColorRepository;
 use App\Repositories\OrderRepository;
 use App\Repositories\ProductRepository;
 use App\Repositories\SizeRepository;
+use App\Repositories\UserRepository;
 use App\Services\OrderItemService;
 use App\Traits\Search;
 use Illuminate\Http\Request;
@@ -21,14 +23,22 @@ class OrderController extends Controller
     protected $colorRepository;
     protected $sizeRepository;
     protected $orderItemService;
-    public function __construct(OrderRepository $repository, ProductRepository $productRepository, ColorRepository $colorRepository, SizeRepository $sizeRepository, OrderItemService $orderItemService)
-    {
+    protected $userRepository;
+    public function __construct(
+        OrderRepository $repository,
+        ProductRepository $productRepository,
+        ColorRepository $colorRepository,
+        SizeRepository $sizeRepository,
+        OrderItemService $orderItemService,
+        UserRepository $userRepository
+    ) {
         $this->repository       = $repository;
         $this->entity           = $repository->getEntity();
         $this->entityProduct    = $productRepository->getEntity();
         $this->entityColor      = $colorRepository->getEntity();
         $this->entitySize       = $sizeRepository->getEntity();
         $this->orderItemService = $orderItemService;
+        $this->entityUser       = $userRepository->getEntity();
     }
     public function index(Request $request)
     {
@@ -54,7 +64,12 @@ class OrderController extends Controller
             'orders' => $orders,
         ]);
     }
+    public function deleteItem($id)
+    {
+        $this->orderItemService->delete($id);
 
+        return redirect()->back()->with('sucsess', 'delete order item sucsess');
+    }
     public function update(OrderUpdateRequest $request, $id)
     {
         $data = $request->all();
@@ -66,6 +81,22 @@ class OrderController extends Controller
             return redirect()->route('orders.show')->with('sucsess', 'Update order sucsess');
         }
         return redirect()->back()->with('sucsess', 'Update order sucsess');
+    }
+    public function showCreate()
+    {
+        $users = $this->entityUser->all();
+        return view('admin.pages.orders.order-create', [
+            'users' => $users,
+        ]);
+    }
+    public function create(OrderCreateByAdminRequest $request)
+    {
+        $data  = $request->all();
+        $order = $this->repository->create($data);
+        if (!$order) {
+            return redirect()->back()->with('error', 'Create order orror');
+        }
+        return redirect()->back()->with('sucsess', 'Create order sucsess');
     }
 
     public function showCreateItems($id)
@@ -81,12 +112,13 @@ class OrderController extends Controller
             'sizes'    => $sizes,
         ]);
     }
-    public function crateItems(OrderItemCreateRequest $request)
+    public function crateItems(OrderItemCreateRequest $request, $id)
     {
-        $this->orderItemService->create($request);
-
-        return redirect()->back()->with('sucsess', 'Create item sucsess');
-
+        $createItems = $this->orderItemService->create($request, $id);
+        if ($createItems) {
+            return redirect()->back()->with('sucsess', 'Create item sucsess');
+        }
+        return redirect()->back()->with('error', 'Create item error');
     }
 
     public function orderItems($id)
@@ -95,7 +127,6 @@ class OrderController extends Controller
         return view('admin.pages.orders.items.item-list', [
             'itemOrder' => $itemOrder,
         ]);
-
     }
 
     public function destroy($id)

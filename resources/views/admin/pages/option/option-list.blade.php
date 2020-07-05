@@ -38,8 +38,8 @@
                                 @foreach($options as $option)
                                 <tr>
                                     <td> {{$option->id}}</td>
-                                    <td> {{$option->key}} </td>
-                                    <td> {{$option->value}} </td>
+                                    <td> {{$option->label}} </td>
+                                    <td> {!!$option->value!!} </td>
                                     <td>{{$option->getDate()}} </td>
                                     <td>
                                         <a class="btn btn-gradient-info p-2" href="{{ url('adminstore/edit/'.$option->id )}}"><i class="fas fa-edit"></i></a>

@@ -23,6 +23,9 @@ class ProductDetailController extends Controller
         $colors  = Color::get();
 
         $color_id = [];
+
+
+
         foreach ($product->attributes as $attribute) {
             array_push($color_id, $attribute->color_id);
         }

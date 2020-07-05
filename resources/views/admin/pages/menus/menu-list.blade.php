@@ -30,6 +30,8 @@
                                 <tr>
                                     <th> # </th>
                                     <th> Lebel</th>
+                                    <th> Status</th>
+                                    <th> Link</th>
                                     <th> Ngày tạo </th>
                                     <th>Hành động </th>
                                 </tr>
@@ -40,6 +42,7 @@
                                 <tr>
                                     <td> {{$menu->id}}</td>
                                     <td> {{$menu->label}}</td>
+                                    <td> {{$menu->status}}</td>
                                     <td> {{$menu->link}} </td>
                                     <td>{{$menu->getDate()}} </td>
                                     <td>

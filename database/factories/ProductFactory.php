@@ -2,7 +2,6 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Entities\Brand;
 use App\Entities\Product;
 use Faker\Generator as Faker;
 use Illuminate\Support\Arr;
@@ -21,8 +20,6 @@ $factory->define(Product::class, function (Faker $faker) {
         'type'       => Arr::random($arr),
         'content'    => $faker->name,
         'hot'        => 1,
-        'brand_id'   => function () {
-            return factory(Brand::class)->create()->id;
-        },
+        'brand_id'   => rand(1, 7),
     ];
 });

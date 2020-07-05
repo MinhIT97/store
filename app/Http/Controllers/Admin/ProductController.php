@@ -16,6 +16,7 @@ use App\Http\Requests\ProductCreateRequest;
 use App\Http\Requests\ProductUpdateRequest;
 use App\Repositories\AttributeRepository;
 use App\Repositories\ProductRepository;
+use App\Services\ImageUploadService;
 use App\Traits\Search;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -24,12 +25,14 @@ class ProductController extends Controller
 {
     use Search;
     protected $repository;
-    public function __construct(ProductRepository $repository, ProductExports $exports, AttributeRepository $attributeRepository)
+    protected $imageUploadService;
+    public function __construct(ProductRepository $repository, ProductExports $exports, AttributeRepository $attributeRepository, ImageUploadService $imageUploadService)
     {
-        $this->repository       = $repository;
-        $this->entity           = $repository->getEntity();
-        $this->entity_attribute = $attributeRepository->getEntity();
-        $this->exports          = $exports;
+        $this->repository         = $repository;
+        $this->entity             = $repository->getEntity();
+        $this->entity_attribute   = $attributeRepository->getEntity();
+        $this->exports            = $exports;
+        $this->imageUploadService = $imageUploadService;
     }
 
     public function exportExcel(Request $request)
@@ -85,11 +88,10 @@ class ProductController extends Controller
     }
     public function store(ProductCreateRequest $request)
     {
-
         if ($request->hasFile('thumbnail')) {
-            $request->thumbnail->move(base_path('/public/uploads'), $request->thumbnail->getClientOriginalName());
+            $link              = $this->imageUploadService->handleUploadedImage($request->file('thumbnail'));
             $data              = $request->all();
-            $data['thumbnail'] = $request->thumbnail->getClientOriginalName();
+            $data['thumbnail'] = $link;
         } else {
             $data = $request->all();
         }
@@ -114,11 +116,9 @@ class ProductController extends Controller
 
             if ($request->hasFile('media')) {
                 foreach ($request->media as $key) {
-                    $filename = $key->getClientOriginalName();
-
-                    $key->move(base_path('/public/uploads'), $filename);
+                    $link = $this->imageUploadService->handleUploadedImage($key);
                     $product->imagaes()->updateOrCreate([
-                        'url' => $filename,
+                        'url' => $link,
                     ]);
                 }
             }

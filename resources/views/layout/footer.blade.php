@@ -35,25 +35,27 @@
         <div class="row m0">
             <div class="col-12 col-md-3">
                 <ul class="list-unstyled">
+                    <li><strong>{!!getOption('store')!!}</strong></li>
                     <li> <strong> Store 1:</strong> 20 Canifonia Hoa kì</li>
                     <li><strong> Store 2:</strong> Hà Nội</li>
                     <li><strong> Store 3:</strong> Hồ Chí Minh</li>
-                    <li><strong>cskh@mshop.com</strong></li>
-                    <li><strong>0986082324</strong></li>
+                    <li><strong>Email: cskh@mshop.com</strong></li>
+                    <li><strong>SDT: 0986082324</strong></li>
                 </ul>
             </div>
             <div class="col-12 col-md-2">
-                <ul class="list-unstyled">
+                <!-- <ul class="list-unstyled">
                     <li>
                         <h3>Mua hàng</h3>
                     </li>
                     <li><a href="">Thời trang nam</a></li>
                     <li><a href="">Thời trang nữ</a></li>
                     <li><a href="">Thời trang unisex</a></li>
-                </ul>
+                </ul> -->
+                {!!getOption('mua-hang')!!}
             </div>
             <div class="col-12 col-md-2">
-                <ul class="list-unstyled">
+                <!-- <ul class="list-unstyled">
                     <li>
                         <h3>Dịch vụ khách hàng</h3>
                     </li>
@@ -64,7 +66,8 @@
                     <li><a href="">Chính sách bảo mật</a></li>
                     <li><a href="">Chính sách thanh toán</a></li>
 
-                </ul>
+                </ul> -->
+                {!!getOption('dich-vu-khach-hang')!!}
             </div>
             <div class="col-12 col-md-2">
                 <ul class="list-unstyled">
@@ -73,7 +76,6 @@
                     </li>
                     <li><a href="">Blog</a></li>
                     <li><a href="">Tuyển dụng</a></li>
-
                 </ul>
             </div>
             <div class="col-12 col-md-3">

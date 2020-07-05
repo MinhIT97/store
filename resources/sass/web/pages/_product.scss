@@ -25,6 +25,15 @@
         }
     }
 
+    .product-item:hover {
+        .product-item__image {
+            img {
+                padding: 5px;
+            }
+
+        }
+    }
+
     .product-item {
         border: 1px solid #e9e0e2;
         margin: 0;
@@ -51,9 +60,9 @@
             }
         }
 
-        &__image:hover {
-            padding: 5px;
-        }
+        // &__image:hover {
+        //     padding: 5px;
+        // }
 
         a {
             color: #1c1c1c;

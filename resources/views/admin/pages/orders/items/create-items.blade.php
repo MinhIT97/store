@@ -17,9 +17,9 @@
                 {{ session('sucsess') }}
             </div>
             @endif
-            @if (session('errow'))
+            @if (session('error'))
             <div class="alert alert-danger">
-                {{ session('errow') }}
+                {{ session('error') }}
             </div>
             @endif
             <div class="auth-form-light text-left p-5">

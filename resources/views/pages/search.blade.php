@@ -3,7 +3,7 @@
 
 <nav class="breadcrumb container">
     <a class="breadcrumb-item" href="/">Trang chủ</a>
-    <a class="breadcrumb-item" >Tìm kiếm</a>
+    <a class="breadcrumb-item">Tìm kiếm</a>
 </nav>
 
 <section class="lion-search">

@@ -7,11 +7,11 @@ use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
 /**
- * Class Role.
+ * Class Permission.
  *
  * @package namespace App\Entities;
  */
-class Role extends Model implements Transformable
+class Permission extends Model implements Transformable
 {
     use TransformableTrait;
 
@@ -21,9 +21,5 @@ class Role extends Model implements Transformable
      * @var array
      */
     protected $fillable = [];
-    public function permissions()
-    {
-        return $this->belongsToMany(Permission::class);
-    }
 
 }

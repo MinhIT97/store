@@ -18,7 +18,7 @@ class Order extends Model implements Transformable
 
     const PENDING    = 0; //đang chờ xửa lý
     const CANCELED   = 1; // hủy đơn hàng
-    const return     = 2; //khchs trả lại
+    const RETURN     = 2; //khchs trả lại
     const FINISH     = 3; //hoàn thành
     const FAKEORDER  = 4; //đơn giả
     const FAIL       = 5; //thất bại

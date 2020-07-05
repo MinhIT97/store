@@ -50,11 +50,14 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin', 'middleware' =>
 
     Route::get('orders', 'OrderController@index')->name('orders.show');
     Route::get('edit-orders/{id}', 'OrderController@show')->name('orders.show_edit');
+    Route::get('create-orders', 'OrderController@showCreate')->name('orders.show_create');
+    Route::post('create-orders', 'OrderController@create')->name('orders.create');
     Route::post('edit-orders/{id}', 'OrderController@update')->name('orders.edit');
     Route::get('delete-orders/{id}', 'OrderController@destroy')->name('orders.destroy');
     Route::get('orders/{id}/detail-items', 'OrderController@orderItems')->name('orders.items');
     Route::get('orders/{id}/items', 'OrderController@showCreateItems')->name('orders.show_create_items');
     Route::post('orders/{id}/items', 'OrderController@crateItems')->name('orders.create_items');
+    Route::get('orders/items/{id}', 'OrderController@deleteItem')->name('orders.delete_item');
 
     Route::get('menus', 'MenuController@index')->name('menus');
     Route::get('menus-create', 'MenuController@showStore')->name('menus.show_create');

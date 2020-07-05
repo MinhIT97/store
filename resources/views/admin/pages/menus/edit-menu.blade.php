@@ -34,13 +34,22 @@
 
                     <div class="form-group">
                         <Label> Parent</Label>
-                        <select name="parent_id" id="" class="form-control form-control-sm js-example-basic-single">
+                        <select name="parent_id" id="parent_id" class="form-control form-control-sm js-example-basic-single">
                             <option value="0">Is parent</option>
 
                             @foreach($menus as $menuParent)
                             <option @if($menu->parent_id === $menuParent->id)selected="selected" @endif value="{{$menuParent->id}}">{{$menuParent->label}}</option>
                             @endforeach
 
+                        </select>
+                        <p class="help text-danger mt-2">{{ $errors->first('parent_id') }}</p>
+                    </div>
+
+                    <div class="form-group">
+                        <Label> Status</Label>
+                        <select name="status" id="status" class="form-control form-control-sm js-example-basic-single">
+                            <option @if($menu->status === 'Active') selected="selected" @endif value="1">Active</option>
+                            <option @if($menu->status === 'Pending') selected="selected" @endif value="0">Pending</option>
                         </select>
                         <p class="help text-danger mt-2">{{ $errors->first('parent_id') }}</p>
                     </div>

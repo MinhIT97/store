@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
+        "artesaos/seotools": "^0.18.0",
         "cviebrock/eloquent-sluggable": "^6.0",
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "^6.5",
@@ -46,6 +47,9 @@
         "classmap": [
             "database/seeds",
             "database/factories"
+        ],
+        "files": [
+            "app/Helpers/GetOption.php"
         ]
     },
     "autoload-dev": {
