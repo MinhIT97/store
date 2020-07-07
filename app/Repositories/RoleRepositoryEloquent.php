@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\roleRepository;
+use App\Repositories\RoleRepository;
 use App\Entities\Role;
 use App\Validators\RoleValidator;
 
@@ -44,5 +44,5 @@ class RoleRepositoryEloquent extends BaseRepository implements RoleRepository
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
-    
+
 }

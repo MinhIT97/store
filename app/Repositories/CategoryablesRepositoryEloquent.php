@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\categoryablesRepository;
+use App\Repositories\CategoryablesRepository;
 use App\Entities\Categoryables;
 use App\Validators\CategoryablesValidator;
 
@@ -25,7 +25,7 @@ class CategoryablesRepositoryEloquent extends BaseRepository implements Category
         return Categoryables::class;
     }
 
-    
+
 
     /**
      * Boot up the repository, pushing criteria
@@ -34,5 +34,5 @@ class CategoryablesRepositoryEloquent extends BaseRepository implements Category
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
-    
+
 }

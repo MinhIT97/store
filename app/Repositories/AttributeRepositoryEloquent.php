@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Entities\Attribute;
-use App\Repositories\attributeRepository;
+use App\Repositories\AttributeRepository;
 use App\Validators\AttributeValidator;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Prettus\Repository\Eloquent\BaseRepository;

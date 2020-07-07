@@ -3,7 +3,8 @@
 namespace App\Policies;
 
 use App\Entities\Post;
-use App\Entities\User;
+use App\User;
+// use App\Entities\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class PostPolicy
@@ -11,11 +12,11 @@ class PostPolicy
     use HandlesAuthorization;
 
     public function before($user, $ability)
-{
-    if ($user->isSuperAdmin()) {
-        return true;
+    {
+        if ($user->isSuperAdmin()) {
+            return true;
+        }
     }
-}
 
     /**
      * Determine whether the user can view any posts.
@@ -25,7 +26,6 @@ class PostPolicy
      */
     public function viewAny(User $user)
     {
-        //
     }
 
     /**
@@ -37,7 +37,15 @@ class PostPolicy
      */
     public function view(User $user, Post $post)
     {
-        //
+
+        return $user->id === $post->user_id;
+        // return (
+        //     $post->status == Post::PUBLISHED ||
+        //     ($user && (
+        //         $user->id == $post->user_id
+        //         // || $user->hasPermission('review_post')
+        //     ))
+        // );
     }
 
     /**

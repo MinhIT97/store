@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\contactRepository;
+use App\Repositories\ContactRepository;
 use App\Entities\Contact;
 use App\Validators\ContactValidator;
 

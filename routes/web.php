@@ -139,6 +139,8 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin', 'middleware' =>
 Route::group(['prefix' => '/', 'namespace' => 'Web', 'middleware' => ['checkCart']], function () {
 
     Route::get('/', 'HomeController@index')->name('index');
+    Route::get('/redirect/{social}', 'SocialAuthController@redirectToProvider');
+    Route::get('/callback/{social}', 'SocialAuthController@callback');
 
     Route::get('products/{type}', 'ProductController@index')->name('web.product_show');
 
@@ -178,6 +180,7 @@ Auth::routes();
 Route::group(['prefix' => '/', 'namespace' => 'Web', 'middleware' => ['verified']], function () {
     Route::get('home', 'ProfileController@index')->name('profile.show');
     Route::post('profile/edit', 'ProfileController@update')->name('profile.edit');
+    Route::get('history/orders', 'HistoryOrder@index')->name('history.show');
 });
 
 // Route::get('/test', 'Web\ProfileController@test')->name('test');

@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\sizeableRepository;
+use App\Repositories\SizeableRepository;
 use App\Entities\Sizeable;
 use App\Validators\SizeableValidator;
 
@@ -44,5 +44,5 @@ class SizeableRepositoryEloquent extends BaseRepository implements SizeableRepos
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
-    
+
 }

@@ -20,7 +20,7 @@ class MenuTableSeeder extends Seeder
             ],
             [
                 'label'     => 'Nữ',
-                'link'      => '/products/women',
+                'link'      => '/products/woman',
                 'parent_id' => 0,
             ],
             [

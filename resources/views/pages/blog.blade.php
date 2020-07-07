@@ -12,7 +12,7 @@
         <div class="blog-item">
             <div class="row">
                 <div class="col-12 col-md-6">
-                    <img class="img-fluid" src="{{asset('uploads/'.$blog->thumbnail)}}" alt="">
+                    <img class="img-fluid" src="{{$blog->thumbnail}}" alt="">
                 </div>
                 <div class="col-12 col-md-6">
                     <div class="date"><span><a href="">Hot trend</a></span><span class="font-italic date-time"><span>{{$blog->getMonth()}}</<span></span></div>

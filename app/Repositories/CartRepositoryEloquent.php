@@ -2,11 +2,10 @@
 
 namespace App\Repositories;
 
-use Prettus\Repository\Eloquent\BaseRepository;
-use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\cartRepository;
 use App\Entities\Cart;
-use App\Validators\CartValidator;
+use App\Repositories\CartRepository;
+use Prettus\Repository\Criteria\RequestCriteria;
+use Prettus\Repository\Eloquent\BaseRepository;
 
 /**
  * Class CartRepositoryEloquent.
@@ -28,8 +27,6 @@ class CartRepositoryEloquent extends BaseRepository implements CartRepository
     {
         return $this->model;
     }
-
-
 
     /**
      * Boot up the repository, pushing criteria

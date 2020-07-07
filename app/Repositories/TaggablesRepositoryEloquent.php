@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\taggablesRepository;
+use App\Repositories\TaggablesRepository;
 use App\Entities\Taggables;
 use App\Validators\TaggablesValidator;
 
@@ -44,5 +44,5 @@ class TaggablesRepositoryEloquent extends BaseRepository implements TaggablesRep
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
-    
+
 }

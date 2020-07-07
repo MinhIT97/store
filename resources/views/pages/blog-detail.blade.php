@@ -17,7 +17,7 @@
             </h5>
         </div>
         <div class="col-10 p-5 m-2">
-            <img class="img-fluid" src="{{asset('uploads/'.$blog->thumbnail)}}" alt="">
+            <img class="img-fluid" src="{{$blog->thumbnail}}" alt="">
         </div>
         <div class="blog-content">
             {!!$blog->content!!}

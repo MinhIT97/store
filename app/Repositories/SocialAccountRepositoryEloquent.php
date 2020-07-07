@@ -4,16 +4,16 @@ namespace App\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\CommentRepository;
-use App\Entities\Comment;
-use App\Validators\CommentValidator;
+use App\Repositories\SocialAccountRepository;
+use App\Entities\SocialAccount;
+use App\Validators\SocialAccountValidator;
 
 /**
- * Class CommentRepositoryEloquent.
+ * Class SocialAccountRepositoryEloquent.
  *
  * @package namespace App\Repositories;
  */
-class CommentRepositoryEloquent extends BaseRepository implements CommentRepository
+class SocialAccountRepositoryEloquent extends BaseRepository implements SocialAccountRepository
 {
     /**
      * Specify Model class name
@@ -22,20 +22,10 @@ class CommentRepositoryEloquent extends BaseRepository implements CommentReposit
      */
     public function model()
     {
-        return Comment::class;
+        return SocialAccount::class;
     }
 
-    /**
-    * Specify Validator class name
-    *
-    * @return mixed
-    */
-    public function validator()
-    {
-
-        return CommentValidator::class;
-    }
-
+    
 
     /**
      * Boot up the repository, pushing criteria
@@ -44,5 +34,5 @@ class CommentRepositoryEloquent extends BaseRepository implements CommentReposit
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
-
+    
 }

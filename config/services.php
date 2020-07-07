@@ -12,11 +12,11 @@ return [
     | location for this type of information, allowing packages to have
     | a conventional file to locate the various service credentials.
     |
-    */
+     */
 
-    'mailgun' => [
-        'domain' => env('MAILGUN_DOMAIN'),
-        'secret' => env('MAILGUN_SECRET'),
+    'mailgun'  => [
+        'domain'   => env('MAILGUN_DOMAIN'),
+        'secret'   => env('MAILGUN_SECRET'),
         'endpoint' => env('MAILGUN_ENDPOINT', 'api.mailgun.net'),
     ],
 
@@ -24,10 +24,30 @@ return [
         'token' => env('POSTMARK_TOKEN'),
     ],
 
-    'ses' => [
-        'key' => env('AWS_ACCESS_KEY_ID'),
+    'ses'      => [
+        'key'    => env('AWS_ACCESS_KEY_ID'),
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
+    ],
+    'facebook' => [
+        'client_id'     => env('FACEBOOK_APP_ID', '118075542211725130153'),
+        'client_secret' => env('FACEBOOK_APP_SECRET', '1a7c8e997e3ac1148a10bd4b55bbb75c'),
+        'redirect'      => env('FACEBOOK_APP_CALLBACK_URL', 'http://store.com/callback/facebook'),
+    ],
+    'google'   => [
+        'client_id'     => env('GOOGLE_APP_ID', '336985822213-ptmre51j8nr8vn1466sd1pmam5ctrqpi.apps.googleusercontent.com'),
+        'client_secret' => env('GOOGLE_APP_SECRET', 'AFenUYPzGkkKQOFc1ybkqXcU'),
+        'redirect'      => env('GOOGLE_APP_CALLBACK_URL', 'http://store.com/callback/google'),
+    ],
+    'github'   => [
+        'client_id'     => env('GITHUB_CLIENT_ID'),
+        'client_secret' => env('GITHUB_CLIENT_SECRET'),
+        'redirect'      => 'http://your-callback-url',
+    ],
+    'twitter'  => [
+        'client_id'     => env('TWITTER_APP_ID'),
+        'client_secret' => env('TWITTER_APP_SECRET'),
+        'redirect'      => env('TWITTER_APP_CALLBACK_URL'),
     ],
 
 ];

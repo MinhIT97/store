@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Entities\Size;
-use App\Repositories\sizeRepository;
+use App\Repositories\SizeRepository;
 use App\Validators\SizeValidator;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Prettus\Repository\Eloquent\BaseRepository;
