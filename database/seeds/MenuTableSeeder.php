@@ -15,12 +15,12 @@ class MenuTableSeeder extends Seeder
         Menu::insert([
             [
                 'label'     => 'Nam',
-                'link'      => '/products/Men',
+                'link'      => '/products/men',
                 'parent_id' => 0,
             ],
             [
                 'label'     => 'Nữ',
-                'link'      => '/products/woman',
+                'link'      => '/products/women',
                 'parent_id' => 0,
             ],
             [

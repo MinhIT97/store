@@ -16,7 +16,7 @@ $.ajaxSetup({
         "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
     }
 });
-$(document).ready(function () {
+$(document).ready(function() {
     $(".product_slider").slick({
         infinite: true,
         autoplay: true,
@@ -25,9 +25,9 @@ $(document).ready(function () {
         slidesToShow: 4,
         slidesToScroll: 1,
         prevArrow:
-            '<button class="slick-prev"> <i class="fa fa-angle-double-left"></i></button>',
+            '<button class="slick-prev bg-store-btn"> <i class="fa fa-angle-double-left"></i></button>',
         nextArrow:
-            '<button class="slick-next"> <i class="fa fa-angle-double-right"></i></button>',
+            '<button class="slick-next bg-store-btn"> <i class="fas fa-angle-right"></i></button>',
         responsive: [
             {
                 breakpoint: 1024,
@@ -129,6 +129,6 @@ $(document).ready(function () {
         focusOnSelect: true
     });
 });
-$(document).ready(function () {
+$(document).ready(function() {
     $(".js-example-basic-multiple").select2();
 });

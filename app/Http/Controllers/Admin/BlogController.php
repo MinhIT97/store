@@ -34,8 +34,6 @@ class BlogController extends Controller
 
         $blogs->setPath(url()->current() . '?search=' . $request->get('search'));
 
-
-
         return view('admin.pages.blogs.blog-list', [
             'blogs' => $blogs,
         ]);
@@ -56,8 +54,8 @@ class BlogController extends Controller
             $data['type']      = 'blogs';
             $data['user_id']   = $user_id;
         } else {
-            $data = $request->all();
-            $data['user_id']   = $user_id;
+            $data            = $request->all();
+            $data['user_id'] = $user_id;
         }
         $blog = $this->entity->create($data);
 
@@ -82,9 +80,9 @@ class BlogController extends Controller
     {
         $blog = $this->entity->find($id);
         if ($request->hasFile('thumbnail')) {
-            $request->thumbnail->move(base_path('/public/uploads'), $request->thumbnail->getClientOriginalName());
+            $link              = $this->imageUploadService->handleUploadedImage($request->file('thumbnail'));
             $data              = $request->all();
-            $data['thumbnail'] = $request->thumbnail->getClientOriginalName();
+            $data['thumbnail'] = $link;
             $data['type']      = 'blogs';
         } else {
             $data = $request->all();

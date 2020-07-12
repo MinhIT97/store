@@ -43,7 +43,7 @@
                                     <td> {{$poster->type}} </td>
                                     <td> {{$poster->link}} </td>
                                     <td>{{$poster->getDate()}} </td>
-                                    <td><img class="ml-2" src="{{asset('/uploads/'.$poster->thumbnail)}}" alt=""></td>
+                                    <td><img class="ml-2" src="{{$poster->thumbnail}}" alt=""></td>
                                     <td>
                                         <a class="btn btn-gradient-info p-2" href="{{url('adminstore/poster-edit/'.$poster->id)}}"><i class="fas fa-edit"></i></a>
                                         <a class="btn btn-gradient-danger p-2 ml-2" href="{{url('adminstore/delete-poster/'.$poster->id)}}"><i class="fas fa-trash"></i></a>

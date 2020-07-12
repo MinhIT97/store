@@ -17309,6 +17309,34 @@ readers do not read off random characters that represent icons */
   border-radius: 4px;
 }
 
+.rube {
+  color: #00b5ad;
+}
+
+.bg-store {
+  background-color: #212529;
+  border-radius: 0;
+}
+
+.slick-prev:hover {
+  background-color: #212529;
+}
+
+.bg-store-btn {
+  background-color: #212529;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
+
+.slick-next:hover {
+  background-color: #212529;
+}
+
+.h-200 {
+  height: 200px;
+}
+
 body {
   color: #333333;
   background-color: white;

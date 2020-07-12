@@ -54,6 +54,8 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(ColorRepository::class, ColorRepositoryEloquent::class);
         $this->app->bind(\App\Repositories\PermissionRepository::class, \App\Repositories\PermissionRepositoryEloquent::class);
         $this->app->bind(\App\Repositories\SocialAccountRepository::class, \App\Repositories\SocialAccountRepositoryEloquent::class);
+        $this->app->bind(\App\Repositories\DistrictRepository::class, \App\Repositories\DistrictRepositoryEloquent::class);
+        $this->app->bind(\App\Repositories\ProvinceRepository::class, \App\Repositories\ProvinceRepositoryEloquent::class);
         //:end-bindings:
     }
 }

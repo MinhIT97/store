@@ -181,6 +181,7 @@ Route::group(['prefix' => '/', 'namespace' => 'Web', 'middleware' => ['verified'
     Route::get('home', 'ProfileController@index')->name('profile.show');
     Route::post('profile/edit', 'ProfileController@update')->name('profile.edit');
     Route::get('history/orders', 'HistoryOrder@index')->name('history.show');
+    Route::get('history/orders/{id}', 'HistoryOrder@show')->name('history.detail');
 });
 
 // Route::get('/test', 'Web\ProfileController@test')->name('test');

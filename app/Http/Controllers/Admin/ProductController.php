@@ -65,7 +65,7 @@ class ProductController extends Controller
         $query    = $this->applySearchFromRequest($query, ['name', 'price'], $request);
         $query    = $this->applyOrderByFromRequest($query, $request);
         $products = $query->where('type', $type)->withCount('attributes', 'orderItems')->orderBY('id', 'DESC')->paginate(20);
-        $products->setPath(url()->current() . '?search=' . $request->get('search'));
+        // $products->setPath(url()->current() . '?search=' . $request->get('search'));
 
         return view('admin.pages.products.product-list', [
             'products' => $products,
@@ -88,6 +88,7 @@ class ProductController extends Controller
     }
     public function store(ProductCreateRequest $request)
     {
+
         if ($request->hasFile('thumbnail')) {
             $link              = $this->imageUploadService->handleUploadedImage($request->file('thumbnail'));
             $data              = $request->all();
@@ -148,14 +149,12 @@ class ProductController extends Controller
     }
     public function editProduct($id, ProductUpdateRequest $request)
     {
-
         $product = $this->repository->find($id);
 
         if ($request->hasFile('thumbnail')) {
-            $request->thumbnail->move(base_path('/public/uploads'), $request->thumbnail->getClientOriginalName());
+            $link              = $this->imageUploadService->handleUploadedImage($request->file('thumbnail'));
             $data              = $request->all();
-            $data['thumbnail'] = $request->thumbnail->getClientOriginalName();
-            $data['type']      = 'blog';
+            $data['thumbnail'] = $link;
         } else {
             $data = $request->all();
         }
@@ -176,11 +175,9 @@ class ProductController extends Controller
 
                 if ($request->hasFile('media')) {
                     foreach ($request->media as $key) {
-                        $filename = $key->getClientOriginalName();
-
-                        $key->move(base_path('/public/uploads'), $filename);
+                        $link = $this->imageUploadService->handleUploadedImage($key);
                         $product->imagaes()->updateOrCreate([
-                            'url' => $filename,
+                            'url' => $link,
                         ]);
                     }
                 }

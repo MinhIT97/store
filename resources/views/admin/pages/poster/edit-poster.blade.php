@@ -52,7 +52,7 @@
                                 <label for="imageUpload"></label>
                             </div>
                             <div class="product-preview">
-                                <div class="imagePreview" id="imagePreview" style="background-image:url({{asset('/uploads/'.$poster->thumbnail)}})">
+                                <div class="imagePreview" id="imagePreview" style="background-image:url({{$poster->thumbnail}})">
                                 </div>
                             </div>
                         </div>

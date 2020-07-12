@@ -114,7 +114,7 @@
                     <div class="product-cart-item">
                         <div class="row">
                             <div class="col-5 ">
-                                <img src="{{asset('uploads/'. $cartItem->product->thumbnail)}}" class="img-fluid" alt="">
+                                <img src="{{ $cartItem->product->thumbnail}}" class="img-fluid" alt="">
                             </div>
                             <div class="col-6 m-0 p-0">
                                 <div class="mb-1"> {!! $cartItem->product->getLimitName(20) !!}</div>

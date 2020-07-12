@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PosterCreateRequest;
 use App\Http\Requests\PosterUpdateRequest;
 use App\Repositories\PosterRepository;
+use App\Services\ImageUploadService;
 use App\Traits\Search;
 use App\Validators\PosterValidator;
 use Illuminate\Http\Request;
@@ -15,12 +16,15 @@ use Prettus\Validator\Exceptions\ValidatorException;
 class PostersController extends Controller
 {
     use Search;
+    protected $imageUploadService;
+    protected $repository;
 
-    public function __construct(PosterRepository $repository, PosterValidator $validator)
+    public function __construct(PosterRepository $repository, PosterValidator $validator, ImageUploadService $imageUploadService)
     {
-        $this->repository = $repository;
-        $this->entity     = $repository->getEntity();
-        $this->validator  = $validator;
+        $this->repository         = $repository;
+        $this->entity             = $repository->getEntity();
+        $this->validator          = $validator;
+        $this->imageUploadService = $imageUploadService;
     }
 
     public function index(Request $request)
@@ -41,9 +45,9 @@ class PostersController extends Controller
     public function store(PosterCreateRequest $request)
     {
         if ($request->hasFile('thumbnail')) {
-            $request->thumbnail->move(base_path('/public/uploads'), $request->thumbnail->getClientOriginalName());
+            $link              = $this->imageUploadService->handleUploadedImage($request->file('thumbnail'));
             $data              = $request->all();
-            $data['thumbnail'] = $request->thumbnail->getClientOriginalName();
+            $data['thumbnail'] = $link;
         } else {
             $data = $request->all();
         }
@@ -73,9 +77,9 @@ class PostersController extends Controller
     {
         $poster = $this->entity->find($id);
         if ($request->hasFile('thumbnail')) {
-            $request->thumbnail->move(base_path('/public/uploads'), $request->thumbnail->getClientOriginalName());
+            $link              = $this->imageUploadService->handleUploadedImage($request->file('thumbnail'));
             $data              = $request->all();
-            $data['thumbnail'] = $request->thumbnail->getClientOriginalName();
+            $data['thumbnail'] = $link;
         } else {
             $data = $request->all();
         }

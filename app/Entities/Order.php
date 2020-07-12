@@ -84,4 +84,8 @@ class Order extends Model implements Transformable
     {
         return $this->orderItems->sum('amount');
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class,"user_id");
+    }
 }

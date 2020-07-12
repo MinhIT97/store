@@ -103,7 +103,7 @@
                                 <label for="imageUpload"></label>
                             </div>
                             <div class="product-preview">
-                            <div id="imagePreview" style="background-image:url({{asset('/uploads/'.$product->thumbnail)}})">
+                            <div id="imagePreview" style="background-image:url({{$product->thumbnail}})">
                                 </div>
                             </div>
                         </div>
@@ -135,7 +135,7 @@
                             @if($product->imagaes->count())
                             @foreach($product->imagaes as $media)
                             <div class="col-4 mt-2">
-                                <img class="ml-2 img-fluid img-medias" src="{{asset('/uploads/'.$media->url)}}" alt="">
+                                <img class="ml-2 img-fluid img-medias" src="{{$media->url}}" alt="">
 
                                 <a class="btn btn-gradient-danger p-0 ml-0 btn-delete_medias" href="{{ url('adminstore/products/delete/'.$product->id.'/medias/'.$media->id )}}"><i class="mdi mdi-delete-forever"></i></a>
                             </div>

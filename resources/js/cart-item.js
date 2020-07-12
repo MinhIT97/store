@@ -23,11 +23,8 @@ $(document).ready(function() {
                     $("#amount-" + id).html(amount);
                     $("#total").html(total);
                 },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    console.log(JSON.stringify(jqXHR));
-                    console.log(
-                        "AJAX error: " + textStatus + " : " + errorThrown
-                    );
+                error: function(request, status, error) {
+                    alert("the quantity is too big !");
                 }
             });
         });

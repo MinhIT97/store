@@ -25,9 +25,38 @@
 @import "./pages/lion-checkout";
 @import "./pages/profile";
 
+
+.rube {
+    color: #00b5ad;
+}
+
+.bg-store {
+    background-color: #212529;
+    border-radius: 0;
+}
+
+.slick-prev:hover {
+    background-color: #212529;
+}
+
+.bg-store-btn {
+    background-color: #212529;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+}
+
+.slick-next:hover {
+    background-color: #212529;
+}
+
+.h-200 {
+    height: 200px;
+}
+
 body {
     color: $default_text_color;
-    background-color:white;
+    background-color: white;
     font-size: $font_size_normal;
     font-family: $font_family;
     line-height: 1.21;

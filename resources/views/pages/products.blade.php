@@ -48,7 +48,7 @@
                         @endif
                         <a href="{{asset('products/'.$product->type.'/'.$product->slug)}}">
                             <div class="product-item__image">
-                                <img class="img-fluid" src="{{asset('/uploads/'.$product->thumbnail)}}" alt="{{$product->slug}}">
+                                <img class="img-fluid" src="{{$product->thumbnail}}" alt="{{$product->slug}}">
                             </div>
                             <div class="text-center">
                                 <div class="name">

@@ -2,7 +2,7 @@
     <div class="baner">
         @if($poster)
         <a href="{{$poster->link}}">
-            <img class="img-fluid lion-main__image position-relative" src="{{asset('uploads/'.$poster->thumbnail)}}" alt="">
+            <img class="img-fluid lion-main__image position-relative" src="{{$poster->thumbnail}}" alt="">
         </a>
 
         @endif
@@ -24,13 +24,13 @@
                 @if ($loop->first)
                 <div class="carousel-item active">
                     <a href="">
-                        <img class="img-fluid" src="{{asset('uploads/'.$session->thumbnail)}}">
+                        <img class="img-fluid" src="{{$session->thumbnail}}">
                     </a>
                 </div>
                 @else
                 <div class="carousel-item">
                     <a href="">
-                        <img class="img-fluid" src="{{asset('uploads/'.$session->thumbnail)}}">
+                        <img class="img-fluid" src="{{$session->thumbnail}}">
                     </a>
                 </div>
                 @endif
@@ -60,7 +60,7 @@
                                 <div class="slide-item">
                                     <a href="{{asset('products/'.$product->type.'/'.$product->slug)}}">
                                         <div class="slide-item__image">
-                                            <img class="img-fluid" src="{{asset('uploads/'.$product->thumbnail)}}" alt="">
+                                            <img class="img-fluid" src="{{$product->thumbnail}}" alt="">
                                         </div>
                                         <div class="slide-item__content text-center">
                                             <div class="slide-item__content--heading">
@@ -180,7 +180,7 @@
                                 <div class="slide-item">
                                     <a href="{{asset('products/'.$product->type.'/'.$product->slug)}}">
                                         <div class="slide-item__image">
-                                            <img class="img-fluid" src="{{asset('uploads/'.$product->thumbnail)}}" alt="">
+                                            <img class="img-fluid" src="{{$product->thumbnail}}" alt="">
                                         </div>
                                         <div class="slide-item__content text-center">
                                             <div class="slide-item__content--heading">
@@ -218,7 +218,7 @@
                                 <div class="slide-item">
                                     <a href="{{asset('products/'.$product->type.'/'.$product->slug)}}">
                                         <div class="slide-item__image">
-                                            <img class="img-fluid" src="{{asset('uploads/'.$product->thumbnail)}}" alt="">
+                                            <img class="img-fluid" src="{{$product->thumbnail}}" alt="">
                                         </div>
                                         <div class="slide-item__content text-center">
                                             <div class="slide-item__content--heading">

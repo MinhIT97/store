@@ -38,15 +38,21 @@ class OrderController extends Controller
     {
 
         $data = $request->all();
+
         if (Auth::check()) {
             $data['user_id'] = Auth::user()->id;
         } else {
-            $data['user_id'] = 1;
+            $data['user_id'] = null;
         }
 
         $order = $this->entity_order->create($data);
 
         $order_id   = $order->id;
+
+        $code = 'STORE-'.$order_id;
+
+        $order['code'] = $code;
+        $order->save();
         $cart_id    = $this->idCookieCart();
         $cart_items = $this->entity_cart_item->where('cart_id', $cart_id)->get();
         foreach ($cart_items as $cart_item) {

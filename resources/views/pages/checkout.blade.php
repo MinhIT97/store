@@ -81,7 +81,7 @@
                     <div class="mb-3">
                         <div class="row">
                             <div class="col-3 ">
-                                <img class="img-fluid image-checkout" src="{{asset('/uploads/'.$cart_item->product->thumbnail)}}" alt="">
+                                <img class="img-fluid image-checkout" src="{{$cart_item->product->thumbnail}}" alt="">
                                 <span class="cart-quantity">{{$cart_item->quantity}}</span>
                             </div>
                             <div class="col-5">

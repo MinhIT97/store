@@ -19,7 +19,7 @@ class ProductDetailController extends Controller
     {
         $type    = $request->type;
         $slug    = $request->slug;
-        $product = $this->entity->where('type', $type)->where('slug', $slug)->with('sizes', 'attributes', 'imagaes')->first();
+        $product = $this->entity->where('type', $type)->where('slug', $slug)->with('sizes', 'attributes', 'imagaes')->firstOrFail();
         $colors  = Color::get();
 
         $color_id = [];

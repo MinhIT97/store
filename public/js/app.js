@@ -46877,8 +46877,8 @@ $(document).ready(function () {
     dots: false,
     slidesToShow: 4,
     slidesToScroll: 1,
-    prevArrow: '<button class="slick-prev"> <i class="fa fa-angle-double-left"></i></button>',
-    nextArrow: '<button class="slick-next"> <i class="fa fa-angle-double-right"></i></button>',
+    prevArrow: '<button class="slick-prev bg-store-btn"> <i class="fa fa-angle-double-left"></i></button>',
+    nextArrow: '<button class="slick-next bg-store-btn"> <i class="fas fa-angle-right"></i></button>',
     responsive: [{
       breakpoint: 1024,
       settings: {
@@ -47048,9 +47048,8 @@ $(document).ready(function () {
           $("#amount-" + id).html(amount);
           $("#total").html(total);
         },
-        error: function error(jqXHR, textStatus, errorThrown) {
-          console.log(JSON.stringify(jqXHR));
-          console.log("AJAX error: " + textStatus + " : " + errorThrown);
+        error: function error(request, status, _error) {
+          alert("the quantity is too big !");
         }
       });
     });

@@ -37,7 +37,7 @@ class ProductController extends Controller
             'activeSelected' => $activeSelected,
         ]);
     }
-    protected function applyOrderByFromRequest($query, Request $request)
+    protected function applyOrderByFromRequest($query, $request)
     {
         if ($request->has('sort_by')) {
             $sort_by     = str_replace('ending', '', $request->get('sort_by'));

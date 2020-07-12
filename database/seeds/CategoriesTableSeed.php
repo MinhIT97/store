@@ -22,7 +22,7 @@ class CategoriesTableSeed extends Seeder
             'status'    => 1,
             'type'      => 'products',
         ])->each(function ($cate, $key) {
-            $products = $this->seederProducts();
+            $products = $this->seederMenProducts();
             $products->each(function ($product) use ($cate) {
                 $product->attachCategories($cate->id);
                 $product->sizes()->attach([1, 2, 3, 4]);
@@ -34,7 +34,7 @@ class CategoriesTableSeed extends Seeder
             'status'    => 1,
             'type'      => 'products',
         ])->each(function ($cate, $key) {
-            $products = $this->seederProducts();
+            $products = $this->seederWomenProducts();
             $products->each(function ($product) use ($cate) {
                 $product->attachCategories($cate->id);
                 $product->sizes()->attach([1, 2, 3, 4]);
@@ -46,7 +46,7 @@ class CategoriesTableSeed extends Seeder
             'status'    => 1,
             'type'      => 'products',
         ])->each(function ($cate, $key) {
-            $products = $this->seederProducts();
+            $products = $this->seederAccessoriesProducts();
             $products->each(function ($product) use ($cate) {
                 $product->attachCategories($cate->id);
                 $product->sizes()->attach([1, 2, 3, 4]);
