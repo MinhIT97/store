@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 /**
  * Class CreateRoleUsersTable.
  */
-class CreateRoleUsersTable extends Migration
+class CreateRoleUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,7 +16,7 @@ class CreateRoleUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('role_users', function (Blueprint $table) {
+        Schema::create('role_user', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('role_id');
@@ -25,7 +25,6 @@ class CreateRoleUsersTable extends Migration
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
-
     }
 
     /**
@@ -35,12 +34,12 @@ class CreateRoleUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('role_users', function (Blueprint $table) {
+        Schema::table('role_user', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
         });
-        Schema::table('role_users', function (Blueprint $table) {
+        Schema::table('role_user', function (Blueprint $table) {
             $table->dropForeign(['role_id']);
         });
-        Schema::drop('role_users');
+        Schema::drop('role_user');
     }
 }

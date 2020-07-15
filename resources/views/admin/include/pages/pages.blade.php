@@ -12,9 +12,12 @@
     </a>
     <div class="collapse" id="general-pages">
         <ul class="nav flex-column sub-menu">
+            @can('viewAny', App\User::class)
             <li class="nav-item"> <a class="nav-link" href="{{route('users.show')}}"> User </a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Tài khoản khách hàng</a></li>
+            @endcan
+            <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Customer</a></li>
             <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route('roles')}}"> Roles </a></li>
         </ul>
     </div>
 </li>

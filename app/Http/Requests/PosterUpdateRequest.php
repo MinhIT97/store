@@ -24,7 +24,11 @@ class PosterUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title'     => ['required'],
+            'link'      => ['required'],
+            'status'    => ['required'],
+            'type'      => ['required'],
+            'thumbnail' => 'required|image|mimes:jpeg,bmp,png',
         ];
     }
 }

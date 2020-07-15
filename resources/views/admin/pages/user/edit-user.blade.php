@@ -31,15 +31,37 @@
                     </div>
                     <div class="form-group">
                         <input type="text" name="name" class="form-control form-control-lg" id="exampleInputName" value="{{$user->name}}">
+                        <p class="help text-danger mt-2">{{ $errors->first('name') }}</p>
                     </div>
                     <!-- <div class="form-group">
                         <input type="text" name="username" class="form-control form-control-lg" id="exampleInputUsername1" placeholder="{{$user->username}}">
                     </div> -->
                     <div class="form-group">
                         <input type="email" name="email" class="form-control form-control-lg" id="exampleInputEmail1" value="{{$user->email}}">
+                        <p class="help text-danger mt-2">{{ $errors->first('email') }}</p>
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" name="phone" id="Phone" value="{{$user->phone}}">
+                        <p class="help text-danger mt-2">{{ $errors->first('phone') }}</p>
+                    </div>
+                    <div class="form-group ">
+                        <input type="hidden" class="form-control" name="role_ids" id="ids" value="">
+                    </div>
+                    <div class="form-group">
+                        <label for="brands">Status</label>
+                        <select name="brand_id" id="select1" class="form-control form-control-sm  js-example-basic-single">
+                            <option value="0" @if($user->status === 0) selected="selected"@endif>not safe</option>
+                            <option value="1" @if($user->status === 1)selected="selected"@endif> Active</option>
+                            <option value="2" @if($user->status === 2)selected="selected"@endif>Banned</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="roles">Roles</label>
+                        <select id="categories" class="form-control form-control-sm  js-example-basic-multiple" multiple="multiple">
+                            @foreach($roles as $role)
+                            <option value="{{$role->id}}" @if(in_array($role->id, $role_ids))selected="selected"@endif>{{$role->name}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="justify-content-end d-flex">
                         <button type="submit" class="btn btn-gradient-info btn-behance justify-content-end">Update</button>

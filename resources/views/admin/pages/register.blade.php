@@ -16,7 +16,7 @@
                                     <label for="imageUpload"></label>
                                 </div>
                                 <div class="avatar-preview">
-                                    <div class="imagePreview" id="imagePreview" >
+                                    <div class="imagePreview" id="imagePreview">
                                     </div>
                                 </div>
                             </div>
@@ -46,6 +46,17 @@
                         <input type="password" class="form-control form-control-lg" name="confirmpassword" id="exampleInputConfirmPassword" placeholder="Confirm Password">
                         <p class="help is-danger mt-2">{{ $errors->first('confirmpassword') }}</p>
                     </div>
+                    <div class="form-group ">
+                        <input type="hidden"  class="form-control" name="role_ids" id="ids" value="">
+                    </div>
+                    <div class="form-group">
+                        <label for="roles">Roles</label>
+                        <select id="categories" class="form-control form-control-sm  js-example-basic-multiple" multiple="multiple">
+                            @foreach($roles as $role)
+                            <option value="{{$role->id}}">{{$role->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="justify-content-end d-flex">
                         <button type="submit" class="btn btn-gradient-info btn-behance justify-content-end">Create new</button>
                     </div>
@@ -55,6 +66,4 @@
         </div>
     </div>
 </div>
-
-
 @endsection

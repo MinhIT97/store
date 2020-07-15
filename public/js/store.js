@@ -44846,6 +44846,7 @@ $(document).ready(function () {
   id.val(ids);
   $(categories).change(function () {
     var ids = $(categories).val();
+    console.log(id);
     id.val(ids);
   });
   var sizes = $("#sizes");

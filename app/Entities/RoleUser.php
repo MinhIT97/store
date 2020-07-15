@@ -20,6 +20,7 @@ class RoleUser extends Model implements Transformable
      *
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = ['role_id', 'user_id'];
+    protected $table    = 'role_user';
 
 }

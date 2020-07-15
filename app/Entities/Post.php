@@ -43,7 +43,7 @@ class Post extends Model implements Transformable
         "type",
         "user_id",
     ];
-    public function sluggable()
+    public function sluggable():array
     {
         return [
             'slug' => [

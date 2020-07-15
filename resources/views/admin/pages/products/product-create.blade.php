@@ -17,7 +17,7 @@
                             <option value="women">Women</option>
                             <option value="accessories">Accessories</option>
                         </select>
-                        <p class="help is-danger mt-2">{{ $errors->first('type') }}</p>
+                        <p class="help text-danger mt-2">{{ $errors->first('type') }}</p>
                     </div>
                     <div class="form-group">
                         <label for="name">Name</label>
@@ -34,7 +34,7 @@
                     </div>
 
                     <div class="form-group ">
-                        <input type="hidden" class="form-control " name="categories" id="ids" value="">
+                        <input type="hidden" class="form-control" name="categories" id="id" value="">
                     </div>
                     <div class="form-group">
                         <label for="category">Category</label>

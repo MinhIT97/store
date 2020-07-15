@@ -29,7 +29,7 @@ class Category extends Model implements Transformable
         "parent_id",
         "status"
     ];
-    public function sluggable()
+    public function sluggable():array
     {
         return [
             'slug' => [

@@ -29,6 +29,11 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin', 'middleware' =>
     Route::post('update-user/{id}', 'UserController@editUser')->name('users.update');
     Route::get('delete-user/{id}', 'UserController@destroy')->name('users.destroy');
     Route::get('users/profile/{id}', 'UserController@viewProfile')->name('users.profile');
+    Route::get('roles', 'RoleController@index')->name('roles');
+    Route::get('roles-create', 'RoleController@showStore')->name('roles.show_create');
+    Route::post('roles-create', 'RoleController@store')->name('roles.create');
+    Route::get('roles-show/{id}', 'RoleController@show')->name('roles.show');
+    Route::post('roles-update/{id}', 'RoleController@update')->name('roles.update');
 
     Route::group(['prefix' => '/products'], function () {
         Route::get('/', 'CharController@orderByYear')->name('products');

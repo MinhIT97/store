@@ -2,13 +2,15 @@
 
 namespace App;
 
+use App\Entities\Role;
+use App\Traits\HasPermissions;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use Notifiable;
+    use Notifiable , HasPermissions;
 
     const ACTIVE = 1;
     const BANNED = 0;
@@ -41,12 +43,40 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+    public function getStatus()
+    {
+        $status = $this->status;
+        switch ($status) {
+            case 0:
+                return 'Not safe';
+                break;
+            case 1:
+                return 'Active';
+                break;
+            case 2:
+                return 'Banned';
+                break;
+
+            default:
+                return 'not safe';
+                break;
+        }
+    }
+
+    public function getRoles()
+    {
+        $roles = $this->roles->toArray();
+        $roles = collect($roles)->implode('name', ', ');
+        return $roles;
+    }
 
     public function isSuperAdmin()
     {
-        if ($this->level == 1) {
-            return true;
-        }
-        return false;
+        $superAdmin = $this->level === 1 && $this->status === 1 && $this->hasRole('superadmin');
+        return $superAdmin;
     }
 }

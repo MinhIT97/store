@@ -79,6 +79,7 @@ class BlogController extends Controller
     public function update(BlogUpdateRequest $request, $id)
     {
         $blog = $this->entity->find($id);
+        $this->authorize('view', $blog);
         if ($request->hasFile('thumbnail')) {
             $link              = $this->imageUploadService->handleUploadedImage($request->file('thumbnail'));
             $data              = $request->all();

@@ -42,7 +42,7 @@ class Product extends Model implements Transformable
         "content",
         "hot",
     ];
-    public function sluggable()
+    public function sluggable():array
     {
         return [
             'slug' => [

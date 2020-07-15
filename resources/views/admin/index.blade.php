@@ -29,6 +29,7 @@
                                     <th> Email </th>
                                     <th> Phone </th>
                                     <th> Status </th>
+                                    <th> Roles </th>
                                     <th> Ngày tạo </th>
                                     <th>Hành động </th>
                                 </tr>
@@ -46,13 +47,10 @@
                                     </td>
                                     <td> {{$user->email}} </td>
                                     <td> {{$user->phone}} </td>
-                                    <td> @if($user->status === 0)
-                                        Banned
-                                        @elseif($user->status === 1)
-                                        Active
-                                        @else
-                                        Tài khoản không an toàn
-                                        @endif
+                                    <td> {{$user->getStatus()}}
+                                    </td>
+                                    <td>
+                                        {{$user->getRoles()}}
                                     </td>
                                     <td>{{$user->created_at}} </td>
                                     <td>
