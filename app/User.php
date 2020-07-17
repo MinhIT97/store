@@ -10,7 +10,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use Notifiable , HasPermissions;
+    use Notifiable, HasPermissions;
 
     const ACTIVE = 1;
     const BANNED = 0;
@@ -23,7 +23,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'level', 'verify_token', 'phone', 'avatar',
+        'name', 'email', 'password', 'level', 'verify_token', 'phone', 'avatar', 'status',
     ];
 
     /**

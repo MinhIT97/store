@@ -46863,6 +46863,8 @@ __webpack_require__(/*! ./cart */ "./resources/js/cart.js");
 
 __webpack_require__(/*! ./cart-item */ "./resources/js/cart-item.js");
 
+__webpack_require__(/*! ./provine */ "./resources/js/provine.js");
+
 console.log("Hello World :)");
 $.ajaxSetup({
   headers: {
@@ -47074,6 +47076,58 @@ $(document).ready(function () {
   var lion_close_cart = $(".lion-close-cart");
   lion_close_cart.click(function () {
     lion_cart.slideToggle();
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/provine.js":
+/*!*********************************!*\
+  !*** ./resources/js/provine.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  console.log("ok");
+  var provinceID = $('select[name="province_id"]').val();
+
+  if (provinceID) {
+    $.ajax({
+      url: "api/provinces/" + encodeURI(provinceID),
+      type: "GET",
+      dataType: "json",
+      success: function success(result) {
+        var province = result.districts;
+        $('select[name="district_id"]').empty();
+        $.each(province, function (key, value) {
+          $('select[name="district_id"]').append('<option value="' + value.id + '">' + value.name + "</option>");
+        });
+      }
+    });
+  } else {
+    $('select[name="province_id"]').empty();
+  }
+
+  $('select[name="province_id"]').on("change", function () {
+    var provinceID = $(this).val();
+
+    if (provinceID) {
+      $.ajax({
+        url: "api/provinces/" + encodeURI(provinceID),
+        type: "GET",
+        dataType: "json",
+        success: function success(result) {
+          var province = result.districts;
+          $('select[name="district_id"]').empty();
+          $.each(province, function (key, value) {
+            $('select[name="district_id"]').append('<option value="' + value.id + '">' + value.name + "</option>");
+          });
+        }
+      });
+    } else {
+      $('select[name="city"]').empty();
+    }
   });
 });
 

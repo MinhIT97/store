@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/css/app.css">
+    <script src="/js/app.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Store - Check out</title>
 </head>
@@ -52,14 +53,24 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="inputCity">City</label>
-                                    <input type="text" name="city" class="form-control" id="inputCity">
+                                    <label for="province_id">Thành phố <span class="text-danger">*</span></label>
+                                    <div class="input-wrap">
+                                        <select class="form-control" name="province_id" id="province_id" required>
+                                            @foreach($province as $info)
+                                            <option value="{{$info->id}}"> {{$info->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                     <p class="help is-danger">{{ $errors->first('city') }}</p>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="inputCity">District</label>
-                                    <input type="text" name="district" class="form-control" id="inputCity">
-                                    <p class="help is-danger">{{ $errors->first('district') }}</p>
+                                    <label for="district_id">Quận/Huyện <span class="text-danger">*</span></label>
+                                    <div class="input-wrap">
+                                        <select class="form-control" name="district_id" id="district_id" #district="ngModel" autocomplete="new-password" required>
+                                            <option></option>
+                                        </select>
+                                    </div>
+                                    <p class="help is-danger">{{ $errors->first('district_id') }}</p>
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="inputZip">Commune</label>

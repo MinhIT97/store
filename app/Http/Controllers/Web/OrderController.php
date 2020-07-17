@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Entities\Province;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderCreateRequest;
 use App\Mail\OrderMail;
@@ -26,16 +27,29 @@ class OrderController extends Controller
         $cart_id = $this->idCookieCart();
 
         $cart = $this->getCart($cart_id);
+        $province = Province::where('status', Province::STATUS_ACTIVE)->get();
 
         return view(
             'pages.checkout',
             [
                 'cart' => $cart,
+                'province' => $province,
             ]
         );
     }
     public function order(OrderCreateRequest $request)
     {
+        // $response = \VNPay::purchase([
+        //     'vnp_TxnRef' => time(),
+        //     'vnp_OrderType' => 100000,
+        //     'vnp_OrderInfo' => time(),
+        //     'vnp_IpAddr' => '127.0.0.1',
+        //     'vnp_Amount' => 1000000,
+        //     'vnp_ReturnUrl' => 'http://store.com',
+        // ])->send();
+        // if ($response->isRedirect()) {
+        //     $redirectUrl = $response->getRedirectUrl();
+        // }
 
         $data = $request->all();
 
@@ -49,7 +63,7 @@ class OrderController extends Controller
 
         $order_id   = $order->id;
 
-        $code = 'STORE-'.$order_id;
+        $code = 'STORE-' . $order_id;
 
         $order['code'] = $code;
         $order->save();

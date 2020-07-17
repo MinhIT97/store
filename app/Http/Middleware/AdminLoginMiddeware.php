@@ -22,7 +22,7 @@ class AdminLoginMiddeware
 
             $id   = $user->id;
             $user = User::find($id);
-            if ($user->level == 1 && $user->status == 1 && $user->hasRole('admin')) {
+            if ($user->level == 1 && $user->status == 1 && $user->hasRole('superadmin') || $user->level == 1 && $user->status == 1 && $user->hasRole('admin')) {
                 return $next($request);
             } else {
                 return redirect()->route('index');

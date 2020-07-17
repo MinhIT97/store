@@ -15,9 +15,11 @@
             @can('viewAny', App\User::class)
             <li class="nav-item"> <a class="nav-link" href="{{route('users.show')}}"> User </a></li>
             @endcan
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Customer</a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route('users.customer')}}"> Customer</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route('users.show_create')}}"> Register </a></li>
+            @can('viewAny', App\Entities\Role::class)
             <li class="nav-item"> <a class="nav-link" href="{{route('roles')}}"> Roles </a></li>
+            @endcan
         </ul>
     </div>
 </li>

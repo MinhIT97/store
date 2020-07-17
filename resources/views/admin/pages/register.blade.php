@@ -47,8 +47,9 @@
                         <p class="help is-danger mt-2">{{ $errors->first('confirmpassword') }}</p>
                     </div>
                     <div class="form-group ">
-                        <input type="hidden"  class="form-control" name="role_ids" id="ids" value="">
+                        <input type="hidden" class="form-control" name="role_ids" id="ids" value="">
                     </div>
+                    @can('viewAny', App\User::class)
                     <div class="form-group">
                         <label for="roles">Roles</label>
                         <select id="categories" class="form-control form-control-sm  js-example-basic-multiple" multiple="multiple">
@@ -57,6 +58,7 @@
                             @endforeach
                         </select>
                     </div>
+                    @endcan
                     <div class="justify-content-end d-flex">
                         <button type="submit" class="btn btn-gradient-info btn-behance justify-content-end">Create new</button>
                     </div>

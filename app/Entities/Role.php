@@ -2,6 +2,7 @@
 
 namespace App\Entities;
 
+use App\Traits\HasPermissions;
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
@@ -23,6 +24,10 @@ class Role extends Model implements Transformable
      * @var array
      */
     protected $fillable = ['name', 'slug', 'description', 'status'];
+    public function users()
+    {
+        return $this->belongsToMany('App\User');
+    }
 
     public function permissions()
     {

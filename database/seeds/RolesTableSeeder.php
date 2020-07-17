@@ -14,22 +14,22 @@ class RolesTableSeeder extends Seeder
     {
         $data = [
             [
-                'name'  => 'Admin',
-                'slug'  => 'admin',
-                'staus' => 1,
+                'name'        => 'Admin',
+                'slug'        => 'admin',
+                'description' => 'admin',
             ],
             [
-                'name'  => 'superadmin',
-                'slug'  => 'superadmin',
-                'staus' => 1,
+                'name'        => 'superadmin',
+                'slug'        => 'superadmin',
+                'description' => 'superadmin',
             ],
         ];
 
         foreach ($data as $item) {
-            $role        = new Role;
-            $role->name  = $item['name'];
-            $role->slug  = $item['slug'];
-            $role->staus = $item['staus'];
+            $role       = new Role;
+            $role->name = $item['name'];
+            $role->slug = $item['slug'];
+            $role->description = $item['description'];
             $role->save();
         }
     }

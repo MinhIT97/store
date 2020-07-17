@@ -24,7 +24,7 @@ class RolesPolicy
     public function viewAny(User $user)
     {
 
-        return $user->level == 1 && $user->status == 1;
+        return $user->level == 1 && $user->status == 1 && $user->hasRole('superadmin');
     }
 
     /**
@@ -37,7 +37,7 @@ class RolesPolicy
     public function view(User $user, Role $role)
     {
 
-        return ($user->level == 1 && $user->status == 1);
+        return $user->level == 1 && $user->status == 1 && $user->hasRole('superadmin');
     }
 
     /**
@@ -48,7 +48,7 @@ class RolesPolicy
      */
     public function create(User $user)
     {
-        return ($user->level === 1 && $user->status === 1);
+        return $user->level == 1 && $user->status == 1 && $user->hasRole('superadmin');
     }
 
     /**
@@ -60,7 +60,7 @@ class RolesPolicy
      */
     public function update(User $user, Role $role)
     {
-        //
+        return $user->level == 1 && $user->status == 1 && $user->hasRole('superadmin');
     }
 
     /**
@@ -72,7 +72,7 @@ class RolesPolicy
      */
     public function delete(User $user, Role $role)
     {
-        //
+        return $user->level == 1 && $user->status == 1 && $user->hasRole('superadmin');
     }
 
     /**

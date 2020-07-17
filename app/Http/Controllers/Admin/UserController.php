@@ -41,6 +41,21 @@ class UserController extends Controller
             'users' => $users,
         ]);
     }
+    public function customer(Request $request)
+    {
+        $query = $this->userEntity->query();
+        $query = $this->applyConstraintsFromRequest($query, $request);
+        $query = $this->applySearchFromRequest($query, ['name', 'email'], $request);
+        $query = $this->applyOrderByFromRequest($query, $request);
+        $query = $query->where('level', 0);
+        $users = $query->paginate(10);
+
+        $users->setPath(url()->current() . '?search=' . $request->get('search'));
+
+        return view('admin.pages.user.customer', [
+            'users' => $users,
+        ]);
+    }
     public function viewStore()
     {
         $roles = $this->roleEntity->get();
@@ -81,7 +96,6 @@ class UserController extends Controller
             $role_ids = collect($user->roles->toArray())->pluck('id');
 
             $role_ids = $role_ids->all();
-
         } else {
             $role_ids = [];
         }

@@ -46,6 +46,8 @@
                                     <th> Status</th>
                                     <th> Email</th>
                                     <th> Phone</th>
+                                    <th> Province</th>
+                                    <th> District</th>
                                     <th> Adsress </th>
                                     <th> Total Price </th>
                                     <th> Note </th>
@@ -62,6 +64,9 @@
                                     <td> {{$order->getStatus()}} </td>
                                     <td>{{$order->email}} </td>
                                     <td>{{$order->phone}} </td>
+
+                                    <td>{{$order->province->name}} </td>
+                                    <td>{{$order->district->name}} </td>
                                     <td>{{$order->address}} </td>
                                     <td>{{$order->total_price}} </td>
                                     <td>{{$order->note}} </td>

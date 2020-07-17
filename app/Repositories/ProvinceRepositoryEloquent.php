@@ -2,11 +2,10 @@
 
 namespace App\Repositories;
 
-use Prettus\Repository\Eloquent\BaseRepository;
-use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\ProvinceRepository;
 use App\Entities\Province;
-use App\Validators\ProvinceValidator;
+use App\Repositories\ProvinceRepository;
+use Prettus\Repository\Criteria\RequestCriteria;
+use Prettus\Repository\Eloquent\BaseRepository;
 
 /**
  * Class ProvinceRepositoryEloquent.
@@ -25,7 +24,10 @@ class ProvinceRepositoryEloquent extends BaseRepository implements ProvinceRepos
         return Province::class;
     }
 
-    
+    public function getEntity()
+    {
+        return $this->model;
+    }
 
     /**
      * Boot up the repository, pushing criteria
@@ -34,5 +36,5 @@ class ProvinceRepositoryEloquent extends BaseRepository implements ProvinceRepos
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
-    
+
 }

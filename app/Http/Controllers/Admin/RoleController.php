@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Entities\Role;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AttachRoleRequest;
 use App\Http\Requests\RolesRequest;
 use App\Http\Requests\RoleUpdateRequest;
 use App\Repositories\RoleRepository;
@@ -47,7 +46,6 @@ class RoleController extends Controller
         return view('admin.pages.roles.show', [
             'role' => $role,
         ]);
-
     }
 
     public function update(RoleUpdateRequest $request, $id)
@@ -62,10 +60,12 @@ class RoleController extends Controller
     {
         $role = $this->roleEntity->findOrFail($id);
 
+        if ($role->users->count()) {
+            return redirect()->back()->with('error', 'Please delete the user before deleting the role');
+        }
+        $this->authorize('delete', $role);
         $role->delete();
 
         return redirect()->back()->with('sucsess', 'Delete role sucsess');
-
     }
-
 }

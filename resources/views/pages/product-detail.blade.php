@@ -69,15 +69,6 @@
                             <p>Mầu sắc</p>
                         </div>
                         <input type="text" name="product_id" value="{{$product->id}}" hidden>
-                        <!-- <div class="product-summary--color d-flex mb-5">
-                            @foreach($product->attributes as $attribute)
-                            <label class="product-colors">
-                                <input type="radio" value="{{$attribute->color->id}}" checked="checked" name="color_id">
-                                <span class="checkmark {{$attribute->color->color}}"></span>
-                            </label>
-                            @endforeach
-                        </div> -->
-
                         <div class="product-summary--color d-flex mb-5">
                             @if($product->attributes->count())
                             @foreach($colors as $color)
@@ -125,9 +116,48 @@
                     </div>
                     @endif
                 </form>
-
             </div>
         </div>
+    </div>
+
+    <div class="comment">
+        <div class="container">
+            <div class="coment-title mt-2 mb-4 ">
+                Bình luận
+            </div>
+            <div class="comment_content d-flex">
+                <div class="comment_ava">
+                    @auth()
+                    <img class="img-fluid" src="{{'http://store.com/uploads/'.Auth::user()->avatar}}" alt="">
+                    @else
+                    <img class="img-fluid" src="/images/user.png" alt="">
+                    @endauth
+                </div>
+                <form style="width: 100%;" method="POST" action="{{route('comment.create')}}">
+                    @csrf
+                    <div class="comment_textarea">
+                        <input type="text-area" value="" class="textarea" placeholder="Comment ..." name="body" required>
+                        <p class="help text-danger mt-2">{{ $errors->first('body') }}</p>
+                        <input name="commentable_id" value="{{$product->id}}" hidden="">
+                        <input name="commentable_type" value="products" hidden="">
+                    </div>
+                    <div class="mt-3  mb-4 d-flex justify-content-end">
+                        <button type="submit" class="btn bg-store text-light">Comment</button>
+                    </div>
+                </form>
+
+            </div>
+            @if($product->comments->count())
+            @foreach($product->comments as $comment)
+            <div class="reply-comment">
+                <p>
+                    {{$comment->body}}
+                </p>
+            </div>
+            @endforeach
+            @endif
+        </div>
+
     </div>
     <div class="accessories">
         <div class="container">

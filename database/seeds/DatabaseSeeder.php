@@ -1,5 +1,6 @@
 <?php
 
+use App\Entities\Role;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,6 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ColorTableSeeder::class);
         $this->call(SizeTableSeeder::class);
         $this->call(BrandTableSeeder::class);
+        $this->call(RolesTableSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(CategoriesTableSeed::class);
         // $this->call(ProductsTableSeeder::class);

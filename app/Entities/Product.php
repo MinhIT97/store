@@ -42,7 +42,7 @@ class Product extends Model implements Transformable
         "content",
         "hot",
     ];
-    public function sluggable():array
+    public function sluggable(): array
     {
         return [
             'slug' => [
@@ -96,7 +96,10 @@ class Product extends Model implements Transformable
         }
         return $value;
     }
-
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
     public function brand()
     {
         return $this->hasOne(Brand::class);

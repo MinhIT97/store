@@ -194,6 +194,9 @@ class ProductController extends Controller
         if (!$product) {
             return view('admin.pages.samples.error-404');
         }
+        if ($product->orderItems->count()) {
+            return redirect()->back()->with('sucsess', 'Please delete order item before deleting product');
+        }
 
         $product->delete();
 

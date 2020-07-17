@@ -23,6 +23,7 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin', 'middleware' =>
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard.show');
 
     Route::get('users', 'UserController@index')->name('users.show');
+    Route::get('customer', 'UserController@customer')->name('users.customer');
     Route::get('view-user', 'UserController@viewStore')->name('users.show_create');
     Route::post('store-user', 'UserController@store')->name('users.create');
     Route::get('edit-user/{id}', 'UserController@viewEditUser')->name('users.edit');
@@ -34,6 +35,7 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin', 'middleware' =>
     Route::post('roles-create', 'RoleController@store')->name('roles.create');
     Route::get('roles-show/{id}', 'RoleController@show')->name('roles.show');
     Route::post('roles-update/{id}', 'RoleController@update')->name('roles.update');
+    Route::get('roles-delete/{id}', 'RoleController@destroy')->name('roles.delete');
 
     Route::group(['prefix' => '/products'], function () {
         Route::get('/', 'CharController@orderByYear')->name('products');
@@ -165,6 +167,8 @@ Route::group(['prefix' => '/', 'namespace' => 'Web', 'middleware' => ['checkCart
 
     Route::get('/cart', 'OrderController@show')->name('cart.show');
     Route::post('/order', 'OrderController@order')->name('cart.order');
+
+    Route::post('/comment', 'CommentController@create')->name('comment.create');
 
     // Route::get('logins', 'AuthController@webUser')->name('web-login');
 

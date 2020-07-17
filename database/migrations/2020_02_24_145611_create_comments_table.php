@@ -18,7 +18,13 @@ class CreateCommentsTable extends Migration
             $table->bigInteger('commentable_id');
             $table->string('commentable_type');
             $table->text('body');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+        });
+
+        Schema::table('comments', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
         });
     }
 

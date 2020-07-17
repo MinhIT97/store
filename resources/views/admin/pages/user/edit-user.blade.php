@@ -49,12 +49,13 @@
                     </div>
                     <div class="form-group">
                         <label for="brands">Status</label>
-                        <select name="brand_id" id="select1" class="form-control form-control-sm  js-example-basic-single">
+                        <select name="status" id="select1" class="form-control form-control-sm  js-example-basic-single">
                             <option value="0" @if($user->status === 0) selected="selected"@endif>not safe</option>
                             <option value="1" @if($user->status === 1)selected="selected"@endif> Active</option>
                             <option value="2" @if($user->status === 2)selected="selected"@endif>Banned</option>
                         </select>
                     </div>
+                    @can('viewAny', App\User::class)
                     <div class="form-group">
                         <label for="roles">Roles</label>
                         <select id="categories" class="form-control form-control-sm  js-example-basic-multiple" multiple="multiple">
@@ -63,6 +64,7 @@
                             @endforeach
                         </select>
                     </div>
+                    @endcan
                     <div class="justify-content-end d-flex">
                         <button type="submit" class="btn btn-gradient-info btn-behance justify-content-end">Update</button>
                     </div>

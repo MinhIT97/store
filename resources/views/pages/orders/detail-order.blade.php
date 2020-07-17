@@ -31,7 +31,7 @@
                                     </tr>
                                     <tr>
                                         <td colspan="4">{{$order->user->city}}</td>
-                                        <td colspan="2">{{$order->user->district}}</td>
+                                        <td colspan="2">{{$order->user->name}}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="6">{{$order->user->address}}</td>
@@ -44,11 +44,18 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <td colspan="4">{{$order->province}}</td>
-                                        <td colspan="2">{{$order->district}}</td>
+                                        <td colspan="4">{{$order->province->name}}</td>
+                                        <td colspan="2">{{$order->district->name}}</td>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <tr>
+                                        <td colspan="4">{{$order->email}}</td>
+                                        <td colspan="2">{{$order->name}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="6">{{$order->phone}}</td>
+                                    </tr>
                                     <tr>
                                         <td colspan="6">{{$order->address}}</td>
                                     </tr>

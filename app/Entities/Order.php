@@ -37,6 +37,8 @@ class Order extends Model implements Transformable
         "phone",
         "address",
         'note',
+        'province_id',
+        'district_id',
     ];
 
     public function getStatus()
@@ -87,5 +89,13 @@ class Order extends Model implements Transformable
     public function user()
     {
         return $this->belongsTo(User::class,"user_id");
+    }
+    public function province()
+    {
+        return $this->belongsTo(Province::class,"province_id");
+    }
+    public function district()
+    {
+        return $this->belongsTo(District::class,"district_id");
     }
 }

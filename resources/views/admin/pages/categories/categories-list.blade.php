@@ -28,8 +28,12 @@
                                     <th> Name </th>
                                     <th> Ngày tạo </th>
                                     <th> Ngày sửa </th>
+                                    @if($categories->first()->products_count)
                                     <th> Total products </th>
+                                    @endif
+                                    @if($categories->first()->posts_count)
                                     <th> Total blogs </th>
+                                    @endif
                                     <th>Hành động </th>
                                 </tr>
                             </thead>
@@ -41,11 +45,16 @@
                                     <td> {{$category->name}} </td>
                                     <td>{{$category->getDate()}} </td>
                                     <td>{{$category->getDateUpdate()}} </td>
+                                    @if($category->products_count)
                                     <td>{{$category->products_count}}
                                         <a class="ml-4" href="{{url('adminstore/categories/'.$category->id.'/products/')}}"><i class="far fa-eye"></i></a>
                                     </td>
+                                    @endif
+                                    @if($category->posts_count)
                                     <td>{{$category->posts_count}}
-                                        <a class="ml-4" href="{{url('adminstore/categories/'.$category->id.'/posts/')}}"><i class="far fa-eye"></i></a> </td>
+                                        <a class="ml-4" href="{{url('adminstore/categories/'.$category->id.'/posts/')}}"><i class="far fa-eye"></i></a>
+                                    </td>
+                                    @endif
                                     <td>
                                         <a class="btn btn-gradient-info p-2" href="{{url('adminstore/edit-category/'.$category->id)}}"><i class="fas fa-edit"></i></a>
                                         <a class="btn btn-gradient-danger p-2 ml-2" href="{{url('adminstore/category/'.$category->id)}}"><i class="fas fa-trash"></i></a>

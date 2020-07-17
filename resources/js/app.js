@@ -9,6 +9,7 @@ require("./sortby");
 require("./search");
 require("./cart");
 require("./cart-item");
+require("./provine");
 
 console.log("Hello World :)");
 $.ajaxSetup({
