@@ -108,7 +108,7 @@
     </a>
     <div class="collapse" id="option-pages">
         <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{route('option.show')}}"> Config </a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route('options.show')}}"> Config </a></li>
         </ul>
     </div>
 </li>

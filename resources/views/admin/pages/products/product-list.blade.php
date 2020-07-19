@@ -12,28 +12,31 @@
                 WOMEN
                 @endif
             </h3>
-            <div>
-                <form action="">
-                    <input type="date" name="from" id="dateFrom">
-                    <input type="date" name="to" id="dateTo">
-                    <input type="text" name="search" placeholder="Search">
-                    <button type="submit" class="btn btn-gradient-primary mr-2">
-                        Submit
-                    </button>
-                    <a href="{{route('products.exports')}}">
-                        <button type="button" class="btn btn-gradient-success btn-icon-text">
-                            <i class="mdi mdi-file-excel"></i>
-                            Excel
-                        </button>
-                    </a>
-                </form>
-            </div>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{route('products.create')}}" class="text-decoration-none">CREATE NEW</a></li>
                     <!-- <li class="breadcrumb-item active" aria-cur'rent="page">Basic tables</li> -->
                 </ol>
             </nav>
+        </div>
+        <div class="d-sm-flex justify-content-center mb-4">
+            <form action="">
+                <label for="form" class="font-weight-bold">From:</label>
+                <input type="date" class="p-2" name="from" id="dateFrom">
+                <label for="to" class="font-weight-bold">To:</label>
+                <input type="date" class="p-2" name="to" id="dateTo">
+                <input type="text" class="p-2" name="search" placeholder="Search">
+                <button type="submit" class="btn btn-gradient-primary mr-2">
+                    Submit
+                </button>
+            </form>
+            <form action="{{route('products.exports')}}">
+                <input name="url" type="text" value="{{request()->fullUrl()}}" hidden>
+                <button type="submit" class="btn btn-gradient-success btn-icon-text">
+                    <i class="mdi mdi-file-excel"></i>
+                    Excel
+                </button>
+            </form>
         </div>
         <div class="row">
             <div class="col-lg-12 grid-margin stretch-card">
@@ -42,6 +45,11 @@
                         @if (session('sucsess'))
                         <div class="alert alert-success">
                             {{ session('sucsess') }}
+                        </div>
+                        @endif
+                        @if (session('errow'))
+                        <div class="alert alert-danger">
+                            {{ session('errow') }}
                         </div>
                         @endif
                         <table class="table table-striped table-responsive">

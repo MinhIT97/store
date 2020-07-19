@@ -30,6 +30,8 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin', 'middleware' =>
     Route::post('update-user/{id}', 'UserController@editUser')->name('users.update');
     Route::get('delete-user/{id}', 'UserController@destroy')->name('users.destroy');
     Route::get('users/profile/{id}', 'UserController@viewProfile')->name('users.profile');
+    Route::get('users/exprort', 'UserController@exportExcel')->name('users.exprort');
+
     Route::get('roles', 'RoleController@index')->name('roles');
     Route::get('roles-create', 'RoleController@showStore')->name('roles.show_create');
     Route::post('roles-create', 'RoleController@store')->name('roles.create');
@@ -117,7 +119,9 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin', 'middleware' =>
     Route::get('delete-pages/{id}', 'PagesConroller@destroy')->name('pages.delete');
 
     Route::get('contacts', 'ContactController@index')->name('contact.show');
-    Route::get('contacts/{id}', 'ContactController@destroy')->name('contact.destroy');
+    Route::get('contacts/{id}', 'ContactController@show')->name('contacts.show');
+    Route::post('contacts/{id}', 'ContactController@update')->name('contacts.update');
+    Route::get('delete-contacts/{id}', 'ContactController@destroy')->name('contact.destroy');
 
     Route::get('brands', 'BrandController@index')->name('brand.show');
     Route::get('brand-create', 'BrandController@showStore')->name('brand.show_create');
@@ -127,7 +131,9 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin', 'middleware' =>
     Route::get('brands/{id}', 'BrandController@destroy')->name('brand.destroy');
     Route::get('brand-details/{id}', 'BrandController@detail')->name('brand.detail');
 
-    Route::get('options', 'OptionController@index')->name('option.show');
+    Route::get('options', 'OptionController@index')->name('options.show');
+    Route::get('options/{id}', 'OptionController@show')->name('options.show-edit');
+    Route::post('options/{id}', 'OptionController@update')->name('options.update');
 
     Route::get('size', 'SizeController@index')->name('size.show');
     Route::get('size-create', 'SizeController@showCreate')->name('size.show_create');
@@ -169,6 +175,7 @@ Route::group(['prefix' => '/', 'namespace' => 'Web', 'middleware' => ['checkCart
     Route::post('/order', 'OrderController@order')->name('cart.order');
 
     Route::post('/comment', 'CommentController@create')->name('comment.create');
+    Route::get('/comment/{id}', 'CommentController@destroy')->name('comment.destroy');
 
     // Route::get('logins', 'AuthController@webUser')->name('web-login');
 

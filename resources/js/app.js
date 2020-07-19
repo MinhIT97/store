@@ -10,7 +10,7 @@ require("./search");
 require("./cart");
 require("./cart-item");
 require("./provine");
-
+require("./comment");
 console.log("Hello World :)");
 $.ajaxSetup({
     headers: {
@@ -132,4 +132,21 @@ $(document).ready(function() {
 });
 $(document).ready(function() {
     $(".js-example-basic-multiple").select2();
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $("#imagePreview").css(
+                    "background-image",
+                    "url(" + e.target.result + ")"
+                );
+                $("#imagePreview").hide();
+                $("#imagePreview").fadeIn(650);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#imageUpload").change(function() {
+        readURL(this);
+    });
 });

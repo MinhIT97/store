@@ -11,7 +11,7 @@
     @foreach($blogs as $blog)
         <div class="blog-item">
             <div class="row">
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-6 mb-2">
                     <img class="img-fluid" src="{{$blog->thumbnail}}" alt="">
                 </div>
                 <div class="col-12 col-md-6">

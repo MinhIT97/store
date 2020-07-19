@@ -8,6 +8,11 @@
                 {{ session('sucsess') }}
             </div>
             @endif
+            @if (session('errow'))
+            <div class="alert alert-danger">
+                {{ session('errow') }}
+            </div>
+            @endif
             <div class="auth-form-light text-left p-5">
                 <form class="pt-3" id="test" method="POST" enctype="multipart/form-data">
                     <div class="form-group">

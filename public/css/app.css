@@ -16947,6 +16947,10 @@ readers do not read off random characters that represent icons */
   padding-bottom: 20px;
 }
 
+.blog .blog-item img {
+  width: 100%;
+}
+
 .blog .blog-item .date {
   margin-bottom: 20px;
 }
@@ -17309,8 +17313,90 @@ readers do not read off random characters that represent icons */
   border-radius: 4px;
 }
 
+.profile .upload-avatar h1 {
+  font-size: 20px;
+  text-align: center;
+  margin: 20px 0 20px;
+}
+
+.profile .upload-avatar h1 small {
+  display: block;
+  font-size: 15px;
+  padding-top: 8px;
+  color: gray;
+}
+
+.profile .upload-avatar .avatar-upload {
+  position: relative;
+  max-width: 205px;
+  margin: 50px auto;
+}
+
+.profile .upload-avatar .avatar-upload .avatar-edit {
+  position: absolute;
+  right: 12px;
+  z-index: 1;
+  top: 10px;
+}
+
+.profile .upload-avatar .avatar-upload .avatar-edit input {
+  display: none;
+}
+
+.profile .upload-avatar .avatar-upload .avatar-edit input + label {
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 0;
+  border-radius: 100%;
+  background: #ffffff;
+  border: 1px solid transparent;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  font-weight: normal;
+  transition: all 0.2s ease-in-out;
+}
+
+.profile .upload-avatar .avatar-upload .avatar-edit input + label:hover {
+  background: #f1f1f1;
+  border-color: #d6d6d6;
+}
+
+.profile .upload-avatar .avatar-upload .avatar-edit input + label:after {
+  content: "\F0C9";
+  color: #757575;
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  margin: auto;
+}
+
+.profile .upload-avatar .avatar-upload .avatar-preview {
+  width: 192px;
+  height: 192px;
+  position: relative;
+  border-radius: 100%;
+  border: 6px solid #f8f8f8;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+}
+
+.profile .upload-avatar .avatar-upload .avatar-preview .imagePreview {
+  background-size: 100% 100%;
+}
+
+.profile .upload-avatar .avatar-upload .avatar-preview > div {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .comment {
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   padding: 10px;
 }
 
@@ -17339,6 +17425,52 @@ readers do not read off random characters that represent icons */
   border: 1px solid #ccd0d5;
   outline: none;
   height: 50px;
+}
+
+.comment .comment-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+}
+
+.comment .comment-center {
+  top: 0;
+  left: 5%;
+  padding: 6px 18px;
+  background: white;
+  border-radius: 6px;
+}
+
+.comment .heitht-20 {
+  height: 20px;
+}
+
+.comment .chilren-comment {
+  margin-left: 5%;
+}
+
+.comment .chilren-comment .chil-coment-postion {
+  position: relative;
+}
+
+.comment .chilren-comment .chil-coment-postion .reply-comment__image img {
+  width: 40px;
+  height: 40px;
+}
+
+.comment .chilren-comment .chil-comnet-absul {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+}
+
+.comment .chilren-comment .chil-comnet-absul .dropdown .dropdown-menu {
+  left: -284% !important;
+}
+
+.comment .chilren-comment .chil-comnet-absul .dropdown .dropdown-menu .dropdown-item:focus {
+  background-color: white;
+  color: #333333;
 }
 
 .rube {

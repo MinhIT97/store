@@ -7,8 +7,22 @@
                 <div class="card">
                     <div class="card-header">Information</div>
                     <div class="card-body">
-                        <form method="POST" action="{{route('profile.edit')}}">
+                        <form method="POST" action="{{route('profile.edit')}}" enctype="multipart/form-data">
                             @csrf
+                            <div class="upload-avatar">
+
+                                <div class="avatar-upload">
+                                    <div class="avatar-edit">
+                                        <input type='file' name="avatar" id="imageUpload" accept=".png, .jpg, .jpeg" />
+                                        <label for="imageUpload"></label>
+                                    </div>
+                                    <div class="avatar-preview">
+                                        <div class="imagePreview" id="imagePreview" style="background-image:url({{asset('/uploads/'.$user->avatar)}})">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email</label>
                                 <input type="email" name="email" class="form-control" id="profileEmail" aria-describedby="emailHelp" value="{{$user->email}}">

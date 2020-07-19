@@ -16,6 +16,7 @@ use App\Http\Requests\ProductCreateRequest;
 use App\Http\Requests\ProductUpdateRequest;
 use App\Repositories\AttributeRepository;
 use App\Repositories\ProductRepository;
+use App\Services\ExcelService;
 use App\Services\ImageUploadService;
 use App\Traits\Search;
 use Illuminate\Http\Request;
@@ -26,24 +27,29 @@ class ProductController extends Controller
     use Search;
     protected $repository;
     protected $imageUploadService;
-    public function __construct(ProductRepository $repository, ProductExports $exports, AttributeRepository $attributeRepository, ImageUploadService $imageUploadService)
+    protected $excelService;
+    public function __construct(ProductRepository $repository, ProductExports $exports, AttributeRepository $attributeRepository, ImageUploadService $imageUploadService, ExcelService $excelService)
     {
         $this->repository         = $repository;
         $this->entity             = $repository->getEntity();
         $this->entity_attribute   = $attributeRepository->getEntity();
         $this->exports            = $exports;
         $this->imageUploadService = $imageUploadService;
+        $this->excelService       = $excelService;
     }
 
     public function exportExcel(Request $request)
     {
-
         $products = $this->entity;
 
-        // $products = $this->getFromDate($request, $products);
-        // $products = $this->getToDate($request, $products);
-        // $products = $this->getStatus($request, $products);
-        $products = $products->get();
+        $url = $request->url;
+
+        $url   = explode('?', $url);
+        $type  = explode('/', $url[0]);
+        $type  = collect($type)->last();
+        $products = $this->excelService->FiledSearchExcel($url, $products);
+
+        $products = $products->where('type', $type)->get();
 
         Excel::store(new $this->exports($products), 'products.xlsx', 'excel');
 

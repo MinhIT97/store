@@ -18,6 +18,7 @@ class CreateCommentsTable extends Migration
             $table->bigInteger('commentable_id');
             $table->string('commentable_type');
             $table->text('body');
+            $table->bigInteger('parent_id')->default(0);
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
@@ -35,6 +36,9 @@ class CreateCommentsTable extends Migration
      */
     public function down()
     {
+        Schema::table('comments', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+        });
         Schema::dropIfExists('comments');
     }
 }

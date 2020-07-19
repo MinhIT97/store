@@ -28,7 +28,7 @@ class ProductExports implements FromCollection, WithMapping, WithHeadings
             $products->id,
             $products->name,
             $products->quantity,
-            $products->status,
+            $products->getStatus(),
             $products->content,
             $products->price,
             $products->type,

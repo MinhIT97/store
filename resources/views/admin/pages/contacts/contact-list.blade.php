@@ -20,6 +20,11 @@
                             {{ session('sucsess') }}
                         </div>
                         @endif
+                        @if (session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                        @endif
                         <table class="table table-striped table-responsive">
                             <thead>
                                 <tr>
@@ -46,8 +51,8 @@
                                     </td>
                                     <td>{{$contact->getDate()}} </td>
                                     <td>
-                                        <a class="btn btn-gradient-info p-2" href="">Gửi</a>
-                                        <a class="btn btn-gradient-danger p-2 ml-2" href="{{url('adminstore/contacts/'.$contact->id)}}">Xóa</a>
+                                        <a class="btn btn-gradient-info p-2" href="{{url('adminstore/contacts/'.$contact->id)}}"><i class="fas fa-edit"></i></a>
+                                        <a class="btn btn-gradient-danger p-2 ml-2" href="{{url('adminstore/delete-contacts/'.$contact->id)}}"><i class="fas fa-trash"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -65,5 +70,5 @@
             </div>
         </div>
     </div>
-
-    @endsection
+</div>
+@endsection

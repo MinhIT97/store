@@ -2,34 +2,54 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\UserExports;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AttachRoleRequest;
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Repositories\RoleRepository;
 use App\Repositories\UserRepository;
+use App\Services\ExcelService;
 use App\Traits\Search;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
     use Search;
     protected $userRepository;
     protected $roleRepository;
-    public function __construct(UserRepository $userRepository, RoleRepository $roleRepository)
+    protected $userExports;
+    protected $excelService;
+    public function __construct(UserRepository $userRepository, ExcelService $excelService, RoleRepository $roleRepository, UserExports $userExports)
     {
         $this->userRepository = $userRepository;
         $this->userEntity     = $userRepository->getEntity();
         $this->roleEntity     = $roleRepository->getEntity();
+        $this->excelService   = $excelService;
+        $this->exports        = $userExports;
+    }
+    public function exportExcel(Request $request)
+    {
+        $query = $this->userEntity->query();
+        $url   = $request->url;
+        $url   = explode('?', $url);
+        $query = $this->excelService->FiledSearchExcel($url, $query);
+        $users = $query->get();
+        Excel::store(new $this->exports($users), 'users.xlsx', 'excel');
+
+        return Response()->download(public_path('exports/users.xlsx'));
     }
     public function index(Request $request)
     {
         $this->authorize('viewAny', User::class);
 
         $query = $this->userEntity->query();
+        $query = $this->getFromDate($request, $query);
+        $query = $this->getToDate($request, $query);
         $query = $this->applyConstraintsFromRequest($query, $request);
         $query = $this->applySearchFromRequest($query, ['name', 'email'], $request);
         $query = $this->applyOrderByFromRequest($query, $request);

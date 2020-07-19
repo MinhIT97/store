@@ -8,10 +8,10 @@
             </h3>
             <div>
                 <form action="">
-                    <input type="date" name="from" id="dateFrom">
-                    <input type="date" name="to" id="dateTo">
-                    <input type="text" name="search" placeholder="Search">
-                    <button type="submit" class="btn btn-gradient-primary mr-2">
+                    <input type="date" class="p-2" name="from" id="dateFrom">
+                    <input type="date" class="p-2" name="to" id="dateTo">
+                    <input type="text " class="p-2" name="search" placeholder="Search">
+                    <button type="submit"  class="btn btn-gradient-primary mr-2">
                         Submit
                     </button>
                     <a href="{{route('products.exports')}}">

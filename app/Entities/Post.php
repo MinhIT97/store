@@ -43,7 +43,7 @@ class Post extends Model implements Transformable
         "type",
         "user_id",
     ];
-    public function sluggable():array
+    public function sluggable(): array
     {
         return [
             'slug' => [
@@ -73,7 +73,10 @@ class Post extends Model implements Transformable
     {
         return Carbon::parse($this->updated_at)->format('d/m/Y');
     }
-
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable')->where('parent_id', 0)->latest();
+    }
     public function scopePublished($query)
     {
         return $query->where('status', Post::PUBLISHED);

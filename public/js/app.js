@@ -46865,6 +46865,8 @@ __webpack_require__(/*! ./cart-item */ "./resources/js/cart-item.js");
 
 __webpack_require__(/*! ./provine */ "./resources/js/provine.js");
 
+__webpack_require__(/*! ./comment */ "./resources/js/comment.js");
+
 console.log("Hello World :)");
 $.ajaxSetup({
   headers: {
@@ -46973,6 +46975,24 @@ $(document).ready(function () {
 });
 $(document).ready(function () {
   $(".js-example-basic-multiple").select2();
+
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        $("#imagePreview").css("background-image", "url(" + e.target.result + ")");
+        $("#imagePreview").hide();
+        $("#imagePreview").fadeIn(650);
+      };
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  $("#imageUpload").change(function () {
+    readURL(this);
+  });
 });
 
 /***/ }),
@@ -47077,6 +47097,21 @@ $(document).ready(function () {
   lion_close_cart.click(function () {
     lion_cart.slideToggle();
   });
+});
+
+/***/ }),
+
+/***/ "./resources/js/comment.js":
+/*!*********************************!*\
+  !*** ./resources/js/comment.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  replyComent = function replyComent(e) {
+    $("#repply-commen-" + e).addClass("d-flex");
+  };
 });
 
 /***/ }),

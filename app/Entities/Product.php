@@ -98,7 +98,7 @@ class Product extends Model implements Transformable
     }
     public function comments()
     {
-        return $this->morphMany(Comment::class, 'commentable');
+        return $this->morphMany(Comment::class, 'commentable')->where('parent_id', 0)->latest();
     }
     public function brand()
     {

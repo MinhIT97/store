@@ -79,4 +79,12 @@ class User extends Authenticatable implements MustVerifyEmail
         $superAdmin = $this->level === 1 && $this->status === 1 && $this->hasRole('superadmin');
         return $superAdmin;
     }
+    public function province()
+    {
+        return $this->belongsTo(Province::class,"province_id");
+    }
+    public function district()
+    {
+        return $this->belongsTo(District::class,"district_id");
+    }
 }

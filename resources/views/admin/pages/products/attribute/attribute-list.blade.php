@@ -25,6 +25,11 @@
                             {{ session('sucsess') }}
                         </div>
                         @endif
+                        @if (session('errow'))
+                        <div class="alert alert-danger">
+                            {{ session('errow') }}
+                        </div>
+                        @endif
                         <table class="table table-striped table-responsive">
                             <thead>
                                 <tr>

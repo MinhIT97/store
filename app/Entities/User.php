@@ -15,4 +15,5 @@ class User extends AppUser implements Transformable
 {
     use TransformableTrait;
 
+
 }

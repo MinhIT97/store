@@ -25,5 +25,15 @@ class Comment extends Model implements Transformable
         "commentable_type",
         "body",
         "user_id",
+        'parent_id',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function chilrens()
+    {
+        return $this->hasMany(Comment::class, 'parent_id');
+    }
 }

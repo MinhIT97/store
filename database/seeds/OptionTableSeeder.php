@@ -22,12 +22,6 @@ class OptionTableSeeder extends Seeder
                 'created_at'=>$now,
             ],
             [
-                'label' => 'title',
-                'key' => 'title',
-                'value' => 'store',
-                'created_at'=>$now,
-            ],
-            [
                 'label' => 'Store 1',
                 'key' => 'store-1',
                 'value' => 'Hải Phòng',

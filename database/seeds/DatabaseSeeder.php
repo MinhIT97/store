@@ -1,6 +1,5 @@
 <?php
 
-use App\Entities\Role;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -23,7 +22,8 @@ class DatabaseSeeder extends Seeder
         $this->call(MenuTableSeeder::class);
         $this->call(OptionTableSeeder::class);
         $this->call(ProvinceTableSeeder::class);
-		$this->call(DistrictTableSeeder::class);
+        $this->call(DistrictTableSeeder::class);
+        $this->call(PostTableSeeder::class);
         // $this->call(CategoriesTableSeed::class);
 
     }
