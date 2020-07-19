@@ -17,10 +17,10 @@
     <div class="row flex-grow">
         <div class="col-lg-8 mx-auto">
             <div class="auth-form-light text-left p-5">
-                <form class="pt-3" method="POST" action="{{url('adminstore/option/'.$option->id )}}">
-                    <div class="form-group">
-                        <label for="value">Value</label>
-                        <input type="text" name="value" class="form-control form-control-lg" id="value" value="{{$option->value}}">
+                <form class="pt-3" method="POST" action="{{url('adminstore/options/'.$option->id )}}">
+                    <div class="form-group ">
+                        <label>Value</label>
+                        <textarea name="value" class="form-control " id="editor1">{!!$option->value!!}</textarea>
                         <p class="help is-danger mt-2">{{ $errors->first('value') }}</p>
                     </div>
                     <div class="justify-content-end d-flex">

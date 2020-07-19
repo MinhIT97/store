@@ -8,6 +8,11 @@
             <li class="breadcrumb-item active text-capitalize"> {{$user->name}}</li>
         </ol>
     </div>
+    @if (session('sucsess'))
+    <div class="alert alert-success">
+        {{ session('sucsess') }}
+    </div>
+    @endif
     <div class="row flex-grow">
         <div class="col-lg-8 mx-auto">
             <div class="auth-form-light text-left p-5">
@@ -56,6 +61,10 @@
                         </select>
                     </div>
                     @can('viewAny', App\User::class)
+                    <div class="form-group ">
+                        <input class="form-control" placeholder="level" name="level" id="level" value="{{$user->level}}">
+                        <span class="mt-2"> Number. 1 will be able to access the system</span>
+                    </div>
                     <div class="form-group">
                         <label for="roles">Roles</label>
                         <select id="categories" class="form-control form-control-sm  js-example-basic-multiple" multiple="multiple">

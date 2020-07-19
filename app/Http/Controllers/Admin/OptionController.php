@@ -27,8 +27,8 @@ class OptionController extends Controller
     public function show($id)
     {
         $option = $this->entityOption->findOrFail($id);
-        return view('admin.pages.option.option-detail',[
-            'option' => $option
+        return view('admin.pages.option.option-detail', [
+            'option' => $option,
         ]);
     }
 
@@ -36,7 +36,7 @@ class OptionController extends Controller
     {
         $data = $request->all();
 
-        $option = $this->entityOption->findOrFail();
+        $option = $this->entityOption->findOrFail($id);
         $option->update($data);
         return redirect()->back()->with('sucsess', 'Update Config sucsess');
     }

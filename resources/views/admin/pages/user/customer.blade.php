@@ -11,6 +11,25 @@
                 </ol>
             </nav>
         </div>
+        <div class="d-sm-flex justify-content-center mb-4">
+            <form action="">
+                <label for="form" class="font-weight-bold">From:</label>
+                <input type="date" class="p-2" name="from" id="dateFrom">
+                <label for="to" class="font-weight-bold">To:</label>
+                <input type="date" class="p-2" name="to" id="dateTo">
+                <input type="text" class="p-2" name="search" placeholder="Search">
+                <button type="submit" class="btn btn-gradient-primary mr-2">
+                    Submit
+                </button>
+            </form>
+            <form action="{{route('users.exprort')}}">
+                <input name="url" type="text" value="{{request()->fullUrl()}}" hidden>
+                <button type="submit" class="btn btn-gradient-success btn-icon-text">
+                    <i class="mdi mdi-file-excel"></i>
+                    Excel
+                </button>
+            </form>
+        </div>
         <div class="row">
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">

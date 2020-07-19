@@ -110,6 +110,7 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin', 'middleware' =>
     Route::get('edit-blog/{id}', 'BlogController@viewUpdate')->name('blog.show_update');
     Route::post('edit-blog/{id}', 'BlogController@update')->name('blog.update');
     Route::get('delete-blog/{id}', 'BlogController@destroy')->name('blog.delete');
+    Route::get('blogs/exprort', 'BlogController@exportExcel')->name('blog.exprort');
 
     Route::get('pages-show', 'PagesConroller@index')->name('pages.show');
     Route::get('pages-create', 'PagesConroller@viewStore')->name('pages.show_create');

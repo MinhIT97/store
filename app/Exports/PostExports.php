@@ -29,6 +29,7 @@ class PostExports implements FromCollection, WithMapping, WithHeadings
             $posts->title,
             $posts->content,
             $posts->description,
+            $posts->thumbnail,
             $posts->created_at,
 
         ];
@@ -37,11 +38,12 @@ class PostExports implements FromCollection, WithMapping, WithHeadings
     public function headings(): array
     {
         return [
-            'id',
-            'title',
-            'content',
-            'description',
-            'created_at',
+            'Id',
+            'Title',
+            'Content',
+            'Description',
+            'Thumbnail',
+            'Created At',
         ];
     }
 }

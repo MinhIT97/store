@@ -2,30 +2,50 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\PostExports;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BlogCreateRequest;
 use App\Http\Requests\BlogUpdateRequest;
 use App\Repositories\PostRepository;
+use App\Services\ExcelService;
 use App\Services\ImageUploadService;
 use App\Traits\Search;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BlogController extends Controller
 {
     use Search;
     protected $repository;
     protected $imageUploadService;
-    public function __construct(PostRepository $repository, ImageUploadService $imageUploadService)
+    protected $postExports;
+    protected $excelService;
+    public function __construct(PostRepository $repository, ImageUploadService $imageUploadService, PostExports $postExports, ExcelService $excelService)
     {
         $this->repository         = $repository;
         $this->entity             = $repository->getEntity();
+        $this->postExports        = $postExports;
         $this->imageUploadService = $imageUploadService;
+        $this->excelService       = $excelService;
+    }
+    public function exportExcel(Request $request)
+    {
+        $query = $this->entity->query();
+        $url   = $request->url;
+        $url   = explode('?', $url);
+        $query = $this->excelService->FiledSearchExcel($url, $query);
+        $query = $query->where('type', 'blogs');
+        $blogs = $query->get();
+        Excel::store(new $this->postExports($blogs), 'blogs.xlsx', 'excel');
+
+        return Response()->download(public_path('exports/blogs.xlsx'));
     }
     public function index(Request $request)
     {
-
         $query = $this->entity->query();
+        $query = $this->getFromDate($request, $query);
+        $query = $this->getToDate($request, $query);
         $query = $this->applyConstraintsFromRequest($query, $request);
         $query = $this->applySearchFromRequest($query, ['title'], $request);
         $query = $this->applyOrderByFromRequest($query, $request);

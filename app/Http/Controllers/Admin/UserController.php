@@ -46,15 +46,14 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $this->authorize('viewAny', User::class);
-
         $query = $this->userEntity->query();
         $query = $this->getFromDate($request, $query);
         $query = $this->getToDate($request, $query);
         $query = $this->applyConstraintsFromRequest($query, $request);
         $query = $this->applySearchFromRequest($query, ['name', 'email'], $request);
         $query = $this->applyOrderByFromRequest($query, $request);
+        $query = $query->where('level', 1);
         $users = $query->paginate(10);
-
         $users->setPath(url()->current() . '?search=' . $request->get('search'));
 
         return view('admin.index', [
@@ -65,6 +64,8 @@ class UserController extends Controller
     {
         $query = $this->userEntity->query();
         $query = $this->applyConstraintsFromRequest($query, $request);
+        $query = $this->getFromDate($request, $query);
+        $query = $this->getToDate($request, $query);
         $query = $this->applySearchFromRequest($query, ['name', 'email'], $request);
         $query = $this->applyOrderByFromRequest($query, $request);
         $query = $query->where('level', 0);
@@ -150,9 +151,9 @@ class UserController extends Controller
         }
 
         if ($user->update($data)) {
-            return redirect()->route('users.show')->with('sucsess', 'Update ' . $request->name . ' sucsess');
+            return redirect()->back()->with('sucsess', 'Update ' . $request->name . ' sucsess');
         } else {
-            return redirect()->back()->with('success', 'update' . $request->name . 'thất bại');
+            return redirect()->back()->with('error', 'update' . $request->name . 'thất bại');
         }
     }
     public function destroy($id)

@@ -50,6 +50,9 @@
                         <input type="hidden" class="form-control" name="role_ids" id="ids" value="">
                     </div>
                     @can('viewAny', App\User::class)
+                    <div class="form-group ">
+                        <input class="form-control" name="level" id="level" placeholder="level" value="">
+                    </div>
                     <div class="form-group">
                         <label for="roles">Roles</label>
                         <select id="categories" class="form-control form-control-sm  js-example-basic-multiple" multiple="multiple">
