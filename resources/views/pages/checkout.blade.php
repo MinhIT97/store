@@ -28,8 +28,8 @@
                         <form method="POST" action="{{route('cart.order')}}">
                             @csrf
                             <div class="form-group">
-                                <input type="email" class="form-control" name="email" id="" aria-describedby="emailHelpId" placeholder="Email">
-                                <p class="help is-danger">{{ $errors->first('email') }}</p>
+                                <input type="email" class="form-control" name="email" id="" aria-describedby="emailHelpId" placeholder="Email*">
+                                <p class="help mt-2 text-danger">{{ $errors->first('email') }}</p>
                             </div>
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="customCheck1">
@@ -40,43 +40,62 @@
                             </div>
                             <div class="form-group">
                                 <label for="formGroupExampleInput"></label>
-                                <input type="text" class="form-control" id="full_name" name="name" placeholder="Name">
-                                <p class="help is-danger">{{ $errors->first('name') }}</p>
+                                <input type="text" class="form-control" id="full_name" name="name" placeholder="Name*">
+                                <p class="help mt-2 text-danger">{{ $errors->first('name') }}</p>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" name="phone" placeholder="Phone">
-                                <p class="help is-danger">{{ $errors->first('phone') }}</p>
+                                <input type="text" class="form-control" name="phone" placeholder="Phone*">
+                                <p class="help mt-2 text-danger">{{ $errors->first('phone') }}</p>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" name="address" placeholder="Address">
-                                <p class="help is-danger">{{ $errors->first('address') }}</p>
+                                <input type="text" class="form-control" name="address" placeholder="Address*">
+                                <p class="help mt-2 text-danger">{{ $errors->first('address') }}</p>
                             </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="province_id">Thành phố <span class="text-danger">*</span></label>
-                                    <div class="input-wrap">
-                                        <select class="form-control" name="province_id" id="province_id" required>
-                                            @foreach($province as $info)
-                                            <option value="{{$info->id}}"> {{$info->name}}</option>
-                                            @endforeach
-                                        </select>
+                            <div class="delivery">
+                                <div class="delivery-title">Delivery</div>
+                                <div class="form-row delivery-main">
+                                    <div class="form-group col-md-4">
+                                        <label for="province_id">Thành phố <span class="text-danger">*</span></label>
+                                        <div class="input-wrap">
+                                            <select class="form-control" name="province_id" id="province_id" required>
+                                                @foreach($province as $info)
+                                                <option value="{{$info->id}}"> {{$info->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <p class="help mt-2 text-danger">{{ $errors->first('city') }}</p>
                                     </div>
-                                    <p class="help is-danger">{{ $errors->first('city') }}</p>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label for="district_id">Quận/Huyện <span class="text-danger">*</span></label>
-                                    <div class="input-wrap">
-                                        <select class="form-control" name="district_id" id="district_id" #district="ngModel" autocomplete="new-password" required>
-                                            <option></option>
-                                        </select>
+                                    <div class="form-group col-md-4">
+                                        <label for="district_id">Quận/Huyện <span class="text-danger">*</span></label>
+                                        <div class="input-wrap">
+                                            <select class="form-control" name="district_id" id="district_id" #district="ngModel" autocomplete="new-password" required>
+                                                <option></option>
+                                            </select>
+                                        </div>
+                                        <p class="help mt-2 text-danger">{{ $errors->first('district_id') }}</p>
                                     </div>
-                                    <p class="help is-danger">{{ $errors->first('district_id') }}</p>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputZip">Commune</label>
+                                        <input type="text" name="commune" class="form-control" id="inputZip">
+                                        <!-- <p class="help mt-2 text-danger">{{ $errors->first('commune') }}</p> -->
+                                    </div>
                                 </div>
-                                <div class="form-group col-md-2">
-                                    <label for="inputZip">Commune</label>
-                                    <input type="text" name="commune" class="form-control" id="inputZip">
-                                    <!-- <p class="help is-danger">{{ $errors->first('commune') }}</p> -->
+                            </div>
+
+                            <div class="payment-method">
+                                <div class="form-check">
+                                    <input hidden class="form-check-input" type="radio" name="payment_method" id="exampleRadios1" value="shipping" checked>
+                                    <label class="form-check-label" for="exampleRadios1">
+                                        Payment on delivery
+                                    </label>
                                 </div>
+                                <div class="form-check">
+                                    <input hidden class="form-check-input" type="radio" name="payment_method" id="exampleRadios2" value="vnpay">
+                                    <label class="form-check-label" for="exampleRadios2">
+                                        Pay with vnpay
+                                    </label>
+                                </div>
+
                             </div>
 
                             <div class="d-flex justify-content-between">
@@ -107,10 +126,9 @@
                     @endforeach
                     @endif
                     <div class="line mb-3 mt-3"></div>
-
                     <form class="form-inline d-flex justify-content-center">
                         <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Discount code">
-                        <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
+                        <label class="sr-only" for="inlineFormInputGroupUsername2"></label>
                         <button type="submit" class="btn btn-primary btn-discount mb-2">Use</button>
                     </form>
                     <div class="line mb-3 mt-3"></div>
@@ -127,18 +145,12 @@
                         <div>Tổng cộng</div>
                         <div class="payment-due-price"><span class="payment-due-currency">VND</span> {{number_format($cart->total) }} ₫</div>
                     </div>
-
-
                 </div>
             </div>
         </div>
         </div>
-
         </div>
-
     </section>
-
-
 </body>
 
 </html>

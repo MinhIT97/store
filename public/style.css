@@ -12434,6 +12434,73 @@ readers do not read off random characters that represent icons */
   font-size: 12px;
 }
 
+.popup-order {
+  width: 320px;
+  height: 70px;
+  background-color: #faaa64;
+  color: white;
+  border-radius: 4px;
+  position: fixed;
+  bottom: 10%;
+  right: 10px;
+  -webkit-animation-name: example;
+          animation-name: example;
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+}
+
+@-webkit-keyframes example {
+  0% {
+    background-color: crimson;
+    right: 0px;
+    bottom: 0px;
+  }
+
+  25% {
+    background-color: lightsalmon;
+    right: 0px;
+    bottom: 100px;
+  }
+
+  50% {
+    background-color: pink;
+    right: 0px;
+    bottom: 150px;
+  }
+
+  100% {
+    background-color: #faaa64;
+    right: 0px;
+    bottom: 200px;
+  }
+}
+
+@keyframes example {
+  0% {
+    background-color: crimson;
+    right: 0px;
+    bottom: 0px;
+  }
+
+  25% {
+    background-color: lightsalmon;
+    right: 0px;
+    bottom: 100px;
+  }
+
+  50% {
+    background-color: pink;
+    right: 0px;
+    bottom: 150px;
+  }
+
+  100% {
+    background-color: #faaa64;
+    right: 0px;
+    bottom: 200px;
+  }
+}
+
 .breadcrumb a {
   color: black;
 }

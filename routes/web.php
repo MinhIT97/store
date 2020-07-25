@@ -152,8 +152,10 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin', 'middleware' =>
 
 Route::group(['prefix' => '/', 'namespace' => 'Web', 'middleware' => ['checkCart']], function () {
 
+
     Route::get('/', 'HomeController@index')->name('index');
     Route::get('/redirect/{social}', 'SocialAuthController@redirectToProvider');
+    Route::get('/return', 'OrderController@return');
     Route::get('/callback/{social}', 'SocialAuthController@callback');
 
     Route::get('products/{type}', 'ProductController@index')->name('web.product_show');

@@ -44638,6 +44638,35 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/js/admin/popup-cart.js":
+/*!******************************************!*\
+  !*** ./resources/js/admin/popup-cart.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  console.log("cát");
+  Pusher.logToConsole = true;
+  var pusher = new Pusher("f7cf56caa474f5335067", {
+    cluster: "ap1",
+    encrypted: true
+  });
+  var channel = pusher.subscribe("send-message");
+  channel.bind("OrderNotification", function (data) {
+    $("body").append('<div class="popup-order">' + '<div class="row  p-3">' + '<div class="col-2 mr-3"> <i class="fas fa-shopping-cart fa-3x"></i></div>' + '<div class="col-8"> Nam <div>justuon</div></div>' + "</div>" + "</div>");
+
+    function removeopup() {
+      $(".popup-order").remove();
+    }
+
+    setTimeout(removeopup, 4000);
+    $("body").append("<div>" + data.title + "</div>");
+  });
+});
+
+/***/ }),
+
 /***/ "./resources/js/bootstrap.js":
 /*!***********************************!*\
   !*** ./resources/js/bootstrap.js ***!
@@ -44697,29 +44726,33 @@ __webpack_require__.r(__webpack_exports__);
 
 $(document).ready(function () {
   var order = $("#lion-order-char").data("order");
-  var listOfValue = [];
-  var listOfYear = [];
-  order.forEach(function (element) {
-    listOfYear.push(element.date);
-    listOfValue.push(element.id);
-  });
-  var chart = highcharts_highcharts_js__WEBPACK_IMPORTED_MODULE_0___default.a.chart("lion-order-char", {
-    title: {
-      text: "Orders by years"
-    },
-    subtitle: {
-      text: "Plain"
-    },
-    xAxis: {
-      categories: listOfYear
-    },
-    series: [{
-      type: "column",
-      colorByPoint: true,
-      data: listOfValue,
-      showInLegend: false
-    }]
-  });
+
+  if (order) {
+    var listOfValue = [];
+    var listOfYear = [];
+    order.forEach(function (element) {
+      listOfYear.push(element.date);
+      listOfValue.push(element.id);
+    });
+    var chart = highcharts_highcharts_js__WEBPACK_IMPORTED_MODULE_0___default.a.chart("lion-order-char", {
+      title: {
+        text: "Orders by years"
+      },
+      subtitle: {
+        text: "Plain"
+      },
+      xAxis: {
+        categories: listOfYear
+      },
+      series: [{
+        type: "column",
+        colorByPoint: true,
+        data: listOfValue,
+        showInLegend: false
+      }]
+    });
+  }
+
   $("#plain").click(function () {
     chart.update({
       chart: {
@@ -44757,42 +44790,45 @@ $(document).ready(function () {
 $(document).ready(function () {
   var productBuy = $("#dailyorder").data("dailyorder");
   var chartData = [];
-  productBuy.forEach(function (element) {
-    var ele = {
-      name: element.type,
-      y: parseFloat(element.y)
-    };
-    chartData.push(ele);
-  });
-  highcharts_highcharts_js__WEBPACK_IMPORTED_MODULE_0___default.a.chart("dailyorder", {
-    chart: {
-      plotBackgroundColor: null,
-      plotBorderWidth: null,
-      plotShadow: false,
-      type: "pie"
-    },
-    title: {
-      text: "Daily order"
-    },
-    tooltip: {
-      pointFormat: "{series.type}: <b>{point.percentage:.1f}%</b>"
-    },
-    plotOptions: {
-      pie: {
-        allowPointSelect: true,
-        cursor: "pointer",
-        dataLabels: {
-          enabled: false
-        },
-        showInLegend: true
-      }
-    },
-    series: [{
-      name: "Brands",
-      colorByPoint: true,
-      data: chartData
-    }]
-  });
+
+  if (productBuy) {
+    productBuy.forEach(function (element) {
+      var ele = {
+        name: element.type,
+        y: parseFloat(element.y)
+      };
+      chartData.push(ele);
+    });
+    highcharts_highcharts_js__WEBPACK_IMPORTED_MODULE_0___default.a.chart("dailyorder", {
+      chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: "pie"
+      },
+      title: {
+        text: "Daily order"
+      },
+      tooltip: {
+        pointFormat: "{series.type}: <b>{point.percentage:.1f}%</b>"
+      },
+      plotOptions: {
+        pie: {
+          allowPointSelect: true,
+          cursor: "pointer",
+          dataLabels: {
+            enabled: false
+          },
+          showInLegend: true
+        }
+      },
+      series: [{
+        name: "Brands",
+        colorByPoint: true,
+        data: chartData
+      }]
+    });
+  }
 });
 
 /***/ }),
@@ -44832,6 +44868,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 window.select2 = __webpack_require__(/*! select2/dist/js/select2.min */ "./node_modules/select2/dist/js/select2.min.js");
 
 __webpack_require__(/*! ./chars */ "./resources/js/chars.js");
+
+__webpack_require__(/*! ./admin/popup-cart */ "./resources/js/admin/popup-cart.js");
 
 $.ajaxSetup({
   headers: {

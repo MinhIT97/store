@@ -9,6 +9,7 @@ import "highcharts/modules/exporting.js";
 window.select2 = require("select2/dist/js/select2.min");
 
 require("./chars");
+require("./admin/popup-cart");
 
 $.ajaxSetup({
     headers: {

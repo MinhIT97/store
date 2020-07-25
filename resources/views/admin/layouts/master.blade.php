@@ -13,18 +13,7 @@
     <script src="https://js.pusher.com/6.0/pusher.min.js"></script>
     <script type="text/javascript">
         // Enable pusher logging - don't include this in production
-        Pusher.logToConsole = true;
 
-        var pusher = new Pusher('f7cf56caa474f5335067', {
-            cluster: 'ap1',
-            encrypted: true,
-        });
-
-        var channel = pusher.subscribe('send-message');
-        channel.bind('OrderNotification', function(data) {
-            alert(JSON.stringify(data));
-            console.log(data);
-        });
         // $('.menu-notification').prepend(newNotificationHtml);
     </script>
 
@@ -59,6 +48,7 @@
 </head>
 
 <body>
+
     @section('header')
     @include('admin.layouts.head')
     @show
@@ -90,6 +80,7 @@
         CKEDITOR.replace('editor1');
     </script>
     @livewireScripts
+
 </body>
 
 

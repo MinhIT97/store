@@ -1,16 +1,67 @@
 .lion-checkout {
     .breadcrumb {
         padding: 0;
+
         .checkout-cart {
             color: #338dbc;
         }
     }
+
     .check-out-cart {
         padding: 4rem;
+
         .cart {
             .shipping-address {
                 margin: 20px 0;
             }
+
+            .delivery {
+                .delivery-title {
+                    background-color: #00b5ad;
+                    padding: 10px 20px;
+                    color: white;
+                    font-size: 16px;
+                    border-radius: 4px;
+                }
+
+                .delivery-main {
+                    background-color: #FAFAFA;
+                    padding: 20px 10px;
+                }
+            }
+
+
+            .payment-method {
+                .form-check {
+                    height: 60px;
+                    margin: 8px 0;
+                    padding: 0;
+                }
+
+                .form-check-label {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 3px;
+                    padding: 15px;
+                    color: rgb(115, 115, 115);
+                    font-size: 18px;
+                    border: 1px solid #969696;
+                }
+
+                input[type=radio]:checked~.check {
+                    border: 5px solid #0DFF92;
+                }
+
+                input[type=radio]:checked~.check::before {
+                    background: #0DFF92;
+                }
+
+                input[type=radio]:checked~label {
+                    color: white;
+                    background-color: #00b5ad;
+                }
+            }
+
             form {
                 input {
                     box-shadow: 0 0 0 1px #d9d9d9;
@@ -24,6 +75,7 @@
                     padding: 0.94em 2.8em 0.94em 0.8em;
                     word-break: normal;
                 }
+
                 .btn-checkcart {
                     background: #00b5ad;
                     color: white;
@@ -37,12 +89,14 @@
         padding-top: 4rem;
         border-left: 1px solid #969696;
         padding-left: 4%;
+
         .image-checkout {
             border: 1px solid #969696;
             border-radius: 4px;
             padding: 0;
             position: relative;
         }
+
         .cart-quantity {
             position: absolute;
             z-index: 200;
@@ -55,14 +109,17 @@
             right: 6px;
             top: -10px;
         }
+
         .color,
         .size {
             color: #4b4b4b;
         }
+
         .total-price,
         .total-name {
             color: #717171;
         }
+
         .btn-discount {
             background: #fff;
             color: #000;
@@ -71,6 +128,7 @@
             font-weight: bold;
             border-radius: 2px;
         }
+
         .payment-due-price {
             font-size: 1.71429em;
             font-weight: 500;
@@ -78,6 +136,7 @@
             color: #4b4b4b;
             line-height: 1em;
         }
+
         .payment-due-currency {
             font-size: 14px;
             vertical-align: 0.2em;
@@ -88,9 +147,9 @@
 
     @media (max-width: 1000px) {
 
-            .check-out-cart {
-                padding: 2rem;
-            }
+        .check-out-cart {
+            padding: 2rem;
+        }
 
         .product-checkout {
             display: none !important;

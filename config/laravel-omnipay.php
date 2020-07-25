@@ -5,80 +5,82 @@ return [
     // Các thông số trên có được khi bạn đăng ký tích hợp.
 
     'gateways' => [
-        'MoMoAIO' => [
-            'driver' => 'MoMo_AllInOne',
+        'MoMoAIO'             => [
+            'driver'  => 'MoMo_AllInOne',
             'options' => [
-                'accessKey' => '',
-                'secretKey' => '',
+                'accessKey'   => '',
+                'secretKey'   => '',
                 'partnerCode' => '',
-                'testMode' => false,
+                'testMode'    => false,
             ],
         ],
-        'MoMoQRCode' => [
-            'driver' => 'MoMo_QRCode',
+        'MoMoQRCode'          => [
+            'driver'  => 'MoMo_QRCode',
             'options' => [
-                'accessKey' => '',
-                'secretKey' => '',
+                'accessKey'   => '',
+                'secretKey'   => '',
                 'partnerCode' => '',
-                'testMode' => false,
+                'testMode'    => false,
             ],
         ],
-        'MoMoAIA' => [
-            'driver' => 'MoMo_AppInApp',
+        'MoMoAIA'             => [
+            'driver'  => 'MoMo_AppInApp',
             'options' => [
-                'accessKey' => '',
-                'secretKey' => '',
+                'accessKey'   => '',
+                'secretKey'   => '',
                 'partnerCode' => '',
-                'publicKey' => '',
-                'testMode' => false,
+                'publicKey'   => '',
+                'testMode'    => false,
             ],
         ],
-        'MoMoPOS' => [
-            'driver' => 'MoMo_POS',
+        'MoMoPOS'             => [
+            'driver'  => 'MoMo_POS',
             'options' => [
-                'accessKey' => '',
-                'secretKey' => '',
+                'accessKey'   => '',
+                'secretKey'   => '',
                 'partnerCode' => '',
-                'publicKey' => '',
-                'testMode' => false,
+                'publicKey'   => '',
+                'testMode'    => false,
             ],
         ],
-        'OnePayDomestic' => [
-            'driver' => 'OnePay_Domestic',
+        'OnePayDomestic'      => [
+            'driver'  => 'OnePay_Domestic',
             'options' => [
-                'vpcMerchant' => '',
+                'vpcMerchant'   => '',
                 'vpcAccessCode' => '',
-                'vpcUser' => '',
-                'vpcPassword' => '',
-                'vpcHashKey' => '',
-                'testMode' => false,
+                'vpcUser'       => '',
+                'vpcPassword'   => '',
+                'vpcHashKey'    => '',
+                'testMode'      => false,
             ],
         ],
         'OnePayInternational' => [
-            'driver' => 'OnePay_International',
+            'driver'  => 'OnePay_International',
             'options' => [
-                'vpcMerchant' => '',
+                'vpcMerchant'   => '',
                 'vpcAccessCode' => '',
-                'vpcUser' => '',
-                'vpcPassword' => '',
-                'vpcHashKey' => '',
-                'testMode' => false,
+                'vpcUser'       => '',
+                'vpcPassword'   => '',
+                'vpcHashKey'    => '',
+                'testMode'      => false,
             ],
         ],
-        'VTCPay' => [
-            'driver' => 'VTCPay',
+        'VTCPay'              => [
+            'driver'  => 'VTCPay',
             'options' => [
-                'websiteId' => '',
+                'websiteId'    => '',
                 'securityCode' => '',
-                'testMode' => false,
+                'testMode'     => false,
             ],
         ],
-        'VNPay' => [
-            'driver' => 'VNPay',
+        'VNPay'               => [
+            'driver'  => 'VNPay',
             'options' => [
-                'vnpTmnCode' => 'Y9YZRN0U',
-                'vnpHashSecret' => 'FBPPNNUADEQIPRIXKTFNWMPUWLDUJIPO',
-                'testMode' => true,
+                'vnp_Url'       => 'http://sandbox.vnpayment.vn/paymentv2/vpcpay.html',
+                'vnp_Returnurl' => 'http://store.com/return',
+                'vnpTmnCode'    => 'Y9YZRN0U',
+                'vnpHashSecret' => 'ICF1FP2F8U1FDGJ1VETQ66YQYUQJJBKH',
+                'testMode'      => true,
             ],
         ],
     ],
