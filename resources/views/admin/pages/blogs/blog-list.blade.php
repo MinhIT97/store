@@ -60,7 +60,7 @@
                                 <tr>
                                     <td> {{$blog->id}}</td>
                                     <td> {{$blog->title}} </td>
-                                    <td> {{$blog->description}} </td>
+                                    <td> {{$blog->getLimitDescription(90)}} </td>
                                     <td> {{$blog->view}} </td>
                                     <td>{{$blog->getDate()}} </td>
                                     <td>{{$blog->getDateUpdate()}} </td>

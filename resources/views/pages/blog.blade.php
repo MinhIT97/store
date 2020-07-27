@@ -7,15 +7,17 @@
         @endif
     </div>
     <div class="container">
-    @if($blogs->count())
-    @foreach($blogs as $blog)
+        @if($blogs->count())
+        @foreach($blogs as $blog)
         <div class="blog-item">
             <div class="row">
                 <div class="col-12 col-md-6 mb-2">
                     <img class="img-fluid" src="{{$blog->thumbnail}}" alt="">
                 </div>
                 <div class="col-12 col-md-6">
-                    <div class="date"><span><a href="">Hot trend</a></span><span class="font-italic date-time"><span>{{$blog->getMonth()}}</<span></span></div>
+                    <div class="date"><span><a href="">Hot trend</a></span><span class="font-italic date-time"><span>{{$blog->getMonth()}}</<span></span>
+                            <div>View:{{$blog->view}}</div>
+                    </div>
                     <h4>
                         {!!$blog->title!!}
                     </h4>
@@ -36,7 +38,7 @@
         </div>
         @endif
         <div class="lion-pagination">
-        {{ $blogs->links() }}
+            {{ $blogs->links() }}
         </div>
 
     </div>

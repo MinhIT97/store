@@ -57,6 +57,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(\App\Repositories\DistrictRepository::class, \App\Repositories\DistrictRepositoryEloquent::class);
         $this->app->bind(\App\Repositories\ProvinceRepository::class, \App\Repositories\ProvinceRepositoryEloquent::class);
         $this->app->bind(\App\Repositories\DiscountRepository::class, \App\Repositories\DiscountRepositoryEloquent::class);
+        $this->app->bind(\App\Repositories\NotificationRepository::class, \App\Repositories\NotificationRepositoryEloquent::class);
         //:end-bindings:
     }
 }

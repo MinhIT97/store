@@ -8,6 +8,7 @@ use App\Http\Requests\PagesUpdateRequest;
 use App\Repositories\PostRepository;
 use App\Traits\Search;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PagesConroller extends Controller
 {
@@ -39,8 +40,10 @@ class PagesConroller extends Controller
 
     public function store(PagesCreateRequest $request)
     {
+
         $data              = $request->all();
         $data['type']      = 'pages';
+        $data['user_id']   = Auth::user()->id;
         $data['thumbnail'] = 0;
 
         $blog = $this->entity->create($data);

@@ -15,5 +15,8 @@ trait QueryTrait
     {
         return Carbon::parse($this->created_at)->format('d/m/Y');
     }
-
+    public function getLimitDescription($limit)
+    {
+        return Str::limit($this->description, $limit);
+    }
 }

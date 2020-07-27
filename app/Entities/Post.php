@@ -2,6 +2,7 @@
 
 namespace App\Entities;
 
+use App\Traits\QueryTrait;
 use Carbon\Carbon;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
@@ -16,7 +17,7 @@ use Prettus\Repository\Traits\TransformableTrait;
  */
 class Post extends Model implements Transformable
 {
-    use TransformableTrait, Sluggable, SluggableScopeHelpers;
+    use TransformableTrait, Sluggable, SluggableScopeHelpers ,QueryTrait;
 
     /**
      * The attributes that are mass assignable.

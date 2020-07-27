@@ -14,6 +14,7 @@
             </h1>
             <h5 class="date">
                 {{$blog->getMonth()}}
+                <div>View:{{$blog->view}}</div>
             </h5>
         </div>
         <div class="col-10 p-5 m-2">
@@ -35,8 +36,8 @@
                     @if(Auth::user()->avatar)
                     <img class="img-fluid" src="{{'http://store.com/uploads/'.Auth::user()->avatar}}" alt="">
                     @else
-                    @endif
                     <img class="img-fluid" src="/images/user.png" alt="">
+                    @endif
                     @else
                     <img class="img-fluid" src="/images/user.png" alt="">
                     @endauth

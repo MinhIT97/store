@@ -36,6 +36,7 @@ class Product extends Model implements Transformable
         "status",
         "category_id",
         "code",
+        "view",
         "thumbnail",
         "type",
         "brand_id",
@@ -82,6 +83,10 @@ class Product extends Model implements Transformable
     public function orderItems()
     {
         return $this->hasMany(OrderItem::class, 'product_id');
+    }
+    public function orderCountSold()
+    {
+        return $this->hasMany(OrderItem::class, 'product_id')->sum('quantity');
     }
     public function imagaes()
     {

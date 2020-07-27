@@ -91,7 +91,7 @@
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
                         <h6 class="p-3 mb-0">Notifications</h6>
                         <div class="dropdown-divider"></div>
-                        @foreach (Auth::user()->notifications as $notification)
+                        @foreach ($notifications as $notification)
                         <a class="dropdown-item preview-item">
                             <div class="preview-thumbnail">
                                 <div class="preview-icon bg-success">
@@ -99,13 +99,13 @@
                                 </div>
                             </div>
                             <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                                <h6 class="preview-subject font-weight-normal mb-1">{{ $notification->data['title'] }}</h6>
-                                <p class="text-gray ellipsis mb-0"> {{ $notification->data['content'] }} </p>
+                                <h6 class="preview-subject font-weight-normal mb-1">{{json_decode($notification->data,true)['title']}}</h6>
+                                <p class="text-gray ellipsis mb-0"> {{ json_decode($notification->data,true)['content'] }} </p>
                             </div>
                         </a>
                         <div class="dropdown-divider"></div>
                         @endforeach
-                        <a class="dropdown-item preview-item">
+                        <!-- <a class="dropdown-item preview-item">
                             <div class="preview-thumbnail">
                                 <div class="preview-icon bg-success">
                                     <i class="mdi mdi-calendar"></i>
@@ -140,7 +140,7 @@
                                 <p class="text-gray ellipsis mb-0"> New admin wow! </p>
                             </div>
                         </a>
-                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-divider"></div> -->
                         <h6 class="p-3 mb-0 text-center">See all notifications</h6>
                     </div>
                 </li>

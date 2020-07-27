@@ -41,6 +41,19 @@ class OptionTableSeeder extends Seeder
                 'created_at'=>$now,
             ],
             [
+                'label' => 'email',
+                'key'  => 'email',
+                'value' => 'cskh@store.com',
+                'created_at'=>$now,
+            ],
+            [
+                'label' => 'company-phone',
+                'key'  => 'company-phone',
+                'value' => '0986082324',
+                'created_at'=>$now,
+            ],
+
+            [
                 'label' => 'Mua hàng',
                 'key'  => 'mua-hang',
                 'value' => '<ul class="list-unstyled">

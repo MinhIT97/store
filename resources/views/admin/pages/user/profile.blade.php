@@ -34,9 +34,11 @@
                     </div> -->
                     <div class="form-group">
                         <input style="opacity: 0.6; background-color: white" type="email" name="email" class="form-control form-control-lg" id="exampleInputEmail1" value="{{$user->email}}">
+                        <p class="help text-danger mt-2">{{ $errors->first('email') }}</p>
                     </div>
                     <div class="form-group">
                         <input style="opacity: 0.6; background-color: white" type="text" class="form-control" name="phone" id="Phone" value="{{$user->phone}}">
+                        <p class="help text-danger mt-2">{{ $errors->first('phone') }}</p>
                     </div>
                     <div class="justify-content-end d-flex">
                         <button type="submit" class="btn btn-gradient-info btn-behance justify-content-end">Update</button>

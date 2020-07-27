@@ -62,8 +62,11 @@
                     </div>
                     @can('viewAny', App\User::class)
                     <div class="form-group ">
-                        <input class="form-control" placeholder="level" name="level" id="level" value="{{$user->level}}">
-                        <span class="mt-2"> Number. 1 will be able to access the system</span>
+                        <select id="level" name="level" class="form-control form-control-sm  js-example-basic-single">
+                            <option value="0" @if($user->level === 0) selected="selected"@endif>Users</option>
+                            <option value="1" @if($user->level === 1)selected="selected"@endif> Staff</option>
+                        </select>
+                        <!-- <span class="mt-2"> Number. 1 will be able to access the system</span> -->
                     </div>
                     <div class="form-group">
                         <label for="roles">Roles</label>

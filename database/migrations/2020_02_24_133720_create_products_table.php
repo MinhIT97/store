@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
             $table->integer('sale_price');
             $table->integer('status');
             $table->tinyInteger('hot');
+            $table->integer('view')->default(1);
             $table->string('type');
             $table->string('thumbnail');
             $table->string('content');

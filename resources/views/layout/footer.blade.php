@@ -35,12 +35,12 @@
         <div class="row m0">
             <div class="col-12 col-md-3">
                 <ul class="list-unstyled">
-                    <li><strong>{!!getOption('store')!!}</strong></li>
-                    <li> <strong> Store 1:</strong> 20 Canifonia Hoa kì</li>
-                    <li><strong> Store 2:</strong> Hà Nội</li>
-                    <li><strong> Store 3:</strong> Hồ Chí Minh</li>
-                    <li><strong>Email: cskh@mshop.com</strong></li>
-                    <li><strong>SDT: 0986082324</strong></li>
+                    <li><strong></strong></li>
+                    <li> <strong> Store 1:</strong> {!!getOption('store-1')!!}</li>
+                    <li><strong> Store 2:</strong>  {!!getOption('store-2')!!}</li>
+                    <li><strong> Store 3:</strong>  {!!getOption('store-3')!!}</li>
+                    <li><strong>Email: {!!getOption('email')!!}</strong></li>
+                    <li><strong>SDT: {!!getOption('company-phone')!!}</strong></li>
                 </ul>
             </div>
             <div class="col-12 col-md-2">
@@ -71,11 +71,12 @@
             </div>
             <div class="col-12 col-md-2">
                 <ul class="list-unstyled">
-                    <li>
+                    <!-- <li>
                         <h3>#Mshop</h3>
                     </li>
                     <li><a href="">Blog</a></li>
-                    <li><a href="">Tuyển dụng</a></li>
+                    <li><a href="">Tuyển dụng</a></li> -->
+                    {!!getOption('mshop')!!}
                 </ul>
             </div>
             <div class="col-12 col-md-3">

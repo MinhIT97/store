@@ -19,7 +19,6 @@ class AdminLoginMiddeware
     {
         if (Auth::check()) {
             $user = Auth::user();
-
             $id   = $user->id;
             $user = User::find($id);
             if ($user->level == 1 && $user->status == 1 && $user->hasRole('superadmin') || $user->level == 1 && $user->status == 1 && $user->hasRole('admin')) {

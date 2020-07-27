@@ -165,12 +165,10 @@ class OrderController extends Controller
 
     function return(Request $request)
     {
-
         if ($request->vnp_ResponseCode == "00") {
-            $this->apSer->thanhtoanonline(session('cost_id'));
+            $this->handleCart($request);
             return redirect()->route('cart.show')->with('success', 'Đã thanh toán phí dịch vụ');
         }
-        session()->forget('url_prev');
         return redirect()->route('cart.show')->with('error', 'Lỗi trong quá trình thanh toán phí dịch vụ');
     }
 

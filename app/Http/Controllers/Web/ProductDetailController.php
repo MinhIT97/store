@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Entities\Color;
+use App\Events\ViewDetail;
 use App\Http\Controllers\Controller;
 use App\Repositories\ProductRepository;
 use Illuminate\Http\Request;
@@ -31,6 +32,7 @@ class ProductDetailController extends Controller
         $product_men         = $this->entity->where('type', 'men')->published()->hots()->limit(4)->get();
         $product_women       = $this->entity->where('type', 'women')->published()->hots()->limit(4)->get();
 
+        event(new ViewDetail($product));
         return view('pages.product-detail', [
             'product'             => $product,
             'colors'              => $colors,
