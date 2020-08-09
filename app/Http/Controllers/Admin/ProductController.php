@@ -19,6 +19,7 @@ use App\Repositories\ProductRepository;
 use App\Services\ExcelService;
 use App\Services\ImageUploadService;
 use App\Traits\Search;
+use App\User;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -44,9 +45,9 @@ class ProductController extends Controller
 
         $url = $request->url;
 
-        $url   = explode('?', $url);
-        $type  = explode('/', $url[0]);
-        $type  = collect($type)->last();
+        $url      = explode('?', $url);
+        $type     = explode('/', $url[0]);
+        $type     = collect($type)->last();
         $products = $this->excelService->FiledSearchExcel($url, $products);
 
         $products = $products->where('type', $type)->get();
@@ -70,7 +71,7 @@ class ProductController extends Controller
         $query    = $this->applyConstraintsFromRequest($query, $request);
         $query    = $this->applySearchFromRequest($query, ['name', 'price'], $request);
         $query    = $this->applyOrderByFromRequest($query, $request);
-        $products = $query->where('type', $type)->withCount('attributes', 'orderItems')->orderBY('id', 'DESC')->paginate(20);
+        $products = $query->where('type', $type)->withCount('attributes', 'orderItems', 'comments')->orderBY('id', 'DESC')->paginate(20);
         // $products->setPath(url()->current() . '?search=' . $request->get('search'));
 
         return view('admin.pages.products.product-list', [
@@ -308,4 +309,15 @@ class ProductController extends Controller
 
         return redirect()->back()->with('errow', 'Delete attribute errow');
     }
+
+    public function comments($id)
+    {
+        $product = $this->entity->load('comments')->findOrFail($id);
+        $users   = User::get();
+        return view('admin.pages.products.comments.comment', [
+            'product' => $product,
+            'users'   => $users,
+        ]);
+    }
+
 }

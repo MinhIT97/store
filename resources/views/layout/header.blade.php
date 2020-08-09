@@ -18,8 +18,15 @@
                         <ul>
                             @if($getMenus->count())
                             @foreach($getMenus as $menu)
-
-                            <li class="lion-nav__iteam"><a href="{{asset($menu->link)}}">{{$menu->label}}</a></li>
+                            <li class="lion-nav__iteam dropdown"><a @if($menu->menus->count()) data-toggle="dropdown" @endif href="{{asset($menu->link)}}">{{$menu->label}}</a>
+                                @if($menu->menus->count())
+                                @foreach($menu->menus as $item)
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{{$item->link}}">{{$item->label}}</a>
+                                </div>
+                                @endforeach
+                                @endif
+                            </li>
                             @endforeach
                             @endif
                             <!-- <li class="lion-nav__iteam"><a href="{{asset('products/men')}}">Nam</a></li>

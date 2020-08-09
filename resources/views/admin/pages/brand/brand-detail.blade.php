@@ -12,7 +12,7 @@
             </div>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('create-product')}}" class="text-decoration-none">CREATE NEW</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('products.create')}}" class="text-decoration-none">CREATE NEW</a></li>
                     <!-- <li class="breadcrumb-item active" aria-cur'rent="page">Basic tables</li> -->
                 </ol>
             </nav>

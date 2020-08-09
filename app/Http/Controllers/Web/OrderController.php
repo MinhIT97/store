@@ -166,7 +166,6 @@ class OrderController extends Controller
     function return(Request $request)
     {
         if ($request->vnp_ResponseCode == "00") {
-            $this->handleCart($request);
             return redirect()->route('cart.show')->with('success', 'Đã thanh toán phí dịch vụ');
         }
         return redirect()->route('cart.show')->with('error', 'Lỗi trong quá trình thanh toán phí dịch vụ');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Entities\Province;
 use App\Exports\UserExports;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AttachRoleRequest;
@@ -79,9 +80,11 @@ class UserController extends Controller
     }
     public function viewStore()
     {
-        $roles = $this->roleEntity->get();
+        $province = Province::where('status', Province::STATUS_ACTIVE)->get();
+        $roles    = $this->roleEntity->get();
         return view('admin.pages.register', [
-            'roles' => $roles,
+            'roles'    => $roles,
+            'province' => $province,
         ]);
     }
 
@@ -111,8 +114,8 @@ class UserController extends Controller
     }
     public function viewEditUser($id)
     {
-        $user = $this->userEntity->findOrFail($id);
-
+        $user     = $this->userEntity->findOrFail($id);
+        $province = Province::where('status', Province::STATUS_ACTIVE)->get();
         if (!$user->roles->isEmpty()) {
             $role_ids = collect($user->roles->toArray())->pluck('id');
 
@@ -120,13 +123,15 @@ class UserController extends Controller
         } else {
             $role_ids = [];
         }
-
-        $roles = $this->roleEntity->get();
+        $district = $user->getDistrict();
+        $roles    = $this->roleEntity->get();
 
         return view('admin.pages.user.edit-user', [
             'user'     => $user,
             'roles'    => $roles,
             'role_ids' => $role_ids,
+            'province' => $province,
+            'district' => $district,
         ]);
     }
 

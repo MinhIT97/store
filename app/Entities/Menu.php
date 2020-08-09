@@ -39,12 +39,12 @@ class Menu extends Model implements Transformable
 
     public function menu()
     {
-        return $this->belongsTo(Menu::class)->orderBy('order_by', 'desc');
+        return $this->belongsTo(Menu::class)->orderBy('order_by', 'ASC');
     }
 
     public function menus()
     {
-        return $this->hasMany(Menu::class, 'parent_id')->orderBy('order_by', 'desc')->with('menus');
+        return $this->hasMany(Menu::class, 'parent_id')->orderBy('order_by', 'ASC')->with('menus');
     }
     public function renderSubmenu()
     {

@@ -55,6 +55,11 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin', 'middleware' =>
         Route::post('{id}/attribute', 'ProductController@storeAttribute')->name('attribute.create');
         Route::get('{id}/detail-attribute', 'ProductController@showAttribute')->name('attribute.show');
         Route::get('/attribute/{id}', 'ProductController@destroyAttribute')->name('attribute.delete');
+
+        Route::get('/{id}/comments', 'ProductController@comments')->name('products.comments');
+        Route::get('comments/{id}', 'CommentController@show')->name('products.comments_show');
+        Route::get('comments-delete/{id}', 'CommentController@destroy')->name('comment.destroy');
+        Route::post('comments/update/{id}', 'CommentController@update')->name('comment.update');
     });
 
     Route::get('orders', 'OrderController@index')->name('orders.show');
@@ -111,6 +116,7 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin', 'middleware' =>
     Route::post('edit-blog/{id}', 'BlogController@update')->name('blog.update');
     Route::get('delete-blog/{id}', 'BlogController@destroy')->name('blog.delete');
     Route::get('blogs/exprort', 'BlogController@exportExcel')->name('blog.exprort');
+    Route::get('blogs/{id}/comments', 'BlogController@comments')->name('blog.comments');
 
     Route::get('pages-show', 'PagesConroller@index')->name('pages.show');
     Route::get('pages-create', 'PagesConroller@viewStore')->name('pages.show_create');
@@ -151,7 +157,6 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin', 'middleware' =>
 });
 
 Route::group(['prefix' => '/', 'namespace' => 'Web', 'middleware' => ['checkCart']], function () {
-
 
     Route::get('/', 'HomeController@index')->name('index');
     Route::get('/redirect/{social}', 'SocialAuthController@redirectToProvider');

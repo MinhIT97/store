@@ -83,6 +83,7 @@
                                     </td>
                                     <td>{{$product->getDate()}} </td>
                                     <td>
+                                        <a class="btn btn-gradient-info  atribute-product  mr-2 p-2" href="{{ url('adminstore/products/'.$product->id.'/comments' )}}"><i class="mdi mdi-comment"><span class="attribue-product-count">{{$product->comments_count}}</span> </i></a>
                                         <a class="btn btn-gradient-info p-2" href="{{ url('adminstore/products/edit/'.$product->id )}}"><i class="fas fa-edit"></i></a>
                                         <a class="btn btn-gradient-danger p-2 ml-2" href="{{ url('adminstore/products/delete/'.$product->id )}}"><i class="fas fa-trash"></i></a>
                                         <a class="btn btn-gradient-danger atribute-product p-2 ml-2" href="{{ url('adminstore/products/'.$product->id.'/attribute' )}}">

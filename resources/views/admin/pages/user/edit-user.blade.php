@@ -77,6 +77,30 @@
                         </select>
                     </div>
                     @endcan
+                    <div class="form-row delivery-main">
+                        <div class="form-group col-md-4">
+                            <label for="province_id">Thành phố <span class="text-danger">*</span></label>
+                            <div class="input-wrap">
+                                <select class="form-control" name="province_id" id="province_id" required>
+                                    @foreach($province as $info)
+                                    <option @if($user->getProvince()=== $info->name) selected @endif value="{{$info->id}}"> {{$info->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <p class="help mt-2 text-danger">{{ $errors->first('city') }}</p>
+                        </div>
+                        <div class="d-none" id="data-district" data-district="{{$district}}"></div>
+                        <div class="form-group col-md-4">
+                            <label for="district_id">Quận/Huyện <span class="text-danger">*</span></label>
+                            <div class="input-wrap">
+                                <select class="form-control" name="district_id" id="district_id" #district="ngModel" autocomplete="new-password" required>
+                                    <option></option>
+                                </select>
+                            </div>
+                            <p class="help mt-2 text-danger">{{ $errors->first('district_id') }}</p>
+                        </div>
+
+                    </div>
                     <div class="justify-content-end d-flex">
                         <button type="submit" class="btn btn-gradient-info btn-behance justify-content-end">Update</button>
                     </div>

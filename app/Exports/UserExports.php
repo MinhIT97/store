@@ -29,8 +29,8 @@ class UserExports implements FromCollection, WithMapping, WithHeadings
             $users->name,
             $users->email,
             $users->phone,
-            $users->province->name,
-            $users->district->name,
+            $users->getProvince(),
+            $users->getDistrict(),
             $users->created_at,
 
         ];

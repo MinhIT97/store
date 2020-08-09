@@ -10,6 +10,7 @@ use App\Repositories\PostRepository;
 use App\Services\ExcelService;
 use App\Services\ImageUploadService;
 use App\Traits\Search;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
@@ -50,7 +51,7 @@ class BlogController extends Controller
         $query = $this->applySearchFromRequest($query, ['title'], $request);
         $query = $this->applyOrderByFromRequest($query, $request);
 
-        $blogs = $query->where('type', 'blogs')->paginate(15);
+        $blogs = $query->where('type', 'blogs')->withCount('comments')->paginate(15);
 
         $blogs->setPath(url()->current() . '?search=' . $request->get('search'));
 
@@ -129,5 +130,15 @@ class BlogController extends Controller
         $blog->delete();
 
         return redirect()->back()->with('sucsess', 'Xóa blog thành công');
+    }
+
+    public function comments($id)
+    {
+        $blog = $this->entity->load('comments')->findOrFail($id);
+        $users   = User::get();
+        return view('admin.pages.blogs.comments.comment', [
+            'blog' => $blog,
+            'users'   => $users,
+        ]);
     }
 }

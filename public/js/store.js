@@ -44638,6 +44638,87 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/js/admin/comment.js":
+/*!***************************************!*\
+  !*** ./resources/js/admin/comment.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  console.log("coem");
+  console.log($("#exampleInputComment").val());
+  console.log($("#user_id").val());
+  $("#comment-create").submit(function (event) {
+    event.preventDefault();
+    console.log(event);
+    var id = $("#exampleInputComment").data("id");
+    $.ajaxSetup({
+      headers: {
+        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+      }
+    });
+    $.ajax({
+      type: "post",
+      url: "api/products/" + id + "/comments",
+      data: {
+        body: $("#exampleInputComment").val(),
+        user_id: $("#user_id").val()
+      },
+      dataType: "json",
+      success: function success(data) {
+        $("#comment-create").trigger("reset");
+        $("#comment-create .close").click();
+        window.location.reload();
+      },
+      error: function error(data) {
+        var errors = $.parseJSON(data.responseText);
+        $('#add-task-errors').html('');
+        $.each(errors.messages, function (key, value) {
+          console.log(value);
+          $('#add-task-errors').append('<li>' + value + '</li>');
+        });
+        $("#add-error-bag").show();
+      }
+    });
+  });
+  $("#comment-create-blogs").submit(function (event) {
+    event.preventDefault();
+    console.log(event);
+    var id = $("#exampleInputComment").data("id");
+    $.ajaxSetup({
+      headers: {
+        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+      }
+    });
+    $.ajax({
+      type: "post",
+      url: "api/blogs/" + id + "/comments",
+      data: {
+        body: $("#exampleInputComment").val(),
+        user_id: $("#user_id").val()
+      },
+      dataType: "json",
+      success: function success(data) {
+        $("#comment-create").trigger("reset");
+        $("#comment-create .close").click();
+        window.location.reload();
+      },
+      error: function error(data) {
+        var errors = $.parseJSON(data.responseText);
+        $('#add-task-errors').html('');
+        $.each(errors.messages, function (key, value) {
+          console.log(value);
+          $('#add-task-errors').append('<li>' + value + '</li>');
+        });
+        $("#add-error-bag").show();
+      }
+    });
+  });
+});
+
+/***/ }),
+
 /***/ "./resources/js/admin/popup-cart.js":
 /*!******************************************!*\
   !*** ./resources/js/admin/popup-cart.js ***!
@@ -44870,6 +44951,8 @@ window.select2 = __webpack_require__(/*! select2/dist/js/select2.min */ "./node_
 __webpack_require__(/*! ./chars */ "./resources/js/chars.js");
 
 __webpack_require__(/*! ./admin/popup-cart */ "./resources/js/admin/popup-cart.js");
+
+__webpack_require__(/*! ./admin/comment */ "./resources/js/admin/comment.js");
 
 $.ajaxSetup({
   headers: {
@@ -45237,6 +45320,57 @@ $(document).ready(function () {
 });
 $(document).ready(function () {
   $(".js-example-basic-single").select2();
+});
+$(document).ready(function () {
+  console.log("ok");
+  var district_data = $('#data-district').data('district');
+  var provinceID = $('select[name="province_id"]').val();
+
+  if (provinceID) {
+    $.ajax({
+      url: "api/provinces/" + encodeURI(provinceID),
+      type: "GET",
+      dataType: "json",
+      success: function success(result) {
+        var province = result.districts;
+        $('select[name="district_id"]').empty();
+        $.each(province, function (key, value) {
+          var selecteds = '';
+
+          if (district_data) {
+            if (district_data === value.name) {
+              selecteds = "selected";
+            }
+          }
+
+          $('select[name="district_id"]').append('<option ' + selecteds + ' value="' + value.id + '"">' + value.name + "</option>");
+        });
+      }
+    });
+  } else {
+    $('select[name="province_id"]').empty();
+  }
+
+  $('select[name="province_id"]').on("change", function () {
+    var provinceID = $(this).val();
+
+    if (provinceID) {
+      $.ajax({
+        url: "api/provinces/" + encodeURI(provinceID),
+        type: "GET",
+        dataType: "json",
+        success: function success(result) {
+          var province = result.districts;
+          $('select[name="district_id"]').empty();
+          $.each(province, function (key, value) {
+            $('select[name="district_id"]').append('<option value="' + value.id + '">' + value.name + "</option>");
+          });
+        }
+      });
+    } else {
+      $('select[name="city"]').empty();
+    }
+  });
 });
 
 /***/ }),

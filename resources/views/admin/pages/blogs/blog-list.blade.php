@@ -67,6 +67,7 @@
                                     <td><img class="ml-2" src="{{$blog->thumbnail}}" alt=""></td>
 
                                     <td>
+                                    <a class="btn btn-gradient-info  atribute-product  mr-2 p-2" href="{{ url('adminstore/blogs/'.$blog->id.'/comments' )}}"><i class="mdi mdi-comment"><span class="attribue-product-count">{{$blog->comments_count}}</span> </i></a>
                                         <a class="btn btn-gradient-info p-2" href="{{url('adminstore/edit-blog/'.$blog->id)}}"><i class="fas fa-edit"></i></a>
                                         <a class="btn btn-gradient-danger p-2 ml-2" href="{{url('adminstore/delete-blog/'.$blog->id)}}"><i class="fas fa-trash"></i></a>
                                     </td>

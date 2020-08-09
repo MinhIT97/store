@@ -32,6 +32,7 @@
                                     <th> Lebel</th>
                                     <th> Status</th>
                                     <th> Link</th>
+                                    <th> Order by</th>
                                     <th> Ngày tạo </th>
                                     <th>Hành động </th>
                                 </tr>
@@ -44,6 +45,7 @@
                                     <td> {{$menu->label}}</td>
                                     <td> {{$menu->status}}</td>
                                     <td> {{$menu->link}} </td>
+                                    <td> {{$menu->order_by}} </td>
                                     <td>{{$menu->getDate()}} </td>
                                     <td>
                                         <a class="btn btn-gradient-info p-2" href="{{url('adminstore/menus-edit/'.$menu->id)}}"><i class="fas fa-edit"></i></a>

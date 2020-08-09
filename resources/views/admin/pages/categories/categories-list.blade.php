@@ -21,6 +21,7 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
+                        @if($categories->count())
                         <table class="table table-striped table-responsive">
                             <thead>
                                 <tr>
@@ -71,6 +72,9 @@
                         <div class="mt-3">
 
                         </div>
+                        @else
+                        Categories is empty!
+                        @endif
                     </div>
                 </div>
             </div>

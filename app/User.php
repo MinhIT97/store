@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Entities\District;
+use App\Entities\Province;
 use App\Entities\Role;
 use App\Traits\HasPermissions;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -23,7 +25,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'level', 'verify_token', 'phone', 'avatar', 'status',
+        'name', 'email', 'password', 'level', 'verify_token', 'phone', 'avatar', 'status', 'province_id', 'district_id',
     ];
 
     /**
@@ -46,6 +48,22 @@ class User extends Authenticatable implements MustVerifyEmail
     public function roles()
     {
         return $this->belongsToMany(Role::class);
+    }
+    public function getProvince()
+    {
+        $provine = $this->province;
+        if ($provine) {
+            return $provine->name;
+        }
+        return '';
+    }
+    public function getDistrict()
+    {
+        $district = $this->district;
+        if ($district) {
+            return $district->name;
+        }
+        return '';
     }
     public function getStatus()
     {
@@ -81,10 +99,10 @@ class User extends Authenticatable implements MustVerifyEmail
     }
     public function province()
     {
-        return $this->belongsTo(Province::class,"province_id");
+        return $this->belongsTo(Province::class, "province_id");
     }
     public function district()
     {
-        return $this->belongsTo(District::class,"district_id");
+        return $this->belongsTo(District::class, "district_id");
     }
 }
