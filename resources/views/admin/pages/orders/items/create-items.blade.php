@@ -4,9 +4,9 @@
     <div>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('users.show')}}" class="text-decoration-none"><i class="fas fa-home"></i> Dashboard </a></li>
-            <li class="breadcrumb-item"><a href="{{route('products')}}" class="text-decoration-none">Products</a></li>
+            <li class="breadcrumb-item"><a href="{{route('orders.show')}}" class="text-decoration-none">Orders</a></li>
 
-            <li class="breadcrumb-item active text-capitalize"> Atribute</li>
+            <li class="breadcrumb-item active text-capitalize"> Item</li>
         </ol>
     </div>
 

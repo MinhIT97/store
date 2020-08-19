@@ -32,6 +32,7 @@ class Product extends Model implements Transformable
         "quantity",
         "current_quantity",
         "price",
+        "original_price",
         "sale_price",
         "status",
         "category_id",
@@ -42,6 +43,7 @@ class Product extends Model implements Transformable
         "brand_id",
         "content",
         "hot",
+        "sale",
     ];
     public function sluggable(): array
     {
@@ -61,6 +63,19 @@ class Product extends Model implements Transformable
                 break;
             default:
                 return 'Pending';
+                break;
+        }
+    }
+    public function getHot()
+    {
+        $status = $this->hot;
+
+        switch ($status) {
+            case 1:
+                return 'Hot';
+                break;
+            default:
+                return 'No';
                 break;
         }
     }
@@ -112,6 +127,14 @@ class Product extends Model implements Transformable
     public function scopePublished($query)
     {
         $query->where('status', self::PUBLISHED);
+    }
+
+    public function getSalePrice()
+    {
+        if ($this->sale && $this->sale_price > $this->price) {
+            return number_format($this->sale_price) . "₫";
+        }
+        return '';
     }
     public function scopeHots($query)
     {

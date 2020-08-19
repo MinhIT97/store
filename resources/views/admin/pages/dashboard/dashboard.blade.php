@@ -25,6 +25,8 @@
                         <h2 class="mb-5">{{number_format($weeklySales)}} ₫</h2>
 
                         <h6 class="card-text">Increased by {{$persent}} %</h6>
+                        <h6 class="card-text"> Net profit {{number_format($net_profit)}} ₫</h6>
+
                     </div>
                 </div>
             </div>
@@ -154,7 +156,7 @@
                                     @foreach($topPosts as $topPost)
                                     <tr>
                                         <td> {{$loop->index+1}}</td>
-                                        <td> <a  target="_blank" href="{{url('blogs/'.$topPost->slug)}}">blogs/{{$topPost->slug}}</a> </td>
+                                        <td> <a target="_blank" href="{{url('blogs/'.$topPost->slug)}}">blogs/{{$topPost->slug}}</a> </td>
                                         <td>
                                             {{$topPost->view}}
                                         </td>
@@ -185,7 +187,7 @@
                                     @foreach($topProducts as $topProduct)
                                     <tr>
                                         <td>{{$loop->index +1}}</td>
-                                        <td> <a  target="_blank" href="{{url('/products/'.$topProduct->type.'/'.$topProduct->slug)}}">{{$topProduct->name}} </a> </td>
+                                        <td> <a target="_blank" href="{{url('/products/'.$topProduct->type.'/'.$topProduct->slug)}}">{{$topProduct->name}} </a> </td>
                                         <td>
                                             {{$topProduct->orderCountSold()}}
                                         </td>

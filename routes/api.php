@@ -19,6 +19,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::put('/cart/{id}', 'Api\CartController@changQuantity');
+
+Route::get('check-code/{code}', 'Api\CartController@checkDiscount');
+
 Route::get('/provinces/{id}', 'Api\ProvinceController@show');
 
 Route::post('products/{id}/comments', 'Api\CommentController@create');

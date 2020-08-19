@@ -50,6 +50,30 @@
                         <input type="text" name="address" class="form-control form-control-sm" id="address" value="">
                         <p class="help  text-danger mt-2">{{ $errors->first('address') }}</p>
                     </div>
+                    <div class="delivery-title">Delivery</div>
+                    <div class="form-row delivery-main">
+                        <div class="form-group col-md-4">
+                            <label for="province_id">Thành phố <span class="text-danger">*</span></label>
+                            <div class="input-wrap">
+                                <select class="form-control" name="province_id" id="province_id" required>
+                                    @foreach($province as $info)
+                                    <option value="{{$info->id}}"> {{$info->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <p class="help mt-2 text-danger">{{ $errors->first('city') }}</p>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="district_id">Quận/Huyện <span class="text-danger">*</span></label>
+                            <div class="input-wrap">
+                                <select class="form-control" name="district_id" id="district_id" #district="ngModel" autocomplete="new-password" required>
+                                    <option></option>
+                                </select>
+                            </div>
+                            <p class="help mt-2 text-danger">{{ $errors->first('district_id') }}</p>
+                        </div>
+
+                    </div>
                     <div class="form-group">
                         <label for="note">Note</label>
                         <textarea name="note" id="note" cols="30" rows="10"></textarea>

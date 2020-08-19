@@ -38,7 +38,7 @@ class PostPolicy
     public function view(User $user, Post $post)
     {
 
-        return $user->id === $post->user_id;
+        return $user->isRoles('admin') || $user->id === $post->user_id;
         // return (
         //     $post->status == Post::PUBLISHED ||
         //     ($user && (

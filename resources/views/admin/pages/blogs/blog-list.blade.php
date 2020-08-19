@@ -59,8 +59,8 @@
                                 @foreach($blogs as $blog)
                                 <tr>
                                     <td> {{$blog->id}}</td>
-                                    <td> {{$blog->title}} </td>
-                                    <td> {{$blog->getLimitDescription(90)}} </td>
+                                    <td> {{$blog->getLImitTitle(40)}} </td>
+                                    <td> {{$blog->getLimitDescription(60)}} </td>
                                     <td> {{$blog->view}} </td>
                                     <td>{{$blog->getDate()}} </td>
                                     <td>{{$blog->getDateUpdate()}} </td>

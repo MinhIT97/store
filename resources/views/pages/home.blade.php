@@ -68,6 +68,7 @@
                                             </div>
                                             <div class="slide-item__content--content">
                                                 <span class="money"> {{number_format($product->price)}}₫</span>
+                                                <span class="product-summary--saleprice">{{$product->getSalePrice()}} ₫ </span>
                                             </div>
                                         </div>
                                     </a>
@@ -188,6 +189,7 @@
                                             </div>
                                             <div class="slide-item__content--content">
                                                 <span class="money"> {{number_format($product->price)}}₫</span>
+                                                <span class="product-summary--saleprice">{{$product->getSalePrice()}} ₫ </span>
                                             </div>
                                         </div>
                                     </a>
@@ -226,6 +228,7 @@
                                             </div>
                                             <div class="slide-item__content--content">
                                                 <span class="money"> {{number_format($product->price)}}₫</span>
+                                                <span class="product-summary--saleprice">{{$product->getSalePrice()}} ₫ </span>
                                             </div>
                                         </div>
                                     </a>

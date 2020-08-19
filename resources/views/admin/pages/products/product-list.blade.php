@@ -63,6 +63,7 @@
                                     <th> Sold </th>
                                     <th> Price </th>
                                     <th> Status</th>
+                                    <th> Hot</th>
                                     <th> Created at </th>
                                     <th>Action </th>
                                 </tr>
@@ -77,9 +78,12 @@
                                     <td> {{$product->quantity}} </td>
                                     <td> {{$product->current_quantity}} </td>
                                     <td> {{$product->order_items_count}} </td>
-                                    <td> {{$product->price}} </td>
+                                    <td> {{number_format($product->price)}} </td>
                                     <td>
                                         {{$product->getStatus()}}
+                                    </td>
+                                    <td>
+                                        {{$product->getHot()}}
                                     </td>
                                     <td>{{$product->getDate()}} </td>
                                     <td>

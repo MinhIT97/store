@@ -10,18 +10,22 @@ $factory->define(Product::class, function (Faker $faker) {
     $name = $faker->words(rand(4, 7), true);
 
     $thumbnail = ['http://store.com/uploads/84561531_183496249408686_9078468584841150464_n.png', 'http://store.com/uploads/240_F_141922877_IOy0qzsg54nfctIaYOu0OtFIiDCekvjs.jpg'];
+    $price     = [399000, 499000, 299000, 199000, 599000, 149000, 249000, 349000, 449000, 549000];
     return [
-        'name'       => $name,
-        'quantity'   => rand(0, 20),
-        'code'       => $faker->swiftBicNumber,
-        'price'      => rand(100000, 200000),
-        'sale_price' => rand(0, 200000),
-        'thumbnail'  => Arr::random($thumbnail),
-        'status'     => rand(0, 1),
-        'type'       => 'men',
-        'content'    => $faker->name,
-        'hot'        => 1,
-        'brand_id'   => rand(1, 7),
+        'name'             => $name,
+        'quantity'         => rand(0, 20),
+        'current_quantity' => rand(10,15),
+        'code'             => $faker->swiftBicNumber,
+        'price'            => $price_random= Arr::random($price),
+        'original_price'   =>  $price_random - 49000,
+
+        'sale_price'       =>  $price_random * 120 / 100,
+        'thumbnail'        => Arr::random($thumbnail),
+        'status'           => rand(0, 1),
+        'type'             => 'men',
+        'content'          => $faker->name,
+        'hot'              => 1,
+        'brand_id'         => rand(1, 7),
     ];
 });
 

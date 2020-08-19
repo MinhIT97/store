@@ -45,7 +45,7 @@
                                     <td> {{$blog->view}} </td>
                                     <td>{{$blog->getDate()}} </td>
                                     <td>{{$blog->getDateUpdate()}} </td>
-                                    <td><img class="ml-2" src="{{asset('/uploads/'.$blog->thumbnail)}}" alt=""></td>
+                                    <td><img class="ml-2" src="{{asset($blog->thumbnail)}}" alt=""></td>
 
                                     <td>
                                         <a class="btn btn-gradient-info p-2" href="{{url('adminstore/edit-blog/'.$blog->id)}}"><i class="fas fa-edit"></i></a>

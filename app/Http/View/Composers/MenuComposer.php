@@ -18,7 +18,7 @@ class MenuComposer
 
     public function compose(View $view)
     {
-        $getMenus = Menu::published()->orderBy('order_by', 'ASC')->latest()->get();
+        $getMenus = Menu::published()->orderBy('order_by', 'ASC')->where('parent_id', 0)->latest()->get();
         $view->with('getMenus', $getMenus);
     }
 }

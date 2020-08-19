@@ -12,7 +12,7 @@ class BlogController extends Controller
 {
     public function index()
     {
-        $blogs  = Post::where('type','blogs')->published()->latest()->paginate(10);
+        $blogs  = Post::where('type','blogs')->published()->orderBy('id','DESC')->paginate(6);
         $poster = Poster::where('type', 'blogs')->latest()->published()->first();
         return view(
             'pages.blog',

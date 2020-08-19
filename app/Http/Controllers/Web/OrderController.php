@@ -9,6 +9,7 @@ use App\Mail\OrderMail;
 use App\Notifications\OrderProductNotification;
 use App\Traits\CarTrait;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -17,11 +18,6 @@ use Pusher\Pusher;
 class OrderController extends Controller
 {
     use CarTrait;
-    protected $repository;
-    protected $repository_cart_item;
-    protected $repository_product;
-    protected $repository_order;
-    protected $repository_order_item;
 
     public function show()
     {
@@ -40,14 +36,37 @@ class OrderController extends Controller
     }
     public function order(OrderCreateRequest $request)
     {
+        $data    = $request->all();
+        $percent = 0;
+        $date    = Carbon::now();
+        if ($request->code) {
+            $code     = $request->code;
+            $discount = $this->entityDiscount->where('code', $request->code)->whereDate('star_date', '<=', $date)->whereDate('end_date', '>=', $date)->first();
+            if ($discount) {
+                $discount_id         = $discount->id;
+                $data['discount_id'] = $discount_id;
+                $percent             = $discount->percent;
+            }
+        }
 
-        $total = $this->total($request);
+        $total = $this->total($request, $percent);
+
+        if (Auth::check()) {
+            $data['user_id'] = Auth::user()->id;
+        } else {
+            $data['user_id'] = null;
+        }
+        $order         = $this->entity_order->create($data);
+        $order_id      = $order->id;
+        $code          = 'STORE-' . $order_id;
+        $order['code'] = $code;
+        $order->save();
         if ($request->payment_method === "vnpay") {
             $vnp_Url        = config('laravel-omnipay.gateways.VNPay.options.vnp_Url');
             $vnp_Returnurl  = config('laravel-omnipay.gateways.VNPay.options.vnp_Returnurl');
             $vnp_TmnCode    = config('laravel-omnipay.gateways.VNPay.options.vnpTmnCode'); //Mã website tại VNPAY
             $vnp_HashSecret = config('laravel-omnipay.gateways.VNPay.options.vnpHashSecret'); //Chuỗi bí mật
-            $vnp_TxnRef     = date('YmdHis'); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
+            $vnp_TxnRef     = $order_id; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
             $vnp_OrderInfo  = "Thanh toán hóa đơn mua hàng";
             $vnp_OrderType  = 200000;
             $vnp_Amount     = $total * 100;
@@ -87,13 +106,14 @@ class OrderController extends Controller
             }
             return redirect($vnp_Url);
         };
-        $this->handleCart($request);
+        $this->handleCart($request, $order, $percent);
 
         return redirect()->route('index');
     }
 
-    public function total($request)
+    public function total($request, $percent)
     {
+
         $cart_id    = $this->idCookieCart();
         $cart_items = $this->entity_cart_item->where('cart_id', $cart_id)->get();
         $total      = 0;
@@ -103,22 +123,14 @@ class OrderController extends Controller
             $amout = $item->quantity * $price;
             $total += $amout;
         }
+        $total = $total * ((100 - $percent) / 100);
+        $total = (int) $total;
+
         return $total;
     }
 
-    public function handleCart($request)
+    public function handleCart($request, $order, $percent = 0)
     {
-        $data = $request->all();
-        if (Auth::check()) {
-            $data['user_id'] = Auth::user()->id;
-        } else {
-            $data['user_id'] = null;
-        }
-        $order         = $this->entity_order->create($data);
-        $order_id      = $order->id;
-        $code          = 'STORE-' . $order_id;
-        $order['code'] = $code;
-        $order->save();
 
         $cart_id    = $this->idCookieCart();
         $cart_items = $this->entity_cart_item->where('cart_id', $cart_id)->get();
@@ -135,7 +147,7 @@ class OrderController extends Controller
             ];
             $this->entity_order_item->create($data);
         }
-        $this->plusTotalOrder($order_id);
+        $this->plusTotalOrder($order->id, $percent);
         $this->entity_cart_item->where('cart_id', $cart_id)->delete();
         $cart        = $this->entity_cart->where('id', $cart_id)->first();
         $total       = $cart->total;
@@ -163,20 +175,26 @@ class OrderController extends Controller
         $pusher->trigger('send-message', 'OrderNotification', $data);
     }
 
-    function return(Request $request)
-    {
+    function return (Request $request) {
+
         if ($request->vnp_ResponseCode == "00") {
-            return redirect()->route('cart.show')->with('success', 'Đã thanh toán phí dịch vụ');
+            $order = $this->entity_order->find($request->vnp_TxnRef);
+            $this->handleCart($request, $order);
+
+            return redirect()->route('index')->with('success', 'Đã thanh toán phí dịch vụ');
         }
         return redirect()->route('cart.show')->with('error', 'Lỗi trong quá trình thanh toán phí dịch vụ');
     }
 
-    public function plusTotalOrder($order_id)
+    public function plusTotalOrder($order_id, $percent)
     {
         $order = $this->entity_order->where('id', $order_id)->first();
 
         $total_price        = $order->calculateTotal();
+        $total_price        = $total_price * ((100 - $percent) / 100);
+        $total_price        = (int) $total_price;
         $order->total_price = $total_price;
+
         $order->update();
     }
 }

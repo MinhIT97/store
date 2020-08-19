@@ -14,6 +14,8 @@
     @endif
     <div class="container">
         <div class="row">
+            <div id='lens'></div>
+            <div id='result'></div>
             <div class="col-12 col-md-7 col-lg-7">
                 <div class="product-thumbnail">
                     @if($product)
@@ -61,7 +63,7 @@
                                 <input type="text" value="{{$product->price}}" hidden name="price">
                             </div>
                             <div class="product-summary--saleprice">
-                                {{number_format($product->price)}} ₫
+                                {{$product->getSalePrice()}}
                                 <input type="text" value="{{$product->price}}" hidden name="price">
                             </div>
                         </div>
@@ -120,7 +122,7 @@
         </div>
     </div>
 
-    <div class="comment">
+    <div class="comment mt-5">
         <div class="container">
             <div class="coment-title mt-2 mb-4 ">
                 Bình luận

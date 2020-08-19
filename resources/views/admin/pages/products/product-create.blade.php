@@ -27,7 +27,7 @@
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" name="name" class="form-control form-control-sm" id="name" value="">
-                        <p class="help is-danger mt-2">{{ $errors->first('name') }}</p>
+                        <p class="help text-danger mt-2">{{ $errors->first('name') }}</p>
                     </div>
                     <div class="form-group">
                         <label for="brands">Brand</label>
@@ -38,7 +38,7 @@
                         </select>
                     </div>
 
-                    <div class="form-group ">
+                    <!-- <div class="form-group ">
                         <input type="hidden" class="form-control" name="categories" id="id" value="">
                     </div>
                     <div class="form-group">
@@ -48,7 +48,19 @@
                             <option value="{{$category->id}}">{{$category->name}}</option>
                             @endforeach
                         </select>
-                        <p class="help is-danger mt-2">{{ $errors->first('categories') }}</p>
+                        <p class="help text-danger mt-2">{{ $errors->first('categories') }}</p>
+                    </div> -->
+                    <div class="form-group">
+                        <label for="category">Category</label>
+
+                        <div class="form-group ">
+                            <input type="hidden" class="form-control " name="categories" id="ids" value="">
+                        </div>
+                        <select id="categories" class="form-control form-control-sm js-example-basic-multiple" multiple="multiple">
+                            @foreach($categories as $category)
+                            <option value="{{$category->id}}" >{{$category->name}}</option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <div class="form-group">
@@ -58,33 +70,47 @@
                             @foreach($sizes as $size)
                             <option value="{{$size->id}}">{{$size->size}}</option>
                             @endforeach
-                            <p class="help is-danger mt-2">{{ $errors->first('size') }}</p>
+                            <p class="help text-danger mt-2">{{ $errors->first('size') }}</p>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="code">Code</label>
                         <input type="text" name="code" class="form-control form-control-sm" id="code" value="">
-                        <p class="help is-danger mt-2">{{ $errors->first('code') }}</p>
+                        <p class="help text-danger mt-2">{{ $errors->first('code') }}</p>
                     </div>
                     <div class="form-group">
                         <label for="quantity">Current quantity</label>
                         <input type="text" name="current_quantity" class="form-control form-control-sm" id="current_quantity" value="">
-                        <p class="help is-danger mt-2">{{ $errors->first('current_quantity') }}</p>
+                        <p class="help text-danger mt-2">{{ $errors->first('current_quantity') }}</p>
                     </div>
                     <div class="form-group">
                         <label for="quantity">Quantity</label>
                         <input type="text" name="quantity" class="form-control form-control-sm" id="quantity" value="">
-                        <p class="help is-danger mt-2">{{ $errors->first('quantity') }}</p>
+                        <p class="help text-danger mt-2">{{ $errors->first('quantity') }}</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="original_price">Original Price</label>
+                        <input type="original_price" name="original_price" class="form-control form-control-sm" id="original_price" value="">
+                        <p class="help text-danger mt-2">{{ $errors->first('price') }}</p>
                     </div>
                     <div class="form-group">
                         <label for="price">Price</label>
                         <input type="price" name="price" class="form-control form-control-sm" id="price" value="">
-                        <p class="help is-danger mt-2">{{ $errors->first('price') }}</p>
+                        <p class="help text-danger mt-2">{{ $errors->first('price') }}</p>
                     </div>
                     <div class="form-group">
                         <label for="sale_price">Sale price</label>
                         <input type="sale_price" name="sale_price" class="form-control form-control-sm" id="sale_price" value="">
-                        <p class="help is-danger mt-2">{{ $errors->first('sale_price') }}</p>
+                        <p class="help text-danger mt-2">{{ $errors->first('sale_price') }}</p>
+                    </div>
+
+                    <div class="form-group mt-5">
+                        <Label> Turn on or Turn off sale price</Label>
+                        <select name="sale" id="sale_price_on_off" class="form-control form-control-sm js-example-basic-single">
+                            <option value="0">Turn off price</option>
+                            <option value="1">Turn on price</option>
+                        </select>
+                        <p class="help text-danger mt-2">{{ $errors->first('sale') }}</p>
                     </div>
 
                     <div class="upload-product">
@@ -99,13 +125,13 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="help is-danger mt-2">{{ $errors->first('thumbnail') }}</p>
+                        <p class="help text-danger mt-2">{{ $errors->first('thumbnail') }}</p>
                     </div>
 
                     <div class="form-group ">
                         <label>Nội dung</label>
                         <textarea name="content" class="form-control " id="editor1"></textarea>
-                        <p class="help is-danger mt-2">{{ $errors->first('content') }}</p>
+                        <p class="help text-danger mt-2">{{ $errors->first('content') }}</p>
                     </div>
                     <p style="margin-bottom:25px">Medias: <span class="imupl-files-current"></span>/<span class="imupl-files-max"></span> <button style="float:right" class="btn btn-primary imupl-button-choose"><i class="fa fa-upload"></i> Upload</button></p>
                     <div class="imupl-files-list"></div>
@@ -132,7 +158,7 @@
                             <option value="0">pending</option>
                             <option value="1">active</option>
                         </select>
-                        <p class="help is-danger mt-2">{{ $errors->first('status') }}</p>
+                        <p class="help text-danger mt-2">{{ $errors->first('status') }}</p>
                     </div>
 
                     <input type="checkbox" name="hot" value="1">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Entities\OrderItem;
 use App\Http\Controllers\Controller;
+use App\Repositories\OrderItemRepository;
 use App\Repositories\OrderRepository;
 use App\Repositories\PostRepository;
 use App\Repositories\ProductRepository;
@@ -16,27 +17,38 @@ class DashboardController extends Controller
 {
     protected $repository_order;
     protected $postRepository;
-    public function __construct(OrderRepository $repository_order, Analytics $analytics, PostRepository $postRepository, ProductRepository $productRepository)
+    protected $orderItemRepository;
+    public function __construct(OrderRepository $repository_order, Analytics $analytics, PostRepository $postRepository, ProductRepository $productRepository, OrderItemRepository $orderItemRepository)
     {
-        $this->entity_order  = $repository_order->getEntity();
-        $this->analytics     = $analytics;
-        $this->postEntity    = $postRepository->getEntity();
-        $this->productEntity = $productRepository->getEntity();
-        $this->transformer   = AnalyticTransformer::class;
+        $this->entity_order    = $repository_order->getEntity();
+        $this->analytics       = $analytics;
+        $this->orderItemEntity = $orderItemRepository->getEntity();
+        $this->postEntity      = $postRepository->getEntity();
+        $this->productEntity   = $productRepository->getEntity();
+        $this->transformer     = AnalyticTransformer::class;
     }
     public function index()
     {
-        $currentDate        = Carbon::now();
-        $month              = $currentDate->subDays();
-        $year               = Carbon::now()->subYears(5);
-        $order              = $this->entity_order->whereDate('created_at', '>', $month)->get();
-        $weeklyOrders       = $order->count('id');
-        $weeklySales        = $order->sum('total_price');
+        $currentDate  = Carbon::now();
+        $month        = $currentDate->subDays();
+        $year         = Carbon::now()->subYears(5);
+        $order        = $this->entity_order->whereDate('created_at', '>', $month)->get();
+        $orderItems   = $this->orderItemEntity->whereDate('created_at', '>', $month)->get();
+        $weeklyOrders = $order->count('id');
+        $weeklySales  = $order->sum('total_price');
+        $net_profit   = 0;
+        foreach ($orderItems as $item) {
+            $original_price = $item->product->original_price * $item->quantity;
+
+            $net_profit = $net_profit + $original_price;
+        }
+        $net_profit         = $weeklySales - $net_profit;
         $nowmonth           = Carbon::now()->subDays(Carbon::now()->dayOfWeek)->subWeek();
         $beforeMonth        = $currentDate->subDays()->subWeek();
         $beforeOrder        = $this->entity_order->whereBetween('created_at', [$beforeMonth->toDateString(), $nowmonth->toDateString()])->get();
         $beforeweeklyOrders = $beforeOrder->count('id');
         $beforeweeklySales  = $beforeOrder->sum('total_price');
+
         if ($beforeweeklySales != 0) {
             $persent = round(($weeklySales - $beforeweeklySales) / $beforeweeklySales, 3) * 100;
         } else {
@@ -66,6 +78,7 @@ class DashboardController extends Controller
             'topPosts'     => $topPosts,
             'topProducts'  => $topProducts,
             'usersOnline'  => $usersOnline,
+            'net_profit'   => $net_profit,
         ]);
     }
 
@@ -83,7 +96,6 @@ class DashboardController extends Controller
 
     public function usersOnline()
     {
-
         $usersOnline = $this->analytics->getAnalyticsService()->data_realtime->get('ga:' . env('ANALYTICS_VIEW_ID'), 'rt:activeVisitors')->totalsForAllResults['rt:activeVisitors'];
 
         return $usersOnline;

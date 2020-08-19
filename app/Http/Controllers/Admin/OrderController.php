@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Entities\Province;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderCreateByAdminRequest;
 use App\Http\Requests\OrderItemCreateRequest;
@@ -84,9 +85,11 @@ class OrderController extends Controller
     }
     public function showCreate()
     {
-        $users = $this->entityUser->all();
+        $province = Province::where('status', Province::STATUS_ACTIVE)->get();
+        $users    = $this->entityUser->all();
         return view('admin.pages.orders.order-create', [
-            'users' => $users,
+            'users'    => $users,
+            'province' => $province,
         ]);
     }
     public function create(OrderCreateByAdminRequest $request)

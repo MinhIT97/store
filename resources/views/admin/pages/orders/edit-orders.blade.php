@@ -65,7 +65,7 @@
                         <p class="help is-danger mt-2">{{ $errors->first('status') }}</p>
                     </div>
 
-                    <textarea name="note" class="form-control mb-4" id="" cols="30" rows="10"></textarea>
+                    <textarea name="note"  class="form-control mb-4" id="" cols="30" rows="10">{{$orders->note}}</textarea>
 
                     <div class="justify-content-end d-flex">
                         <button type="submit" class="btn btn-behance justify-content-end">Update</button>

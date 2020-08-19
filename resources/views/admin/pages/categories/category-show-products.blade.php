@@ -51,7 +51,7 @@
                                 @foreach($products as $product)
                                 <tr>
                                     <td> {{$product->id}}</td>
-                                    <td><img class="ml-2" src="{{asset('/uploads/'.$product->thumbnail)}}" alt=""></td>
+                                    <td><img class="ml-2" src="{{asset($product->thumbnail)}}" alt=""></td>
                                     <td> {{$product->getLimitName(25)}} </td>
                                     <td> {{$product->quantity}} </td>
                                     <td> {{$product->price}} </td>

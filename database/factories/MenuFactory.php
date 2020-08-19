@@ -9,28 +9,28 @@ $factory->define(Menu::class, function (Faker $faker) {
     return [
         Menu::create(
             [
-                'label' => 'Nam',
+                'label' => 'Men',
                 'link'  => '/Men',
                 'parent_id' => 0,
             ]
         ),
         Menu::create(
             [
-                'label' => 'Nữ',
+                'label' => 'Women',
                 'link'  => '/woman',
                 'parent_id' => 0,
             ]
         ),
         Menu::create(
             [
-                'label' => 'Phụ kiện',
+                'label' => 'Accessories',
                 'link'  => '/accessories',
                 'parent_id' => 0,
             ]
         ),
         Menu::create(
             [
-                'label' => 'blog',
+                'label' => 'Blog',
                 'link'  => '/blog',
                 'parent_id' => 0,
             ]

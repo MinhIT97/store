@@ -39,6 +39,7 @@ class Order extends Model implements Transformable
         'note',
         'province_id',
         'district_id',
+        'discount_id',
     ];
 
     public function getStatus()

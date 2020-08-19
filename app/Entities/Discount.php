@@ -2,6 +2,8 @@
 
 namespace App\Entities;
 
+use App\Traits\QueryTrait;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
@@ -13,13 +15,33 @@ use Prettus\Repository\Traits\TransformableTrait;
  */
 class Discount extends Model implements Transformable
 {
-    use TransformableTrait;
+    use TransformableTrait , QueryTrait;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = ['code', 'percent', 'status', 'star_date', 'end_date'];
 
+    public function getStatus()
+    {
+        switch ($this->status) {
+            case 1:
+                return 'Active';
+                break;
+
+            default:
+                return 'Pending';
+                break;
+        }
+    }
+    public function getStartDate()
+    {
+        return Carbon::parse($this->star_date)->format('d/m/Y');
+    }
+    public function getEndDate()
+    {
+        return Carbon::parse($this->end_date)->format('d/m/Y');
+    }
 }

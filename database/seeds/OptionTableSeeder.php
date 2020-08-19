@@ -90,7 +90,7 @@ class OptionTableSeeder extends Seeder
                     <h3>#Mshop</h3>
                 </li>
                 <li><a href="">Blog</a></li>
-                <li><a href="">Tuyển dụng</a></li>
+                <li><a href="/pages/tuyen-dung">Tuyển dụng</a></li>
                 </ul>',
                 'created_at'=>$now,
             ],

@@ -2,11 +2,10 @@
 
 namespace App\Repositories;
 
-use Prettus\Repository\Eloquent\BaseRepository;
-use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\DiscountRepository;
 use App\Entities\Discount;
-use App\Validators\DiscountValidator;
+use App\Repositories\DiscountRepository;
+use Prettus\Repository\Criteria\RequestCriteria;
+use Prettus\Repository\Eloquent\BaseRepository;
 
 /**
  * Class DiscountRepositoryEloquent.
@@ -24,8 +23,10 @@ class DiscountRepositoryEloquent extends BaseRepository implements DiscountRepos
     {
         return Discount::class;
     }
-
-    
+    public function getEntity()
+    {
+        return $this->model;
+    }
 
     /**
      * Boot up the repository, pushing criteria
@@ -34,5 +35,5 @@ class DiscountRepositoryEloquent extends BaseRepository implements DiscountRepos
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
-    
+
 }

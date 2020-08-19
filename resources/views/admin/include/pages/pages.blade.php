@@ -73,6 +73,7 @@
             <li class="nav-item"> <a class="nav-link" href="{{ url('adminstore/products/accessories')}}"> ACCESSORIES</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{route('size.show')}}"> Sizes</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{route('colors.show')}}"> Colors</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route('discount.show')}}"> Discount code</a></li>
         </ul>
     </div>
 </li>
@@ -114,14 +115,14 @@
 </li>
 <li class="nav-item">
     <a class="nav-link" data-toggle="collapse" href="#blog-pages" aria-expanded="false" aria-controls="general-pages">
-        <span class="menu-title">Blog </span>
+        <span class="menu-title">News </span>
         <i class="menu-arrow"></i>
         <i class="mdi mdi-blogger menu-icon"></i>
     </a>
     <div class="collapse" id="blog-pages">
         <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link" href="{{route('categories.posts.show')}}"> Categories </a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{route('blog.show')}}"> Blog </a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route('blog.show')}}"> News </a></li>
 
 
     </div>

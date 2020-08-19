@@ -4,22 +4,22 @@ namespace App\Policies;
 
 use App\Entities\Product;
 use App\User;
-
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ProductPolicy
 {
     use HandlesAuthorization;
 
-    /**
-     * Determine whether the user can view any products.
-     *
-     * @param  \App\User  $user
-     * @return mixed
-     */
+    public function before($user, $ability)
+    {
+        if ($user->isSuperAdmin() || $user->hasRole('admin')) {
+            return true;
+        }
+    }
     public function viewAny(User $user)
     {
-        //
+        return $user->hasRole('seller');
+
     }
 
     /**

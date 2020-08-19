@@ -28,9 +28,9 @@ class ProductDetailController extends Controller
         foreach ($product->attributes as $attribute) {
             array_push($color_id, $attribute->color_id);
         }
-        $product_accessories = $this->entity->where('type', 'accessories')->published()->hots()->limit(4)->get();
-        $product_men         = $this->entity->where('type', 'men')->published()->hots()->limit(4)->get();
-        $product_women       = $this->entity->where('type', 'women')->published()->hots()->limit(4)->get();
+        $product_accessories = $this->entity->where('type', 'accessories')->published()->orderBy('id','DESC')->hots()->limit(4)->get();
+        $product_men         = $this->entity->where('type', 'men')->published()->hots()->latest()->limit(4)->get();
+        $product_women       = $this->entity->where('type', 'women')->published()->hots()->orderBy('id','DESC')->limit(4)->get();
 
         event(new ViewDetail($product));
         return view('pages.product-detail', [

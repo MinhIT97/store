@@ -20,11 +20,11 @@
                             @foreach($getMenus as $menu)
                             <li class="lion-nav__iteam dropdown"><a @if($menu->menus->count()) data-toggle="dropdown" @endif href="{{asset($menu->link)}}">{{$menu->label}}</a>
                                 @if($menu->menus->count())
-                                @foreach($menu->menus as $item)
                                 <div class="dropdown-menu">
+                                @foreach($menu->menus as $item)
                                     <a class="dropdown-item" href="{{$item->link}}">{{$item->label}}</a>
-                                </div>
                                 @endforeach
+                                </div>
                                 @endif
                             </li>
                             @endforeach
@@ -58,7 +58,7 @@
                                 <a class="mobile--hidden search"><i class="fas fa-search"></i></a></li>
                             @guest
                             <li class="lion-nav__iteam"><a href="/login">
-                                    <span class="mobile--hidden">Đăng nhập</span>
+                                    <span class="mobile--hidden">Login</span>
                                     <i class="far fa-user"></i></a></li>
                             @if (Route::has('register'))
                             <li class="lion-nav__iteam"><a href="{{ route('register') }}">

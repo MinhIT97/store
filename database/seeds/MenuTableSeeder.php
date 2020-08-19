@@ -14,22 +14,22 @@ class MenuTableSeeder extends Seeder
     {
         Menu::insert([
             [
-                'label'     => 'Nam',
+                'label'     => 'Men',
                 'link'      => '/products/men',
                 'parent_id' => 0,
             ],
             [
-                'label'     => 'Nữ',
+                'label'     => 'Women',
                 'link'      => '/products/women',
                 'parent_id' => 0,
             ],
             [
-                'label'     => 'Phụ kiện',
+                'label'     => 'Accessories',
                 'link'      => '/products/accessories',
                 'parent_id' => 0,
             ],
             [
-                'label'     => 'blog',
+                'label'     => 'News',
                 'link'      => '/blogs',
                 'parent_id' => 0,
             ],

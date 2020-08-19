@@ -56,6 +56,7 @@
                                 </div>
                                 <div class="price">
                                     <span>{{number_format($product->price)}} ₫ </span>
+                                    <span class="product-summary--saleprice">{{$product->getSalePrice()}} ₫ </span>
                                 </div>
                             </div>
                         </a>

@@ -50,11 +50,9 @@ class CharController extends Controller
                 ->join('order_items', 'orders.id', '=', 'order_items.order_id')
                 ->join('products', 'order_items.product_id', '=', 'products.id')
                 ->whereDate('orders.created_at', '=', $get_range)
-                ->groupBy('product_id')
+                ->groupBy('products.type')
                 ->get();
         }
-
-
 
         return view('admin.pages.products.index', [
             'orderYear'  => $orderYear,

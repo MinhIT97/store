@@ -96,6 +96,7 @@ class ProductController extends Controller
     public function store(ProductCreateRequest $request)
     {
 
+
         if ($request->hasFile('thumbnail')) {
             $link              = $this->imageUploadService->handleUploadedImage($request->file('thumbnail'));
             $data              = $request->all();

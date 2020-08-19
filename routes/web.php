@@ -61,6 +61,9 @@ Route::group(['prefix' => '/adminstore', 'namespace' => 'Admin', 'middleware' =>
         Route::get('comments-delete/{id}', 'CommentController@destroy')->name('comment.destroy');
         Route::post('comments/update/{id}', 'CommentController@update')->name('comment.update');
     });
+    Route::get('discount', 'DiscountController@index')->name('discount.show');
+    Route::get('discount-create', 'DiscountController@showStore')->name('discount.show_create');
+    Route::post('discount-create', 'DiscountController@store')->name('discount.create');
 
     Route::get('orders', 'OrderController@index')->name('orders.show');
     Route::get('edit-orders/{id}', 'OrderController@show')->name('orders.show_edit');
@@ -164,6 +167,8 @@ Route::group(['prefix' => '/', 'namespace' => 'Web', 'middleware' => ['checkCart
     Route::get('/callback/{social}', 'SocialAuthController@callback');
 
     Route::get('products/{type}', 'ProductController@index')->name('web.product_show');
+
+    Route::get('categories/{slug}', 'ProductController@CategoriesProduct')->name('web.category_product');
 
     Route::get('products/{type}/{slug}', 'ProductDetailController@show')->name('web.product_show_detail');
 

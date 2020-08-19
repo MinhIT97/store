@@ -26,8 +26,30 @@ class ProductController extends Controller
 
         $query    = $this->applyOrderByFromRequest($query, $request);
         $products = $query->paginate(12);
-        $poster   = Poster::where('type', $request->type)->latest()->published()->first();
+        $poster   = Poster::where('type', $request->type)->latest()->orderBY('id','DESC')->published()->first();
 
+        $activeSelected = $request->get('sort_by');
+
+        return view('pages.products', [
+            'products'       => $products,
+            'poster'         => $poster,
+            'product_count'  => $product_count,
+            'activeSelected' => $activeSelected,
+        ]);
+    }
+
+    public function CategoriesProduct(Request $request)
+    {
+        $query         = $this->entity->published();
+        $product_count = $query->get();
+
+        $query = $query->whereHas('categories', function ($query) use ($request) {
+            $query->where('slug', $request->slug)->where('type', 'products');
+        });
+
+        $query    = $this->applyOrderByFromRequest($query, $request);
+        $products = $query->paginate(12);
+        $poster   = Poster::where('type', $request->slug)->latest()->published()->first();
         $activeSelected = $request->get('sort_by');
 
         return view('pages.products', [

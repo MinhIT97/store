@@ -11,13 +11,15 @@ require("./cart");
 require("./cart-item");
 require("./provine");
 require("./comment");
+require("./zoom.js");
+require("./checkdiscount");
 console.log("Hello World :)");
 $.ajaxSetup({
     headers: {
         "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
     }
 });
-$(document).ready(function() {
+$(document).ready(function () {
     $(".product_slider").slick({
         infinite: true,
         autoplay: true,
@@ -130,12 +132,12 @@ $(document).ready(function() {
         focusOnSelect: true
     });
 });
-$(document).ready(function() {
+$(document).ready(function () {
     $(".js-example-basic-multiple").select2();
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
-            reader.onload = function(e) {
+            reader.onload = function (e) {
                 $("#imagePreview").css(
                     "background-image",
                     "url(" + e.target.result + ")"
@@ -146,7 +148,7 @@ $(document).ready(function() {
             reader.readAsDataURL(input.files[0]);
         }
     }
-    $("#imageUpload").change(function() {
+    $("#imageUpload").change(function () {
         readURL(this);
     });
 });
