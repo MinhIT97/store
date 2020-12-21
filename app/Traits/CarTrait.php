@@ -78,6 +78,10 @@ trait CarTrait
         $product    = $this->entity_product->find($product_id);
         $price      = $product->price;
 
+        if ($product->phi_ship) {
+            $price = $product->price + $product->phi_ship;
+
+        }
         $cart_item = $this->entity_cart_item->where([
             ['cart_id', $cart_id],
             ['product_id', $product_id],

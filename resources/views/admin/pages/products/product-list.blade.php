@@ -64,6 +64,7 @@
                                     <th> Price </th>
                                     <th> Status</th>
                                     <th> Hot</th>
+                                    <th> Phi Ship</th>
                                     <th> Created at </th>
                                     <th>Action </th>
                                 </tr>
@@ -84,6 +85,9 @@
                                     </td>
                                     <td>
                                         {{$product->getHot()}}
+                                    </td>
+                                    <td>
+                                        {{$product->getPhiShip()}}
                                     </td>
                                     <td>{{$product->getDate()}} </td>
                                     <td>

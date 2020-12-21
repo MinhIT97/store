@@ -111,15 +111,20 @@
                                 <div class="col-3 ">
                                     <img class="img-fluid image-checkout" src="{{$cart_item->product->thumbnail}}" alt="">
                                     <span class="cart-quantity">{{$cart_item->quantity}}</span>
+
                                 </div>
+
                                 <div class="col-5">
                                     <div class="name text-uppercase">{{$cart_item->product->getLimitName(20)}}</div>
                                     <span class="color text-capitalize"> {{$cart_item->color->color}}</span><span> / </span><span class="size text-capitalize">{{$cart_item->size->size}}</span>
                                 </div>
+
                                 <div class="price col-4">
+                                <div class="">{{$cart_item->product->price}}</div>
                                     {{number_format($cart_item->amount)}}₫
                                 </div>
                             </div>
+                            <div class="col-12 ml-5">PHiship: {{$cart_item->product->getPhiShip()}}</div>
                         </div>
                         @endforeach
                         @endif
@@ -141,7 +146,7 @@
                         <div class="line mb-3 mt-3"></div>
                         <div class="d-flex justify-content-between">
                             <div>Tổng cộng</div>
-                            <div id ="total-price-cart" data-total="{{$cart->total}}" class="payment-due-price"><span class="payment-due-currency">VND</span> {{number_format($cart->total) }} ₫</div>
+                            <div id="total-price-cart" data-total="{{$cart->total}}" class="payment-due-price"><span class="payment-due-currency">VND</span> {{number_format($cart->total) }} ₫</div>
                         </div>
                     </div>
                 </div>

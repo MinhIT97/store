@@ -129,6 +129,11 @@
                             </p>
                         </div>
                     </div>
+                    <div class="form-group mt-3">
+                        <label for="phi_ship">Phi ship</label>
+                        <input type="text" name="phi_ship" class="form-control form-control-sm" id="phi_ship" value="{{$product->phi_ship}}">
+                        <p class="help text-danger mt-2">{{ $errors->first('phi_ship') }}</p>
+                    </div>
                     <div class="imupl-dragdrop-hover"></div>
                     <div class="medias">
                         <div class="row">
@@ -143,8 +148,6 @@
                             @endif
                         </div>
                     </div>
-
-
                     <div class="form-group mt-4">
                         <label for="price">Price</label>
                         <input type="price" name="price" class="form-control form-control-lg" id="price" value="{{$product->price}}">

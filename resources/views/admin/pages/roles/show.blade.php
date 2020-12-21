@@ -31,6 +31,14 @@
                         <input type="text" class="form-control" name="description" id="description" value="{{$role->description}}">
                         <p class="help is-danger mt-2">{{ $errors->first('description') }}</p>
                     </div>
+                    <div class="form-group mt-5">
+                        <Label> Status</Label>
+                        <select name="status" id="" class="form-control form-control-sm js-example-basic-multiple">
+                            <option value="0" @if($role->status ===0)selected="selected"@endif >pending</option>
+                            <option value="1" @if($role->status ===1)selected="selected"@endif >active</option>
+                        </select>
+                        <p class="help is-danger mt-2">{{ $errors->first('status') }}</p>
+                    </div>
                     <div class="justify-content-end d-flex">
                         <button type="submit" class="btn btn-behance justify-content-end">Update</button>
                     </div>

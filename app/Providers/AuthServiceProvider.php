@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Entities\Post;
+use App\Entities\Product;
 use App\Entities\Role;
+use App\Policies\ProductPolicy;
 use App\Policies\RolesPolicy;
 use App\Policies\UserPolicy;
 use App\User;
@@ -20,6 +22,7 @@ class AuthServiceProvider extends ServiceProvider
         User::class => UserPolicy::class,
         Post::class => \App\Policies\PostPolicy::class,
         Role::class => RolesPolicy::class,
+        Product::class => ProductPolicy::class,
     ];
 
     /**

@@ -45,7 +45,7 @@
                                     <td> {{$roles->id}}</td>
                                     <td> {{$roles->name}} </td>
                                     <td> {!!$roles->slug!!} </td>
-                                    <td> {{$roles->status}} </td>
+                                    <td> {{$roles->getStatus()}} </td>
                                     <td>{{$roles->description}} </td>
                                     <td>
                                         <a class="btn btn-gradient-info p-2" href="{{ url('adminstore/roles-show/'.$roles->id )}}"><i class="fas fa-edit"></i></a>

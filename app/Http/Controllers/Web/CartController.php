@@ -47,7 +47,6 @@ class CartController extends Controller
     }
     public function checkCartQuantity($request, $cart_id)
     {
-        // dd($request->all());
 
         $product_id = $request->product_id;
         $color_id   = $request->color_id;

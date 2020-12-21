@@ -59,12 +59,13 @@ class ProductController extends Controller
 
     public function index()
     {
+
         return view('admin.pages.products.index');
     }
 
     public function show(Request $request, $type)
     {
-
+        $this->authorize('viewAny', Product::class);
         $query    = $this->entity->query();
         $query    = $this->getFromDate($request, $query);
         $query    = $this->getToDate($request, $query);
@@ -81,6 +82,7 @@ class ProductController extends Controller
 
     public function showStore()
     {
+        $this->authorize('create', Product::class);
         $categories = Category::get();
         $brands     = Brand::get();
         $sizes      = Size::get();
@@ -95,7 +97,6 @@ class ProductController extends Controller
     }
     public function store(ProductCreateRequest $request)
     {
-
 
         if ($request->hasFile('thumbnail')) {
             $link              = $this->imageUploadService->handleUploadedImage($request->file('thumbnail'));

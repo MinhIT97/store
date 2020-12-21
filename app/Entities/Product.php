@@ -44,6 +44,7 @@ class Product extends Model implements Transformable
         "content",
         "hot",
         "sale",
+        "phi_ship",
     ];
     public function sluggable(): array
     {
@@ -52,6 +53,13 @@ class Product extends Model implements Transformable
                 'source' => 'name',
             ],
         ];
+    }
+    public function getPhiShip()
+    {
+        if ($this->phi_ship) {
+            return $this->phi_ship . " vnd";
+        }
+        return 0;
     }
     public function getStatus()
     {

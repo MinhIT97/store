@@ -119,8 +119,12 @@ class OrderController extends Controller
         $total      = 0;
 
         foreach ($cart_items as $item) {
-            $price = $this->entity_product->find($item->product_id)->price;
-            $amout = $item->quantity * $price;
+            $product = $this->entity_product->find($item->product_id);
+            $price   = $product->price;
+            $amout   = $item->quantity * $price;
+            if ($product->phi_ship) {
+                $amout = $amout + $product->phi_ship;
+            }
             $total += $amout;
         }
         $total = $total * ((100 - $percent) / 100);
@@ -175,7 +179,8 @@ class OrderController extends Controller
         $pusher->trigger('send-message', 'OrderNotification', $data);
     }
 
-    function return (Request $request) {
+    function return(Request $request)
+    {
 
         if ($request->vnp_ResponseCode == "00") {
             $order = $this->entity_order->find($request->vnp_TxnRef);
@@ -193,6 +198,7 @@ class OrderController extends Controller
         $total_price        = $order->calculateTotal();
         $total_price        = $total_price * ((100 - $percent) / 100);
         $total_price        = (int) $total_price;
+
         $order->total_price = $total_price;
 
         $order->update();

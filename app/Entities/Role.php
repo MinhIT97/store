@@ -28,7 +28,19 @@ class Role extends Model implements Transformable
     {
         return $this->belongsToMany('App\User');
     }
+    public function getStatus()
+    {
+        $status = $this->status;
 
+        switch ($status) {
+            case 1:
+                return 'Active';
+                break;
+            default:
+                return 'Pending';
+                break;
+        }
+    }
     public function permissions()
     {
         return $this->belongsToMany(Permission::class);

@@ -30,6 +30,11 @@
                         <p class="help text-danger mt-2">{{ $errors->first('name') }}</p>
                     </div>
                     <div class="form-group">
+                        <label for="phi_ship">Phi ship</label>
+                        <input type="text" name="phi_ship" class="form-control form-control-sm" id="phi_ship" value="">
+                        <p class="help text-danger mt-2">{{ $errors->first('phi_ship') }}</p>
+                    </div>
+                    <div class="form-group">
                         <label for="brands">Brand</label>
                         <select name="brand_id" id="select1" class="form-control form-control-sm  js-example-basic-single">
                             @foreach($brands as $brand)
