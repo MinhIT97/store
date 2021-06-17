@@ -37,7 +37,22 @@
                         <a class="btn ogin-twitter" href="redirect/twitter"> <i class="fab fa-twitter-square fa-2x "></i></i></a>
                         <a class="btn ogin-github" href="redirect/github"><i class="fab fa-github fa-2x"></i></i></i></a>
                     </div>
+                    <div id="g_id_onload"
+     data-client_id="66400103763-sk973p586okg61u99bljlagssft2m5rn.apps.googleusercontent.com"
+     data-context="signin"
+     data-ux_mode="popup"
+     data-login_uri="http://localhost/test/callback"
+     data-auto_prompt="false">
+</div>
 
+<div class="g_id_signin"
+     data-type="standard"
+     data-shape="rectangular"
+     data-theme="outline"
+     data-text="signin_with"
+     data-size="large"
+     data-logo_alignment="left">
+</div>
                     <div class="register"><a href="{{route('register')}}">Tạo tài khoản</a></div>
 
                 </form>

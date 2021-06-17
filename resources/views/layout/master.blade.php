@@ -13,6 +13,7 @@
     <title>store</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-159389811-1"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 

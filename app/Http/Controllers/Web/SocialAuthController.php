@@ -22,4 +22,21 @@ class SocialAuthController extends Controller
         Auth::login($user);
         return redirect()->route('index');
     }
+    public function callbacks()
+    {
+
+        $client = new \Google_Client(['client_id' =>'66400103763-sk973p586okg61u99bljlagssft2m5rn.apps.googleusercontent.com']);
+        $credential = \request('credential');
+        $ref = \request('ref', url('/'));
+        if (!$credential) {
+            return redirect('/');
+        }
+        $payload = $client->verifyIdToken($credential);
+        dd($payload);
+dd(request()->all());
+        // $user = SocialAccountService::createOrGetUser(Socialite::driver($social)->user(), $social);
+
+        // Auth::login($user);
+        // return redirect()->route('index');
+    }
 }
