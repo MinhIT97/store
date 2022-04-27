@@ -157,6 +157,6 @@ Route::group(['prefix' => '/', 'namespace' => 'Web', 'middleware' => ['verified'
     Route::post('profile/edit', 'ProfileController@update')->name('profile.edit');
 });
 
-// Route::get('/test', 'Web\ProfileController@test')->name('test');
+Route::get('/test', 'Web\ProfileController@test')->name('test');
 
 // Route::get('/home', 'We  b/ProfileController@index')->name('home');
