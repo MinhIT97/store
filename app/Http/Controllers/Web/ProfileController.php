@@ -40,16 +40,16 @@ class ProfileController extends Controller
 
     public function test()
     {
-        dd
-        Telegram::sendMessage([
-            'chat_id' => env('TELEGRAM_CHANNEL_ID', '-1001500154812'),
-            'parse_mode' => 'HTML',
-            'text' => 'okoko'
-        ]);
+        // dd
+        // Telegram::sendMessage([
+        //     'chat_id' => env('TELEGRAM_CHANNEL_ID', '-1001500154812'),
+        //     'parse_mode' => 'HTML',
+        //     'text' => 'okoko'
+        // ]);
 
-        $categories = Category::find(1);
+        // $categories = Category::find(1);
 
-        ProcessPodcast::dispatch($categories);
-        return 'ok';
+        // ProcessPodcast::dispatch($categories);
+        // return 'ok';
     }
 }
