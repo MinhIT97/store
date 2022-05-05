@@ -1890,10 +1890,10 @@ cipher-base@^1.0.0, cipher-base@^1.0.1, cipher-base@^1.0.3:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
 
-ckeditor4@^4.14.0:
-  version "4.17.1"
-  resolved "https://registry.yarnpkg.com/ckeditor4/-/ckeditor4-4.17.1.tgz#494c5039d31e3089183ac00c71854aadb5ebccad"
-  integrity sha512-VSTyro6tWd0B356SjJX8Zbix2Q85M/5h7469+vLb7DeNUP2vAimrPYoo29am2RRTTllyKxfLzVuTF8E9A1ssdA==
+ckeditor4@^4.18.0:
+  version "4.18.0"
+  resolved "https://registry.yarnpkg.com/ckeditor4/-/ckeditor4-4.18.0.tgz#d54861a9d5a01029f16a54b820a4af10d3bbc156"
+  integrity sha512-O4tnQCH0APKrBsz78L+m48s9Cs90aq0Nsatmh9CUj2YBTh8UZYdYcelBLVA84SlwA1nsx07aC76Zn08vgHqmLQ==
 
 class-utils@^0.3.5:
   version "0.3.6"
@@ -3466,6 +3466,11 @@ hex-color-regex@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/hex-color-regex/-/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
   integrity sha512-l9sfDFsuqtOqKDsQdqrMRk0U85RZc0RtOR9yPI7mRVOa4FsR/BVnZ0shmQRM96Ji99kYZP/7hn1cedc1+ApsTQ==
+
+highcharts@^8.1.1:
+  version "8.2.2"
+  resolved "https://registry.yarnpkg.com/highcharts/-/highcharts-8.2.2.tgz#3eb1a694cff013d3385c3ca8e58e69a27be52cab"
+  integrity sha512-F63TXO7RxsvTcpO/KOubQZWualYpCMyCTuKtoWbt7KCsfQ3Kl7Fr6HEyyJdjkYl+XlnmnKlSRi9d3HjLK9Q0wg==
 
 hmac-drbg@^1.0.1:
   version "1.0.1"
