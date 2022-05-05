@@ -4,7 +4,7 @@
     <div>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('users.show')}}" class="text-decoration-none"><i class="fas fa-home"></i>Dashboard </a></li>
-            <li class="breadcrumb-item  text-capitalize"><a href="{{route('categories.show')}}" class="text-decoration-none">categories </a></li>
+            <li class="breadcrumb-item  text-capitalize"><a href="{{route('categories.'.$category->type.'.show')}}" class="text-decoration-none">categories </a></li>
             <li class="breadcrumb-item active text-capitalize"> {{$category->name}}</li>
         </ol>
     </div>

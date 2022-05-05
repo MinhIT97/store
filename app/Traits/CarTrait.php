@@ -5,6 +5,7 @@ namespace App\Traits;
 use App\Repositories\AttributeRepository;
 use App\Repositories\CartItemRepository;
 use App\Repositories\CartRepository;
+use App\Repositories\DiscountRepository;
 use App\Repositories\OrderItemRepository;
 use App\Repositories\OrderRepository;
 use App\Repositories\ProductRepository;
@@ -12,8 +13,14 @@ use Illuminate\Support\Facades\Cookie;
 
 trait CarTrait
 {
+    protected $repository;
+    protected $repository_cart_item;
+    protected $repository_product;
+    protected $repository_order;
+    protected $repository_order_item;
+    protected $discountRepository;
     public function __construct(CartRepository $repository, CartItemRepository $repository_cart_item, ProductRepository $repository_product,
-        OrderRepository $repository_order, OrderItemRepository $repository_order_item, AttributeRepository $repository_attribute
+        OrderRepository $repository_order, OrderItemRepository $repository_order_item, AttributeRepository $repository_attribute, DiscountRepository $discountRepository
     ) {
         $this->repository           = $repository;
         $this->entity_cart          = $repository->getEntity();
@@ -24,6 +31,7 @@ trait CarTrait
         $this->entity_order         = $repository_order->getEntity();
         $this->entity_order_item    = $repository_order_item->getEntity();
         $this->entity_attribute     = $repository_attribute->getEntity();
+        $this->entityDiscount       = $discountRepository->getEntity();
     }
     public function idCookieCart()
     {
@@ -70,6 +78,10 @@ trait CarTrait
         $product    = $this->entity_product->find($product_id);
         $price      = $product->price;
 
+        if ($product->phi_ship) {
+            $price = $product->price + $product->phi_ship;
+
+        }
         $cart_item = $this->entity_cart_item->where([
             ['cart_id', $cart_id],
             ['product_id', $product_id],
@@ -90,5 +102,9 @@ trait CarTrait
             $data['amount']  = $quantity * $price;
             $this->entity_cart_item->create($data);
         }
+    }
+    public function checkDiscount($request)
+    {
+
     }
 }

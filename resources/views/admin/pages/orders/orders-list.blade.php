@@ -6,11 +6,28 @@
             <h3 class="page-title">
                 Orders
             </h3>
+            <div>
+                <form action="">
+                    <input type="date" class="p-2" name="from" id="dateFrom">
+                    <input type="date" class="p-2" name="to" id="dateTo">
+                    <input type="text " class="p-2" name="search" placeholder="Search">
+                    <button type="submit"  class="btn btn-gradient-primary mr-2">
+                        Submit
+                    </button>
+                    <a href="{{route('products.exports')}}">
+                        <button type="button" class="btn btn-gradient-success btn-icon-text">
+                            <i class="mdi mdi-file-excel"></i>
+                            Excel
+                        </button>
+                    </a>
+                </form>
+            </div>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('pages.show_create')}}" class="text-decoration-none">CREATE NEW</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('orders.show_create')}}" class="text-decoration-none">CREATE NEW</a></li>
                 </ol>
             </nav>
+
         </div>
         <div class="row">
             <div class="col-lg-12 grid-margin stretch-card">
@@ -29,7 +46,10 @@
                                     <th> Status</th>
                                     <th> Email</th>
                                     <th> Phone</th>
+                                    <th> Province</th>
+                                    <th> District</th>
                                     <th> Adsress </th>
+                                    <th> Total Price </th>
                                     <th> Note </th>
                                     <th> Ngày tạo </th>
                                     <th>Hành động </th>
@@ -44,7 +64,11 @@
                                     <td> {{$order->getStatus()}} </td>
                                     <td>{{$order->email}} </td>
                                     <td>{{$order->phone}} </td>
+
+                                    <td>{{$order->province->name}} </td>
+                                    <td>{{$order->district->name}} </td>
                                     <td>{{$order->address}} </td>
+                                    <td>{{$order->total_price}} </td>
                                     <td>{{$order->note}} </td>
                                     <td>{{$order->getDate()}} </td>
                                     <td>
@@ -52,6 +76,7 @@
                                         <a class="btn btn-gradient-danger p-2 ml-2" href="{{url('adminstore/delete-orders/'.$order->id)}}"><i class="fas fa-trash"></i></a>
                                         <a class="btn btn-gradient-danger p-2 ml-2" href="{{ url('adminstore/orders/'.$order->id.'/items' )}}"><i class="fas fa-plus-circle"></i></a>
                                         <a class="btn btn-gradient-danger p-2 ml-2" href="{{ url('adminstore/orders/'.$order->id.'/detail-items' )}}"><i class="fas fa-minus"></i></a>
+                                        <a class="btn  btn-gradient-primary p-2 ml-2" href="{{ url('adminstore/orders/'.$order->id.'/detail-items' )}}"><i class="mdi mdi-information"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach

@@ -21,11 +21,14 @@ class CreateProductsTable extends Migration
             $table->integer('quantity');
             $table->integer('current_quantity')->default(0);
             $table->integer('price');
+            $table->integer('original_price');
             $table->integer('sale_price');
             $table->integer('status');
             $table->tinyInteger('hot');
+            $table->integer('view')->default(1);
             $table->string('type');
             $table->string('thumbnail');
+            $table->tinyInteger('sale')->default(1);
             $table->string('content');
             $table->unsignedInteger('brand_id');
             $table->timestamps();

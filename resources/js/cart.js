@@ -12,7 +12,4 @@ $(document).ready(function() {
     lion_close_cart.click(function() {
         lion_cart.slideToggle();
     });
-
-    console.log(lion_close_cart);
-    console.log(lion_btn_cart);
 });

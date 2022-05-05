@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Entities\Brand;
 use App\Entities\Product;
-use App\Repositories\brandRepository;
+use App\Repositories\BrandRepository;
 use App\Validators\BrandValidator;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Prettus\Repository\Eloquent\BaseRepository;

@@ -1,0 +1,83 @@
+.comment {
+    background-color: #f5f5f5;
+    padding: 10px;
+
+    .coment-title {
+        color: #212529;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .comment_ava {
+        img {
+            width: 40px;
+            height: 50px;
+            border-radius: 6px;
+        }
+    }
+
+    .comment_textarea {
+        width: 100%;
+        margin-left: 10px;
+
+        .textarea {
+            padding-left: 10px;
+            width: 100%;
+            height: 35px;
+            border-radius: 4px;
+            border: 1px solid #ccd0d5;
+            outline: none;
+            height: 50px;
+        }
+    }
+
+    .comment-image {
+        width: 40px;
+        height: 40px;
+        border-radius: 6px;
+    }
+
+    .comment-center {
+        top: 0;
+        left: 5%;
+        padding: 6px 18px;
+        background: white;
+        border-radius: 6px;
+    }
+
+    .heitht-20 {
+        height: 20px;
+    }
+
+    .chilren-comment {
+        margin-left: 5%;
+
+        .chil-coment-postion {
+            position: relative;
+
+            .reply-comment__image {
+                img {
+                    width: 40px;
+                    height: 40px;
+                }
+            }
+        }
+
+        .chil-comnet-absul {
+            position: absolute;
+            top: 5%;
+            left: 5%;
+
+            .dropdown {
+                .dropdown-menu {
+                    left: -284% !important;
+
+                    .dropdown-item:focus {
+                        background-color: white;
+                        color: #333333;
+                    }
+                }
+            }
+        }
+    }
+}

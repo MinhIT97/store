@@ -13,19 +13,33 @@
     <script src="https://js.pusher.com/6.0/pusher.min.js"></script>
     <script type="text/javascript">
         // Enable pusher logging - don't include this in production
-        Pusher.logToConsole = true;
 
-        var pusher = new Pusher('f7cf56caa474f5335067', {
-            cluster: 'ap1',
-            encrypted: true,
-        });
-
-        var channel = pusher.subscribe('send-message');
-        channel.bind('OrderNotification', function(data) {
-            alert(JSON.stringify(data));
-            console.log(data);
-        });
         // $('.menu-notification').prepend(newNotificationHtml);
+    </script>
+
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId: '{your-app-id}',
+                cookie: true,
+                xfbml: true,
+                version: '{api-version}'
+            });
+
+            FB.AppEvents.logPageView();
+
+        };
+
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
     </script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @livewireStyles
@@ -34,6 +48,7 @@
 </head>
 
 <body>
+
     @section('header')
     @include('admin.layouts.head')
     @show
@@ -65,6 +80,7 @@
         CKEDITOR.replace('editor1');
     </script>
     @livewireScripts
+
 </body>
 
 

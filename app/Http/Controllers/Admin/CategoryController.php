@@ -23,7 +23,11 @@ class CategoryController extends Controller
 
     public function index(Request $request)
     {
+        $path_items = collect(explode('/', $request->path()));
+        $type       = $path_items->last();
+
         $query     = $this->entity->query();
+        $query     = $query->where('type', $type);
         $query     = $this->applyConstraintsFromRequest($query, $request);
         $query     = $this->applySearchFromRequest($query, ['name'], $request);
         $query     = $this->applyOrderByFromRequest($query, $request);
@@ -52,7 +56,12 @@ class CategoryController extends Controller
     }
     public function store(CategoryCreateRequest $request)
     {
-        $data = $request->all();
+
+        $path_items = collect(explode('/', $request->path()));
+        $type       = $path_items->last();
+
+        $data         = $request->all();
+        $data['type'] = $type;
         if ($this->entity->create($data)) {
             return redirect()->back()->with('sucsess', 'Create category sucsess');
         } else {
@@ -62,7 +71,7 @@ class CategoryController extends Controller
 
     public function showProducts($id)
     {
-        $produts = $this->entity->find($id)->products()->paginate(20);
+        $produts = $this->entity->findOrFail($id)->products()->paginate(20);
         return view('admin.pages.categories.category-show-products', [
             'products' => $produts,
         ]);
@@ -70,7 +79,7 @@ class CategoryController extends Controller
 
     public function showPosts($id)
     {
-        $blogs = $this->entity->find($id)->posts()->paginate(20);
+        $blogs = $this->entity->findOrFail($id)->posts()->paginate(20);
         return view('admin.pages.categories.category-show-blogs', [
             'blogs' => $blogs,
         ]);
@@ -78,9 +87,8 @@ class CategoryController extends Controller
 
     public function showEdit($id)
     {
-
         $categoies = $this->entity->get();
-        $category  = $this->entity->find($id);
+        $category  = $this->entity->findOrFail($id);
         if (!$category) {
             return view('admin.pages.samples.error-404');
         }
@@ -91,7 +99,7 @@ class CategoryController extends Controller
     }
     public function update(CategoryUpdateRequest $request, $id)
     {
-        $category = $this->entity->find($id);
+        $category = $this->entity->findOrFail($id);
         $data     = $request->all();
         if ($category) {
             $category->slug = null;
@@ -105,8 +113,11 @@ class CategoryController extends Controller
     {
         $category = $this->entity->find($id);
         $delete   = $category->delete();
+
+        $category->products()->detach();
+
         if ($delete) {
-            return redirect()->route('categories.show')->with('sucsess', 'Delete Category sucsess');
+            return redirect()->back()->with('sucsess', 'Delete Category sucsess');
         }
         return redirect()->back()->with('error', 'Delete Category error');
     }

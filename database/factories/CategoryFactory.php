@@ -15,8 +15,8 @@ $factory->define(Category::class, function (Faker $faker) {
     ];
 });
 
-// $factory->state(Category::class, 'products', function () {
-//     return [
-//         'type' => 'products',
-//     ];
-// });
+$factory->state(Category::class, 'products', function () {
+    return [
+        'type' => 'products',
+    ];
+});

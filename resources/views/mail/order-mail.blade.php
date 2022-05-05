@@ -111,7 +111,7 @@
                     @foreach($cart_items as $cart_item)
                     <tr>
                         <th scope="row">1</th>
-                        <td style="width:85px"><img class="product-image" src="{{url(asset('/uploads/'.$cart_item->product->thumbnail))}}" alt=""></td>
+                        <td style="width:85px"><img class="product-image" src="{{$cart_item->product->thumbnail}}" alt=""></td>
                         <td>{{$cart_item->size->size}}</td>
                         <td class="text-capitalize">{{$cart_item->color->color}}</td>
                         <td class="text-center">{{$cart_item->quantity}}</td>

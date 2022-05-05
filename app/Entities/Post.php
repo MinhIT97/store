@@ -2,6 +2,7 @@
 
 namespace App\Entities;
 
+use App\Traits\QueryTrait;
 use Carbon\Carbon;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
@@ -16,7 +17,7 @@ use Prettus\Repository\Traits\TransformableTrait;
  */
 class Post extends Model implements Transformable
 {
-    use TransformableTrait, Sluggable, SluggableScopeHelpers;
+    use TransformableTrait, Sluggable, SluggableScopeHelpers ,QueryTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -40,9 +41,10 @@ class Post extends Model implements Transformable
         "view",
         "thumbnail",
         "status",
-        'type',
+        "type",
+        "user_id",
     ];
-    public function sluggable()
+    public function sluggable(): array
     {
         return [
             'slug' => [
@@ -50,7 +52,10 @@ class Post extends Model implements Transformable
             ],
         ];
     }
-
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
     public function categories()
     {
         return $this->morphToMany(Category::class, 'categoryable');
@@ -69,7 +74,10 @@ class Post extends Model implements Transformable
     {
         return Carbon::parse($this->updated_at)->format('d/m/Y');
     }
-
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable')->where('parent_id', 0)->latest();
+    }
     public function scopePublished($query)
     {
         return $query->where('status', Post::PUBLISHED);

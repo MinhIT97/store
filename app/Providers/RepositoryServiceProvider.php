@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repositories\ColorRepository;
+use App\Repositories\ColorRepositoryEloquent;
 use App\Repositories\ProductRepository;
 use App\Repositories\ProductRepositoryEloquent;
 use Illuminate\Support\ServiceProvider;
@@ -15,7 +17,7 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(ProductRepository::class,ProductRepositoryEloquent::class);
+        $this->app->bind(ProductRepository::class, ProductRepositoryEloquent::class);
     }
 
     /**
@@ -26,7 +28,7 @@ class RepositoryServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->app->bind(\App\Repositories\CategoryRepository::class, \App\Repositories\CategoryRepositoryEloquent::class);
-        $this->app->bind(ProductRepository::class,ProductRepositoryEloquent::class);
+        $this->app->bind(ProductRepository::class, ProductRepositoryEloquent::class);
         $this->app->bind(\App\Repositories\PostRepository::class, \App\Repositories\PostRepositoryEloquent::class);
         $this->app->bind(\App\Repositories\AttributeRepository::class, \App\Repositories\AttributeRepositoryEloquent::class);
         $this->app->bind(\App\Repositories\OrderRepository::class, \App\Repositories\OrderRepositoryEloquent::class);
@@ -49,6 +51,13 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(\App\Repositories\CartRepository::class, \App\Repositories\CartRepositoryEloquent::class);
         $this->app->bind(\App\Repositories\CartItemRepository::class, \App\Repositories\CartItemRepositoryEloquent::class);
         $this->app->bind(\App\Repositories\MailRepository::class, \App\Repositories\MailRepositoryEloquent::class);
+        $this->app->bind(ColorRepository::class, ColorRepositoryEloquent::class);
+        $this->app->bind(\App\Repositories\PermissionRepository::class, \App\Repositories\PermissionRepositoryEloquent::class);
+        $this->app->bind(\App\Repositories\SocialAccountRepository::class, \App\Repositories\SocialAccountRepositoryEloquent::class);
+        $this->app->bind(\App\Repositories\DistrictRepository::class, \App\Repositories\DistrictRepositoryEloquent::class);
+        $this->app->bind(\App\Repositories\ProvinceRepository::class, \App\Repositories\ProvinceRepositoryEloquent::class);
+        $this->app->bind(\App\Repositories\DiscountRepository::class, \App\Repositories\DiscountRepositoryEloquent::class);
+        $this->app->bind(\App\Repositories\NotificationRepository::class, \App\Repositories\NotificationRepositoryEloquent::class);
         //:end-bindings:
     }
 }

@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Entities\Province;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderCreateRequest;
 use App\Mail\OrderMail;
 use App\Notifications\OrderProductNotification;
 use App\Traits\CarTrait;
 use App\User;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Pusher\Pusher;
@@ -15,53 +18,140 @@ use Pusher\Pusher;
 class OrderController extends Controller
 {
     use CarTrait;
-    protected $repository;
-    protected $repository_cart_item;
-    protected $repository_product;
-    protected $repository_order;
-    protected $repository_order_item;
 
     public function show()
     {
         $cart_id = $this->idCookieCart();
 
-        $cart = $this->getCart($cart_id);
+        $cart     = $this->getCart($cart_id);
+        $province = Province::where('status', Province::STATUS_ACTIVE)->get();
 
         return view(
             'pages.checkout',
             [
-                'cart' => $cart,
+                'cart'     => $cart,
+                'province' => $province,
             ]
         );
     }
     public function order(OrderCreateRequest $request)
     {
+        $data    = $request->all();
+        $percent = 0;
+        $date    = Carbon::now();
+        if ($request->code) {
+            $code     = $request->code;
+            $discount = $this->entityDiscount->where('code', $request->code)->whereDate('star_date', '<=', $date)->whereDate('end_date', '>=', $date)->first();
+            if ($discount) {
+                $discount_id         = $discount->id;
+                $data['discount_id'] = $discount_id;
+                $percent             = $discount->percent;
+            }
+        }
 
-        $data = $request->all();
+        $total = $this->total($request, $percent);
+
         if (Auth::check()) {
             $data['user_id'] = Auth::user()->id;
         } else {
-            $data['user_id'] = 1;
+            $data['user_id'] = null;
         }
+        $order         = $this->entity_order->create($data);
+        $order_id      = $order->id;
+        $code          = 'STORE-' . $order_id;
+        $order['code'] = $code;
+        $order->save();
+        if ($request->payment_method === "vnpay") {
+            $vnp_Url        = config('laravel-omnipay.gateways.VNPay.options.vnp_Url');
+            $vnp_Returnurl  = config('laravel-omnipay.gateways.VNPay.options.vnp_Returnurl');
+            $vnp_TmnCode    = config('laravel-omnipay.gateways.VNPay.options.vnpTmnCode'); //Mã website tại VNPAY
+            $vnp_HashSecret = config('laravel-omnipay.gateways.VNPay.options.vnpHashSecret'); //Chuỗi bí mật
+            $vnp_TxnRef     = $order_id; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
+            $vnp_OrderInfo  = "Thanh toán hóa đơn mua hàng";
+            $vnp_OrderType  = 200000;
+            $vnp_Amount     = $total * 100;
+            $vnp_Locale     = 'vn';
+            $vnp_IpAddr     = request()->ip();
+            $inputData      = array(
+                "vnp_Version"    => "2.0.0",
+                "vnp_TmnCode"    => $vnp_TmnCode,
+                "vnp_Amount"     => $vnp_Amount,
+                "vnp_Command"    => "pay",
+                "vnp_CreateDate" => date('YmdHis'),
+                "vnp_CurrCode"   => "VND",
+                "vnp_IpAddr"     => $vnp_IpAddr,
+                "vnp_Locale"     => $vnp_Locale,
+                "vnp_OrderInfo"  => $vnp_OrderInfo,
+                "vnp_OrderType"  => $vnp_OrderType,
+                "vnp_ReturnUrl"  => $vnp_Returnurl,
+                "vnp_TxnRef"     => $vnp_TxnRef,
+            );
+            ksort($inputData);
+            $query    = "";
+            $i        = 0;
+            $hashdata = "";
+            foreach ($inputData as $key => $value) {
+                if ($i == 1) {
+                    $hashdata .= '&' . $key . "=" . $value;
+                } else {
+                    $hashdata .= $key . "=" . $value;
+                    $i = 1;
+                }
+                $query .= urlencode($key) . "=" . urlencode($value) . '&';
+            }
+            $vnp_Url = $vnp_Url . "?" . $query;
+            if (isset($vnp_HashSecret)) {
+                $vnpSecureHash = hash('sha256', $vnp_HashSecret . $hashdata);
+                $vnp_Url .= 'vnp_SecureHashType=SHA256&vnp_SecureHash=' . $vnpSecureHash;
+            }
+            return redirect($vnp_Url);
+        };
+        $this->handleCart($request, $order, $percent);
 
-        $order = $this->entity_order->create($data);
+        return redirect()->route('index');
+    }
 
-        $order_id   = $order->id;
+    public function total($request, $percent)
+    {
+
+        $cart_id    = $this->idCookieCart();
+        $cart_items = $this->entity_cart_item->where('cart_id', $cart_id)->get();
+        $total      = 0;
+
+        foreach ($cart_items as $item) {
+            $product = $this->entity_product->find($item->product_id);
+            $price   = $product->price;
+            $amout   = $item->quantity * $price;
+            if ($product->phi_ship) {
+                $amout = $amout + $product->phi_ship;
+            }
+            $total += $amout;
+        }
+        $total = $total * ((100 - $percent) / 100);
+        $total = (int) $total;
+
+        return $total;
+    }
+
+    public function handleCart($request, $order, $percent = 0)
+    {
+
         $cart_id    = $this->idCookieCart();
         $cart_items = $this->entity_cart_item->where('cart_id', $cart_id)->get();
         foreach ($cart_items as $cart_item) {
-            $data = [
+            $price = $this->entity_product->find($cart_item->product_id)->price;
+            $data  = [
                 'product_id' => $cart_item->product_id,
                 'quantity'   => $cart_item->quantity,
                 'price'      => $cart_item->price,
                 'order_id'   => $order->id,
                 'size_id'    => $cart_item->size_id,
                 'color_id'   => $cart_item->color_id,
-                'amount'     => $cart_item->amount,
+                'amount'     => $cart_item->quantity * $price,
             ];
             $this->entity_order_item->create($data);
         }
-        $this->plusTotalOrder($order_id);
+        $this->plusTotalOrder($order->id, $percent);
         $this->entity_cart_item->where('cart_id', $cart_id)->delete();
         $cart        = $this->entity_cart->where('id', $cart_id)->first();
         $total       = $cart->total;
@@ -72,17 +162,13 @@ class OrderController extends Controller
         $notify = [
             "title"   => $request->name,
             "content" => "just bought the product",
-
         ];
         $user->notify(new OrderProductNotification($notify));
-
         Mail::to($order->email)->send(new OrderMail($cart_items, $total));
-
         $options = array(
             'cluster'   => 'ap1',
             'encrypted' => true,
         );
-
         $pusher = new Pusher(
             config('pusher.PUSHER_APP_KEY'),
             config('pusher.PUSHER_APP_SECRET'),
@@ -90,18 +176,31 @@ class OrderController extends Controller
             $options
         );
         $data = $notify;
-
         $pusher->trigger('send-message', 'OrderNotification', $data);
-
-        return redirect()->route('index');
     }
 
-    public function plusTotalOrder($order_id)
+    function return(Request $request)
+    {
+
+        if ($request->vnp_ResponseCode == "00") {
+            $order = $this->entity_order->find($request->vnp_TxnRef);
+            $this->handleCart($request, $order);
+
+            return redirect()->route('index')->with('success', 'Đã thanh toán phí dịch vụ');
+        }
+        return redirect()->route('cart.show')->with('error', 'Lỗi trong quá trình thanh toán phí dịch vụ');
+    }
+
+    public function plusTotalOrder($order_id, $percent)
     {
         $order = $this->entity_order->where('id', $order_id)->first();
 
         $total_price        = $order->calculateTotal();
+        $total_price        = $total_price * ((100 - $percent) / 100);
+        $total_price        = (int) $total_price;
+
         $order->total_price = $total_price;
+
         $order->update();
     }
 }

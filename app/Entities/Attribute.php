@@ -26,12 +26,12 @@ class Attribute extends Model implements Transformable
         "color_id",
         "quantity",
         "current_quantity",
-        "size_id"
+        "size_id",
     ];
 
-    public function sizes()
+    public function size()
     {
-        return $this->morphToMany(Size::class, 'sizeable');
+        return $this->hasOne(Size::class, 'id', 'size_id');
     }
     public function color()
     {

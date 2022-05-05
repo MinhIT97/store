@@ -16,10 +16,23 @@
                 <div class="lion-nav">
                     <div class="lion-nav__left">
                         <ul>
-                            <li class="lion-nav__iteam"><a href="{{asset('products/men')}}">Nam</a></li>
+                            @if($getMenus->count())
+                            @foreach($getMenus as $menu)
+                            <li class="lion-nav__iteam dropdown"><a @if($menu->menus->count()) data-toggle="dropdown" @endif href="{{asset($menu->link)}}">{{$menu->label}}</a>
+                                @if($menu->menus->count())
+                                <div class="dropdown-menu">
+                                @foreach($menu->menus as $item)
+                                    <a class="dropdown-item" href="{{$item->link}}">{{$item->label}}</a>
+                                @endforeach
+                                </div>
+                                @endif
+                            </li>
+                            @endforeach
+                            @endif
+                            <!-- <li class="lion-nav__iteam"><a href="{{asset('products/men')}}">Nam</a></li>
                             <li class="lion-nav__iteam"><a href="{{asset('products/women')}}">Nữ</a></li>
                             <li class="lion-nav__iteam"><a href="{{asset('products/accessories')}}">Phụ kiện</a></li>
-                            <li class="lion-nav__iteam"><a href="{{route('blogs')}}">Blog</a></li>
+                            <li class="lion-nav__iteam"><a href="{{route('blogs')}}">Blog</a></li> -->
                         </ul>
                     </div>
                     <div class="lion-logo">
@@ -36,6 +49,8 @@
                                 <span class="position-absolute lion-cart-item-quantity">
                                     @if($cart)
                                     {{$cart->cart_items_count}}
+                                    @else
+                                    0
                                     @endif
                                 </span>
                             </li>
@@ -43,7 +58,7 @@
                                 <a class="mobile--hidden search"><i class="fas fa-search"></i></a></li>
                             @guest
                             <li class="lion-nav__iteam"><a href="/login">
-                                    <span class="mobile--hidden">Đăng nhập</span>
+                                    <span class="mobile--hidden">Login</span>
                                     <i class="far fa-user"></i></a></li>
                             @if (Route::has('register'))
                             <li class="lion-nav__iteam"><a href="{{ route('register') }}">
@@ -55,11 +70,16 @@
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
+
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a href="/history/orders">
+                                        History Order
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
@@ -76,7 +96,7 @@
         </div>
         <div class="lion-cart " tabindex="-1">
             <form action="/cart" method="get">
-            @csrf
+                @csrf
                 <div class="d-flex justify-content-between">
                     <div class="mt-3 d-flex ">
                         <p>
@@ -85,6 +105,8 @@
                         <span class="lion-quantity-cart text-center ml-2"> <span>(</span> <span>
                                 @if($cart)
                                 {{$cart->cart_items_count}}
+                                @else
+                                0
                                 @endif
                             </span> <span>)</span></span>
                     </div>
@@ -99,7 +121,7 @@
                     <div class="product-cart-item">
                         <div class="row">
                             <div class="col-5 ">
-                                <img src="{{asset('uploads/'. $cartItem->product->thumbnail)}}" class="img-fluid" alt="">
+                                <img src="{{ $cartItem->product->thumbnail}}" class="img-fluid" alt="">
                             </div>
                             <div class="col-6 m-0 p-0">
                                 <div class="mb-1"> {!! $cartItem->product->getLimitName(20) !!}</div>
@@ -107,7 +129,7 @@
                                 <span>-</span>
                                 <span>Zize : {!! $cartItem->size->size !!}</span>
                                 <div class="mt-2 mb-2">
-                                    <input class="quantity" data-id="{!! $cartItem->id !!}"  value="{{$cartItem->quantity}}" type="number" min="1">
+                                    <input class="quantity" data-id="{!! $cartItem->id !!}" value="{{$cartItem->quantity}}" type="number" min="1">
                                 </div>
                                 <div class="" id="amount-{{$cartItem->id}}">{{number_format($cartItem->amount)}}₫</div>
                             </div>

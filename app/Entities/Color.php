@@ -24,7 +24,7 @@ class Color extends Model implements Transformable
      * @var array
      */
     protected $fillable = ['color'];
-    public function sluggable()
+    public function sluggable():array
     {
         return [
             'slug' => [

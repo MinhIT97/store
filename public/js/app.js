@@ -46863,6 +46863,14 @@ __webpack_require__(/*! ./cart */ "./resources/js/cart.js");
 
 __webpack_require__(/*! ./cart-item */ "./resources/js/cart-item.js");
 
+__webpack_require__(/*! ./provine */ "./resources/js/provine.js");
+
+__webpack_require__(/*! ./comment */ "./resources/js/comment.js");
+
+__webpack_require__(/*! ./zoom.js */ "./resources/js/zoom.js");
+
+__webpack_require__(/*! ./checkdiscount */ "./resources/js/checkdiscount.js");
+
 console.log("Hello World :)");
 $.ajaxSetup({
   headers: {
@@ -46877,8 +46885,8 @@ $(document).ready(function () {
     dots: false,
     slidesToShow: 4,
     slidesToScroll: 1,
-    prevArrow: '<button class="slick-prev"> <i class="fa fa-angle-double-left"></i></button>',
-    nextArrow: '<button class="slick-next"> <i class="fa fa-angle-double-right"></i></button>',
+    prevArrow: '<button class="slick-prev bg-store-btn"> <i class="fa fa-angle-double-left"></i></button>',
+    nextArrow: '<button class="slick-next bg-store-btn"> <i class="fas fa-angle-right"></i></button>',
     responsive: [{
       breakpoint: 1024,
       settings: {
@@ -46971,6 +46979,24 @@ $(document).ready(function () {
 });
 $(document).ready(function () {
   $(".js-example-basic-multiple").select2();
+
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        $("#imagePreview").css("background-image", "url(" + e.target.result + ")");
+        $("#imagePreview").hide();
+        $("#imagePreview").fadeIn(650);
+      };
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  $("#imageUpload").change(function () {
+    readURL(this);
+  });
 });
 
 /***/ }),
@@ -47029,14 +47055,11 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 $(document).ready(function () {
   var quantityChange = document.getElementsByClassName("quantity");
-  console.log(quantityChange);
   Array.from(quantityChange).forEach(function (input) {
     input.addEventListener("change", function () {
       var id = input.dataset.id;
       var quantity = input.value;
       var url = window.location.origin + "/api/cart/" + id;
-      console.log(url); // var url = "api/cart/" + id;
-
       $.ajax({
         type: "PUT",
         url: url,
@@ -47051,9 +47074,8 @@ $(document).ready(function () {
           $("#amount-" + id).html(amount);
           $("#total").html(total);
         },
-        error: function error(jqXHR, textStatus, errorThrown) {
-          console.log(JSON.stringify(jqXHR));
-          console.log("AJAX error: " + textStatus + " : " + errorThrown);
+        error: function error(request, status, _error) {
+          alert("the quantity is too big !");
         }
       });
     });
@@ -47079,8 +47101,113 @@ $(document).ready(function () {
   lion_close_cart.click(function () {
     lion_cart.slideToggle();
   });
-  console.log(lion_close_cart);
-  console.log(lion_btn_cart);
+});
+
+/***/ }),
+
+/***/ "./resources/js/checkdiscount.js":
+/*!***************************************!*\
+  !*** ./resources/js/checkdiscount.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  console.log("fcheck discount");
+  $("#check-discount").click(function () {
+    var val = $('input[name="code"]').val();
+
+    if (val) {
+      $.ajax({
+        type: "GET",
+        url: "api/check-code/" + val,
+        dataType: "json",
+        success: function success(data) {
+          var percent = data.percent;
+
+          if (percent) {
+            var total = $("#total-price-cart").data("total");
+            var checkout_price = total * (100 - percent) / 100;
+            checkout_price = new Intl.NumberFormat("vi-VN").format(checkout_price);
+            $("#total-price-cart").text("VND   " + checkout_price + " ₫");
+            $("#total-price-cart").append("<div class=\"text-success mt-4\">Coupon codes are enabled</div>");
+          } else {
+            $("#total-price-cart").append("<div class=\"text-danger mt-4\">Invalid code</div>");
+          }
+        },
+        error: function error(request, status, _error) {
+          console.log(_error);
+        }
+      });
+    }
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/comment.js":
+/*!*********************************!*\
+  !*** ./resources/js/comment.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  replyComent = function replyComent(e) {
+    $("#repply-commen-" + e).addClass("d-flex");
+  };
+});
+
+/***/ }),
+
+/***/ "./resources/js/provine.js":
+/*!*********************************!*\
+  !*** ./resources/js/provine.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  console.log("ok");
+  var provinceID = $('select[name="province_id"]').val();
+
+  if (provinceID) {
+    $.ajax({
+      url: "api/provinces/" + encodeURI(provinceID),
+      type: "GET",
+      dataType: "json",
+      success: function success(result) {
+        var province = result.districts;
+        $('select[name="district_id"]').empty();
+        $.each(province, function (key, value) {
+          $('select[name="district_id"]').append('<option value="' + value.id + '">' + value.name + "</option>");
+        });
+      }
+    });
+  } else {
+    $('select[name="province_id"]').empty();
+  }
+
+  $('select[name="province_id"]').on("change", function () {
+    var provinceID = $(this).val();
+
+    if (provinceID) {
+      $.ajax({
+        url: "api/provinces/" + encodeURI(provinceID),
+        type: "GET",
+        dataType: "json",
+        success: function success(result) {
+          var province = result.districts;
+          $('select[name="district_id"]').empty();
+          $.each(province, function (key, value) {
+            $('select[name="district_id"]').append('<option value="' + value.id + '">' + value.name + "</option>");
+          });
+        }
+      });
+    } else {
+      $('select[name="city"]').empty();
+    }
+  });
 });
 
 /***/ }),
@@ -47130,6 +47257,94 @@ $(document).ready(function () {
     }
   });
 });
+
+/***/ }),
+
+/***/ "./resources/js/zoom.js":
+/*!******************************!*\
+  !*** ./resources/js/zoom.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  $(document).mousemove(function (e) {
+    var check = $(".slick-active").offset();
+
+    if (check) {
+      var x = e.clientX;
+      var y = e.clientY;
+      var imgx1 = $(".slick-active").offset().left;
+      var imgx2 = $(".slick-active").outerWidth() + imgx1;
+      var imgy1 = $(".slick-active").offset().top;
+      var imgy2 = $(".slick-active").outerHeight() + imgy1;
+
+      if (x > imgx1 && x < imgx2 && y > imgy1 && y < imgy2) {
+        $("#lens").show();
+        $("#result").show();
+        imageZoom($(".slick-active"), $("#result"), $("#lens"));
+      } else {
+        $("#lens").hide();
+        $("#result").hide();
+      }
+    }
+  });
+});
+
+function imageZoom(img, result, lens) {
+  img = $(".slick-active > div > .item > img");
+  result.width(img.innerWidth());
+  result.height(img.innerHeight());
+  lens.width(img.innerWidth() / 2);
+  lens.height(img.innerHeight() / 2);
+  result.offset({
+    top: img.offset().top,
+    left: img.offset().left + img.outerWidth() + 10
+  });
+  var cx = img.innerWidth() / lens.innerWidth();
+  var cy = img.innerHeight() / lens.innerHeight();
+  result.css("backgroundImage", "url(" + img.attr("src") + ")");
+  result.css("backgroundSize", img.width() * cx + "px " + img.height() * cy + "px");
+  lens.mousemove(function (e) {
+    moveLens(e);
+  });
+  img.mousemove(function (e) {
+    moveLens(e);
+  });
+  lens.on("touchmove", function () {
+    moveLens();
+  });
+  img.on("touchmove", function () {
+    moveLens();
+  });
+
+  function moveLens(e) {
+    var x = e.clientX - lens.outerWidth() / 2;
+    var y = e.clientY - lens.outerHeight() / 2;
+
+    if (x > img.outerWidth() + img.offset().left - lens.outerWidth()) {
+      x = img.outerWidth() + img.offset().left - lens.outerWidth();
+    }
+
+    if (x < img.offset().left) {
+      x = img.offset().left;
+    }
+
+    if (y > img.outerHeight() + img.offset().top - lens.outerHeight()) {
+      y = img.outerHeight() + img.offset().top - lens.outerHeight();
+    }
+
+    if (y < img.offset().top) {
+      y = img.offset().top;
+    }
+
+    lens.offset({
+      top: y,
+      left: x
+    });
+    result.css("backgroundPosition", "-" + (x - img.offset().left) * cx + "px -" + (y - img.offset().top) * cy + "px");
+  }
+}
 
 /***/ }),
 

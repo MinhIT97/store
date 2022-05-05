@@ -2,6 +2,8 @@
 
 namespace App\Traits;
 
+use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
 
 trait Search
@@ -17,7 +19,6 @@ trait Search
                     }
                     $q = $this->applySearchWithRelationsFromRequest($q, $search, $relations);
                 });
-
             }
         }
         return $query;
@@ -60,11 +61,51 @@ trait Search
                                 $query->orWhere($item, 'like', "%{$search}%");
                             }
                         });
-
                     }
                 });
             }
         }
         return $query;
+    }
+
+    // public function field($request)
+    // {
+    //     if ($request->has('field')) {
+    //         if ($request->field === 'updated') {
+    //             $field = 'updated_at';
+    //         } elseif ($request->field === 'published') {
+    //             $field = 'published_date';
+    //         } elseif ($request->field === 'created') {
+    //             $field = 'created_at';
+    //         }
+    //         return $field;
+    //     } else {
+    //         throw new Exception('field requied');
+    //     }
+    // }
+
+
+    public function getFromDate($request, $query)
+    {
+
+        if ($request->get('from') != null) {
+            $form_date = $this->fomatDate($request->from);
+            $query     = $query->whereDate('created_at', '>=', $form_date);
+        }
+        return $query;
+    }
+
+    public function getToDate($request, $query)
+    {
+        if ($request->get('to') != null) {
+            $to_date = $this->fomatDate($request->to);
+            $query   = $query->whereDate('created_at', '<=', $to_date);
+        }
+        return $query;
+    }
+    public function fomatDate($date)
+    {
+        $fomatDate = Carbon::createFromFormat('Y-m-d', $date);
+        return $fomatDate;
     }
 }

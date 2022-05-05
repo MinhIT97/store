@@ -9,38 +9,71 @@ use App\Entities\Color;
 use App\Entities\Image;
 use App\Entities\Product;
 use App\Entities\Size;
+use App\Exports\ProductExports;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AttributeCreateRequest;
 use App\Http\Requests\ProductCreateRequest;
 use App\Http\Requests\ProductUpdateRequest;
 use App\Repositories\AttributeRepository;
 use App\Repositories\ProductRepository;
+use App\Services\ExcelService;
+use App\Services\ImageUploadService;
 use App\Traits\Search;
+use App\User;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProductController extends Controller
 {
     use Search;
     protected $repository;
-    public function __construct(ProductRepository $repository, AttributeRepository $attributeRepository)
+    protected $imageUploadService;
+    protected $excelService;
+    public function __construct(ProductRepository $repository, ProductExports $exports, AttributeRepository $attributeRepository, ImageUploadService $imageUploadService, ExcelService $excelService)
     {
-        $this->repository       = $repository;
-        $this->entity           = $repository->getEntity();
-        $this->entity_attribute = $attributeRepository->getEntity();
+        $this->repository         = $repository;
+        $this->entity             = $repository->getEntity();
+        $this->entity_attribute   = $attributeRepository->getEntity();
+        $this->exports            = $exports;
+        $this->imageUploadService = $imageUploadService;
+        $this->excelService       = $excelService;
     }
+
+    public function exportExcel(Request $request)
+    {
+        $products = $this->entity;
+
+        $url = $request->url;
+
+        $url      = explode('?', $url);
+        $type     = explode('/', $url[0]);
+        $type     = collect($type)->last();
+        $products = $this->excelService->FiledSearchExcel($url, $products);
+
+        $products = $products->where('type', $type)->get();
+
+        Excel::store(new $this->exports($products), 'products.xlsx', 'excel');
+
+        return Response()->download(public_path('exports/products.xlsx'));
+    }
+
     public function index()
     {
+
         return view('admin.pages.products.index');
     }
 
     public function show(Request $request, $type)
     {
+        $this->authorize('viewAny', Product::class);
         $query    = $this->entity->query();
+        $query    = $this->getFromDate($request, $query);
+        $query    = $this->getToDate($request, $query);
         $query    = $this->applyConstraintsFromRequest($query, $request);
         $query    = $this->applySearchFromRequest($query, ['name', 'price'], $request);
         $query    = $this->applyOrderByFromRequest($query, $request);
-        $products = $query->where('type', $type)->withCount('attributes', 'orderItems')->orderBY('id', 'DESC')->paginate(20);
-        $products->setPath(url()->current() . '?search=' . $request->get('search'));
+        $products = $query->where('type', $type)->withCount('attributes', 'orderItems', 'comments')->orderBY('id', 'DESC')->paginate(20);
+        // $products->setPath(url()->current() . '?search=' . $request->get('search'));
 
         return view('admin.pages.products.product-list', [
             'products' => $products,
@@ -49,6 +82,7 @@ class ProductController extends Controller
 
     public function showStore()
     {
+        $this->authorize('create', Product::class);
         $categories = Category::get();
         $brands     = Brand::get();
         $sizes      = Size::get();
@@ -65,9 +99,9 @@ class ProductController extends Controller
     {
 
         if ($request->hasFile('thumbnail')) {
-            $request->thumbnail->move(base_path('/public/uploads'), $request->thumbnail->getClientOriginalName());
+            $link              = $this->imageUploadService->handleUploadedImage($request->file('thumbnail'));
             $data              = $request->all();
-            $data['thumbnail'] = $request->thumbnail->getClientOriginalName();
+            $data['thumbnail'] = $link;
         } else {
             $data = $request->all();
         }
@@ -92,11 +126,9 @@ class ProductController extends Controller
 
             if ($request->hasFile('media')) {
                 foreach ($request->media as $key) {
-                    $filename = $key->getClientOriginalName();
-
-                    $key->move(base_path('/public/uploads'), $filename);
+                    $link = $this->imageUploadService->handleUploadedImage($key);
                     $product->imagaes()->updateOrCreate([
-                        'url' => $filename,
+                        'url' => $link,
                     ]);
                 }
             }
@@ -126,14 +158,12 @@ class ProductController extends Controller
     }
     public function editProduct($id, ProductUpdateRequest $request)
     {
-
         $product = $this->repository->find($id);
 
         if ($request->hasFile('thumbnail')) {
-            $request->thumbnail->move(base_path('/public/uploads'), $request->thumbnail->getClientOriginalName());
+            $link              = $this->imageUploadService->handleUploadedImage($request->file('thumbnail'));
             $data              = $request->all();
-            $data['thumbnail'] = $request->thumbnail->getClientOriginalName();
-            $data['type']      = 'blog';
+            $data['thumbnail'] = $link;
         } else {
             $data = $request->all();
         }
@@ -154,11 +184,9 @@ class ProductController extends Controller
 
                 if ($request->hasFile('media')) {
                     foreach ($request->media as $key) {
-                        $filename = $key->getClientOriginalName();
-
-                        $key->move(base_path('/public/uploads'), $filename);
+                        $link = $this->imageUploadService->handleUploadedImage($key);
                         $product->imagaes()->updateOrCreate([
-                            'url' => $filename,
+                            'url' => $link,
                         ]);
                     }
                 }
@@ -174,6 +202,9 @@ class ProductController extends Controller
         $product = $this->entity->findOrfail($id);
         if (!$product) {
             return view('admin.pages.samples.error-404');
+        }
+        if ($product->orderItems->count()) {
+            return redirect()->back()->with('sucsess', 'Please delete order item before deleting product');
         }
 
         $product->delete();
@@ -215,6 +246,23 @@ class ProductController extends Controller
 
     public function storeAttribute(AttributeCreateRequest $request)
     {
+
+        $product_id = $request->product_id;
+        $color_id   = $request->color_id;
+        $size_id    = $request->size_id;
+
+        $attributes = $this->entity_attribute->where([
+            [
+                'product_id', $product_id,
+            ], [
+                'color_id', $color_id,
+            ], [
+                'size_id', $size_id,
+            ],
+        ])->first();
+        if ($attributes) {
+            return redirect()->back()->with('errow', 'Attribute already exist');
+        }
 
         $product_current_quantity = $this->checkQuantityProductAttibute($request);
 
@@ -263,4 +311,15 @@ class ProductController extends Controller
 
         return redirect()->back()->with('errow', 'Delete attribute errow');
     }
+
+    public function comments($id)
+    {
+        $product = $this->entity->load('comments')->findOrFail($id);
+        $users   = User::get();
+        return view('admin.pages.products.comments.comment', [
+            'product' => $product,
+            'users'   => $users,
+        ]);
+    }
+
 }

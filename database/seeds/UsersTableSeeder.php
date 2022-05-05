@@ -36,5 +36,7 @@ class UsersTableSeeder extends Seeder
             'verify_token' => Str::random(32),
             'level'        => 0,
         ]);
+
+        User::where('email','minh06081997@gmail.com')->first()->roles()->attach(2);
     }
 }

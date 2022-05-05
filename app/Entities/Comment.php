@@ -13,7 +13,7 @@ use Prettus\Repository\Traits\TransformableTrait;
  */
 class Comment extends Model implements Transformable
 {
-    use TransformableTrait ;
+    use TransformableTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -23,10 +23,17 @@ class Comment extends Model implements Transformable
     protected $fillable = [
         "commentable_id",
         "commentable_type",
-        "email",
-        "name",
-        "content",
-        "status",
+        "body",
+        "user_id",
+        'parent_id',
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function chilrens()
+    {
+        return $this->hasMany(Comment::class, 'parent_id');
+    }
 }

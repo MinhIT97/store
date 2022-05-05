@@ -24,6 +24,7 @@ class Option extends Model implements Transformable
     protected $fillable = [
         "key",
         "value",
+        "label",
     ];
     public function getDate()
     {
@@ -32,5 +33,13 @@ class Option extends Model implements Transformable
     public function getDateUpdate()
     {
         return Carbon::parse($this->updated_at)->format('d/m/Y');
+    }
+    public static function getOption($key)
+    {
+        $option = self::where('key', $key)->latest()->first();
+        if ($option) {
+            return $option->value;
+        }
+        return '';
     }
 }

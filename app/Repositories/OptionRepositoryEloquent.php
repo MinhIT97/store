@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Entities\Option;
-use App\Repositories\optionRepository;
+use App\Repositories\OptionRepository;
 use App\Validators\OptionValidator;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Prettus\Repository\Eloquent\BaseRepository;

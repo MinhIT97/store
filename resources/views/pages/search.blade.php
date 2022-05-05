@@ -3,7 +3,7 @@
 
 <nav class="breadcrumb container">
     <a class="breadcrumb-item" href="/">Trang chủ</a>
-    <a class="breadcrumb-item" >Tìm kiếm</a>
+    <a class="breadcrumb-item">Tìm kiếm</a>
 </nav>
 
 <section class="lion-search">
@@ -29,7 +29,7 @@
                             <div class="slide-item">
                                 <a href="{{asset('products/'.$product->type.'/'.$product->slug)}}">
                                     <div class="slide-item__image">
-                                        <img class="img-fluid" src="{{asset('uploads/'.$product->thumbnail)}}" alt="">
+                                        <img class="img-fluid" src="{{$product->thumbnail}}" alt="">
                                     </div>
                                     <div class="slide-item__content text-center">
                                         <div class="slide-item__content--heading">
@@ -54,7 +54,7 @@
                         <div class="blog-item">
                             <div class="row">
                                 <div class="col-12 col-md-2">
-                                    <img class="img-fluid" src="{{asset('uploads/'.$blog->thumbnail)}}" alt="">
+                                    <img class="img-fluid" src="{{$blog->thumbnail}}" alt="">
                                 </div>
                                 <div class="col-12 col-md-10">
                                     <div class="date"><span><a href="">Hot trend</a></span><span class="font-italic date-time"><span>{{$blog->getMonth()}}</<span></span></div>
@@ -86,7 +86,7 @@
                                 <div class="product-item">
                                     <a href="{{asset('products/'.$product->type.'/'.$product->slug)}}">
                                         <div class="slide-item__image">
-                                            <img class="img-fluid" src="{{asset('/uploads/'.$product->thumbnail)}}" alt="">
+                                            <img class="img-fluid" src="{{$product->thumbnail}}" alt="">
                                         </div>
                                         <div class="text-center">
                                             <div class="name">
@@ -112,7 +112,7 @@
                     <div class="blog-item">
                         <div class="row">
                             <div class="col-12 col-md-6">
-                                <img class="img-fluid" src="{{asset('uploads/'.$blog->thumbnail)}}" alt="">
+                                <img class="img-fluid" src="{{asset($blog->thumbnail)}}" alt="">
                             </div>
                             <div class="col-12 col-md-6">
                                 <div class="date"><span><a href="">Hot trend</a></span><span class="font-italic date-time"><span>{{$blog->getMonth()}}</<span></span></div>

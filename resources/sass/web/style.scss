@@ -2,12 +2,14 @@
 @import "~@fortawesome/fontawesome-free/scss/fontawesome";
 @import "~@fortawesome/fontawesome-free/scss/regular";
 @import "~@fortawesome/fontawesome-free/scss/solid";
+
 .content-wrapper {
     .upload-avatar {
         h1 {
             font-size: 20px;
             text-align: center;
             margin: 20px 0 20px;
+
             small {
                 display: block;
                 font-size: 15px;
@@ -15,18 +17,22 @@
                 color: gray;
             }
         }
+
         .avatar-upload {
             position: relative;
             max-width: 205px;
             margin: 50px auto;
+
             .avatar-edit {
                 position: absolute;
                 right: 12px;
                 z-index: 1;
                 top: 10px;
+
                 input {
                     display: none;
-                    + label {
+
+                    +label {
                         display: inline-block;
                         width: 34px;
                         height: 34px;
@@ -38,10 +44,12 @@
                         cursor: pointer;
                         font-weight: normal;
                         transition: all 0.2s ease-in-out;
+
                         &:hover {
                             background: #f1f1f1;
                             border-color: #d6d6d6;
                         }
+
                         &:after {
                             content: "\F0C9";
                             // font-family: "FontAwesome";
@@ -56,6 +64,7 @@
                     }
                 }
             }
+
             .avatar-preview {
                 width: 192px;
                 height: 192px;
@@ -63,10 +72,12 @@
                 border-radius: 100%;
                 border: 6px solid #f8f8f8;
                 box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
-                .imagePreview{
+
+                .imagePreview {
                     background-size: 100% 100%;
                 }
-                > div {
+
+                >div {
                     width: 100%;
                     height: 100%;
                     border-radius: 100%;
@@ -83,6 +94,7 @@
             font-size: 20px;
             text-align: center;
             margin: 20px 0 20px;
+
             small {
                 display: block;
                 font-size: 15px;
@@ -90,18 +102,22 @@
                 color: gray;
             }
         }
+
         .product-upload {
             position: relative;
             max-width: 205px;
             margin: 50px auto;
+
             .product-edit {
                 position: absolute;
                 right: 12px;
                 z-index: 1;
                 top: 10px;
+
                 input {
                     display: none;
-                    + label {
+
+                    +label {
                         display: inline-block;
                         width: 34px;
                         height: 34px;
@@ -113,10 +129,12 @@
                         cursor: pointer;
                         font-weight: normal;
                         transition: all 0.2s ease-in-out;
+
                         &:hover {
                             background: #f1f1f1;
                             border-color: #d6d6d6;
                         }
+
                         &:after {
                             content: "\f303";
                             font-family: "FontAwesome";
@@ -131,16 +149,19 @@
                     }
                 }
             }
+
             .product-preview {
-                .imagePreview{
+                .imagePreview {
                     background-size: 100% 100%;
                 }
+
                 width: 192px;
                 height: 192px;
                 position: relative;
                 border: 6px solid #f8f8f8;
                 box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
-                > div {
+
+                >div {
                     width: 100%;
                     height: 100%;
 
@@ -182,8 +203,10 @@
         overflow: hidden;
         position: relative;
         cursor: move;
+
         &:nth-child(1) {
             border: 2px solid blue;
+
             &::before {
                 content: "MAIN";
                 display: block;
@@ -198,6 +221,7 @@
                 padding: 3px 6px;
             }
         }
+
         .imupl-button-remove,
         .imupl-button-edit,
         .imupl-button-rotate-cw,
@@ -210,7 +234,9 @@
             padding: 3px 6px;
             cursor: pointer;
         }
+
         &.loading {
+
             .imupl-button-remove,
             .imupl-button-edit,
             .imupl-button-rotate-cw,
@@ -219,24 +245,28 @@
                 display: none;
             }
         }
+
         .imupl-button-remove {
             left: 0;
             top: 0;
             border-bottom-right-radius: 10px;
             padding-right: 10px;
         }
+
         .imupl-button-edit {
             right: 0;
             top: 0;
             border-bottom-left-radius: 10px;
             padding-left: 10px;
         }
+
         .imupl-button-rotate-cw {
             bottom: 0;
             left: 30px;
             border-top-right-radius: 10px;
             padding-left: 10px;
         }
+
         .imupl-button-rotate-ccw {
             bottom: 0;
             left: 0;
@@ -271,6 +301,7 @@
         background: rgba(0, 150, 0, 0.1);
         display: none;
         pointer-events: none;
+
         &.active {
             display: initial;
         }
@@ -294,6 +325,7 @@
         .thumbnail {
             transform: translateY(-100%);
             transition: 0.5s transform ease-in-out;
+
             .img {
                 background-size: cover;
                 background-repeat: no-repeat;
@@ -304,6 +336,7 @@
         &.active {
             opacity: 1;
             pointer-events: initial;
+
             .thumbnail {
                 transform: translateY(0);
             }
@@ -352,6 +385,7 @@
         height: 100%;
         background: #eee;
     }
+
     body {
         padding: 50px;
     }
@@ -363,30 +397,61 @@
         top: 0;
         z-index: 97;
     }
+
     .img-medias {
         position: relative;
     }
 }
 
-.content-wrapper
-{
-    .card-body{
-        .atribute-product{
+.content-wrapper {
+    .card-body {
+        .atribute-product {
             position: relative;
         }
-        .attribue-product-count{
+
+        .attribue-product-count {
             position: absolute;
             top: -8px;
             right: -8px;
             width: 15px;
             height: 15px;
-            background-color:#FB7E96;
+            background-color: #FB7E96;
             border-radius: 50%;
             text-align: center;
             font-size: 12px;
         }
     }
 
+}
+
+.popup-order {
+    width: 320px;
+    height: 70px;
+    background-color: #faaa64;
+    color: white;
+    border-radius: 4px;
+    position: fixed;
+    bottom: 10%;
+    right: 10px;
+    animation-name: example;
+    animation-duration: 4s;
+}
+
+@keyframes example {
+
+    0% {background-color:crimson; right: 0px; bottom:0px;}
+
+    25% {
+        background-color: lightsalmon; right: 0px; bottom:100px;
+    }
+
+    50% {
+        background-color: pink;right: 0px; bottom:150px;
+    }
+
+    100% {
+        background-color:#faaa64;right: 0px; bottom:200px;
+    }
 }
 
 .breadcrumb {

@@ -32,23 +32,34 @@ class Product extends Model implements Transformable
         "quantity",
         "current_quantity",
         "price",
+        "original_price",
         "sale_price",
         "status",
         "category_id",
         "code",
+        "view",
         "thumbnail",
         "type",
         "brand_id",
         "content",
         "hot",
+        "sale",
+        "phi_ship",
     ];
-    public function sluggable()
+    public function sluggable(): array
     {
         return [
             'slug' => [
                 'source' => 'name',
             ],
         ];
+    }
+    public function getPhiShip()
+    {
+        if ($this->phi_ship) {
+            return $this->phi_ship . " vnd";
+        }
+        return 0;
     }
     public function getStatus()
     {
@@ -60,6 +71,19 @@ class Product extends Model implements Transformable
                 break;
             default:
                 return 'Pending';
+                break;
+        }
+    }
+    public function getHot()
+    {
+        $status = $this->hot;
+
+        switch ($status) {
+            case 1:
+                return 'Hot';
+                break;
+            default:
+                return 'No';
                 break;
         }
     }
@@ -83,6 +107,10 @@ class Product extends Model implements Transformable
     {
         return $this->hasMany(OrderItem::class, 'product_id');
     }
+    public function orderCountSold()
+    {
+        return $this->hasMany(OrderItem::class, 'product_id')->sum('quantity');
+    }
     public function imagaes()
     {
         return $this->morphMany(Image::class, 'imageable');
@@ -96,7 +124,10 @@ class Product extends Model implements Transformable
         }
         return $value;
     }
-
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable')->where('parent_id', 0)->latest();
+    }
     public function brand()
     {
         return $this->hasOne(Brand::class);
@@ -105,8 +136,20 @@ class Product extends Model implements Transformable
     {
         $query->where('status', self::PUBLISHED);
     }
+
+    public function getSalePrice()
+    {
+        if ($this->sale && $this->sale_price > $this->price) {
+            return number_format($this->sale_price) . "₫";
+        }
+        return '';
+    }
     public function scopeHots($query)
     {
         $query->where('hot', self::HOTS);
+    }
+    public function attachCategories($category_ids, array $attributes = [])
+    {
+        $this->categories()->attach($category_ids, $attributes);
     }
 }

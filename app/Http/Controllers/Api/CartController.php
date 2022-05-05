@@ -6,8 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CartUpdateRequest;
 use App\Repositories\CartItemRepository;
 use App\Repositories\CartRepository;
+use App\Repositories\DiscountRepository;
 use App\Repositories\ProductRepository;
-use Illuminate\Http\Request;
+use App\Services\CartService;
 
 class CartController extends Controller
 {
@@ -15,59 +16,36 @@ class CartController extends Controller
     protected $cartRepository;
     protected $productRepository;
     protected $cartItemRepository;
+    protected $cartService;
+    protected $discountRepository;
 
-    public function __construct(CartRepository $cartRepository, ProductRepository $productRepository, CartItemRepository $cartItemRepository)
+    public function __construct(CartRepository $cartRepository, ProductRepository $productRepository, CartItemRepository $cartItemRepository, CartService $cartService, DiscountRepository $discountRepository)
     {
         $this->cartEntity         = $cartRepository->getEntity();
         $this->productEntity      = $productRepository->getEntity();
         $this->cartItemRepository = $cartItemRepository->getEntity();
+        $this->cartService        = $cartService;
+
+        $this->discountEntity = $discountRepository->getEntity();
     }
 
     public function changQuantity(CartUpdateRequest $request, $id)
     {
 
         $cart_item = $this->cartItemRepository->find($id);
-        $cart_id   = $cart_item->cart_id;
 
-        $cart = $this->cartEntity->find($cart_id);
+        $data = $this->cartService->handleCartItem($request, $cart_item);
 
-        $product = $this->productEntity->find($cart_item->product_id);
-
-        $quantity = $request->quantity;
-
-        $price  = $product->price;
-        $amount = $price * $quantity;
-
-        $cart_item->amount   = $amount;
-        $cart_item->quantity = $quantity;
-        $cart_item->update();
-        $total_cart_items = $this->cartItemRepository->where('cart_id', $cart_item->cart_id)->sum('amount');
-        $cart->total      = $total_cart_items;
-        $cart->update();
-
-        return response()->json(['total_cart_items'=>$total_cart_items,'amount'=>$amount]);
+        return response()->json($data);
     }
 
-    public function index()
+    public function checkDiscount($code)
     {
-    }
-
-    public function store(Request $request)
-    {
-        //
-    }
-
-    public function show($id)
-    {
-        //
-    }
-
-    public function update(Request $request, $id)
-    {
-    }
-
-    public function destroy($id)
-    {
-        //
+        $discount = $this->discountEntity->where('code', $code)->first();
+        if (!$discount) {
+            return response()->json(['message' => 'Invalid coupon code']);
+        }
+        $percent = $discount->percent;
+        return response()->json(['percent' => $percent]);
     }
 }

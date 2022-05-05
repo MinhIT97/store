@@ -25,11 +25,17 @@
                             {{ session('sucsess') }}
                         </div>
                         @endif
+                        @if (session('errow'))
+                        <div class="alert alert-danger">
+                            {{ session('errow') }}
+                        </div>
+                        @endif
                         <table class="table table-striped table-responsive">
                             <thead>
                                 <tr>
                                     <th> # </th>
                                     <th> Màu </th>
+                                    <th> Size </th>
                                     <th> Quantity </th>
                                     <th> Current quantity </th>
                                     <th>Hành động </th>
@@ -41,6 +47,7 @@
                                 <tr>
                                     <td> {{$attribute->id}}</td>
                                     <td> {{$attribute->color->color}} </td>
+                                    <td> {{$attribute->size->size}} </td>
                                     <td> {{$attribute->quantity}} </td>
                                     <td> {{$attribute->current_quantity}} </td>
                                     <td>

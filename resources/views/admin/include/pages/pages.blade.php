@@ -1,4 +1,10 @@
 <li class="nav-item">
+    <a class="nav-link" href="{{route('dashboard.show')}}">
+        <span class="menu-title">Dashboard</span>
+        <i class="mdi mdi-home menu-icon"></i>
+    </a>
+</li>
+<li class="nav-item">
     <a class="nav-link" data-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="general-pages">
         <span class="menu-title">User</span>
         <i class="menu-arrow"></i>
@@ -6,21 +12,15 @@
     </a>
     <div class="collapse" id="general-pages">
         <ul class="nav flex-column sub-menu">
+            @can('viewAny', App\User::class)
             <li class="nav-item"> <a class="nav-link" href="{{route('users.show')}}"> User </a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Tài khoản khách hàng</a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
+            @endcan
+            <li class="nav-item"> <a class="nav-link" href="{{route('users.customer')}}"> Customer</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route('users.show_create')}}"> Register </a></li>
+            @can('viewAny', App\Entities\Role::class)
+            <li class="nav-item"> <a class="nav-link" href="{{route('roles')}}"> Roles </a></li>
+            @endcan
         </ul>
-    </div>
-</li>
-<li class="nav-item">
-    <a class="nav-link" data-toggle="collapse" href="#category-pages" aria-expanded="false" aria-controls="general-pages">
-        <span class="menu-title">Categories </span>
-        <i class="menu-arrow"></i>
-        <i class="mdi mdi-image-album menu-icon"></i>
-    </a>
-    <div class="collapse" id="category-pages">
-        <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{route('categories.show')}}"> Categories </a></li>
     </div>
 </li>
 <li class="nav-item">
@@ -47,6 +47,18 @@
     </div>
 </li>
 <li class="nav-item">
+    <a class="nav-link" data-toggle="collapse" href="#menus-pages" aria-expanded="false" aria-controls="general-pages">
+        <span class="menu-title">Menus </span>
+        <i class="menu-arrow"></i>
+        <i class="mdi mdi-library menu-icon"></i>
+    </a>
+    <div class="collapse" id="menus-pages">
+        <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="{{route('menus')}}"> Menus </a></li>
+        </ul>
+    </div>
+</li>
+<li class="nav-item">
     <a class="nav-link" data-toggle="collapse" href="#geseral-pages" aria-expanded="false" aria-controls="general-pages">
         <span class="menu-title">Products </span>
         <i class="menu-arrow"></i>
@@ -55,11 +67,13 @@
     <div class="collapse" id="geseral-pages">
         <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link" href="{{route('products')}}"> Products </a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route('categories.products.show')}}"> Categories </a></li>
             <li class="nav-item"> <a class="nav-link" href="{{ url('adminstore/products/men')}}"> MEN </a></li>
             <li class="nav-item"> <a class="nav-link" href="{{ url('adminstore/products/women')}}"> WOMAN</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{ url('adminstore/products/accessories')}}"> ACCESSORIES</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{route('size.show')}}"> Sizes</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{route('colors.show')}}"> Colors</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route('discount.show')}}"> Discount code</a></li>
         </ul>
     </div>
 </li>
@@ -95,19 +109,21 @@
     </a>
     <div class="collapse" id="option-pages">
         <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{route('option.show')}}"> Config </a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route('options.show')}}"> Config </a></li>
         </ul>
     </div>
 </li>
 <li class="nav-item">
     <a class="nav-link" data-toggle="collapse" href="#blog-pages" aria-expanded="false" aria-controls="general-pages">
-        <span class="menu-title">Blog </span>
+        <span class="menu-title">News </span>
         <i class="menu-arrow"></i>
         <i class="mdi mdi-blogger menu-icon"></i>
     </a>
     <div class="collapse" id="blog-pages">
         <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{route('blog.show')}}"> Blog </a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route('categories.posts.show')}}"> Categories </a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route('blog.show')}}"> News </a></li>
+
 
     </div>
 </li>
@@ -123,4 +139,3 @@
 
     </div>
 </li>
-

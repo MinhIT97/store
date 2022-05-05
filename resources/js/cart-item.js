@@ -1,23 +1,18 @@
-$(document).ready(function () {
+$(document).ready(function() {
     var quantityChange = document.getElementsByClassName("quantity");
-    console.log(quantityChange);
 
     Array.from(quantityChange).forEach(input => {
-        input.addEventListener("change", function () {
-
-
+        input.addEventListener("change", function() {
             var id = input.dataset.id;
             var quantity = input.value;
-            const url = window.location.origin +"/api/cart/" + id;
-            console.log( url);
-            // var url = "api/cart/" + id;
+            const url = window.location.origin + "/api/cart/" + id;
 
             $.ajax({
                 type: "PUT",
                 url: url,
                 data: { quantity: quantity },
                 dataType: "json",
-                success: function (data) {
+                success: function(data) {
                     var amount = new Intl.NumberFormat("vi-VN").format(
                         data.amount
                     );
@@ -28,11 +23,8 @@ $(document).ready(function () {
                     $("#amount-" + id).html(amount);
                     $("#total").html(total);
                 },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    console.log(JSON.stringify(jqXHR));
-                    console.log(
-                        "AJAX error: " + textStatus + " : " + errorThrown
-                    );
+                error: function(request, status, error) {
+                    alert("the quantity is too big !");
                 }
             });
         });

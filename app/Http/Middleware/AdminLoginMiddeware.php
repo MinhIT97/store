@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\User;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,12 +19,13 @@ class AdminLoginMiddeware
     {
         if (Auth::check()) {
             $user = Auth::user();
-            if ($user->level == 1 && $user->status == 1) {
+            $id   = $user->id;
+            $user = User::find($id);
+            if ($user->level == 1 && $user->status == 1 && $user->hasRole('superadmin') || $user->level == 1 && $user->status == 1 && $user->hasRole('admin')) {
                 return $next($request);
             } else {
                 return redirect()->route('index');
             }
-
         } else {
             return redirect()->route('admin-login');
         }

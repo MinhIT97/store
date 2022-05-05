@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\imageRepository;
+use App\Repositories\ImageRepository;
 use App\Entities\Image;
 use App\Validators\ImageValidator;
 
@@ -44,5 +44,5 @@ class ImageRepositoryEloquent extends BaseRepository implements ImageRepository
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
-    
+
 }

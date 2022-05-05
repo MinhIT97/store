@@ -13,6 +13,25 @@
                 </ol>
             </nav>
         </div>
+        <div class="d-sm-flex justify-content-center mb-4">
+            <form action="">
+                <label for="form" class="font-weight-bold">From:</label>
+                <input type="date" class="p-2" name="from" id="dateFrom">
+                <label for="to" class="font-weight-bold">To:</label>
+                <input type="date" class="p-2" name="to" id="dateTo">
+                <input type="text" class="p-2" name="search" placeholder="Search">
+                <button type="submit" class="btn btn-gradient-primary mr-2">
+                    Submit
+                </button>
+            </form>
+            <form action="{{route('blog.exprort')}}">
+                <input name="url" type="text" value="{{request()->fullUrl()}}" hidden>
+                <button type="submit" class="btn btn-gradient-success btn-icon-text">
+                    <i class="mdi mdi-file-excel"></i>
+                    Excel
+                </button>
+            </form>
+        </div>
         <div class="row">
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
@@ -40,14 +59,15 @@
                                 @foreach($blogs as $blog)
                                 <tr>
                                     <td> {{$blog->id}}</td>
-                                    <td> {{$blog->title}} </td>
-                                    <td> {{$blog->description}} </td>
+                                    <td> {{$blog->getLImitTitle(40)}} </td>
+                                    <td> {{$blog->getLimitDescription(60)}} </td>
                                     <td> {{$blog->view}} </td>
                                     <td>{{$blog->getDate()}} </td>
                                     <td>{{$blog->getDateUpdate()}} </td>
-                                    <td><img class="ml-2" src="{{asset('/uploads/'.$blog->thumbnail)}}" alt=""></td>
+                                    <td><img class="ml-2" src="{{$blog->thumbnail}}" alt=""></td>
 
                                     <td>
+                                    <a class="btn btn-gradient-info  atribute-product  mr-2 p-2" href="{{ url('adminstore/blogs/'.$blog->id.'/comments' )}}"><i class="mdi mdi-comment"><span class="attribue-product-count">{{$blog->comments_count}}</span> </i></a>
                                         <a class="btn btn-gradient-info p-2" href="{{url('adminstore/edit-blog/'.$blog->id)}}"><i class="fas fa-edit"></i></a>
                                         <a class="btn btn-gradient-danger p-2 ml-2" href="{{url('adminstore/delete-blog/'.$blog->id)}}"><i class="fas fa-trash"></i></a>
                                     </td>

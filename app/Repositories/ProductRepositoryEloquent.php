@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Entities\Product;
-use App\Repositories\productRepository;
+use App\Repositories\ProductRepository;
 use App\Validators\ProductValidator;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Prettus\Repository\Eloquent\BaseRepository;

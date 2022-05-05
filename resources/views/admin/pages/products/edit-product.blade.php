@@ -4,8 +4,8 @@
     <div>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('users.show')}}" class="text-decoration-none"><i class="fas fa-home"></i> Dashboard </a></li>
-            <li class="breadcrumb-item"><a href="{{route('products')}}"  class="text-decoration-none">Products</a></li>
-            <li class="breadcrumb-item  text-capitalize"><a href="{{ url('adminstore/products/'.$product->type)}}"  class="text-decoration-none">Products {{$product->type}}</a></li>
+            <li class="breadcrumb-item"><a href="{{route('products')}}" class="text-decoration-none">Products</a></li>
+            <li class="breadcrumb-item  text-capitalize"><a href="{{ url('adminstore/products/'.$product->type)}}" class="text-decoration-none">Products {{$product->type}}</a></li>
             <li class="breadcrumb-item active text-capitalize"> {{$product->type}}</li>
         </ol>
     </div>
@@ -44,7 +44,7 @@
                         <p class="help is-danger mt-2">{{ $errors->first('current_quantity') }}</p>
                     </div>
                     <div class="form-group">
-                        <label for="quantity">Số lượng</label>
+                        <label for="quantity">Quantity</label>
                         <input type="text" name="quantity" class="form-control form-control-lg" id="quantity" value="{{$product->quantity}}">
                         <p class="help is-danger mt-2">{{ $errors->first('quantity') }}</p>
                     </div>
@@ -103,7 +103,7 @@
                                 <label for="imageUpload"></label>
                             </div>
                             <div class="product-preview">
-                                <div id="imagePreview" style="background-image:url({{asset('/uploads/'.$product->thumbnail)}})">
+                                <div id="imagePreview" style="background-image:url({{$product->thumbnail}})">
                                 </div>
                             </div>
                         </div>
@@ -129,13 +129,18 @@
                             </p>
                         </div>
                     </div>
+                    <div class="form-group mt-3">
+                        <label for="phi_ship">Phi ship</label>
+                        <input type="text" name="phi_ship" class="form-control form-control-sm" id="phi_ship" value="{{$product->phi_ship}}">
+                        <p class="help text-danger mt-2">{{ $errors->first('phi_ship') }}</p>
+                    </div>
                     <div class="imupl-dragdrop-hover"></div>
                     <div class="medias">
                         <div class="row">
                             @if($product->imagaes->count())
                             @foreach($product->imagaes as $media)
                             <div class="col-4 mt-2">
-                                <img class="ml-2 img-fluid img-medias" src="{{asset('/uploads/'.$media->url)}}" alt="">
+                                <img class="ml-2 img-fluid img-medias" src="{{$media->url}}" alt="">
 
                                 <a class="btn btn-gradient-danger p-0 ml-0 btn-delete_medias" href="{{ url('adminstore/products/delete/'.$product->id.'/medias/'.$media->id )}}"><i class="mdi mdi-delete-forever"></i></a>
                             </div>
@@ -143,17 +148,28 @@
                             @endif
                         </div>
                     </div>
-
-
                     <div class="form-group mt-4">
-                        <label for="price">Giá</label>
+                        <label for="price">Price</label>
                         <input type="price" name="price" class="form-control form-control-lg" id="price" value="{{$product->price}}">
                         <p class="help is-danger mt-2">{{ $errors->first('price') }}</p>
                     </div>
                     <div class="form-group">
-                        <label for="sale_price">Giá giảm</label>
+                        <label for="sale_price">Sale price</label>
                         <input type="sale_price" name="sale_price" class="form-control form-control-lg" id="sale_price" value="{{$product->sale_price}}">
                         <p class="help is-danger mt-2">{{ $errors->first('sale_price') }}</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="original_price">Original price</label>
+                        <input type="original_price" name="original_price" class="form-control form-control-lg" id="sale_price" value="{{$product->original_price}}">
+                        <p class="help is-danger mt-2">{{ $errors->first('sale_price') }}</p>
+                    </div>
+                    <div class="form-group mt-5">
+                        <Label> Turn on or Turn off sale price</Label>
+                        <select name="sale" id="sale_price_on_off" class="form-control form-control-sm js-example-basic-single">
+                            <option value="0" @if($product->sale ===0)selected="selected"@endif >Turn off price</option>
+                            <option value="1" @if($product->sale ===1)selected="selected"@endif>Turn on price</option>
+                        </select>
+                        <p class="help is-danger mt-2">{{ $errors->first('sale') }}</p>
                     </div>
                     <div class="form-group mt-5">
                         <Label> Status</Label>

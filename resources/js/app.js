@@ -9,7 +9,10 @@ require("./sortby");
 require("./search");
 require("./cart");
 require("./cart-item");
-
+require("./provine");
+require("./comment");
+require("./zoom.js");
+require("./checkdiscount");
 console.log("Hello World :)");
 $.ajaxSetup({
     headers: {
@@ -25,9 +28,9 @@ $(document).ready(function () {
         slidesToShow: 4,
         slidesToScroll: 1,
         prevArrow:
-            '<button class="slick-prev"> <i class="fa fa-angle-double-left"></i></button>',
+            '<button class="slick-prev bg-store-btn"> <i class="fa fa-angle-double-left"></i></button>',
         nextArrow:
-            '<button class="slick-next"> <i class="fa fa-angle-double-right"></i></button>',
+            '<button class="slick-next bg-store-btn"> <i class="fas fa-angle-right"></i></button>',
         responsive: [
             {
                 breakpoint: 1024,
@@ -131,4 +134,21 @@ $(document).ready(function () {
 });
 $(document).ready(function () {
     $(".js-example-basic-multiple").select2();
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $("#imagePreview").css(
+                    "background-image",
+                    "url(" + e.target.result + ")"
+                );
+                $("#imagePreview").hide();
+                $("#imagePreview").fadeIn(650);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#imageUpload").change(function () {
+        readURL(this);
+    });
 });

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ContactUpdateRequest;
 use App\Repositories\ContactRepository;
 use App\Traits\Search;
 use Illuminate\Http\Request;
@@ -30,15 +31,27 @@ class ContactController extends Controller
         ]);
     }
 
+    public function show($id)
+    {
+        $contact = $this->entity->findOrFail($id);
+        return view('admin.pages.contacts.edit-contact', [
+            'contact' => $contact,
+        ]);
+    }
+
+    public function update(ContactUpdateRequest $request, $id)
+    {
+        $contact = $this->entity->findOrFail($id);
+        $data    = $request->all();
+        $contact->update($data);
+        return redirect()->back()->with('sucsess', 'Update contact sucsses');
+    }
+
     public function destroy($id)
     {
-        $contacts = $this->entity->find($id);
+        $contacts = $this->entity->findOrFail($id);
 
-        if ($contacts) {
-            $contacts->delete();
-            return redirect()->back()->with('sucsess', 'Delete contact sucsses');
-        }
-        return view('admin.pages.samples.error-404.blade.php');
-
+        $contacts->delete();
+        return redirect()->back()->with('sucsess', 'Delete contact sucsses');
     }
 }

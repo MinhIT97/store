@@ -35,7 +35,7 @@ class Poster extends Model implements Transformable
     {
         return Carbon::parse($this->created_at)->format('d/m/Y');
     }
-    public function sluggable()
+    public function sluggable():array
     {
         return [
             'slug' => [

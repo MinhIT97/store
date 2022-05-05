@@ -16,7 +16,7 @@
                                     <label for="imageUpload"></label>
                                 </div>
                                 <div class="avatar-preview">
-                                    <div class="imagePreview" id="imagePreview" >
+                                    <div class="imagePreview" id="imagePreview">
                                     </div>
                                 </div>
                             </div>
@@ -46,6 +46,45 @@
                         <input type="password" class="form-control form-control-lg" name="confirmpassword" id="exampleInputConfirmPassword" placeholder="Confirm Password">
                         <p class="help is-danger mt-2">{{ $errors->first('confirmpassword') }}</p>
                     </div>
+                    <div class="form-group ">
+                        <input type="hidden" class="form-control" name="role_ids" id="ids" value="">
+                    </div>
+                    @can('viewAny', App\User::class)
+                    <div class="form-group ">
+                        <input class="form-control" name="level" id="level" placeholder="level" value="">
+                    </div>
+                    <div class="form-group">
+                        <label for="roles">Roles</label>
+                        <select id="categories" class="form-control form-control-sm  js-example-basic-multiple" multiple="multiple">
+                            @foreach($roles as $role)
+                            <option value="{{$role->id}}">{{$role->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    @endcan
+                    <div class="form-row delivery-main">
+                        <div class="form-group col-md-4">
+                            <label for="province_id">Thành phố <span class="text-danger">*</span></label>
+                            <div class="input-wrap">
+                                <select class="form-control" name="province_id" id="province_id" required>
+                                    @foreach($province as $info)
+                                    <option value="{{$info->id}}"> {{$info->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <p class="help mt-2 text-danger">{{ $errors->first('city') }}</p>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="district_id">Quận/Huyện <span class="text-danger">*</span></label>
+                            <div class="input-wrap">
+                                <select class="form-control" name="district_id" id="district_id" #district="ngModel" autocomplete="new-password" required>
+                                    <option></option>
+                                </select>
+                            </div>
+                            <p class="help mt-2 text-danger">{{ $errors->first('district_id') }}</p>
+                        </div>
+
+                    </div>
                     <div class="justify-content-end d-flex">
                         <button type="submit" class="btn btn-gradient-info btn-behance justify-content-end">Create new</button>
                     </div>
@@ -55,6 +94,4 @@
         </div>
     </div>
 </div>
-
-
 @endsection

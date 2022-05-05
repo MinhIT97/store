@@ -2,11 +2,11 @@
 
 namespace App\Repositories;
 
-use Prettus\Repository\Eloquent\BaseRepository;
-use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\menuRepository;
 use App\Entities\Menu;
+use App\Repositories\MenuRepository;
 use App\Validators\MenuValidator;
+use Prettus\Repository\Criteria\RequestCriteria;
+use Prettus\Repository\Eloquent\BaseRepository;
 
 /**
  * Class MenuRepositoryEloquent.
@@ -24,18 +24,21 @@ class MenuRepositoryEloquent extends BaseRepository implements MenuRepository
     {
         return Menu::class;
     }
+    public function getEntity()
+    {
+        return $this->model;
+    }
 
     /**
-    * Specify Validator class name
-    *
-    * @return mixed
-    */
+     * Specify Validator class name
+     *
+     * @return mixed
+     */
     public function validator()
     {
 
         return MenuValidator::class;
     }
-
 
     /**
      * Boot up the repository, pushing criteria
@@ -44,5 +47,5 @@ class MenuRepositoryEloquent extends BaseRepository implements MenuRepository
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
-    
+
 }

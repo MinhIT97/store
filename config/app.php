@@ -167,7 +167,7 @@ return [
          */
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Spatie\Analytics\AnalyticsServiceProvider::class,
-        Telegram\Bot\Laravel\TelegramServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -229,8 +229,9 @@ return [
         'Validator'    => Illuminate\Support\Facades\Validator::class,
         'View'         => Illuminate\Support\Facades\View::class,
         'Analytics'    => Spatie\Analytics\AnalyticsFacade::class,
+        'Telegram'     => Telegram\Bot\Laravel\Facades\Telegram::class,
         'Excel'        => Maatwebsite\Excel\Facades\Excel::class,
-        'Telegram' => Telegram\Bot\Laravel\Facades\Telegram::class,
+        'Socialite'    => Laravel\Socialite\Facades\Socialite::class,
 
     ],
 

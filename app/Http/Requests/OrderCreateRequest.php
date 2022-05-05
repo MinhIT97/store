@@ -28,8 +28,8 @@ class OrderCreateRequest extends FormRequest
             'name'     => 'required',
             'address'  => 'required',
             'phone'    => ['required', 'numeric', 'regex:/(0)[0-9]{9}/'],
-            'city'     => ['required'],
-            'district' => 'required',
+            'province_id' => ['required'],
+            'district_id' => 'required',
             // 'commune'  => 'required',
         ];
     }

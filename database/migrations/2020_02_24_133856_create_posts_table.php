@@ -18,12 +18,17 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->text('content');
-            $table->string('description');
+            $table->text('description');
+            $table->unsignedBigInteger('user_id');
             $table->string('type');
             $table->integer('view')->nullable()->default('0');
             $table->string('thumbnail');
-            $table->tinyInteger('status');
+            $table->tinyInteger('status')->default('1');
             $table->timestamps();
+        });
+
+        Schema::table('posts', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -34,6 +39,9 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
+        Schema::table('posts', function (Blueprint $table) {
+            $table->dropForeign(['posts_user_id_foreign']);
+        });
         Schema::dropIfExists('posts');
     }
 }

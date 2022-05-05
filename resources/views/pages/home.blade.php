@@ -2,7 +2,7 @@
     <div class="baner">
         @if($poster)
         <a href="{{$poster->link}}">
-        <img class="img-fluid lion-main__image position-relative" src="{{asset('uploads/'.$poster->thumbnail)}}" alt="">
+            <img class="img-fluid lion-main__image position-relative" src="{{$poster->thumbnail}}" alt="">
         </a>
 
         @endif
@@ -17,19 +17,21 @@
                 </li>
                 @endforeach
                 @endif
-
             </ul>
             <div class="carousel-inner">
                 @if($new_sesion->count())
                 @foreach($new_sesion as $session)
                 @if ($loop->first)
                 <div class="carousel-item active">
-                    <img class="img-fluid" src="{{asset('uploads/'.$session->thumbnail)}}">
+                    <a href="">
+                        <img class="img-fluid" src="{{$session->thumbnail}}">
+                    </a>
                 </div>
-                @endif
-                @if ($loop->last)
+                @else
                 <div class="carousel-item">
-                    <img class="img-fluid" src="{{asset('uploads/'.$session->thumbnail)}}">
+                    <a href="">
+                        <img class="img-fluid" src="{{$session->thumbnail}}">
+                    </a>
                 </div>
                 @endif
                 @endforeach
@@ -44,7 +46,6 @@
     <div class="home-product">
         <div class="container">
             <div class="product-head text-center">
-
                 <h2 class="text-uppercase">
                     <p> <strong>Men</strong> best sellers</p>
                 </h2>
@@ -59,7 +60,7 @@
                                 <div class="slide-item">
                                     <a href="{{asset('products/'.$product->type.'/'.$product->slug)}}">
                                         <div class="slide-item__image">
-                                            <img class="img-fluid" src="{{asset('uploads/'.$product->thumbnail)}}" alt="">
+                                            <img class="img-fluid" src="{{$product->thumbnail}}" alt="">
                                         </div>
                                         <div class="slide-item__content text-center">
                                             <div class="slide-item__content--heading">
@@ -67,6 +68,7 @@
                                             </div>
                                             <div class="slide-item__content--content">
                                                 <span class="money"> {{number_format($product->price)}}₫</span>
+                                                <span class="product-summary--saleprice">{{$product->getSalePrice()}} ₫ </span>
                                             </div>
                                         </div>
                                     </a>
@@ -78,7 +80,6 @@
                     </div>
                 </div>
             </section>
-
         </div>
     </div>
     <div class="container">
@@ -86,16 +87,12 @@
             <div>
                 <div class="style-product__head text-center">
                     <div>
-                        <i class="fab fa-instagram"></i>
-                        <i class="fa fa-instagram"></i>
-
-
+                        <i class="fab fa-instagram fa-2x"></i>
                     </div>
                     <h2 class="text-uppercase">
                         <p> Shop our instagram</p>
                         <i class="fas fa-hashtag">Mstyle</i>
                     </h2>
-
                     <div class="row">
                         <div class="col-4">
                             <div class="row">
@@ -103,7 +100,6 @@
                                     <div class="bg-black">
                                         <img class="img-fluid image " src="/images/4725.jpg" alt="">
                                     </div>
-
                                     <i class="fa fa-2x fa-instagram middle"></i>
                                 </div>
                                 <div class="col-6 style-item">
@@ -159,7 +155,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     <div></div>
                     <div></div>
@@ -172,10 +167,8 @@
     <div class="home-product">
         <div class="container">
             <div class="product-head text-center">
-
                 <h2 class="text-uppercase">
                     <p> <strong>Women</strong> best sellers</p>
-
                 </h2>
             </div>
             <section class="product-slider">
@@ -188,7 +181,7 @@
                                 <div class="slide-item">
                                     <a href="{{asset('products/'.$product->type.'/'.$product->slug)}}">
                                         <div class="slide-item__image">
-                                            <img class="img-fluid" src="{{asset('uploads/'.$product->thumbnail)}}" alt="">
+                                            <img class="img-fluid" src="{{$product->thumbnail}}" alt="">
                                         </div>
                                         <div class="slide-item__content text-center">
                                             <div class="slide-item__content--heading">
@@ -196,6 +189,7 @@
                                             </div>
                                             <div class="slide-item__content--content">
                                                 <span class="money"> {{number_format($product->price)}}₫</span>
+                                                <span class="product-summary--saleprice">{{$product->getSalePrice()}} ₫ </span>
                                             </div>
                                         </div>
                                     </a>
@@ -209,14 +203,11 @@
             </section>
         </div>
     </div>
-
     <div class="home-product">
         <div class="container">
             <div class="product-head text-center">
-
                 <h2 class="text-uppercase">
                     <p> <strong>accessories</strong> best sellers</p>
-
                 </h2>
             </div>
             <section class="product-slider">
@@ -229,7 +220,7 @@
                                 <div class="slide-item">
                                     <a href="{{asset('products/'.$product->type.'/'.$product->slug)}}">
                                         <div class="slide-item__image">
-                                            <img class="img-fluid" src="{{asset('uploads/'.$product->thumbnail)}}" alt="">
+                                            <img class="img-fluid" src="{{$product->thumbnail}}" alt="">
                                         </div>
                                         <div class="slide-item__content text-center">
                                             <div class="slide-item__content--heading">
@@ -237,6 +228,7 @@
                                             </div>
                                             <div class="slide-item__content--content">
                                                 <span class="money"> {{number_format($product->price)}}₫</span>
+                                                <span class="product-summary--saleprice">{{$product->getSalePrice()}} ₫ </span>
                                             </div>
                                         </div>
                                     </a>
@@ -248,9 +240,6 @@
                     </div>
                 </div>
             </section>
-
         </div>
     </div>
-
-
 </section>
