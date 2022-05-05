@@ -21,8 +21,8 @@ class CreateDiscountsTable extends Migration
             $table->string('code');
             $table->integer('percent');
             $table->tinyInteger('status');
-            $table->timestamp('star_date');
-            $table->timestamp('end_date');
+            $table->timestamp('star_date')->nullable();
+            $table->timestamp('end_date')->nullable();
             $table->timestamps();
         });
     }

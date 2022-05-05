@@ -1,6 +1,5 @@
 <?php
-namespace App\Traits;
-
+namespace App\Supports\Traits;
 trait HasPermissions
 {
     protected $permissionList = null;

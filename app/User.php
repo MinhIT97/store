@@ -5,7 +5,7 @@ namespace App;
 use App\Entities\District;
 use App\Entities\Province;
 use App\Entities\Role;
-use App\Traits\HasPermissions;
+use App\Supports\Traits\HasPermissions;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
