@@ -40,6 +40,9 @@ class ProfileController extends Controller
 
     public function test()
     {
+
+        // $activity = Telegram::getUpdates();
+        // dd($activity);
         // dd
         // Telegram::sendMessage([
         //     'chat_id' => env('TELEGRAM_CHANNEL_ID', '-1001500154812'),
@@ -51,5 +54,7 @@ class ProfileController extends Controller
 
         // ProcessPodcast::dispatch($categories);
         // return 'ok';
+
+        ProcessPodcast::addJob();
     }
 }

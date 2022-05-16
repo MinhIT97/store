@@ -2,11 +2,11 @@
 
 namespace App\Exceptions;
 
+use App\Elibs\Debug;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Session\TokenMismatchException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Telegram\Bot\Laravel\Facades\Telegram;
 
 class Handler extends ExceptionHandler
 {
@@ -70,11 +70,7 @@ class Handler extends ExceptionHandler
 
             })->implode('');
 
-            Telegram::sendMessage([
-                'chat_id'    => env('TELEGRAM_CHANNEL_ID', '-1001500154812'),
-                'parse_mode' => 'HTML',
-                'text'       => $msg,
-            ]);
+            Debug::pushNotification($msg);
 
         }
         parent::report($exception);
